@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "valarian_conquest:bohemiantower",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 30,
+    "separation": 15,
+    "salt": 325517801
+  }
+}

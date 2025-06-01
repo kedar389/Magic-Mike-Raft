@@ -1,0 +1,12 @@
+{
+  "type": "valarian_conquest:structure_feature",
+  "config": {
+    "structure": "valarian_conquest:valarian_ship",
+    "ignored_blocks": "minecraft:glass",
+    "offset": [
+      0,
+      -2,
+      0
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "valarian_conquest:lancastianoutpost",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 40,
+    "separation": 20,
+    "salt": 853596639
+  }
+}

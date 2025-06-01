@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "valarian_conquest:caladrian_castle",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 80,
+    "separation": 40,
+    "salt": 859167112
+  }
+}

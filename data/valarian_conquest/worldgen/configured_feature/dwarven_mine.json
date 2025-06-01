@@ -1,0 +1,12 @@
+{
+  "type": "valarian_conquest:structure_feature",
+  "config": {
+    "structure": "valarian_conquest:dwarven_mine",
+    "ignored_blocks": "minecraft:glass",
+    "offset": [
+      0,
+      -18,
+      0
+    ]
+  }
+}

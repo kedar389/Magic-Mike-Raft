@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "valarian_conquest:orc_fort",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 40,
+    "separation": 20,
+    "salt": 772001998
+  }
+}
