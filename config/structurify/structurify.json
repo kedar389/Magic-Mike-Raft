@@ -1,0 +1,1138 @@
+{
+  "config_version": "1.0.21",
+  "config_datetime": "2025-10-20_21-20-54",
+  "general": {
+    "min_structure_distance_from_world_center": 0,
+    "disable_all_structures": false,
+    "enable_global_spacing_and_separation_modifier": false,
+    "global_spacing_and_separation_modifier": 1.0
+  },
+  "structures": [
+    {
+      "name": "alekiships:unfinished_rowboat_birch",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 80,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 80,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:beach"
+      ]
+    },
+    {
+      "name": "alekiships:unfinished_rowboat_cherry",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 80,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 80,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:beach"
+      ]
+    },
+    {
+      "name": "alekiships:unfinished_rowboat_dark_oak",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 80,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 80,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:beach"
+      ]
+    },
+    {
+      "name": "alekiships:unfinished_rowboat_oak",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 80,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 80,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:beach",
+        "minecraft:snowy_beach"
+      ]
+    },
+    {
+      "name": "alekiships:unfinished_rowboat_spruce",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 80,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 80,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:beach"
+      ]
+    },
+    {
+      "name": "alekiships:unfinished_sloop_birch",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 80,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 80,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:beach"
+      ]
+    },
+    {
+      "name": "alekiships:unfinished_sloop_cherry",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 80,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 80,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:beach"
+      ]
+    },
+    {
+      "name": "alekiships:unfinished_sloop_dark_oak",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 80,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 80,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:beach"
+      ]
+    },
+    {
+      "name": "alekiships:unfinished_sloop_oak",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 80,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 80,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:beach"
+      ]
+    },
+    {
+      "name": "alekiships:unfinished_sloop_spruce",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 80,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 80,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:beach"
+      ]
+    },
+    {
+      "name": "bosses_of_mass_destruction:lich_tower",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 80,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 80,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [
+        "terralith:frozen_cliffs"
+      ],
+      "blacklisted_biomes": [
+        "minecraft:snowy_taiga",
+        "minecraft:snowy_plains",
+        "minecraft:snowy_slopes",
+        "minecraft:snowy_beach"
+      ]
+    },
+    {
+      "name": "cataclysm:cursed_pyramid",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 0,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 0,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [
+        "terralith:desert_oasis"
+      ],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "companions:companions_babayaga",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 80,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 80,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [
+        "minecraft:mangrove_swamp"
+      ],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "companions:companions_monkey_temple",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 100,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 100,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [
+        "terralith:jungle_mountains",
+        "minecraft:bamboo_jungle",
+        "#minecraft:is_jungle"
+      ],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "hunters_return:hunter_house",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 72,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 72,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "terralith:shield",
+        "terralith:lavender_forest",
+        "terralith:lavender_valley",
+        "terralith:moonlight_grove",
+        "terralith:moonlight_valley",
+        "terralith:sakura_grove",
+        "terralith:sakura_valley",
+        "terralith:white_cliffs"
+      ]
+    },
+    {
+      "name": "nova_structures:stray_fort",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 100,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 100,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [
+        "#apoli:category/taiga",
+        "#apoli:category/plains",
+        "#forge:is_cold/overworld"
+      ],
+      "blacklisted_biomes": [
+        "minecraft:snowy_taiga",
+        "minecraft:grove",
+        "minecraft:snowy_plains",
+        "terralith:alpine_grove",
+        "terralith:cold_shrubland",
+        "terralith:snowy_badlands",
+        "terralith:snowy_shield",
+        "terralith:gravel_desert",
+        "terralith:rocky_shrubland"
+      ]
+    },
+    {
+      "name": "tconstruct:earth_slime_island",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 0,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 0,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:deep_frozen_ocean",
+        "minecraft:deep_cold_ocean",
+        "minecraft:frozen_ocean",
+        "minecraft:cold_ocean"
+      ]
+    },
+    {
+      "name": "valarian_conquest:aegis_castle_structure",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 30,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [
+        "terralith:moonlight_grove",
+        "terralith:sakura_grove",
+        "terralith:sakura_valley"
+      ],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:aegis_outpost_structure",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 30,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [
+        "terralith:moonlight_valley",
+        "terralith:sakura_valley",
+        "terralith:moonlight_grove",
+        "terralith:alpine_grove",
+        "terralith:sakura_grove"
+      ],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:bohemiancastle",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 30,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:bohemianoutpost",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 30,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:bohemiantower",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 32,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:caladrian_castle",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 29,
+      "flatness_check_threshold": 11,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:caladrianfort",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 34,
+      "flatness_check_threshold": 11,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:caladrianoutpost",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 30,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 116,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:galician_fort",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 31,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 116,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:galiciancastle",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 32,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:galicianoutpost",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 64,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:gardoniancastle",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 31,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:gilded_legion_fort",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 64,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:lancastiancastle",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 29,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:lancastianoutpost",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 33,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:numeriancastle",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 33,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:numerianoutpost",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 64,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:orc_fort",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 64,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [
+        "terralith:savanna_badlands",
+        "minecraft:wooded_badlands",
+        "terralith:white_mesa",
+        "terralith:warped_mesa"
+      ],
+      "blacklisted_biomes": [
+        "minecraft:jungle",
+        "minecraft:sparse_jungle"
+      ]
+    },
+    {
+      "name": "valarian_conquest:orc_outpost",
+      "is_disabled": false,
+      "enable_flatness_check": false,
+      "flatness_check_distance": 64,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [
+        "terralith:white_mesa",
+        "terralith:warped_mesa",
+        "terralith:snowy_badlands",
+        "terralith:savanna_badlands",
+        "minecraft:wooded_badlands"
+      ],
+      "blacklisted_biomes": [
+        "minecraft:jungle",
+        "minecraft:sparse_jungle"
+      ]
+    },
+    {
+      "name": "valarian_conquest:valariancastle",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 28,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 116,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:valarianfort",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 116,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 116,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:valarianoutpost",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 31,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:visgothiancastle",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 30,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    },
+    {
+      "name": "valarian_conquest:visgothianoutpost",
+      "is_disabled": false,
+      "enable_flatness_check": true,
+      "flatness_check_distance": 32,
+      "flatness_check_threshold": 10,
+      "enable_biome_check": false,
+      "biome_check_distance": 64,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#is_river",
+        "#is_ocean",
+        "#is_beach"
+      ],
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": []
+    }
+  ],
+  "structure_sets": [
+    {
+      "name": "born_in_chaos_v1:clown_caravan_plains",
+      "salt": 809257424,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 120,
+      "separation": 41
+    },
+    {
+      "name": "born_in_chaos_v1:clown_caravan_savanna",
+      "salt": 966731024,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 90,
+      "separation": 29
+    },
+    {
+      "name": "born_in_chaos_v1:clown_caravan_taiga",
+      "salt": 1703928760,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 80,
+      "separation": 24
+    },
+    {
+      "name": "born_in_chaos_v1:dark_tower_forest",
+      "salt": 158416380,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 99,
+      "separation": 71
+    },
+    {
+      "name": "born_in_chaos_v1:dark_tower_plain",
+      "salt": 878827685,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 99,
+      "separation": 71
+    },
+    {
+      "name": "born_in_chaos_v1:dark_tower_taiga",
+      "salt": 593635684,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 99,
+      "separation": 71
+    },
+    {
+      "name": "born_in_chaos_v1:observation_tower_forest",
+      "salt": 1528432837,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 77,
+      "separation": 12
+    },
+    {
+      "name": "bosses_of_mass_destruction:gauntlet_arena",
+      "salt": 499672,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 64,
+      "separation": 31
+    },
+    {
+      "name": "iceandfire:gorgon_temple",
+      "salt": 76489509,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 99,
+      "separation": 61
+    },
+    {
+      "name": "kobolds:kobold_den",
+      "salt": 278731254,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 11,
+      "separation": 8
+    },
+    {
+      "name": "mowziesmobs:monasteries",
+      "salt": 37312139,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 24,
+      "separation": 16
+    },
+    {
+      "name": "mowziesmobs:umvuthana_groves",
+      "salt": 23311138,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 38,
+      "separation": 16
+    },
+    {
+      "name": "mowziesmobs:wrought_chambers",
+      "salt": 23217347,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 26,
+      "separation": 20
+    },
+    {
+      "name": "ribbits:ribbit_village",
+      "salt": 2937541,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 20,
+      "separation": 8
+    },
+    {
+      "name": "tconstruct:end_sky_island",
+      "salt": 368963602,
+      "frequency": 0.5,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 305,
+      "separation": 253
+    },
+    {
+      "name": "tconstruct:nether_ocean_island",
+      "salt": 65245622,
+      "frequency": 0.5,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 340,
+      "separation": 296
+    },
+    {
+      "name": "tconstruct:overworld_ocean_island",
+      "salt": 25988585,
+      "frequency": 0.5,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 352,
+      "separation": 302
+    },
+    {
+      "name": "tconstruct:overworld_sky_island",
+      "salt": 14357800,
+      "frequency": 0.5,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 450,
+      "separation": 348
+    },
+    {
+      "name": "valarian_conquest:aegis_castle_structure",
+      "salt": 1770842996,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 64,
+      "separation": 47
+    },
+    {
+      "name": "valarian_conquest:aegis_outpost_structure",
+      "salt": 1264469604,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 60,
+      "separation": 55
+    },
+    {
+      "name": "valarian_conquest:bandit_camp",
+      "salt": 1524572405,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 54,
+      "separation": 53
+    },
+    {
+      "name": "valarian_conquest:bohemiancastle",
+      "salt": 2048053411,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 60,
+      "separation": 49
+    },
+    {
+      "name": "valarian_conquest:bohemianoutpost",
+      "salt": 1860831379,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 50,
+      "separation": 49
+    },
+    {
+      "name": "valarian_conquest:bohemiantower",
+      "salt": 325517801,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 46,
+      "separation": 45
+    },
+    {
+      "name": "valarian_conquest:caladrian_castle",
+      "salt": 859167112,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 80,
+      "separation": 63
+    },
+    {
+      "name": "valarian_conquest:caladrianfort",
+      "salt": 426430548,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 60,
+      "separation": 59
+    },
+    {
+      "name": "valarian_conquest:caladrianoutpost",
+      "salt": 742696385,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 89,
+      "separation": 55
+    },
+    {
+      "name": "valarian_conquest:galician_fort",
+      "salt": 664418620,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 81,
+      "separation": 49
+    },
+    {
+      "name": "valarian_conquest:galiciancastle",
+      "salt": 1395668688,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 77,
+      "separation": 63
+    },
+    {
+      "name": "valarian_conquest:galicianoutpost",
+      "salt": 1622012701,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 99,
+      "separation": 51
+    },
+    {
+      "name": "valarian_conquest:gardoniancastle",
+      "salt": 550146077,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 91,
+      "separation": 73
+    },
+    {
+      "name": "valarian_conquest:gilded_legion_fort",
+      "salt": 1496584128,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 89,
+      "separation": 79
+    },
+    {
+      "name": "valarian_conquest:lancastiancastle",
+      "salt": 996552875,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 77,
+      "separation": 76
+    },
+    {
+      "name": "valarian_conquest:lancastianoutpost",
+      "salt": 853596639,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 68,
+      "separation": 63
+    },
+    {
+      "name": "valarian_conquest:numeriancastle",
+      "salt": 1593554534,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 81,
+      "separation": 75
+    },
+    {
+      "name": "valarian_conquest:numerianoutpost",
+      "salt": 2050480541,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 71,
+      "separation": 45
+    },
+    {
+      "name": "valarian_conquest:orc_fort",
+      "salt": 772001998,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 44,
+      "separation": 20
+    },
+    {
+      "name": "valarian_conquest:valariancastle",
+      "salt": 19736099,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 68,
+      "separation": 65
+    },
+    {
+      "name": "valarian_conquest:valarianfort",
+      "salt": 2048465962,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 85,
+      "separation": 57
+    },
+    {
+      "name": "valarian_conquest:valarianoutpost",
+      "salt": 1693401292,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 52,
+      "separation": 35
+    },
+    {
+      "name": "valarian_conquest:visgothiancastle",
+      "salt": 769460669,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 79,
+      "separation": 39
+    },
+    {
+      "name": "valarian_conquest:visgothianoutpost",
+      "salt": 2059083798,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "spacing": 48,
+      "separation": 29
+    }
+  ]
+}
