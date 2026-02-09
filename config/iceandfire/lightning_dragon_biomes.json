@@ -32,7 +32,7 @@
       },
       {
         "type": "BIOME_TAG",
-        "negate": false,
+        "negate": true,
         "value": "minecraft:is_savanna"
       }
     ],

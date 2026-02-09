@@ -13,7 +13,7 @@
       },
       {
         "type": "BIOME_TAG",
-        "negate": true,
+        "negate": false,
         "value": "minecraft:is_badlands"
       },
       {

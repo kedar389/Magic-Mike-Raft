@@ -16,19 +16,6 @@
 	#Range: 0 ~ 200
 	ReturnHome = 20
 
-["bosses Music"]
-	#BossMusic(on/off)
-	"BossMusic(on/off)" = true
-	#BossMusicVolume(denominator)
-	#Range: 1 ~ 1000000
-	BossMusicVolume = 1
-	#Enable separate music per boss phase
-	"IgnisSeparatePhaseMusic(on/off)" = true
-	#Enable separate music per boss phase
-	"EnderGuardianSeparatePhaseMusic(on/off)" = true
-	#Enable separate music per boss phase
-	"LeviathanSeparatePhaseMusic(on/off)" = true
-
 [Weapon]
 	#Armor Infinity Durability(on/off)
 	"Armor Infinity Durability(on/off)" = true
@@ -181,7 +168,7 @@
 	EnderGuardianDamageTime = 30
 	#EnderGuardian's Healing with out target
 	#Range: 0.0 ~ 1000000.0
-	EnderGuardianNatureHealing = 25.0
+	EnderGuardianNatureHealing = 20.0
 	#Ender guardian's block breaking ignore the MobGriefing
 	EnderguardianBlockBreaking = true
 	#Guardian's Immune to Long distance attack range.
@@ -239,7 +226,7 @@
 	MonstrosityHealingMultiplier = 1.0
 	# Monstrosity's Healing with out target
 	#Range: 0.0 ~ 1000000.0
-	MonstrosityNatureHealing = 25.0
+	MonstrosityNatureHealing = 20.0
 	#Monstrosity's DamageCap
 	#Range: 0.0 ~ 1000000.0
 	MonstrosityDamageCap = 22.0
@@ -279,7 +266,7 @@
 	IgnisDamageMultiplier = 1.0
 	#Ignis's Healing with out target
 	#Range: 0.0 ~ 1000000.0
-	IgnisNatureHealing = 25.0
+	IgnisNatureHealing = 20.0
 	#Ignis's Healing Multiplier
 	#Range: 0.0 ~ 1000000.0
 	IgnisHealingMultiplier = 1.0
@@ -354,7 +341,7 @@
 	LeviathanDamageMultiplier = 1.0
 	#Leviathan's Healing with out target
 	#Range: 0.0 ~ 1000000.0
-	LeviathanNatureHealing = 25.0
+	LeviathanNatureHealing = 20.0
 	#Leviathan's Immune to Long distance attack range.
 	#Range: 1.0 ~ 1000000.0
 	"Leviathan's prevent attacks from far away Range" = 38.0
@@ -422,7 +409,7 @@
 	AncientRemnantDamageMultiplier = 1.0
 	#AncientRemnant's Healing with out target
 	#Range: 0.0 ~ 1000000.0
-	AncientRemnantNatureHealing = 25.0
+	AncientRemnantNatureHealing = 20.0
 	#Ancient Remnant's Immune to Long distance attack range.
 	#Range: 1.0 ~ 1000000.0
 	"Ancient Remnant's prevent attacks from far away Range" = 14.0
@@ -481,60 +468,6 @@
 	#Range: 0.0 ~ 1000000.0
 	AptrgangrAxeBladeDamage = 8.0
 
-[Clawdian]
-	#Clawdian's Health Multiplier
-	#Range: 0.0 ~ 1000000.0
-	ClawdianHealthMultiplier = 1.0
-	#Clawdian's Damage Multiplier
-	#Range: 0.0 ~ 1000000.0
-	ClawdianDamageMultiplier = 1.0
-
-[Scylla]
-	#Scylla's Health Multiplier
-	#Range: 0.0 ~ 1000000.0
-	ScyllaHealthMultiplier = 1.0
-	#Scylla's Damage Multiplier
-	#Range: 0.0 ~ 1000000.0
-	ScyllaDamageMultiplier = 1.0
-	#Scylla's Immune to Long distance attack range.
-	#Range: 1.0 ~ 1000000.0
-	"Scylla's prevent attacks from far away Range" = 10.0
-	#Scylla's Spear Damage
-	#Range: 0.0 ~ 1000000.0
-	"Scylla's Spear Damage" = 14.0
-	#Scylla's Lightning Storm
-	#Range: 0.0 ~ 1000000.0
-	"Scylla's Lightning Storm" = 10.0
-	#Scylla's Lightning Area
-	#Range: 0.0 ~ 1000000.0
-	"Scylla's Lightning Area" = 4.0
-	#Scylla's Storm Serpent
-	#Range: 0.0 ~ 1000000.0
-	"Scylla's Snake Damage" = 16.0
-	#Scylla's Anchor Damage
-	#Range: 0.0 ~ 1000000.0
-	"Scylla's Anchor Damage" = 16.0
-	#Scylla's Healing with out target
-	#Range: 0.0 ~ 1000000.0
-	"Scylla NatureHealing" = 25.0
-	#Scylla weather change
-	"Scylla Weather Change" = true
-	#Scylla's DamageCap
-	#Range: 0.0 ~ 1000000.0
-	"Scylla DamageCap" = 22.0
-	#Scylla's DamageTime
-	#Range: 0 ~ 100
-	"Scylla DamageTime" = 25
-	#Scylla's HP Damage
-	#Range: 0.0 ~ 1000000.0
-	"Scylla's HP Damage" = 0.05
-	#Scylla's Spin HP Damage
-	#Range: 0.0 ~ 1000000.0
-	"Scylla's Spin Hp Damage" = 0.07
-	#Scylla's Lightning Storm HP Damage
-	#Range: 0.0 ~ 1000000.0
-	"Scylla's Lightning Storm HP Damage" = 0.04
-
 [Maledictus]
 	#Maledictus's Health Multiplier
 	#Range: 0.0 ~ 1000000.0
@@ -547,10 +480,10 @@
 	"Maledictus's prevent attacks from far away Range" = 12.0
 	#Maledictus's Healing with out target
 	#Range: 0.0 ~ 1000000.0
-	MaledictusNatureHealing = 25.0
+	MaledictusNatureHealing = 20.0
 	#Maledictus's Phantom Halberd Damage
 	#Range: 0.0 ~ 1000000.0
-	"Maledictus' Phantom Halberd Damage'" = 10.0
+	"Maledictus' Phantom Halberd Damage'" = 13.0
 	#Maledictus's DamageCap
 	#Range: 0.0 ~ 1000000.0
 	MaledictusDamageCap = 20.0
@@ -641,6 +574,73 @@
 	#Allowed height variance for the check - if the variance is lower than this value the structure will not spawn (has no effect if the are check is disabled)
 	#Range: 0 ~ 32
 	cursedPyramidHeightVariance = 2
+
+[Clawdian]
+	#Clawdian's Health Multiplier
+	#Range: 0.0 ~ 1000000.0
+	ClawdianHealthMultiplier = 1.0
+	#Clawdian's Damage Multiplier
+	#Range: 0.0 ~ 1000000.0
+	ClawdianDamageMultiplier = 1.0
+
+[Scylla]
+	#Scylla's Health Multiplier
+	#Range: 0.0 ~ 1000000.0
+	ScyllaHealthMultiplier = 1.0
+	#Scylla's Damage Multiplier
+	#Range: 0.0 ~ 1000000.0
+	ScyllaDamageMultiplier = 1.0
+	#Scylla's Immune to Long distance attack range.
+	#Range: 1.0 ~ 1000000.0
+	"Scylla's prevent attacks from far away Range" = 10.0
+	#Scylla's Spear Damage
+	#Range: 0.0 ~ 1000000.0
+	"Scylla's Spear Damage" = 14.0
+	#Scylla's Lightning Storm
+	#Range: 0.0 ~ 1000000.0
+	"Scylla's Lightning Storm" = 10.0
+	#Scylla's Lightning Area
+	#Range: 0.0 ~ 1000000.0
+	"Scylla's Lightning Area" = 4.0
+	#Scylla's Storm Serpent
+	#Range: 0.0 ~ 1000000.0
+	"Scylla's Snake Damage" = 16.0
+	#Scylla's Anchor Damage
+	#Range: 0.0 ~ 1000000.0
+	"Scylla's Anchor Damage" = 16.0
+	#Scylla's Healing with out target
+	#Range: 0.0 ~ 1000000.0
+	"Scylla NatureHealing" = 25.0
+	#Scylla's DamageCap
+	#Range: 0.0 ~ 1000000.0
+	"Scylla DamageCap" = 22.0
+	#Scylla's DamageTime
+	#Range: 0 ~ 100
+	"Scylla DamageTime" = 25
+	#Scylla's HP Damage
+	#Range: 0.0 ~ 1000000.0
+	"Scylla's HP Damage" = 0.05
+	#Scylla's Spin HP Damage
+	#Range: 0.0 ~ 1000000.0
+	"Scylla's Spin Hp Damage" = 0.07
+	#Scylla's Lightning Storm HP Damage
+	#Range: 0.0 ~ 1000000.0
+	"Scylla's Lightning Storm HP Damage" = 0.04
+	#Scylla weather change
+	"Scylla Weather Change" = true
+
+["bosses Music"]
+	#BossMusic(on/off)
+	"BossMusic(on/off)" = true
+	#BossMusicVolume(denominator)
+	#Range: 1 ~ 1000000
+	BossMusicVolume = 1
+	#Enable separate music per boss phase
+	"IgnisSeparatePhaseMusic(on/off)" = true
+	#Enable separate music per boss phase
+	"EnderGuardianSeparatePhaseMusic(on/off)" = true
+	#Enable separate music per boss phase
+	"LeviathanSeparatePhaseMusic(on/off)" = true
 
 ["Boss Respawner"]
 	#on/off

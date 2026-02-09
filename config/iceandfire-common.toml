@@ -6,16 +6,16 @@
 		"Generate Dragon Skeletons" = true
 		#1 out of this number chance per chunk for generation
 		#Range: 1 ~ 10000
-		"Generate Dragon Skeleton Chance" = 300
+		"Generate Dragon Skeleton Chance" = 350
 		#1 out of this number chance per chunk for generation
 		#Range: 1 ~ 10000
-		"Generate Dragon Cave Chance" = 180
+		"Generate Dragon Cave Chance" = 90
 		#1 out of this number chance per chunk for generation
 		#Range: 1 ~ 10000
-		"Generate Dragon Roost Chance" = 360
+		"Generate Dragon Roost Chance" = 180
 		#1 out of this number chance per block that gold will generate in dragon lairs.
 		#Range: 1 ~ 10000
-		"Dragon Den Gold Amount" = 4
+		"Dragon Den Gold Amount" = 5
 		#Ratio of Stone(this number) to Ores in Dragon Caves
 		#Range: 1 ~ 10000
 		"Dragon Cave Ore Ratio" = 45
@@ -23,19 +23,19 @@
 	[Generation.Structures-Features]
 		#How far away dangerous structures(dragon roosts, cyclops caves, etc.) must be from spawn.
 		#Range: 1 ~ 10000
-		"Dangerous World Gen Dist From Spawn" = 800
+		"Dangerous World Gen Dist From Spawn" = 1000
 		#How far away dangerous structures(dragon roosts, cyclops caves, etc.) must be from the last generated structure.
 		#Range: 1 ~ 10000
-		"Dangerous World Gen Dist Seperation" = 300
+		"Dangerous World Gen Dist Seperation" = 1000
 		#Whether to generate glacier biomes or not
 		"Generate Glaciers" = true
 		#Glacier Spawn Weight. Higher number = more common
 		#Range: 1 ~ 10000
-		"Glacier Spawn Weight" = 4
+		"Glacier Spawn Weight" = 25
 		#True if mausoleums are allowed to generate
 		"Generate Mausoleums" = true
 		#Whether to generate graveyards or not
-		"Generate Graveyards" = true
+		"Generate Graveyards" = false
 		#True if gorgon temples are allowed to spawn
 		"Generate Gorgon Temple" = true
 
@@ -44,17 +44,17 @@
 	[Dragons.Griefing]
 		#Dragon griefing - 2 is no griefing, 1 is breaking weak blocks, 0 is default. This value is also affected by minecrafts mob griefing rule.
 		#Range: 0 ~ 2
-		"Dragon Griefing" = 0
+		"Dragon Griefing" = 1
 		#True if tamed dragons can follow the griefing rules.
-		"Tamed Dragon Griefing" = true
+		"Tamed Dragon Griefing" = false
 		#The percentage chance for a block to drop as an item when a dragon breaks it.
 		#Range: 0.0 ~ 1.0
-		"Dragon Block Breaking Drop Chance" = 0.10000000149011612
+		"Dragon Block Breaking Drop Chance" = 0.5
 
 	[Dragons.Attributes]
 		#How long it takes(in ticks) for a dragon egg to hatch
 		#Range: > 1
-		"Dragon Egg Hatch Time" = 7200
+		"Dragon Egg Hatch Time" = 10000
 		#Dragon Flap Noise Distance - Larger number, further away you can hear it
 		#Range: 0 ~ 10000
 		"Dragon Flap Noise Distance" = 4
@@ -107,13 +107,13 @@
 		"Explosive Dragon Breath" = false
 		#How many blocks away can dragons spot potential prey. Note that increasing this could cause lag.
 		#Range: 1 ~ 10000
-		"Dragon Target Search Length" = 128
+		"Dragon Target Search Length" = 60
 		#How many blocks away can dragons wander from their defined "home" position.
 		#Range: 1 ~ 10000
 		"Dragon Wander From Home Distance" = 40
 		#Every interval of this number in ticks, dragon hunger decreases.
 		#Range: 1 ~ 10000
-		"Dragon Hunger Tick Rate" = 3000
+		"Dragon Hunger Tick Rate" = 5000
 		#Every interval of this number in ticks, dragon allowed to break blocks.
 		#Range: 0 ~ 10000
 		"Dragon Block Break Cooldown" = 5
@@ -177,18 +177,18 @@
 	[Mobs.DeathWorms]
 		#How many blocks away can death worms spot potential prey. Note that increasing this could cause lag
 		#Range: 1 ~ 10000
-		"Death Worm Target Search Length" = 64
+		"Death Worm Target Search Length" = 40
 		#Default deathworm health, this is scaled to the worm's particular size
 		#Range: 1.0 ~ 10000.0
 		"Death Worm Base Health" = 10.0
 		#Default deathworm attack strength, this is scaled to the worm's particular size
 		#Range: 1.0 ~ 10000.0
-		"Death Worm Base Attack Strength" = 3.0
+		"Death Worm Base Attack Strength" = 2.0
 		#True if wild deathworms are allowed to target and attack monsters
 		"Death Worms Target Monsters" = true
 		#Deathworm spawn weight. Higher = lower chance to spawn
 		#Range: 1 ~ 10000
-		"Death Worm Spawn Weight" = 30
+		"Death Worm Spawn Weight" = 35
 
 	[Mobs.Cockatrice]
 		#Maximum cockatrice health
@@ -208,7 +208,7 @@
 	[Mobs.Stymphalians]
 		#How many blocks away can stymphalian birds spot potential prey. Note that increasing this could cause lag.
 		#Range: 1 ~ 10000
-		"Stymphalian Bird Target Search Length" = 64
+		"Stymphalian Bird Target Search Length" = 32
 		#1/this number chance for a stymphalian feather to turn into an item before despawning. Zero means never.
 		#Range: 0 ~ 10000
 		"Stymphalian Bird Feather Drop Chance" = 25
@@ -227,7 +227,7 @@
 		"Stymphalian Birds Target Animals" = false
 		#1 out of this number chance per chunk for generation
 		#Range: 1 ~ 10000
-		"Spawn Stymhphalian Bird Chance" = 100
+		"Spawn Stymhphalian Bird Chance" = 140
 
 	[Mobs.Trolls]
 		#True if trolls are allowed to spawn
@@ -271,7 +271,7 @@
 		"Spawn Amphitheres" = true
 		#Amphithere spawn weight. Lower = lower chance to spawn
 		#Range: 1 ~ 10000
-		"Amphithere Spawn Weight" = 50
+		"Amphithere Spawn Weight" = 400
 		#How many blocks away can ampitheres detect villagers being hurt. Note that increasing this could cause lag.
 		#Range: 1 ~ 10000
 		"Amphithere Villager Search Length" = 64
@@ -280,10 +280,10 @@
 		"Amphithere Tame Time" = 400
 		#How fast amphitheres fly.
 		#Range: 0.0 ~ 3.0
-		"Amphithere Flight Speed" = 1.75
+		"Amphithere Flight Speed" = 1.5
 		#Maximum amphithere health
 		#Range: 1.0 ~ 10000.0
-		"Amphithere Max Health" = 50.0
+		"Amphithere Max Health" = 40.0
 		#Amphithere attack strength
 		#Range: 1.0 ~ 10000.0
 		"Amphithere Attack Strength" = 7.0
@@ -296,7 +296,7 @@
 		"Sea Serpent Griefing" = true
 		#Default sea serpent health, this is scaled to the sea serpent's particular size
 		#Range: 1.0 ~ 10000.0
-		"Sea Serpent Base Health" = 20.0
+		"Sea Serpent Base Health" = 40.0
 		#Default sea serpent attack strength, this is scaled to the sea serpent's particular size
 		#Range: 1.0 ~ 10000.0
 		"Sea Serpent Base Attack Strength" = 4.0
@@ -322,7 +322,7 @@
 	[Mobs.Gorgons]
 		#Maximum gorgon health
 		#Range: 1.0 ~ 10000.0
-		"Gorgon Max Health" = 100.0
+		"Gorgon Max Health" = 130.0
 
 	[Mobs.Others]
 		#True if dread liches are allowed to spawn
@@ -386,7 +386,7 @@
 [Pathfinding]
 	#Maximum threads to use for dragon/myrmex pathfinding. Increase this number if pathing is slow and you have many cores.
 	#Range: > 1
-	"Dragon Pathfinding Threads" = 3
+	"Dragon Pathfinding Threads" = 8
 	#Maximum nodes for dragons/myrmex to path too. Decrease this is dragon pathfinding is super slow or intensive.
 	#Range: > 1
 	"Dragon Max Pathfinding Nodes" = 5000
