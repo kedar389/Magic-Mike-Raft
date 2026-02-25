@@ -5,7 +5,7 @@
 
 Add mods overhauls:
 - Performance overhaul (C2ME, Noisium ???)
-- Illager overhaul (Enchanter, It takes pillage, maybe remove savage and ravage, Illager revolution,Illage and spillage
+- Illager overhaul: Enchanter, It takes pillage, maybe remove savage and ravage, Illager revolution, Illage and spillage,Raids enhanced
 - Ambience overhaul
 - Friends and foes
 - More mob variants
@@ -21,3 +21,7 @@ After mod balancing and revisits:
 - Update origin config, balance stuff
 - Update caravans for illagers
 - Remve some mobs from alex mobs
+
+
+Keep savage and ravage jester and executioner , remove armos, change recipes, remove savage and ravage iceologer
+Go lesser version of crtiter and companions
