@@ -1,24 +1,25 @@
 
 Performance:
     Krypton - Network
-    Noisium - For generation optimizaiotns
     Ferrite core- memory optimizaiotns
     AllTheLeaks - fix memory leaks
+    Noisium - For generation optimizaiotns
     Modern FIx - Modern Fixes
-    Radium Reforged - optimizations
+    Radium Reforged - optimizations (or Canary)
+    C2ME 
     Get It together drops
     Clumps
-    ChunkSending - Maybe it has cupboard ?
-    Conectivity
-    Fast async world save
-    C2ME ???
-
-
+    ChunkSending - Test? it has cupboard  (currently removed , might add later)
+    Conectivity - Test? it has cupboard 
+    Fast async world save - Test? it has cupboard 
+    
 Perfomance util:    
     spark
     chunky
-
     
+    
+
+
 
 Structure:
     DungeonNowLoading
