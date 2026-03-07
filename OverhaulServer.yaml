@@ -9,37 +9,100 @@ Performance:
     C2ME 
     Get It together drops
     Clumps
-    ChunkSending - Test? it has cupboard  (currently removed , might add later)
-    Conectivity - Test? it has cupboard 
-    Fast async world save - Test? it has cupboard 
+    Structure Layout Optimizer
+    #Removed
+    #ChunkSending - Test? it has cupboard  (currently removed , might add later)
+    #Conectivity - Test? it has cupboard 
+    #Fast async world save - Test? it has cupboard 
     
-Perfomance util:    
+Utilities:    
     spark
     chunky
-    
-    
+    structurify
+    Mob COntrol
+    Command aliases
+    WITS
+
+
+Gameplay:
+    Simple voice chat
+    CarryOn
+
+
+WorldGen:
+    DistantHorizons for server side
+    Wiliam wither overhauls
+    Nullscape
+
+
 
 
 
 Structure:
+    Integrated villages
     DungeonNowLoading
     Explorify
     DnT
-    MvS
-    MeS
-    MnS
+    DnT ANcient city overhaul
+    DnT stronghold 
+    DnT Pillager outpost 
+
     Formations Nether
-    Yung overhauls
+    Yung:
+        Better dungeons
+        better jungle temple
+        better mineshafts
+        Better witch huts
+        Better desert temples
     DnT Pillager outpost
-    BetterArcheology
-    BornInChaos Structures*
-    BoMD structures *
+    
     Ribbits
     awesome dungeon
+    Grim Kingdoms: Lost structures & ruins
+    BetterArcheology*
+    Cataclysm*
+    Mowzie mobs*
+    BoMD structures *
+    BornInChaos Structures*
+    It takes a pillage*
+    Conjurer*
+    Friends and foes*
+    Companions*
+    TInkers construct*
+    Sea Dwellers*
+    #DnT Woodland Mansion
+
+Mobs:
+    Alex Mobs
+    Friends and foes
+    BornInChaos Structures
+    More Mob variants
+    Variants and venture
+    Companions
+    Creeper overhaul
+    Enderman overhaul
+    Sea Dwellers
+
+
+Bosess:
+    Mowzie mobs
+    BOMD
+    Cataclysm
 
 
 
+Nether ovehaul:
+    Amplified nether
+    WWOO*
+    jaden nether expansion
+    Nether depths upgrade
+    wither reincarnated
 
+End overhaul:
+    Nullscape*
+    true ending
+    mofu better end
+    endergetic expansion
 
 
 
@@ -55,6 +118,81 @@ Pillager Overhaul:
     Illagers wear armor
     Pillager caravans 
     Structures:
-        DnT Pillager outpost
-        It takes a pillage*
+        DnT Pillager outpost*
 
+
+Piglin overhaul:
+    RPQ Quest*
+
+
+Tech mods:
+    Create
+        - Create Slice and dice
+    Botania
+
+
+Trinkets and itmes:
+    TInkers construct
+    Tinkers integrations and tweaks
+    ewewukeks Musket mod
+    Epic knights
+    Artifacts
+    Relics:Artifacts compat
+    Unique accesories
+    Relics
+    More relics
+
+
+
+Enchant Overhauls: 
+    Enchancement
+    Majrusz Echantmens
+
+
+
+Alchemy overhauls:
+
+
+Water overhauls:
+
+
+OVerhauls AND ADDONS:
+    Easy Anvils
+    Origins (Fabric)
+    Medieval Origins
+    Better archeology
+    End Remastered
+    Supplementaries
+    REALM RPG:
+        Fallen ADventurers
+        Quest and rewards
+    Aleki nifty ships (research)
+        
+
+Food:
+    Spice of life apple eddition
+    Farmer delight
+    Alex delight
+    Aquamire delight
+    Ender delight
+    Fruits delight
+    Chef delight
+    Ender cataclysm delight
+    Nether delight
+    Storage delight
+    Ocean delight
+    Farmers respite
+    jaden nether expansion
+
+
+Furniture items:
+
+
+
+Client side needed:
+    Cool Rain
+    Subtle effects
+    Jade
+    JEI
+    Just Enough archeology (Maybe can be just client side)
+    Just enough resources (Maybe can be just client side)
