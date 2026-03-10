@@ -10,10 +10,6 @@ Performance:
     Get It together drops
     Clumps
     Structure Layout Optimizer
-    #Removed
-    #ChunkSending - Test? it has cupboard  (currently removed , might add later)
-    #Conectivity - Test? it has cupboard 
-    #Fast async world save - Test? it has cupboard 
     
 Utilities:    
     spark
@@ -22,24 +18,19 @@ Utilities:
     Mob COntrol
     Command aliases
     WITS
-
-
-Gameplay:
-    Simple voice chat
-    CarryOn
-
+    CraftTweaker
+    kube js
 
 WorldGen:
     DistantHorizons for server side
     Wiliam wither overhauls
     Nullscape
-
-
-
+    Amplified nether
 
 
 Structure:
     Integrated villages
+    Luki Grand Capitals
     DungeonNowLoading
     Explorify
     DnT
@@ -70,7 +61,9 @@ Structure:
     Companions*
     TInkers construct*
     Sea Dwellers*
-    #DnT Woodland Mansion
+    Hunter return*
+    waystones*
+    jaden nether expansion*
 
 Mobs:
     Alex Mobs
@@ -92,7 +85,7 @@ Bosess:
 
 
 Nether ovehaul:
-    Amplified nether
+    Amplified nether*
     WWOO*
     jaden nether expansion
     Nether depths upgrade
@@ -100,7 +93,7 @@ Nether ovehaul:
 
 End overhaul:
     Nullscape*
-    true ending
+    true ending (dragon oss overhaul)
     mofu better end
     endergetic expansion
 
@@ -115,6 +108,7 @@ Pillager Overhaul:
     Friends and foes - Iceologer and illusioner
     Conjurer - boss pillager with structure
     Aquamire - biome, pillager boss, animals , gear
+    Hunter reborn
     Illagers wear armor
     Pillager caravans 
     Structures:
@@ -131,16 +125,17 @@ Tech mods:
     Botania
 
 
-Trinkets and itmes:
+Trinkets and items:
     TInkers construct
     Tinkers integrations and tweaks
     ewewukeks Musket mod
     Epic knights
+    Relics
+    More relics
     Artifacts
     Relics:Artifacts compat
     Unique accesories
-    Relics
-    More relics
+    
 
 
 
@@ -156,7 +151,12 @@ Alchemy overhauls:
 Water overhauls:
 
 
+Gameplay:
+    Simple voice chat
+    CarryOn
+
 OVerhauls AND ADDONS:
+    Gravestone mod
     Easy Anvils
     Origins (Fabric)
     Medieval Origins
@@ -167,7 +167,10 @@ OVerhauls AND ADDONS:
         Fallen ADventurers
         Quest and rewards
     Aleki nifty ships (research)
-        
+    waystones
+    iron spells and spellsboks
+    iron spells mowzie compat
+    iron spells illage and spillage.  
 
 Food:
     Spice of life apple eddition
@@ -183,7 +186,8 @@ Food:
     Ocean delight
     Farmers respite
     jaden nether expansion
-
+    Nether depths compat
+    Lets do vinery
 
 Furniture items:
 
@@ -198,3 +202,4 @@ Client side needed:
     Wither spawn animation
     Just Enough archeology (Maybe can be just client side)
     Just enough resources (Maybe can be just client side)
+    xaero waystone compat

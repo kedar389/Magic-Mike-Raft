@@ -3,25 +3,17 @@
 - Change terralith generation
 
 
-Add mods overhauls:
-- Performance overhaul (C2ME, Noisium ???)
-- Illager overhaul: Enchanter, It takes pillage, maybe remove savage and ravage, Illager revolution, Illage and spillage,Raids enhanced
-- Ambience overhaul
-- Friends and foes
-- More mob variants
--More mobs animals ??
-- Species some mobs ???
 
 After mod balancing and revisits:
 - Merge structure sets
-- Add relics, unique accesories
-- Remove some Ice and Fire mobs, turn of recipes
 - Add loot itegrations for new buildings and
-- Ban shadow creeper,flies, zombie with doors from BornInChaos, spawn stalker when is full moon
-- Update origin config, balance stuff
+- Ban shadow creeper,flies, zombie with doors from BornInChaos, spawn stalker when is full moon, remove flies, change the maggots,
+- Update origin config, balance stuff, Add compat between Iron spells and origins
 - Update caravans for illagers
-- Remve some mobs from alex mobs
+- Remve some mobs from alex mobs, remove flies
+- Update loot tables for strucutres
+- Update loot tables for traders, ribbits and for goblin traders and wandering
+- Add waystone, remove option to mine them, make them hard to craft,
+- Remove soul drops from companions, make it into other recipe
+Keep savage and ravage jester and executioner
 
-
-Keep savage and ravage jester and executioner , remove armos, change recipes, remove savage and ravage iceologer
-Go lesser version of crtiter and companions
