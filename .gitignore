@@ -1,3 +1,6 @@
 .idea
 .vscode
 radek_datapack.zip
+build.gradle
+settings.gradle
+.gradle
