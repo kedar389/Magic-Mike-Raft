@@ -16,4 +16,12 @@ After mod balancing and revisits:
 - Add waystone, remove option to mine them, make them hard to craft,
 - Remove soul drops from companions, make it into other recipe
 Keep savage and ravage jester and executioner
+- Make night stalker spawn on full moon
+- Configure better desert temples and better fortresses to have loot in them
 
+
+
+
+Adding loot:
+    Add loot to the structures through their config
+    Add loot to lootables
