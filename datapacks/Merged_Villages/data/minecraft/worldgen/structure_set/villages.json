@@ -1,0 +1,28 @@
+{
+  "structures": [
+    { "structure": "minecraft:village_snowy", "weight": 1 },
+    { "structure": "minecraft:village_plains", "weight": 1 },
+    { "structure": "minecraft:village_taiga", "weight": 1 },
+    { "structure": "minecraft:village_savanna", "weight": 1 },
+    { "structure": "minecraft:village_desert", "weight": 1 },
+    { "structure": "ribbits:ribbit_village", "weight": 1 },
+    { "structure": "nova_structures:witch_villa", "weight": 1 },
+    { "structure": "integrated_villages:clockwork_village", "weight": 1 },
+    { "structure": "integrated_villages:tavern_village", "weight": 1 },
+    { "structure": "integrated_villages:marketstead_village", "weight": 1 },
+    { "structure": "integrated_villages:quark/minka_village", "weight": 1 },
+    { "structure": "integrated_villages:mediterranean_village", "weight": 1 },
+    { "structure": "integrated_villages:pirate_village", "weight": 1 },
+    { "structure": "integrated_villages:kutcha_village", "weight": 1 },
+    { "structure": "integrated_villages:oasis_village", "weight": 1 },
+    { "structure": "integrated_villages:cabin_village", "weight": 1 },
+    { "structure": "integrated_villages:sunken_village", "weight": 1 },
+    { "structure": "integrated_villages:mossy_mounds", "weight": 1 }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 12,
+    "separation": 8,
+    "salt": 10387312
+  }
+}

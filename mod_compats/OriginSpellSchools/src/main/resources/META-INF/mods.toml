@@ -1,0 +1,41 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+    modId="originspellschools"
+    version="1.0.0"
+    displayName="Origin Spell Schools"
+    description='''
+Locks each Origins/Medieval Origins origin to specific Iron's Spellbooks magic schools.
+Players can only cast spells from their origin's allowed schools.
+Fully configurable via config/originspellschools.json.
+'''
+
+[[dependencies.originspellschools]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.originspellschools]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1,1.21)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.originspellschools]]
+    modId="irons_spellbooks"
+    mandatory=true
+    versionRange="[3.0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.originspellschools]]
+    modId="origins"
+    mandatory=true
+    versionRange="[1.10,)"
+    ordering="AFTER"
+    side="BOTH"
