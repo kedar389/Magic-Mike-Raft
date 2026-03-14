@@ -1,6 +1,6 @@
 {
   "config_version": "2.0.19",
-  "config_datetime": "2026-03-10_22-49-53",
+  "config_datetime": "2026-03-12_18-37-23",
   "general": {
     "disable_all_structures": false,
     "prevent_structure_overlap": true,
@@ -25,6 +25,136 @@
   ],
   "structures": [
     {
+      "name": "minecraft:desert_pyramid",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#forge:is_desert"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:pillager_outpost",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:cherry_grove"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "minecraft:ruined_portal_swamp",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#wythers:is_swamp"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:shipwreck",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#minecraft:is_ocean"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:swamp_hut",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#wythers:is_swamp"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:village_desert",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "minecraft:village_plains",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "minecraft:village_savanna",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:savanna_river",
+        "minecraft:savanna_plateau",
+        "minecraft:windswept_savanna",
+        "wythers:flooded_savanna",
+        "wythers:jacaranda_savanna",
+        "#minecraft:is_savanna"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "minecraft:village_snowy",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:snowy_bog",
+        "wythers:snowy_fen",
+        "wythers:snowy_tundra",
+        "minecraft:snowy_beach",
+        "#integrated_api:collections/snowy_forests"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "minecraft:village_taiga",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#minecraft:is_taiga"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "betterarcheology:catacombs",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "wythers:bamboo_jungle_canyon"
+      ],
+      "step": "underground_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
       "name": "betterarcheology:fossil_chicken_birch",
       "is_disabled": false,
       "whitelisted_biomes": [],
@@ -48,6 +178,17 @@
     },
     {
       "name": "betterarcheology:fossil_sheep_0",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "betterarcheology:mott",
       "is_disabled": false,
       "whitelisted_biomes": [],
       "blacklisted_biomes": [],
@@ -100,6 +241,25 @@
       "blacklisted_biomes": [],
       "step": "surface_structures",
       "terrain_adaptation": "none"
+    },
+    {
+      "name": "cataclysm:acropolis",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "minecraft:deep_lukewarm_ocean"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_biome_check": true,
+      "enable_biome_check": true,
+      "biome_check_mode": "STRICT",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
     },
     {
       "name": "cataclysm:cursed_pyramid",
@@ -170,6 +330,8 @@
       "name": "companions:companions_factory",
       "is_disabled": false,
       "whitelisted_biomes": [
+        "wythers:ancient_taiga",
+        "wythers:tundra",
         "wythers:highland_plains",
         "wythers:autumnal_plains",
         "minecraft:windswept_gravelly_hills",
@@ -237,8 +399,13 @@
       "name": "dungeonnowloading:temple_of_duality",
       "is_disabled": false,
       "whitelisted_biomes": [
-        "minecraft:sparse_jungle",
+        "#minecraft:is_jungle",
+        "wythers:eucalyptus_jungle_canyon",
+        "wythers:bamboo_jungle_highlands",
         "wythers:tropical_forest",
+        "wythers:highland_tropical_rainforest",
+        "wythers:tropical_forest_canyon",
+        "minecraft:sparse_jungle",
         "wythers:bamboo_jungle_canyon",
         "wythers:flooded_jungle",
         "wythers:jungle_canyon",
@@ -247,16 +414,12 @@
       ],
       "blacklisted_biomes": [],
       "step": "underground_structures",
-      "terrain_adaptation": "bury",
-      "exclude_from_overlap_prevention": true,
+      "terrain_adaptation": "none",
       "override_global_biome_check": false,
-      "enable_biome_check": false,
+      "enable_biome_check": true,
       "biome_check_mode": "BLACKLIST",
       "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
+        "#minecraft:is_ocean"
       ]
     },
     {
@@ -340,6 +503,9 @@
       "blacklisted_biomes": [],
       "step": "surface_structures",
       "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
       "override_global_biome_check": false,
       "enable_biome_check": true,
       "biome_check_mode": "BLACKLIST",
@@ -349,6 +515,17 @@
         "#minecraft:is_ocean",
         "#c:ocean"
       ]
+    },
+    {
+      "name": "explorify:guide_post_warm",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
     },
     {
       "name": "explorify:mangrove_hut",
@@ -371,7 +548,10 @@
         "wythers:spring_flower_forest"
       ],
       "step": "surface_structures",
-      "terrain_adaptation": "beard_thin"
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
     },
     {
       "name": "explorify:ruins",
@@ -639,10 +819,7 @@
       "name": "grim_kingdoms:silentgale_citadel",
       "is_disabled": false,
       "whitelisted_biomes": [
-        "wythers:phantasmal_forest",
-        "wythers:deep_snowy_taiga",
-        "wythers:ancient_copper_beech_forest",
-        "wythers:forbidden_forest"
+        "wythers:deep_snowy_taiga"
       ],
       "blacklisted_biomes": [],
       "step": "surface_structures",
@@ -676,6 +853,30 @@
       "terrain_adaptation": "none"
     },
     {
+      "name": "integrated_villages:clockwork_village",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "integrated_villages:marketstead_village",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:crimson_tundra"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
       "name": "integrated_villages:mossy_mounds",
       "is_disabled": false,
       "whitelisted_biomes": [
@@ -683,7 +884,144 @@
       ],
       "blacklisted_biomes": [],
       "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "integrated_villages:oasis_village",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "integrated_villages:quark/minka_village",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:spring_flower_fields"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
       "terrain_adaptation": "none"
+    },
+    {
+      "name": "integrated_villages:tavern_village",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "irons_spellbooks:evoker_fort",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "wythers:sakura_forest"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "irons_spellbooks:ice_spider_den",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "wythers:ice_cap",
+        "minecraft:frozen_ocean",
+        "minecraft:frozen_river"
+      ],
+      "step": "underground_decoration",
+      "terrain_adaptation": "beard_box",
+      "override_global_flatness_check": true,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "irons_spellbooks:impaled_icebreaker",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "minecraft:frozen_river",
+        "wythers:icy_shore",
+        "wythers:ice_cap",
+        "wythers:deep_icy_ocean",
+        "wythers:icy_river",
+        "wythers:icy_ocean",
+        "wythers:frozen_island"
+      ],
+      "blacklisted_biomes": [
+        "minecraft:ice_spikes",
+        "minecraft:frozen_peaks"
+      ],
+      "step": "underground_decoration",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "irons_spellbooks:mangrove_hut",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "wythers:marsh",
+        "wythers:bamboo_swamp",
+        "wythers:flooded_savanna"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "irons_spellbooks:mountain_tower",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:tibesti_mountains",
+        "wythers:icy_volcano"
+      ],
+      "blacklisted_biomes": [
+        "minecraft:cherry_grove",
+        "minecraft:snowy_plains"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "irons_spellbooks:pyromancer_tower",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:volcanic_crater",
+        "wythers:tropical_volcano"
+      ],
+      "blacklisted_biomes": [
+        "wythers:deep_dark_forest",
+        "wythers:flowering_pantanal",
+        "wythers:forbidden_forest",
+        "wythers:sakura_forest",
+        "wythers:marsh",
+        "wythers:bayou",
+        "wythers:waterlily_swamp",
+        "wythers:ancient_mossy_swamp",
+        "wythers:dripleaf_swamp",
+        "wythers:bamboo_swamp",
+        "wythers:bamboo_jungle_swamp",
+        "wythers:mud_pools",
+        "minecraft:swamp",
+        "minecraft:mangrove_swamp"
+      ],
+      "step": "underground_decoration",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": true,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
     },
     {
       "name": "nova_structures:badlands_miner_outpost",
@@ -950,6 +1288,8 @@
       "name": "takesapillage:bastille",
       "is_disabled": false,
       "whitelisted_biomes": [
+        "wythers:tundra",
+        "wythers:autumnal_forest",
         "#forge:is_plains"
       ],
       "blacklisted_biomes": [
@@ -970,6 +1310,50 @@
       "step": "underground_decoration",
       "terrain_adaptation": "beard_box",
       "override_global_flatness_check": true,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "wythers:banyan_sparse_jungle",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "raw_generation",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": true,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "wythers:village_badlands",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "wythers:village_badlands_desert",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "wythers:village_wooded_badlands",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
       "enable_flatness_check": true,
       "flatness_check_allow_non_solid_blocks": false
     }
