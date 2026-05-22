@@ -29,10 +29,11 @@ WorldGen:
 
 
 Structure:
-    Integrated villages
+    Better Village
+    Integrated villages + Loot Integrations
     DungeonNowLoading
     Explorify
-    DnT
+    DnT + Loot Integrations
     DnT ANcient city overhaul
     DnT stronghold 
     DnT Pillager outpost 
@@ -50,12 +51,12 @@ Structure:
     
     Ribbits
     Grim Kingdoms: Lost structures & ruins
-    BetterArcheology*
-    Cataclysm*
+    BetterArcheology* + loot integrations
+    Cataclysm* + loot integrations
     Mowzie mobs*
     BoMD structures *
     BornInChaos Structures*
-    It takes a pillage*
+    It takes a pillage* + loot integration
     Conjurer*
     Friends and foes*
     Companions*
@@ -63,13 +64,12 @@ Structure:
     Sea Dwellers*
     Hunter return*
     waystones*
-    jaden nether expansion*
+    jaden nether expansion* + delight
 
 Mobs:
     Alex Mobs
     Friends and foes
     BornInChaos Structures
-    More Mob variants
     Variants and venture
     Companions
     Creeper overhaul
@@ -94,8 +94,7 @@ Nether ovehaul:
 End overhaul:
     Nullscape*
     true ending (dragon oss overhaul)
-    mofu better end
-    endergetic expansion
+    endergetic expansion ?
 
 
 
@@ -153,10 +152,10 @@ Water overhauls:
 
 Gameplay:
     Simple voice chat
-    CarryOn
+    Carry On
 
 OVerhauls AND ADDONS:
-    Gravestone mod
+    Gravestone mod + Curios COmpat
     Easy Anvils
     Origins (Fabric)
     Medieval Origins
@@ -187,6 +186,7 @@ Food:
     Farmers respite
     jaden nether expansion
     Nether depths compat
+    Bosses Delight (BOMD)
     Lets do vinery
 
 Furniture items:

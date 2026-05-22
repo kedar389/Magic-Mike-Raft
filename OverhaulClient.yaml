@@ -33,6 +33,7 @@ Effects:
   Cool rain
   Immersive Thunder
   Explosive enhancements
+  Subtle effects
   
   
 
@@ -61,3 +62,17 @@ Animations:
 
 Shaders:
   ANY**
+
+
+
+
+
+
+
+Migrate-1.21.1:
+  DNL
+  Aquamirae
+  Illage and spillage
+  Illager revolution
+  Conjurer
+  Tinker
