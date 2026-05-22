@@ -19,7 +19,7 @@
 		# Chance of an ore deposit being cobblestone only.
 		# Default: 50
 		#Range: 0 ~ 100
-		"Cobble Spawn Chance (Empty Deposit)" = 50
+		"Cobble Spawn Chance (Empty Deposit)" = 30
 		# Chance of an ore deposit containing coal.
 		# Default: 20
 		#Range: 0 ~ 100
