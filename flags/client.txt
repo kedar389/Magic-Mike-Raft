@@ -1,0 +1,13 @@
+# Client JVM flags (Java 21 + ZGC)
+# Paste into TLauncher (or your launcher) JVM arguments field.
+# Set Java executable to: C:\Program Files\Java\jdk-21\bin\javaw.exe
+# Adjust -Xmx and -Xms based on available RAM (leave 3-4GB for Windows + other apps).
+
+-Xmx8G
+-Xms8G
+-XX:+UnlockExperimentalVMOptions
+-XX:+UseZGC
+-XX:+ZGenerational
+-XX:+DisableExplicitGC
+-XX:+AlwaysPreTouch
+-XX:+ParallelRefProcEnabled

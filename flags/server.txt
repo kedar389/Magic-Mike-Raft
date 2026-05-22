@@ -1,0 +1,14 @@
+# Server JVM flags (Java 21 + ZGC)
+# Copy contents into user_jvm_args.txt in the server folder.
+# Adjust -Xmx and -Xms based on available RAM (leave 2-3GB for OS).
+
+-Xms8G
+-Xmx8G
+-XX:+UnlockExperimentalVMOptions
+-XX:+UseZGC
+-XX:+ZGenerational
+-XX:+DisableExplicitGC
+-XX:+AlwaysPreTouch
+-XX:+PerfDisableSharedMem
+-XX:-ZUncommit
+-XX:+ParallelRefProcEnabled
