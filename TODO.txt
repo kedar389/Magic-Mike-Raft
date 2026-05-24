@@ -1,27 +1,24 @@
 - Make MODLIST
-- Create script that will add config and datapack to server
-- Change terralith generation
+- Create script that will add config and datapack to server, like copy over
+- Make Desert biomes bigger
 
 
 
 After mod balancing and revisits:
-- Merge structure sets
-- Add loot itegrations for new buildings and
-- Ban shadow creeper,flies, zombie with doors from BornInChaos, spawn stalker when is full moon, remove flies, change the maggots,
+- Make structures spawn on flat terain
+- Ban: flies, zombie with doors,  remove flies,
+- Chnage shadow creeper,  zombie with doors from BornInChaos, spawn stalker when is full moon,  maggots spawn,
 - Update origin config, balance stuff, Add compat between Iron spells and origins
-- Update caravans for illagers
+- Update caravans for illagers with new loot and different variants
 - Remve some mobs from alex mobs, remove flies
-- Update loot tables for strucutres
+- Update loot tables for strucutres, Add loot itegrations for new buildings 
 - Update loot tables for traders, ribbits and for goblin traders and wandering
 - Add waystone, remove option to mine them, make them hard to craft,
 - Remove soul drops from companions, make it into other recipe
-Keep savage and ravage jester and executioner
-- Make night stalker spawn on full moon
-- Configure better desert temples and better fortresses to have loot in them
+- Deduplicate curio slots
+- Compat between Companions and Iron SPells
 
 
 
+-change settings
 
-Adding loot:
-    Add loot to the structures through their config
-    Add loot to lootables

@@ -12,8 +12,6 @@ Graphics:
   DistantHorizons
 
 
-Textures:
-  # Continuity
 
 Music and Sound overhauls:
   Sound physic remastered
@@ -57,13 +55,11 @@ Animations:
   Wither Spawn Animation (Client and server) 
   visual workbench
   fresh animations
-  More Mobs Variants x Fresh animations
+  #eating animation
 
 
 Shaders:
   ANY**
-
-
 
 
 
