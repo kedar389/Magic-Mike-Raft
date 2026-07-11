@@ -1,7 +1,9 @@
 plugins {
     id 'java'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
-    id 'org.parchmentmc.authparchment' version '1.4.1'
+    id 'checkstyle'
+    id 'com.diffplug.spotless' version '8.8.0'
+    id 'net.ltgt.errorprone' version '5.1.0'
 }
 
 version = '1.0.0'
@@ -13,7 +15,9 @@ java {
 }
 
 minecraft {
-    mappings channel: 'parchment', version: '2023.09.03-1.20.1'
+    // Official (Mojang) mappings. Parchment = official + param names, so switching from
+    // the old Parchment mappings to official is a safe compile-time subset.
+    mappings channel: 'official', version: '1.20.1'
 
     runs {
         client {
@@ -32,31 +36,83 @@ minecraft {
                 originspellschools { source sourceSets.main }
             }
         }
+        gameTestServer {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'info'
+            // Headless GameTest run: exit code = number of failed tests (CI-friendly).
+            property 'forge.enabledGameTestNamespaces', 'originspellschools'
+            mods {
+                originspellschools { source sourceSets.main }
+            }
+        }
     }
 }
 
 repositories {
-    maven { url = 'https://maven.theillusivec4.top/' }        // Curios
-    maven { url = 'https://maven.parchmentmc.org' }           // Parchment
-    maven { url = 'https://maven.blamejared.com' }            // JEI
-    maven { url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }  // GeckoLib
-    maven { url = 'https://maven.ladysnake.org/releases' }    // Cardinal Components / Origins
+    // CurseMaven — reproducible dependency sourcing by project + file ID.
     maven {
-        // Iron's Spellbooks - local file dep or CurseForge maven
-        name = 'Local Mods'
-        url = uri("${rootDir}/libs")
+        url = 'https://cursemaven.com'
+        content { includeGroup 'curse.maven' }
     }
+    mavenCentral()
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.20.1-47.2.0'
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.0'
 
-    // Iron's Spellbooks - place the JAR in /libs folder
-    compileOnly fg.deobf(files('libs/irons_spellbooks-1_20_1-3_15_4.jar'))
+    // Compile + runtime deps this compat mod integrates with.
+    implementation fg.deobf('curse.maven:irons-spells-855414:8364933')   // 3.16.2
+    implementation fg.deobf('curse.maven:origins-forge-474438:5314209')  // 1.10.0.9 (EdwinMindcraft Forge port)
 
-    // Origins Forge - place the JAR in /libs folder
-    compileOnly fg.deobf(files('libs/Origins-1_10_2_mc_1_20_x.jar'))
+    // Runtime-only transitive deps required for Iron's Spellbooks / Origins to load in dev runs.
+    runtimeOnly fg.deobf('curse.maven:geckolib-388172:8285794')
+    runtimeOnly fg.deobf('curse.maven:curios-309927:6418456')
+    runtimeOnly fg.deobf('curse.maven:playeranimator-658587:4587214')
+    runtimeOnly fg.deobf('curse.maven:caelus-308989:5281700')
+
+    // Error Prone — bug-pattern static analysis, runs inside compileJava.
+    // Pinned to 2.42.0 (last release that runs on JDK 17; 2.43+ needs JDK 21).
+    errorprone 'com.google.errorprone:error_prone_core:2.42.0'
+
+    // JUnit 5 for unit tests (SchoolRestrictionConfig parsing + deny logic).
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
+
+// ---- Quality tooling ----------------------------------------------------------
+
+spotless {
+    java {
+        target 'src/*/java/**/*.java'
+        palantirJavaFormat()   // closest to Minecraft modding conventions
+        removeUnusedImports()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+}
+
+checkstyle {
+    toolVersion = '12.3.1'   // 13.x requires a JDK 21 daemon; 12.3.1 is the latest for Java 17
+    configFile = file('config/checkstyle/checkstyle.xml')
+    maxWarnings = 0
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.errorprone {
+        disableWarningsInGeneratedCode = true
+        // Lenient during setup: Forge/GeckoLib generated & reflective code trips several checks.
+        // Tighten once the build is green. Drop this plugin if it fights FG's recompile tasks.
+        disable 'MissingSummary', 'UnusedVariable'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// -------------------------------------------------------------------------------
 
 jar {
     manifest {
