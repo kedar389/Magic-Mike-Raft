@@ -1,9 +1,16 @@
+# IDE
 .idea
 .vscode
-radek_datapack.zip
-build.gradle
-settings.gradle
+
+# Build output
+build/
+run/
+exports/
 .gradle
+mod_compats/**/.gradle
+
+# Local / large artifacts
+radek_datapack.zip
 server
 
 #Claude related stuff

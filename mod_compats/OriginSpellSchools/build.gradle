@@ -1,0 +1,72 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.parchmentmc.authparchment' version '1.4.1'
+}
+
+version = '1.0.0'
+group = 'com.originspellschools'
+archivesBaseName = 'originspellschools'
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+minecraft {
+    mappings channel: 'parchment', version: '2023.09.03-1.20.1'
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                originspellschools { source sourceSets.main }
+            }
+        }
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                originspellschools { source sourceSets.main }
+            }
+        }
+    }
+}
+
+repositories {
+    maven { url = 'https://maven.theillusivec4.top/' }        // Curios
+    maven { url = 'https://maven.parchmentmc.org' }           // Parchment
+    maven { url = 'https://maven.blamejared.com' }            // JEI
+    maven { url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }  // GeckoLib
+    maven { url = 'https://maven.ladysnake.org/releases' }    // Cardinal Components / Origins
+    maven {
+        // Iron's Spellbooks - local file dep or CurseForge maven
+        name = 'Local Mods'
+        url = uri("${rootDir}/libs")
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.2.0'
+
+    // Iron's Spellbooks - place the JAR in /libs folder
+    compileOnly fg.deobf(files('libs/irons_spellbooks-1_20_1-3_15_4.jar'))
+
+    // Origins Forge - place the JAR in /libs folder
+    compileOnly fg.deobf(files('libs/Origins-1_10_2_mc_1_20_x.jar'))
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title'     : 'originspellschools',
+            'Specification-Vendor'    : 'originspellschools',
+            'Specification-Version'   : '1',
+            'Implementation-Title'    : project.name,
+            'Implementation-Version'  : project.jar.archiveVersion,
+            'Implementation-Vendor'   : 'originspellschools',
+        ])
+    }
+}
