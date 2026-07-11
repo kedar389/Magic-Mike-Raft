@@ -1,0 +1,5358 @@
+{
+  "config_version": "2.0.19",
+  "config_datetime": "2026-03-14_23-07-00",
+  "general": {
+    "disable_all_structures": false,
+    "prevent_structure_overlap": true,
+    "enable_global_spacing_and_separation_modifier": true,
+    "global_spacing_and_separation_modifier": 1.0
+  },
+  "structure_namespaces": [
+    {
+      "name": "betterarcheology",
+      "is_disabled": false
+    },
+    {
+      "name": "betterdeserttemples",
+      "is_disabled": false
+    },
+    {
+      "name": "betterdungeons",
+      "is_disabled": false
+    },
+    {
+      "name": "betterfortresses",
+      "is_disabled": false
+    },
+    {
+      "name": "betterjungletemples",
+      "is_disabled": false
+    },
+    {
+      "name": "bettermineshafts",
+      "is_disabled": false
+    },
+    {
+      "name": "betteroceanmonuments",
+      "is_disabled": false
+    },
+    {
+      "name": "betterwitchhuts",
+      "is_disabled": false
+    },
+    {
+      "name": "born_in_chaos_v1",
+      "is_disabled": false,
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "bosses_of_mass_destruction",
+      "is_disabled": false
+    },
+    {
+      "name": "cataclysm",
+      "is_disabled": false
+    },
+    {
+      "name": "companions",
+      "is_disabled": false
+    },
+    {
+      "name": "conjurer_illager",
+      "is_disabled": false
+    },
+    {
+      "name": "dungeonnowloading",
+      "is_disabled": false
+    },
+    {
+      "name": "explorify",
+      "is_disabled": false
+    },
+    {
+      "name": "friendsandfoes",
+      "is_disabled": false
+    },
+    {
+      "name": "global",
+      "is_disabled": false
+    },
+    {
+      "name": "grim_kingdoms",
+      "is_disabled": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "hunters_return",
+      "is_disabled": false,
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "integrated_villages",
+      "is_disabled": false
+    },
+    {
+      "name": "irons_spellbooks",
+      "is_disabled": false
+    },
+    {
+      "name": "minecraft",
+      "is_disabled": false
+    },
+    {
+      "name": "mowziesmobs",
+      "is_disabled": false
+    },
+    {
+      "name": "nova_structures",
+      "is_disabled": false
+    },
+    {
+      "name": "ribbits",
+      "is_disabled": false
+    },
+    {
+      "name": "supplementaries",
+      "is_disabled": false
+    },
+    {
+      "name": "takesapillage",
+      "is_disabled": false,
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "wythers",
+      "is_disabled": false
+    }
+  ],
+  "structures": [
+    {
+      "name": "minecraft:ancient_city",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_decoration",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "minecraft:bastion_remnant",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:buried_treasure",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:desert_pyramid",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#forge:is_desert"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:end_city",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:fortress",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_decoration",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:igloo",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:jungle_pyramid",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:mansion",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:mineshaft",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:mineshaft_mesa",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:monument",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:nether_fossil",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_decoration",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "minecraft:ocean_ruin_cold",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:ocean_ruin_warm",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:pillager_outpost",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:cherry_grove"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "minecraft:ruined_portal",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:ruined_portal_desert",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:ruined_portal_jungle",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:ruined_portal_mountain",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:ruined_portal_nether",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:ruined_portal_ocean",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:ruined_portal_swamp",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#wythers:is_swamp"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:shipwreck",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#minecraft:is_ocean"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:shipwreck_beached",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:stronghold",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:swamp_hut",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#wythers:is_swamp"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "minecraft:trail_ruins",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "bury"
+    },
+    {
+      "name": "minecraft:village_desert",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:wooded_desert",
+        "wythers:red_desert",
+        "wythers:deep_desert",
+        "wythers:danakil_desert",
+        "wythers:outback_desert",
+        "wythers:cactus_desert",
+        "wythers:sand_dunes",
+        "wythers:badlands_desert",
+        "wythers:badlands_canyon",
+        "wythers:badlands_river",
+        "wythers:desert_pinnacles",
+        "wythers:red_rock_canyon",
+        "wythers:desert_beach",
+        "wythers:desert_island",
+        "minecraft:desert"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "minecraft:village_plains",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:cool_plains",
+        "wythers:cold_plains",
+        "wythers:autumnal_plains",
+        "wythers:highland_plains",
+        "wythers:lapacho_plains",
+        "wythers:subtropical_grassland",
+        "wythers:tropical_grassland",
+        "wythers:humid_tropical_grassland",
+        "wythers:dry_tropical_grassland",
+        "wythers:harvest_fields",
+        "wythers:spring_flower_fields",
+        "wythers:highlands",
+        "wythers:forested_highlands",
+        "minecraft:plains",
+        "minecraft:sunflower_plains",
+        "minecraft:meadow",
+        "minecraft:flower_forest",
+        "wythers:warm_birch_forest"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "minecraft:village_savanna",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:wooded_savanna",
+        "wythers:dry_savanna",
+        "wythers:savanna_badlands",
+        "wythers:savanna_basaltic_incursions",
+        "wythers:savanna_river",
+        "wythers:jacaranda_savanna",
+        "wythers:subtropical_forest",
+        "wythers:subtropical_forest_edge",
+        "wythers:outback",
+        "wythers:kwongan_heath",
+        "wythers:scrubland",
+        "wythers:scrub_forest",
+        "wythers:tibesti_mountains",
+        "wythers:chaparral",
+        "wythers:ayers_rock",
+        "wythers:dry_tropical_forest",
+        "wythers:sparse_eucalyptus_woodland",
+        "wythers:eucalyptus_woodland",
+        "wythers:eucalyptus_salubris_woodland",
+        "wythers:eucalyptus_deanei_forest",
+        "minecraft:savanna",
+        "minecraft:savanna_plateau",
+        "minecraft:windswept_savanna",
+        "wythers:flooded_savanna",
+        "#minecraft:is_savanna"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "minecraft:village_snowy",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "minecraft:snowy_beach",
+        "wythers:snowy_tundra",
+        "wythers:tundra",
+        "wythers:snowy_peaks",
+        "wythers:snowy_canyon",
+        "wythers:snowy_fen",
+        "wythers:snowy_bog",
+        "wythers:snowy_thermal_taiga",
+        "wythers:ice_cap",
+        "wythers:icy_crags",
+        "wythers:icy_volcano",
+        "wythers:icy_shore",
+        "wythers:icy_river",
+        "wythers:glacial_cliffs",
+        "wythers:cold_plains",
+        "wythers:cold_island",
+        "wythers:frozen_island",
+        "wythers:frigid_island",
+        "wythers:deep_snowy_taiga",
+        "wythers:cool_stony_peaks",
+        "minecraft:snowy_plains",
+        "minecraft:snowy_taiga",
+        "minecraft:ice_spikes",
+        "minecraft:snowy_slopes",
+        "minecraft:frozen_peaks",
+        "minecraft:jagged_peaks",
+        "minecraft:grove"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "minecraft:village_taiga",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:ancient_taiga",
+        "wythers:birch_taiga",
+        "wythers:larch_taiga",
+        "wythers:thermal_taiga",
+        "wythers:thermal_taiga_crags",
+        "wythers:old_growth_taiga_crags",
+        "wythers:taiga_crags",
+        "wythers:deep_snowy_taiga",
+        "wythers:boreal_forest_red",
+        "wythers:boreal_forest_yellow",
+        "wythers:cool_forest",
+        "wythers:cool_forest_edge",
+        "wythers:pine_barrens",
+        "minecraft:taiga",
+        "minecraft:snowy_taiga",
+        "minecraft:old_growth_pine_taiga",
+        "minecraft:old_growth_spruce_taiga",
+        "wythers:giant_sequoia_forest",
+        "wythers:highlands",
+        "wythers:tundra",
+        "wythers:frigid_island",
+        "#minecraft:is_taiga"
+      ],
+      "blacklisted_biomes": [
+        "wythers:flooded_temperate_rainforest",
+        "wythers:temperate_rainforest",
+        "wythers:temperate_rainforest_crags",
+        "wythers:sparse_eucalyptus_woodland",
+        "wythers:sparse_eucalyptus_jungle"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "max_distance_from_center": 6,
+      "max_horizontal_distance_from_center": 60,
+      "max_vertical_distance_from_center": 60,
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "betterarcheology:archeologist_camp_grassy",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "betterarcheology:archeologist_camp_redsand",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "betterarcheology:archeologist_camp_sand",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "betterarcheology:buried_ruins_sand",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "betterarcheology:catacombs",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "wythers:bamboo_jungle_canyon"
+      ],
+      "step": "underground_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "betterarcheology:desert_obelisk",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "betterarcheology:fossil_chicken",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "betterarcheology:fossil_chicken_birch",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "betterarcheology:fossil_creeper",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "betterarcheology:fossil_jungle_0",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "betterarcheology:fossil_jungle_1",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "betterarcheology:fossil_sheep_0",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "betterarcheology:fossil_wolf",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "betterarcheology:light_temple",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "betterarcheology:mesa_ruins",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "betterarcheology:mott",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "betterarcheology:ruins_sand",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "betterarcheology:stonehenge_grassy",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "betterarcheology:temple_jungle",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "betterarcheology:tumulus_grassy",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "betterarcheology:underwater_0",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "betterarcheology:underwater_1",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "betterarcheology:underwater_2",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "betterarcheology:underwater_3",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "betterarcheology:villager_grave",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "betterdeserttemples:desert_temple",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "betterdungeons:skeleton_dungeon",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "betterdungeons:small_dungeon",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "betterdungeons:small_nether_dungeon",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "betterdungeons:spider_dungeon",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "betterdungeons:zombie_dungeon",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "betterfortresses:fortress",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "betterjungletemples:jungle_temple",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#minecraft:is_jungle",
+        "wythers:bamboo_jungle_highlands",
+        "wythers:flooded_jungle"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "bettermineshafts:mineshaft_acacia",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "bettermineshafts:mineshaft_desert",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "bettermineshafts:mineshaft_dripstone",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "bettermineshafts:mineshaft_ice",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "bettermineshafts:mineshaft_jungle",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "bettermineshafts:mineshaft_lush",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "bettermineshafts:mineshaft_mesa",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "bettermineshafts:mineshaft_mushroom",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "bettermineshafts:mineshaft_oak",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "bettermineshafts:mineshaft_overgrown",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "bettermineshafts:mineshaft_red_desert",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "bettermineshafts:mineshaft_spruce",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "bettermineshafts:mineshaft_spruce_snowy",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "betteroceanmonuments:ocean_monument",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "betterwitchhuts:witch_circle",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "betterwitchhuts:witch_hut",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "born_in_chaos_v1:clown_caravan_plains",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:clown_caravan_savanna",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "born_in_chaos_v1:clown_caravan_taiga",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:dark_tower_forest",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:flower_forest",
+        "wythers:autumnal_flower_forest",
+        "wythers:autumnal_forest_edge",
+        "wythers:flowering_pantanal",
+        "wythers:sakura_forest",
+        "wythers:spring_flower_forest"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "born_in_chaos_v1:dark_tower_plain",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:dark_tower_taiga",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "wythers:temperate_rainforest"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:farm",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:firewell",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_2003wise",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_2_dling",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_d_4rk_devil_x",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_darktitan",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_derivas",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_euthymia",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_feral",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_fubuki_banzai",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_memesus",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_mike_and_rory",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_nino_4416",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_orion",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_petasi",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_plug",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_rotborne",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_somfunambulist",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_tem_187",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:grave_the_gentleman_frog",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:gravecarrionexe",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:infernal_pumpkin",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:mound_of_hounds",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "born_in_chaos_v1:observation_tower_forest",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:flower_forest",
+        "wythers:autumnal_flower_forest",
+        "wythers:autumnal_forest_edge",
+        "wythers:flowering_pantanal",
+        "wythers:sakura_forest",
+        "wythers:spring_flower_forest"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "born_in_chaos_v1:observation_tower_plains",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "bosses_of_mass_destruction:gauntlet_arena",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_decoration",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "bosses_of_mass_destruction:lich_tower",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:snowy_canyon",
+        "wythers:snowy_peaks",
+        "wythers:icy_volcano",
+        "wythers:icy_crags",
+        "wythers:frozen_island",
+        "wythers:ice_cap"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "bosses_of_mass_destruction:obsidilith_arena",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "bosses_of_mass_destruction:void_blossom",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "cataclysm:acropolis",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "minecraft:deep_lukewarm_ocean"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_biome_check": true,
+      "enable_biome_check": true,
+      "biome_check_mode": "STRICT",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "cataclysm:ancient_factory",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_decoration",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "cataclysm:burning_arena",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "cataclysm:cursed_pyramid",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:wooded_desert",
+        "wythers:cactus_desert",
+        "wythers:desert_lakes",
+        "wythers:outback_desert",
+        "wythers:desert_pinnacles",
+        "wythers:danakil_desert",
+        "wythers:deep_desert"
+      ],
+      "blacklisted_biomes": [
+        "minecraft:desert"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "cataclysm:frosted_prison",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:snowy_peaks",
+        "wythers:snowy_canyon",
+        "minecraft:frozen_river",
+        "wythers:snowy_fen",
+        "wythers:snowy_tundra"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "cataclysm:ruined_citadel",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "cataclysm:soul_black_smith",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "cataclysm:sunken_city",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "companions:companions_babayaga",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#forge:is_swamp"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "wythers:marsh",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "companions:companions_factory",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:ancient_taiga",
+        "wythers:tundra",
+        "wythers:highland_plains",
+        "wythers:autumnal_plains",
+        "minecraft:windswept_gravelly_hills",
+        "minecraft:windswept_forest",
+        "wythers:snowy_peaks",
+        "wythers:snowy_thermal_taiga",
+        "minecraft:wooded_badlands",
+        "minecraft:windswept_hills"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "companions:companions_monkey_temple",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:highland_tropical_rainforest",
+        "wythers:tropical_rainforest",
+        "wythers:windswept_jungle",
+        "#minecraft:is_jungle"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "companions:companions_teddytower",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#wythers:is_dark_forest",
+        "wythers:wistman_woods",
+        "wythers:ancient_moss_forest",
+        "wythers:tangled_forest",
+        "wythers:forbidden_forest",
+        "wythers:phantasmal_forest"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "companions:companions_tent",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "conjurer_illager:theatre",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:ancient_moss_forest",
+        "wythers:forbidden_forest",
+        "wythers:phantasmal_forest"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "dungeonnowloading:labyrinth",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "bury"
+    },
+    {
+      "name": "dungeonnowloading:temple_of_duality",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#minecraft:is_jungle",
+        "wythers:eucalyptus_jungle_canyon",
+        "wythers:bamboo_jungle_highlands",
+        "wythers:tropical_forest",
+        "wythers:highland_tropical_rainforest",
+        "wythers:tropical_forest_canyon",
+        "minecraft:sparse_jungle",
+        "wythers:bamboo_jungle_canyon",
+        "wythers:flooded_jungle",
+        "wythers:jungle_canyon",
+        "wythers:eucalyptus_jungle",
+        "wythers:sparse_eucalyptus_jungle"
+      ],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none",
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_ocean"
+      ]
+    },
+    {
+      "name": "explorify:badlands_pyramid",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#minecraft:is_badlands"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "bury",
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "explorify:black_spiral",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "explorify:campsite",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#minecraft:is_taiga"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "explorify:dark_forest_settlement",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#wythers:is_dark_forest"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "explorify:desert_shrine",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:desert_pinnacles"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "explorify:end_shipwreck",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "explorify:farmstead",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:spring_flower_fields",
+        "minecraft:sunflower_plains"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "explorify:guide_post_cold",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#forge:is_cold/overworld"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "explorify:guide_post_warm",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "explorify:mangrove_hut",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:coastal_mangroves"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "explorify:mausoleum",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:flower_forest",
+        "wythers:flowering_pantanal",
+        "wythers:sakura_forest",
+        "wythers:spring_flower_forest"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "explorify:ruins",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "explorify:supply_cache/birch",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:warm_birch_forest",
+        "wythers:autumnal_birch_forest"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "explorify:supply_cache/dark",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#wythers:is_dark_forest"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "explorify:supply_cache/desert",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#wythers:is_desert"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "explorify:supply_cache/forest",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "explorify:supply_cache/jungle",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#minecraft:is_jungle"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "explorify:supply_cache/mangrove",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:coastal_mangroves"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": true,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "explorify:supply_cache/taiga",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#minecraft:is_taiga"
+      ],
+      "blacklisted_biomes": [
+        "minecraft:taiga",
+        "minecraft:snowy_taiga",
+        "minecraft:old_growth_spruce_taiga",
+        "minecraft:old_growth_pine_taiga"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "explorify:tavern",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:spring_flower_fields",
+        "wythers:spring_flower_forest",
+        "wythers:flowering_pantanal",
+        "#forge:is_plains"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "explorify:watchtower/plains",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "explorify:watchtower/savanna",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "explorify:watchtower/taiga",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#minecraft:is_taiga"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "friendsandfoes:citadel",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "strongholds",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "friendsandfoes:iceologer_cabin",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#forge:is_cold/overworld"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "friendsandfoes:illusioner_shack",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:tundra"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "friendsandfoes:illusioner_training_grounds",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "grim_kingdoms:blackridge_watch",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:deep_snowy_taiga"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "grim_kingdoms:decrown_monolith",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:autumnal_birch_forest"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "grim_kingdoms:frostbloom_bastion",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "grim_kingdoms:frozen_onion_fort",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": true,
+      "enable_biome_check": false,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "grim_kingdoms:glacierfall_keep",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "grim_kingdoms:glimmervault_fortress",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "grim_kingdoms:shardspire_castle",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "grim_kingdoms:silentgale_citadel",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:deep_snowy_taiga"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "grim_kingdoms:snowgrave_citadel",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "grim_kingdoms:stonyfell_outpost",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "grim_kingdoms:whitewarden_keep",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "grim_kingdoms:winterhold_citadel",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "grim_kingdoms:zweiberg",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "hunters_return:hunter_house",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "wythers:sakura_forest",
+        "wythers:spring_flower_forest"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "integrated_villages:airship_village",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "integrated_villages:cabin_village",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:pine_barrens",
+        "wythers:giant_sequoia_forest",
+        "wythers:ancient_copper_beech_forest",
+        "wythers:ancient_emerald_beech_forest",
+        "wythers:ancient_golden_beech_forest",
+        "wythers:boreal_forest_red",
+        "wythers:boreal_forest_yellow",
+        "wythers:temperate_rainforest",
+        "wythers:temperate_rainforest_crags",
+        "wythers:deep_snowy_taiga",
+        "wythers:larch_taiga",
+        "wythers:ancient_taiga",
+        "wythers:old_growth_taiga_crags",
+        "minecraft:old_growth_pine_taiga",
+        "minecraft:old_growth_spruce_taiga",
+        "minecraft:grove",
+        "wythers:frigid_island",
+        "minecraft:old_growth_birch_forest",
+        "wythers:warm_birch_forest",
+        "wythers:autumnal_birch_forest"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "integrated_villages:clockwork_village",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:andesite_crags",
+        "wythers:granite_canyon",
+        "wythers:stony_canyon",
+        "wythers:cool_stony_canyons",
+        "wythers:cool_stony_peaks",
+        "wythers:calcite_coast",
+        "wythers:deepslate_shore",
+        "wythers:autumnal_crags",
+        "wythers:aspen_crags",
+        "minecraft:stony_peaks",
+        "minecraft:stony_shore",
+        "minecraft:windswept_hills",
+        "minecraft:windswept_gravelly_hills",
+        "minecraft:windswept_forest"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "integrated_villages:kutcha_village",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:tropical_rainforest",
+        "wythers:tropical_forest",
+        "wythers:tropical_forest_canyon",
+        "wythers:tropical_forest_river",
+        "wythers:highland_tropical_rainforest",
+        "wythers:flooded_rainforest",
+        "wythers:flooded_jungle",
+        "wythers:sandy_jungle",
+        "wythers:sparse_eucalyptus_jungle",
+        "wythers:eucalyptus_jungle",
+        "wythers:eucalyptus_jungle_canyon",
+        "wythers:tsingy_forest",
+        "wythers:tropical_volcano",
+        "wythers:guelta",
+        "wythers:pantanal",
+        "wythers:flowering_pantanal",
+        "wythers:windswept_jungle",
+        "wythers:jungle_canyon",
+        "wythers:dry_tropical_forest",
+        "wythers:tropical_grassland",
+        "wythers:humid_tropical_grassland",
+        "minecraft:jungle",
+        "minecraft:sparse_jungle",
+        "minecraft:bamboo_jungle"
+      ],
+      "blacklisted_biomes": [
+        "minecraft:desert",
+        "wythers:cactus_desert",
+        "wythers:desert_beach",
+        "wythers:desert_island",
+        "wythers:desert_pinnacles",
+        "wythers:deep_desert"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "integrated_villages:marketstead_village",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:crimson_tundra",
+        "wythers:highlands",
+        "wythers:forested_highlands",
+        "wythers:jade_highlands",
+        "wythers:huangshan_highlands",
+        "wythers:highland_plains",
+        "wythers:tepui",
+        "wythers:highland_tropical_rainforest",
+        "wythers:maple_mountains",
+        "wythers:bamboo_jungle_highlands",
+        "wythers:snowy_peaks",
+        "minecraft:meadow",
+        "minecraft:windswept_hills",
+        "minecraft:windswept_forest",
+        "minecraft:windswept_gravelly_hills"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "integrated_villages:mediterranean_village",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:mediterranean_island",
+        "wythers:mediterranean_island_thermal_springs",
+        "wythers:warm_birch_forest",
+        "wythers:warm_stony_shore",
+        "wythers:calcite_coast",
+        "wythers:temperate_island",
+        "wythers:chaparral",
+        "wythers:eucalyptus_woodland",
+        "wythers:eucalyptus_salubris_woodland",
+        "wythers:eucalyptus_deanei_forest",
+        "wythers:lapacho_plains",
+        "wythers:subtropical_forest",
+        "wythers:subtropical_forest_edge",
+        "wythers:subtropical_grassland",
+        "minecraft:stony_shore",
+        "minecraft:beach"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "integrated_villages:mossy_mounds",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:ancient_mossy_swamp",
+        "wythers:ancient_moss_forest",
+        "wythers:old_growth_taiga_swamp",
+        "wythers:temperate_rainforest",
+        "wythers:temperate_rainforest_crags",
+        "wythers:coastal_mangroves"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "integrated_villages:oasis_village",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:guelta",
+        "wythers:salt_lakes_pink",
+        "wythers:salt_lakes_turquoise",
+        "wythers:salt_lakes_white",
+        "wythers:desert_lakes",
+        "wythers:desert_river",
+        "wythers:deep_desert_river",
+        "wythers:danakil_desert",
+        "wythers:deep_desert",
+        "minecraft:desert"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "integrated_villages:pirate_village",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:tropical_beach",
+        "wythers:black_beach",
+        "wythers:gravelly_beach",
+        "wythers:desert_beach",
+        "wythers:cold_stony_shore",
+        "wythers:icy_shore",
+        "wythers:tropical_island",
+        "wythers:desert_island",
+        "wythers:jungle_island",
+        "wythers:frozen_island",
+        "wythers:frigid_island",
+        "wythers:cold_island",
+        "wythers:temperate_island",
+        "wythers:deepslate_shore",
+        "minecraft:beach",
+        "minecraft:snowy_beach",
+        "minecraft:stony_shore",
+        "minecraft:mushroom_fields"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "integrated_villages:quark/minka_village",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:spring_flower_fields",
+        "wythers:sakura_forest",
+        "wythers:bamboo_jungle_highlands",
+        "wythers:bamboo_jungle_canyon",
+        "wythers:bamboo_jungle_swamp",
+        "wythers:sparse_bamboo_jungle",
+        "wythers:jade_highlands",
+        "wythers:huangshan_highlands",
+        "wythers:wistman_woods",
+        "wythers:lantern_river",
+        "wythers:tsingy_forest",
+        "minecraft:bamboo_jungle",
+        "minecraft:sparse_jungle"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "integrated_villages:sunken_village",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:flooded_jungle",
+        "wythers:flooded_rainforest",
+        "wythers:flooded_temperate_rainforest",
+        "wythers:gravelly_river",
+        "wythers:black_river",
+        "wythers:billabong"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "integrated_villages:tavern_village",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:autumnal_forest",
+        "wythers:autumnal_forest_edge",
+        "wythers:autumnal_birch_forest",
+        "wythers:autumnal_flower_forest",
+        "wythers:spring_flower_forest",
+        "wythers:forest_edge",
+        "wythers:warm_birch_forest",
+        "wythers:cool_forest",
+        "wythers:cool_forest_edge",
+        "wythers:ancient_golden_beech_forest",
+        "wythers:ancient_emerald_beech_forest",
+        "wythers:ancient_copper_beech_forest",
+        "wythers:maple_mountains",
+        "minecraft:forest",
+        "minecraft:birch_forest",
+        "minecraft:old_growth_birch_forest",
+        "minecraft:flower_forest"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "irons_spellbooks:ancient_battleground",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_decoration",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "irons_spellbooks:catacombs",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_decoration",
+      "terrain_adaptation": "bury"
+    },
+    {
+      "name": "irons_spellbooks:citadel",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "fluid_springs",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "irons_spellbooks:evoker_fort",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:flower_forest",
+        "wythers:sakura_forest",
+        "minecraft:desert",
+        "wythers:spring_flower_fields",
+        "minecraft:sunflower_plains"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "irons_spellbooks:ice_spider_den",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "wythers:ice_cap",
+        "minecraft:frozen_ocean",
+        "minecraft:frozen_river"
+      ],
+      "step": "underground_decoration",
+      "terrain_adaptation": "beard_box",
+      "override_global_flatness_check": true,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": true,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "irons_spellbooks:impaled_icebreaker",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:icy_volcano",
+        "wythers:icy_ocean",
+        "wythers:icy_river",
+        "minecraft:frozen_river",
+        "wythers:icy_shore",
+        "wythers:ice_cap",
+        "wythers:frozen_island"
+      ],
+      "blacklisted_biomes": [
+        "minecraft:ice_spikes",
+        "minecraft:frozen_peaks"
+      ],
+      "step": "underground_decoration",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "irons_spellbooks:mangrove_hut",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "wythers:marsh",
+        "wythers:bamboo_swamp",
+        "wythers:flooded_savanna"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "irons_spellbooks:mountain_tower",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:tibesti_mountains",
+        "wythers:icy_volcano"
+      ],
+      "blacklisted_biomes": [
+        "minecraft:cherry_grove",
+        "minecraft:snowy_plains"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "irons_spellbooks:pyromancer_tower",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:volcanic_crater",
+        "wythers:tropical_volcano"
+      ],
+      "blacklisted_biomes": [
+        "wythers:deep_dark_forest",
+        "wythers:flowering_pantanal",
+        "wythers:forbidden_forest",
+        "wythers:sakura_forest",
+        "wythers:marsh",
+        "wythers:bayou",
+        "wythers:waterlily_swamp",
+        "wythers:ancient_mossy_swamp",
+        "wythers:dripleaf_swamp",
+        "wythers:bamboo_swamp",
+        "wythers:bamboo_jungle_swamp",
+        "wythers:mud_pools",
+        "minecraft:swamp",
+        "minecraft:mangrove_swamp"
+      ],
+      "step": "underground_decoration",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": true,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": true,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "mowziesmobs:frostmaw_spawn",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "mowziesmobs:monastery",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_decoration",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "mowziesmobs:umvuthana_grove",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "mowziesmobs:wrought_chamber",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "nova_structures:badlands_miner_outpost",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#minecraft:is_badlands"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:bunker",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "nova_structures:conduit_ruin",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "nova_structures:creeping_crypt",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:forbidden_forest",
+        "wythers:phantasmal_forest"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "nova_structures:desert_ruins",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:donjon",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_decoration",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "nova_structures:firewatch_tower_birch",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:firewatch_tower_cherry",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:firewatch_tower_dark_oak",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:firewatch_tower_forest",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:firewatch_tower_jungle",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box",
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "nova_structures:firewatch_tower_mangrove",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:coastal_mangroves"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box",
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "nova_structures:firewatch_tower_savanna",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box",
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "nova_structures:firewatch_tower_swamp",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box",
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "nova_structures:firewatch_tower_taiga",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box",
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "nova_structures:hamlet",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:illager_camp",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "nova_structures:illager_hideout",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "bury"
+    },
+    {
+      "name": "nova_structures:illager_manor",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [
+        "minecraft:deep_dark"
+      ],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "nova_structures:jungle_ruins",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:mangrove_witch_hut",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:coastal_mangroves"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:nether_keep",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_decoration",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "nova_structures:nether_port",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_decoration",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:nether_skeleton_tower_basalt",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:nether_skeleton_tower_crimson",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:nether_skeleton_tower_soul",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:nether_skeleton_tower_warped",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:piglin_camp",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:piglin_outstation",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:ruin_town",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "nova_structures:skeleton_camp_crimson",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:skeleton_camp_soul",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:skeleton_camp_warped",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:skeleton_camp_waste",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:stray_fort",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "nova_structures:tavern_acacia",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:tavern_birch",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "nova_structures:tavern_cherry",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:sakura_forest"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "nova_structures:tavern_dark_oak",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:tavern_desert",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:tavern_jungle",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:tavern_mangrove",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:tavern_oak",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "STRICT",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "nova_structures:tavern_snowy",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#forge:is_snowy"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "nova_structures:tavern_spruce",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:tavern_swamp",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:undead_crypt",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "bury"
+    },
+    {
+      "name": "nova_structures:underground_house",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "nova_structures:village_jungle",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:tropical_rainforest",
+        "wythers:sparse_eucalyptus_jungle",
+        "wythers:sparse_bamboo_jungle"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "nova_structures:village_swamp",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "nova_structures:well_birch",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "#c:birch_forest",
+        "#forge:forest/birch"
+      ],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:well_dark_oak",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:well_jungle",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:well_oak",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:well_savana",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:well_spruce",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "nova_structures:wild_ruin",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "nova_structures:witch_villa",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_box",
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "ribbits:ribbit_village",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "supplementaries:way_sign",
+      "is_disabled": true,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "strongholds",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "takesapillage:bastille",
+      "is_disabled": false,
+      "whitelisted_biomes": [
+        "wythers:tundra",
+        "wythers:autumnal_forest",
+        "#forge:is_plains"
+      ],
+      "blacklisted_biomes": [
+        "minecraft:plains",
+        "minecraft:snowy_plains",
+        "minecraft:meadow",
+        "minecraft:savanna",
+        "minecraft:sunflower_plains"
+      ],
+      "step": "underground_decoration",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "takesapillage:pillager_camp",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_decoration",
+      "terrain_adaptation": "beard_box",
+      "override_global_flatness_check": true,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "wythers:banyan_sparse_jungle",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "raw_generation",
+      "terrain_adaptation": "none",
+      "override_global_flatness_check": true,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "wythers:baobab_dry_tropical_forest",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "wythers:baobab_savanna",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "wythers:baobab_tropical_forest",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "none"
+    },
+    {
+      "name": "wythers:el_dorado",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_decoration",
+      "terrain_adaptation": "beard_box"
+    },
+    {
+      "name": "wythers:elephant_graveyard_fossil",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "underground_decoration",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "wythers:giant_fallen_log",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin"
+    },
+    {
+      "name": "wythers:village_badlands",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "wythers:village_badlands_desert",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    },
+    {
+      "name": "wythers:village_wooded_badlands",
+      "is_disabled": false,
+      "whitelisted_biomes": [],
+      "blacklisted_biomes": [],
+      "step": "surface_structures",
+      "terrain_adaptation": "beard_thin",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false
+    }
+  ],
+  "structure_sets": [
+    {
+      "spacing": 32,
+      "separation": 16,
+      "name": "betterarcheology:archeology_sites",
+      "is_disabled": false,
+      "salt": 990880770,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "betterarcheology:buried_ruins_sand": 5,
+        "betterarcheology:catacombs": 2,
+        "betterarcheology:archeologist_camp_sand": 5,
+        "betterarcheology:mesa_ruins": 4,
+        "betterarcheology:temple_jungle": 5,
+        "betterarcheology:mott": 5,
+        "betterarcheology:desert_obelisk": 6,
+        "betterarcheology:ruins_sand": 5,
+        "betterarcheology:stonehenge_grassy": 5,
+        "betterarcheology:archeologist_camp_redsand": 5,
+        "betterarcheology:tumulus_grassy": 4,
+        "betterarcheology:archeologist_camp_grassy": 5,
+        "betterarcheology:light_temple": 2
+      }
+    },
+    {
+      "spacing": 24,
+      "separation": 12,
+      "name": "betterarcheology:fossil_sites",
+      "is_disabled": false,
+      "salt": 990880771,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "betterarcheology:fossil_jungle_0": 5,
+        "betterarcheology:fossil_jungle_1": 5,
+        "betterarcheology:fossil_sheep_0": 5,
+        "betterarcheology:fossil_creeper": 5,
+        "betterarcheology:fossil_chicken": 5,
+        "betterarcheology:fossil_wolf": 5,
+        "betterarcheology:fossil_chicken_birch": 5,
+        "betterarcheology:villager_grave": 5
+      }
+    },
+    {
+      "spacing": 16,
+      "separation": 12,
+      "name": "betterarcheology:underwater_ruins",
+      "is_disabled": false,
+      "salt": 990880772,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "betterarcheology:underwater_3": 5,
+        "betterarcheology:underwater_0": 5,
+        "betterarcheology:underwater_1": 5,
+        "betterarcheology:underwater_2": 5
+      }
+    },
+    {
+      "spacing": 30,
+      "separation": 20,
+      "name": "betterdeserttemples:desert_temples",
+      "is_disabled": false,
+      "salt": 92746251,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "betterdeserttemples:desert_temple": 1
+      }
+    },
+    {
+      "spacing": 46,
+      "separation": 23,
+      "name": "betterdungeons:skeleton_dungeons",
+      "is_disabled": false,
+      "salt": 732581671,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "betterdungeons:skeleton_dungeon": 1
+      }
+    },
+    {
+      "spacing": 10,
+      "separation": 6,
+      "name": "betterdungeons:small_dungeons",
+      "is_disabled": false,
+      "salt": 34239823,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "betterdungeons:small_dungeon": 1
+      }
+    },
+    {
+      "spacing": 16,
+      "separation": 10,
+      "name": "betterdungeons:small_nether_dungeons",
+      "is_disabled": false,
+      "salt": 998767517,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "betterdungeons:small_nether_dungeon": 1
+      }
+    },
+    {
+      "spacing": 44,
+      "separation": 22,
+      "name": "betterdungeons:spider_dungeons",
+      "is_disabled": false,
+      "salt": 596523129,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "betterdungeons:spider_dungeon": 1
+      }
+    },
+    {
+      "spacing": 48,
+      "separation": 24,
+      "name": "betterdungeons:zombie_dungeons",
+      "is_disabled": false,
+      "salt": 280667671,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "betterdungeons:zombie_dungeon": 1
+      }
+    },
+    {
+      "spacing": 30,
+      "separation": 20,
+      "name": "betterfortresses:fortress",
+      "is_disabled": false,
+      "salt": 784827271,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "betterfortresses:fortress": 1
+      }
+    },
+    {
+      "spacing": 24,
+      "separation": 8,
+      "name": "betterjungletemples:jungle_temples",
+      "is_disabled": false,
+      "salt": 996971851,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "betterjungletemples:jungle_temple": 1
+      }
+    },
+    {
+      "name": "bettermineshafts:mineshafts",
+      "is_disabled": false,
+      "salt": 593751784,
+      "frequency": 0.003,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "bettermineshafts:mineshaft_oak": 1,
+        "bettermineshafts:mineshaft_spruce": 1,
+        "bettermineshafts:mineshaft_dripstone": 1,
+        "bettermineshafts:mineshaft_mesa": 1,
+        "bettermineshafts:mineshaft_red_desert": 1,
+        "bettermineshafts:mineshaft_overgrown": 1,
+        "bettermineshafts:mineshaft_lush": 1,
+        "bettermineshafts:mineshaft_desert": 1,
+        "bettermineshafts:mineshaft_acacia": 1,
+        "bettermineshafts:mineshaft_jungle": 1,
+        "bettermineshafts:mineshaft_spruce_snowy": 1,
+        "bettermineshafts:mineshaft_ice": 1,
+        "bettermineshafts:mineshaft_mushroom": 1
+      }
+    },
+    {
+      "spacing": 50,
+      "separation": 20,
+      "name": "betteroceanmonuments:ocean_monument",
+      "is_disabled": false,
+      "salt": 784827271,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "betteroceanmonuments:ocean_monument": 1
+      }
+    },
+    {
+      "spacing": 40,
+      "separation": 10,
+      "name": "betterwitchhuts:witch_circle",
+      "is_disabled": false,
+      "salt": 19797254,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "betterwitchhuts:witch_circle": 1
+      }
+    },
+    {
+      "spacing": 30,
+      "separation": 8,
+      "name": "betterwitchhuts:witch_hut",
+      "is_disabled": false,
+      "salt": 79297177,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "betterwitchhuts:witch_hut": 1
+      }
+    },
+    {
+      "spacing": 120,
+      "separation": 8,
+      "name": "born_in_chaos_v1:clown_caravan_plains",
+      "is_disabled": false,
+      "salt": 809257424,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:clown_caravan_plains": 1
+      }
+    },
+    {
+      "spacing": 90,
+      "separation": 10,
+      "name": "born_in_chaos_v1:clown_caravan_savanna",
+      "is_disabled": false,
+      "salt": 966731024,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:clown_caravan_savanna": 1
+      }
+    },
+    {
+      "spacing": 80,
+      "separation": 8,
+      "name": "born_in_chaos_v1:clown_caravan_taiga",
+      "is_disabled": false,
+      "salt": 1703928760,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:clown_caravan_taiga": 1
+      }
+    },
+    {
+      "spacing": 75,
+      "separation": 14,
+      "name": "born_in_chaos_v1:dark_tower_forest",
+      "is_disabled": false,
+      "salt": 158416380,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:dark_tower_forest": 1
+      }
+    },
+    {
+      "spacing": 85,
+      "separation": 14,
+      "name": "born_in_chaos_v1:dark_tower_plain",
+      "is_disabled": false,
+      "salt": 878827685,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:dark_tower_plain": 1
+      }
+    },
+    {
+      "spacing": 75,
+      "separation": 10,
+      "name": "born_in_chaos_v1:dark_tower_taiga",
+      "is_disabled": false,
+      "salt": 593635684,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:dark_tower_taiga": 1
+      }
+    },
+    {
+      "spacing": 65,
+      "separation": 6,
+      "name": "born_in_chaos_v1:farm",
+      "is_disabled": false,
+      "salt": 373118085,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:farm": 1
+      }
+    },
+    {
+      "spacing": 65,
+      "separation": 9,
+      "name": "born_in_chaos_v1:firewell",
+      "is_disabled": false,
+      "salt": 2021465820,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:firewell": 1
+      }
+    },
+    {
+      "spacing": 95,
+      "separation": 10,
+      "name": "born_in_chaos_v1:grave_2003wise",
+      "is_disabled": false,
+      "salt": 1166241204,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_2003wise": 1
+      }
+    },
+    {
+      "spacing": 96,
+      "separation": 9,
+      "name": "born_in_chaos_v1:grave_2_dling",
+      "is_disabled": false,
+      "salt": 124961431,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_2_dling": 1
+      }
+    },
+    {
+      "spacing": 60,
+      "separation": 6,
+      "name": "born_in_chaos_v1:grave_d_4rk_devil_x",
+      "is_disabled": false,
+      "salt": 1386119179,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_d_4rk_devil_x": 1
+      }
+    },
+    {
+      "spacing": 105,
+      "separation": 15,
+      "name": "born_in_chaos_v1:grave_darktitan",
+      "is_disabled": false,
+      "salt": 1848596683,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_darktitan": 1
+      }
+    },
+    {
+      "spacing": 90,
+      "separation": 10,
+      "name": "born_in_chaos_v1:grave_derivas",
+      "is_disabled": false,
+      "salt": 1305697841,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_derivas": 1
+      }
+    },
+    {
+      "spacing": 100,
+      "separation": 10,
+      "name": "born_in_chaos_v1:grave_euthymia",
+      "is_disabled": false,
+      "salt": 1667243702,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_euthymia": 1
+      }
+    },
+    {
+      "spacing": 95,
+      "separation": 9,
+      "name": "born_in_chaos_v1:grave_feral",
+      "is_disabled": false,
+      "salt": 1854250466,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_feral": 1
+      }
+    },
+    {
+      "spacing": 84,
+      "separation": 10,
+      "name": "born_in_chaos_v1:grave_fubuki_banzai",
+      "is_disabled": false,
+      "salt": 1085062960,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_fubuki_banzai": 1
+      }
+    },
+    {
+      "spacing": 101,
+      "separation": 11,
+      "name": "born_in_chaos_v1:grave_memesus",
+      "is_disabled": false,
+      "salt": 832829135,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_memesus": 1
+      }
+    },
+    {
+      "spacing": 85,
+      "separation": 6,
+      "name": "born_in_chaos_v1:grave_mike_and_rory",
+      "is_disabled": false,
+      "salt": 749647053,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_mike_and_rory": 1
+      }
+    },
+    {
+      "spacing": 96,
+      "separation": 9,
+      "name": "born_in_chaos_v1:grave_nino_4416",
+      "is_disabled": false,
+      "salt": 414467301,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_nino_4416": 1
+      }
+    },
+    {
+      "spacing": 100,
+      "separation": 12,
+      "name": "born_in_chaos_v1:grave_orion",
+      "is_disabled": false,
+      "salt": 2142799247,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_orion": 1
+      }
+    },
+    {
+      "spacing": 90,
+      "separation": 10,
+      "name": "born_in_chaos_v1:grave_petasi",
+      "is_disabled": false,
+      "salt": 159447824,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_petasi": 1
+      }
+    },
+    {
+      "spacing": 100,
+      "separation": 10,
+      "name": "born_in_chaos_v1:grave_plug",
+      "is_disabled": false,
+      "salt": 634068768,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_plug": 1
+      }
+    },
+    {
+      "spacing": 97,
+      "separation": 7,
+      "name": "born_in_chaos_v1:grave_rotborne",
+      "is_disabled": false,
+      "salt": 574383120,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_rotborne": 1
+      }
+    },
+    {
+      "spacing": 100,
+      "separation": 12,
+      "name": "born_in_chaos_v1:grave_somfunambulist",
+      "is_disabled": false,
+      "salt": 2111360768,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_somfunambulist": 1
+      }
+    },
+    {
+      "spacing": 115,
+      "separation": 6,
+      "name": "born_in_chaos_v1:grave_tem_187",
+      "is_disabled": false,
+      "salt": 1359044565,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_tem_187": 1
+      }
+    },
+    {
+      "spacing": 60,
+      "separation": 6,
+      "name": "born_in_chaos_v1:grave_the_gentleman_frog",
+      "is_disabled": false,
+      "salt": 40669500,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:grave_the_gentleman_frog": 1
+      }
+    },
+    {
+      "spacing": 100,
+      "separation": 9,
+      "name": "born_in_chaos_v1:gravecarrionexe",
+      "is_disabled": false,
+      "salt": 771309080,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:gravecarrionexe": 1
+      }
+    },
+    {
+      "spacing": 36,
+      "separation": 6,
+      "name": "born_in_chaos_v1:infernal_pumpkin",
+      "is_disabled": false,
+      "salt": 563587936,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:infernal_pumpkin": 1
+      }
+    },
+    {
+      "spacing": 50,
+      "separation": 3,
+      "name": "born_in_chaos_v1:mound_of_hounds",
+      "is_disabled": false,
+      "salt": 2109128832,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:mound_of_hounds": 1
+      }
+    },
+    {
+      "spacing": 65,
+      "separation": 12,
+      "name": "born_in_chaos_v1:observation_tower_forest",
+      "is_disabled": false,
+      "salt": 1528432837,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:observation_tower_forest": 1
+      }
+    },
+    {
+      "spacing": 200,
+      "separation": 12,
+      "name": "born_in_chaos_v1:observation_tower_plains",
+      "is_disabled": false,
+      "salt": 1237288945,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "born_in_chaos_v1:observation_tower_plains": 1
+      }
+    },
+    {
+      "spacing": 32,
+      "separation": 16,
+      "name": "bosses_of_mass_destruction:gauntlet_arena",
+      "is_disabled": false,
+      "salt": 499672,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "bosses_of_mass_destruction:gauntlet_arena": 1
+      }
+    },
+    {
+      "spacing": 100,
+      "separation": 50,
+      "name": "bosses_of_mass_destruction:lich_tower",
+      "is_disabled": false,
+      "salt": 1230784,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "bosses_of_mass_destruction:lich_tower": 1
+      }
+    },
+    {
+      "spacing": 64,
+      "separation": 32,
+      "name": "bosses_of_mass_destruction:obsidilith_arena",
+      "is_disabled": false,
+      "salt": 499672,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "bosses_of_mass_destruction:obsidilith_arena": 1
+      }
+    },
+    {
+      "spacing": 64,
+      "separation": 24,
+      "name": "bosses_of_mass_destruction:void_blossom",
+      "is_disabled": false,
+      "salt": 574839,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "bosses_of_mass_destruction:void_blossom": 1
+      }
+    },
+    {
+      "spacing": 1024,
+      "separation": 800,
+      "name": "cataclysm:acropolis",
+      "is_disabled": false,
+      "salt": 913530101,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "cataclysm:acropolis": 1
+      }
+    },
+    {
+      "spacing": 112,
+      "separation": 70,
+      "name": "cataclysm:ancient_factory",
+      "is_disabled": false,
+      "salt": 319514301,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "cataclysm:ancient_factory": 1
+      }
+    },
+    {
+      "spacing": 80,
+      "separation": 50,
+      "name": "cataclysm:burning_arena",
+      "is_disabled": false,
+      "salt": 533522197,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "cataclysm:burning_arena": 1
+      }
+    },
+    {
+      "spacing": 80,
+      "separation": 50,
+      "name": "cataclysm:cursed_pyramid",
+      "is_disabled": false,
+      "salt": 577299997,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "cataclysm:cursed_pyramid": 1
+      }
+    },
+    {
+      "spacing": 80,
+      "separation": 50,
+      "name": "cataclysm:frosted_prison",
+      "is_disabled": false,
+      "salt": 1577172143,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "cataclysm:frosted_prison": 1
+      }
+    },
+    {
+      "spacing": 50,
+      "separation": 25,
+      "name": "cataclysm:ruined_citadel",
+      "is_disabled": false,
+      "salt": 367895146,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "cataclysm:ruined_citadel": 1
+      }
+    },
+    {
+      "spacing": 60,
+      "separation": 50,
+      "name": "cataclysm:soul_black_smith",
+      "is_disabled": false,
+      "salt": 1984567320,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "cataclysm:soul_black_smith": 1
+      }
+    },
+    {
+      "spacing": 100,
+      "separation": 70,
+      "name": "cataclysm:sunken_city",
+      "is_disabled": false,
+      "salt": 1673928450,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "cataclysm:sunken_city": 1
+      }
+    },
+    {
+      "spacing": 40,
+      "separation": 10,
+      "name": "companions:companions_babayaga",
+      "is_disabled": false,
+      "salt": 168272323,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "companions:companions_babayaga": 1
+      }
+    },
+    {
+      "spacing": 80,
+      "separation": 10,
+      "name": "companions:companions_factory",
+      "is_disabled": false,
+      "salt": 168272323,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "companions:companions_factory": 1
+      }
+    },
+    {
+      "spacing": 50,
+      "separation": 20,
+      "name": "companions:companions_monkey_temple",
+      "is_disabled": false,
+      "salt": 987654321,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "companions:companions_monkey_temple": 1
+      }
+    },
+    {
+      "spacing": 80,
+      "separation": 30,
+      "name": "companions:companions_teddytower",
+      "is_disabled": false,
+      "salt": 168272323,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "companions:companions_teddytower": 1
+      }
+    },
+    {
+      "spacing": 30,
+      "separation": 5,
+      "name": "companions:companions_tent",
+      "is_disabled": false,
+      "salt": 2143658709,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "companions:companions_tent": 1
+      }
+    },
+    {
+      "spacing": 40,
+      "separation": 35,
+      "name": "conjurer_illager:theatre",
+      "is_disabled": false,
+      "salt": 2084282252,
+      "frequency": 0.5,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "conjurer_illager:theatre": 1
+      }
+    },
+    {
+      "spacing": 80,
+      "separation": 20,
+      "name": "dungeonnowloading:labyrinth",
+      "is_disabled": false,
+      "salt": 269766545,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "dungeonnowloading:labyrinth": 1
+      }
+    },
+    {
+      "spacing": 64,
+      "separation": 16,
+      "name": "dungeonnowloading:temple_of_duality",
+      "is_disabled": false,
+      "salt": 83979417,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "dungeonnowloading:temple_of_duality": 1
+      }
+    },
+    {
+      "spacing": 32,
+      "separation": 12,
+      "name": "explorify:badlands_pyramids",
+      "is_disabled": false,
+      "salt": 63294721,
+      "frequency": 0.75,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "explorify:badlands_pyramid": 1
+      }
+    },
+    {
+      "spacing": 40,
+      "separation": 18,
+      "name": "explorify:black_spirals",
+      "is_disabled": false,
+      "salt": 30184232,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "explorify:black_spiral": 1
+      }
+    },
+    {
+      "spacing": 32,
+      "separation": 16,
+      "name": "explorify:campsites",
+      "is_disabled": false,
+      "salt": 51363271,
+      "frequency": 0.8,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "explorify:campsite": 1
+      }
+    },
+    {
+      "spacing": 32,
+      "separation": 16,
+      "name": "explorify:dark_forest_settlements",
+      "is_disabled": false,
+      "salt": 10128856,
+      "frequency": 0.8,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "explorify:dark_forest_settlement": 1
+      }
+    },
+    {
+      "spacing": 24,
+      "separation": 8,
+      "name": "explorify:desert_shrines",
+      "is_disabled": false,
+      "salt": 89294828,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "explorify:desert_shrine": 1
+      }
+    },
+    {
+      "spacing": 24,
+      "separation": 6,
+      "name": "explorify:end_shipwrecks",
+      "is_disabled": false,
+      "salt": 12394461,
+      "frequency": 0.5,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "explorify:end_shipwreck": 1
+      }
+    },
+    {
+      "spacing": 38,
+      "separation": 28,
+      "name": "explorify:farmsteads",
+      "is_disabled": false,
+      "salt": 70128199,
+      "frequency": 0.8,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "explorify:farmstead": 1
+      }
+    },
+    {
+      "spacing": 32,
+      "separation": 10,
+      "name": "explorify:guide_posts",
+      "is_disabled": false,
+      "salt": 31205983,
+      "frequency": 0.75,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "explorify:guide_post_cold": 1,
+        "explorify:guide_post_warm": 1
+      }
+    },
+    {
+      "spacing": 28,
+      "separation": 12,
+      "name": "explorify:mangrove_huts",
+      "is_disabled": false,
+      "salt": 2063493658,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "explorify:mangrove_hut": 1
+      }
+    },
+    {
+      "spacing": 48,
+      "separation": 16,
+      "name": "explorify:mausoleums",
+      "is_disabled": false,
+      "salt": 535694654,
+      "frequency": 0.8,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "explorify:mausoleum": 1
+      }
+    },
+    {
+      "spacing": 48,
+      "separation": 24,
+      "name": "explorify:ruins",
+      "is_disabled": false,
+      "salt": 1428017473,
+      "frequency": 0.8,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "explorify:ruins": 1
+      }
+    },
+    {
+      "spacing": 32,
+      "separation": 20,
+      "name": "explorify:supply_caches",
+      "is_disabled": false,
+      "salt": 12413523,
+      "frequency": 0.75,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "explorify:supply_cache/taiga": 1,
+        "explorify:supply_cache/desert": 1,
+        "explorify:supply_cache/jungle": 1,
+        "explorify:supply_cache/birch": 1,
+        "explorify:supply_cache/forest": 1,
+        "explorify:supply_cache/dark": 1,
+        "explorify:supply_cache/mangrove": 1
+      }
+    },
+    {
+      "spacing": 36,
+      "separation": 18,
+      "name": "explorify:taverns",
+      "is_disabled": false,
+      "salt": 15731481,
+      "frequency": 0.8,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "explorify:tavern": 1
+      }
+    },
+    {
+      "spacing": 48,
+      "separation": 24,
+      "name": "explorify:watchtowers",
+      "is_disabled": false,
+      "salt": 17906333,
+      "frequency": 0.75,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "explorify:watchtower/savanna": 1,
+        "explorify:watchtower/plains": 1,
+        "explorify:watchtower/taiga": 1
+      }
+    },
+    {
+      "spacing": 16,
+      "separation": 8,
+      "name": "friendsandfoes:citadel",
+      "is_disabled": false,
+      "salt": 878514152,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "friendsandfoes:citadel": 1
+      }
+    },
+    {
+      "spacing": 40,
+      "separation": 10,
+      "name": "friendsandfoes:iceologer_cabin",
+      "is_disabled": false,
+      "salt": 516979219,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "friendsandfoes:iceologer_cabin": 1
+      }
+    },
+    {
+      "spacing": 40,
+      "separation": 10,
+      "name": "friendsandfoes:illusioner_shack",
+      "is_disabled": false,
+      "salt": 365262534,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "friendsandfoes:illusioner_shack": 1
+      }
+    },
+    {
+      "spacing": 40,
+      "separation": 10,
+      "name": "friendsandfoes:illusioner_training_grounds",
+      "is_disabled": false,
+      "salt": 819729564,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "friendsandfoes:illusioner_training_grounds": 1
+      }
+    },
+    {
+      "spacing": 50,
+      "separation": 30,
+      "name": "grim_kingdoms:snowy",
+      "is_disabled": false,
+      "salt": 88,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "grim_kingdoms:winterhold_citadel": 1,
+        "grim_kingdoms:snowgrave_citadel": 1,
+        "grim_kingdoms:frostbloom_bastion": 1,
+        "grim_kingdoms:blackridge_watch": 1,
+        "grim_kingdoms:shardspire_castle": 1,
+        "grim_kingdoms:glacierfall_keep": 1,
+        "grim_kingdoms:whitewarden_keep": 1,
+        "grim_kingdoms:zweiberg": 1,
+        "grim_kingdoms:decrown_monolith": 1,
+        "grim_kingdoms:glimmervault_fortress": 1,
+        "grim_kingdoms:frozen_onion_fort": 1,
+        "grim_kingdoms:silentgale_citadel": 1,
+        "grim_kingdoms:stonyfell_outpost": 1
+      }
+    },
+    {
+      "spacing": 26,
+      "separation": 6,
+      "name": "hunters_return:hunter_house",
+      "is_disabled": false,
+      "salt": 15437620,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "hunters_return:hunter_house": 1
+      }
+    },
+    {
+      "spacing": 94,
+      "separation": 45,
+      "name": "integrated_villages:air_villages",
+      "is_disabled": false,
+      "salt": 1982700828,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": true,
+      "structure_weights": {
+        "integrated_villages:airship_village": 1
+      }
+    },
+    {
+      "spacing": 26,
+      "separation": 19,
+      "name": "integrated_villages:regular_villages",
+      "is_disabled": false,
+      "salt": 1982700828,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "integrated_villages:clockwork_village": 1,
+        "integrated_villages:tavern_village": 1,
+        "integrated_villages:marketstead_village": 1,
+        "integrated_villages:quark/minka_village": 1,
+        "integrated_villages:mediterranean_village": 1,
+        "integrated_villages:pirate_village": 1,
+        "integrated_villages:kutcha_village": 1,
+        "integrated_villages:oasis_village": 1,
+        "integrated_villages:cabin_village": 1,
+        "integrated_villages:sunken_village": 1,
+        "integrated_villages:mossy_mounds": 1
+      }
+    },
+    {
+      "spacing": 35,
+      "separation": 12,
+      "name": "irons_spellbooks:ancient_battleground",
+      "is_disabled": false,
+      "salt": 1111569999,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "irons_spellbooks:ancient_battleground": 1
+      }
+    },
+    {
+      "spacing": 72,
+      "separation": 48,
+      "name": "irons_spellbooks:catacombs",
+      "is_disabled": false,
+      "salt": 1794563212,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "irons_spellbooks:catacombs": 1
+      }
+    },
+    {
+      "spacing": 100,
+      "separation": 80,
+      "name": "irons_spellbooks:citadel",
+      "is_disabled": false,
+      "salt": 199995600,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "irons_spellbooks:citadel": 1
+      }
+    },
+    {
+      "spacing": 85,
+      "separation": 50,
+      "name": "irons_spellbooks:evoker_fort",
+      "is_disabled": false,
+      "salt": 684512,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "irons_spellbooks:evoker_fort": 1
+      }
+    },
+    {
+      "spacing": 85,
+      "separation": 50,
+      "name": "irons_spellbooks:ice_spider_den",
+      "is_disabled": false,
+      "salt": 126346,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "irons_spellbooks:ice_spider_den": 1
+      }
+    },
+    {
+      "spacing": 75,
+      "separation": 50,
+      "name": "irons_spellbooks:impaled_icebreaker",
+      "is_disabled": false,
+      "salt": 87959402,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "irons_spellbooks:impaled_icebreaker": 1
+      }
+    },
+    {
+      "spacing": 25,
+      "separation": 18,
+      "name": "irons_spellbooks:mangrove_hut",
+      "is_disabled": false,
+      "salt": 169476080,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "irons_spellbooks:mangrove_hut": 1
+      }
+    },
+    {
+      "spacing": 45,
+      "separation": 33,
+      "name": "irons_spellbooks:mountain_tower",
+      "is_disabled": false,
+      "salt": 194767080,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "irons_spellbooks:mountain_tower": 1
+      }
+    },
+    {
+      "spacing": 85,
+      "separation": 50,
+      "name": "irons_spellbooks:pyromancer_tower",
+      "is_disabled": false,
+      "salt": 1512684,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "irons_spellbooks:pyromancer_tower": 1
+      }
+    },
+    {
+      "spacing": 24,
+      "separation": 8,
+      "name": "minecraft:ancient_cities",
+      "is_disabled": false,
+      "salt": 20083232,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:ancient_city": 1
+      }
+    },
+    {
+      "name": "minecraft:buried_treasures",
+      "is_disabled": false,
+      "salt": 0,
+      "frequency": 0.01,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:buried_treasure": 1
+      }
+    },
+    {
+      "spacing": 32,
+      "separation": 8,
+      "name": "minecraft:desert_pyramids",
+      "is_disabled": false,
+      "salt": 14357617,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:desert_pyramid": 1
+      }
+    },
+    {
+      "spacing": 20,
+      "separation": 11,
+      "name": "minecraft:end_cities",
+      "is_disabled": false,
+      "salt": 10387313,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:end_city": 1
+      }
+    },
+    {
+      "spacing": 32,
+      "separation": 8,
+      "name": "minecraft:igloos",
+      "is_disabled": false,
+      "salt": 14357618,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:igloo": 1
+      }
+    },
+    {
+      "spacing": 32,
+      "separation": 8,
+      "name": "minecraft:jungle_temples",
+      "is_disabled": false,
+      "salt": 14357619,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:jungle_pyramid": 1
+      }
+    },
+    {
+      "name": "minecraft:mineshafts",
+      "is_disabled": false,
+      "salt": 0,
+      "frequency": 0.004,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:mineshaft": 1,
+        "minecraft:mineshaft_mesa": 1
+      }
+    },
+    {
+      "spacing": 27,
+      "separation": 4,
+      "name": "minecraft:nether_complexes",
+      "is_disabled": false,
+      "salt": 30084232,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:bastion_remnant": 3,
+        "minecraft:fortress": 2
+      }
+    },
+    {
+      "spacing": 2,
+      "separation": 1,
+      "name": "minecraft:nether_fossils",
+      "is_disabled": false,
+      "salt": 14357921,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:nether_fossil": 1
+      }
+    },
+    {
+      "spacing": 32,
+      "separation": 5,
+      "name": "minecraft:ocean_monuments",
+      "is_disabled": false,
+      "salt": 10387313,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:monument": 1
+      }
+    },
+    {
+      "spacing": 20,
+      "separation": 8,
+      "name": "minecraft:ocean_ruins",
+      "is_disabled": false,
+      "salt": 14357621,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:ocean_ruin_warm": 1,
+        "minecraft:ocean_ruin_cold": 1
+      }
+    },
+    {
+      "spacing": 32,
+      "separation": 8,
+      "name": "minecraft:pillager_outposts",
+      "is_disabled": false,
+      "salt": 165745296,
+      "frequency": 0.2,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:pillager_outpost": 1
+      }
+    },
+    {
+      "spacing": 40,
+      "separation": 15,
+      "name": "minecraft:ruined_portals",
+      "is_disabled": false,
+      "salt": 34222645,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:ruined_portal": 1,
+        "minecraft:ruined_portal_nether": 1,
+        "minecraft:ruined_portal_swamp": 1,
+        "minecraft:ruined_portal_mountain": 1,
+        "minecraft:ruined_portal_jungle": 1,
+        "minecraft:ruined_portal_ocean": 1,
+        "minecraft:ruined_portal_desert": 1
+      }
+    },
+    {
+      "spacing": 24,
+      "separation": 4,
+      "name": "minecraft:shipwrecks",
+      "is_disabled": false,
+      "salt": 165745295,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:shipwreck_beached": 1,
+        "minecraft:shipwreck": 1
+      }
+    },
+    {
+      "name": "minecraft:strongholds",
+      "is_disabled": false,
+      "salt": 0,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:stronghold": 1
+      }
+    },
+    {
+      "spacing": 32,
+      "separation": 8,
+      "name": "minecraft:swamp_huts",
+      "is_disabled": false,
+      "salt": 14357620,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:swamp_hut": 1
+      }
+    },
+    {
+      "spacing": 34,
+      "separation": 8,
+      "name": "minecraft:trail_ruins",
+      "is_disabled": false,
+      "salt": 83469867,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:trail_ruins": 1
+      }
+    },
+    {
+      "spacing": 45,
+      "separation": 20,
+      "name": "minecraft:villages",
+      "is_disabled": false,
+      "salt": 10387312,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "minecraft:village_snowy": 1,
+        "minecraft:village_plains": 1,
+        "minecraft:village_taiga": 1,
+        "minecraft:village_savanna": 1,
+        "minecraft:village_desert": 1
+      }
+    },
+    {
+      "spacing": 80,
+      "separation": 20,
+      "name": "minecraft:woodland_mansions",
+      "is_disabled": false,
+      "salt": 10387319,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:illager_manor": 1,
+        "minecraft:mansion": 1
+      }
+    },
+    {
+      "spacing": 25,
+      "separation": 8,
+      "name": "mowziesmobs:frostmaw_spawns",
+      "is_disabled": false,
+      "salt": 23317578,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "mowziesmobs:frostmaw_spawn": 1
+      }
+    },
+    {
+      "spacing": 25,
+      "separation": 8,
+      "name": "mowziesmobs:monasteries",
+      "is_disabled": false,
+      "salt": 37312139,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "mowziesmobs:monastery": 1
+      }
+    },
+    {
+      "spacing": 125,
+      "separation": 100,
+      "name": "mowziesmobs:umvuthana_groves",
+      "is_disabled": false,
+      "salt": 23311138,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "mowziesmobs:umvuthana_grove": 1
+      }
+    },
+    {
+      "spacing": 150,
+      "separation": 100,
+      "name": "mowziesmobs:wrought_chambers",
+      "is_disabled": false,
+      "salt": 23217347,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "mowziesmobs:wrought_chamber": 1
+      }
+    },
+    {
+      "spacing": 90,
+      "separation": 12,
+      "name": "nova_structures:badlands_miner_outpost",
+      "is_disabled": false,
+      "salt": 783,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:badlands_miner_outpost": 1
+      }
+    },
+    {
+      "spacing": 50,
+      "separation": 10,
+      "name": "nova_structures:bunker",
+      "is_disabled": false,
+      "salt": 679854,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:bunker": 1
+      }
+    },
+    {
+      "spacing": 140,
+      "separation": 90,
+      "name": "nova_structures:conduit_ruin",
+      "is_disabled": false,
+      "salt": 394,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:conduit_ruin": 1
+      }
+    },
+    {
+      "spacing": 100,
+      "separation": 10,
+      "name": "nova_structures:creeping_crypt",
+      "is_disabled": false,
+      "salt": 7498398,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:creeping_crypt": 1
+      }
+    },
+    {
+      "spacing": 80,
+      "separation": 12,
+      "name": "nova_structures:desert_ruins",
+      "is_disabled": false,
+      "salt": 239021,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:desert_ruins": 1
+      }
+    },
+    {
+      "spacing": 50,
+      "separation": 15,
+      "name": "nova_structures:firewatch_towers",
+      "is_disabled": false,
+      "salt": 123,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:firewatch_tower_cherry": 1,
+        "nova_structures:firewatch_tower_mangrove": 1,
+        "nova_structures:firewatch_tower_dark_oak": 1,
+        "nova_structures:firewatch_tower_forest": 1,
+        "nova_structures:firewatch_tower_birch": 1,
+        "nova_structures:firewatch_tower_taiga": 1,
+        "nova_structures:firewatch_tower_jungle": 1,
+        "nova_structures:firewatch_tower_savanna": 1,
+        "nova_structures:firewatch_tower_swamp": 1
+      }
+    },
+    {
+      "spacing": 26,
+      "separation": 12,
+      "name": "nova_structures:illager_camp",
+      "is_disabled": false,
+      "salt": 4533232,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:illager_camp": 1
+      }
+    },
+    {
+      "spacing": 200,
+      "separation": 12,
+      "name": "nova_structures:illager_hideout",
+      "is_disabled": false,
+      "salt": 3094032,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:illager_hideout": 1
+      }
+    },
+    {
+      "spacing": 80,
+      "separation": 12,
+      "name": "nova_structures:jungle_ruins",
+      "is_disabled": false,
+      "salt": 239021,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:jungle_ruins": 1
+      }
+    },
+    {
+      "spacing": 32,
+      "separation": 8,
+      "name": "nova_structures:mangrove_witch_hut",
+      "is_disabled": false,
+      "salt": 594,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:mangrove_witch_hut": 1
+      }
+    },
+    {
+      "spacing": 20,
+      "separation": 10,
+      "name": "nova_structures:nether_camps",
+      "is_disabled": false,
+      "salt": 4533232,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:skeleton_camp_crimson": 2,
+        "nova_structures:skeleton_camp_soul": 2,
+        "nova_structures:piglin_camp": 12,
+        "nova_structures:skeleton_camp_waste": 2,
+        "nova_structures:skeleton_camp_warped": 2
+      }
+    },
+    {
+      "spacing": 54,
+      "separation": 20,
+      "name": "nova_structures:nether_skeleton_towers",
+      "is_disabled": false,
+      "salt": 940354935,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:nether_skeleton_tower_crimson": 1,
+        "nova_structures:nether_skeleton_tower_soul": 1,
+        "nova_structures:nether_skeleton_tower_warped": 1,
+        "nova_structures:nether_skeleton_tower_basalt": 1
+      }
+    },
+    {
+      "spacing": 85,
+      "separation": 40,
+      "name": "nova_structures:nether_structures",
+      "is_disabled": false,
+      "salt": 5894302,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:piglin_outstation": 20,
+        "nova_structures:nether_port": 20,
+        "nova_structures:hamlet": 40,
+        "nova_structures:donjon": 1,
+        "nova_structures:nether_keep": 10
+      }
+    },
+    {
+      "spacing": 60,
+      "separation": 12,
+      "name": "nova_structures:ruin_town",
+      "is_disabled": false,
+      "salt": 39043,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:ruin_town": 1
+      }
+    },
+    {
+      "spacing": 100,
+      "separation": 16,
+      "name": "nova_structures:stray_fort",
+      "is_disabled": false,
+      "salt": 709971604,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:stray_fort": 1
+      }
+    },
+    {
+      "spacing": 44,
+      "separation": 15,
+      "name": "nova_structures:taverns",
+      "is_disabled": false,
+      "salt": 783,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:tavern_cherry": 1,
+        "nova_structures:tavern_oak": 1,
+        "nova_structures:tavern_birch": 1,
+        "nova_structures:tavern_acacia": 1,
+        "nova_structures:tavern_jungle": 1,
+        "nova_structures:tavern_mangrove": 1,
+        "nova_structures:tavern_swamp": 1,
+        "nova_structures:tavern_dark_oak": 1,
+        "nova_structures:tavern_desert": 1,
+        "nova_structures:tavern_snowy": 1,
+        "nova_structures:tavern_spruce": 1
+      }
+    },
+    {
+      "spacing": 100,
+      "separation": 20,
+      "name": "nova_structures:undead_crypt",
+      "is_disabled": false,
+      "salt": 96586859,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:undead_crypt": 1
+      }
+    },
+    {
+      "spacing": 20,
+      "separation": 10,
+      "name": "nova_structures:underground_house",
+      "is_disabled": false,
+      "salt": 23094,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:underground_house": 1
+      }
+    },
+    {
+      "spacing": 34,
+      "separation": 8,
+      "name": "nova_structures:villages_jungle",
+      "is_disabled": false,
+      "salt": 10387312,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:village_jungle": 1
+      }
+    },
+    {
+      "spacing": 34,
+      "separation": 8,
+      "name": "nova_structures:villages_swamp",
+      "is_disabled": false,
+      "salt": 10387312,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:village_swamp": 1
+      }
+    },
+    {
+      "spacing": 40,
+      "separation": 15,
+      "name": "nova_structures:wells",
+      "is_disabled": false,
+      "salt": 430930,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:well_birch": 1,
+        "nova_structures:well_dark_oak": 1,
+        "nova_structures:well_savana": 1,
+        "nova_structures:well_jungle": 1,
+        "nova_structures:well_spruce": 1,
+        "nova_structures:well_oak": 1
+      }
+    },
+    {
+      "spacing": 23,
+      "separation": 18,
+      "name": "nova_structures:wild_ruin",
+      "is_disabled": false,
+      "salt": 75489234,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:wild_ruin": 1
+      }
+    },
+    {
+      "spacing": 80,
+      "separation": 20,
+      "name": "nova_structures:witch_villa",
+      "is_disabled": false,
+      "salt": 3042970,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "nova_structures:witch_villa": 1
+      }
+    },
+    {
+      "spacing": 25,
+      "separation": 8,
+      "name": "ribbits:ribbit_village",
+      "is_disabled": false,
+      "salt": 2937541,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "ribbits:ribbit_village": 1
+      }
+    },
+    {
+      "spacing": 19,
+      "separation": 10,
+      "name": "supplementaries:way_signs",
+      "is_disabled": false,
+      "salt": 431041527,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "supplementaries:way_sign": 1
+      }
+    },
+    {
+      "spacing": 32,
+      "separation": 12,
+      "name": "takesapillage:pillager_structure",
+      "is_disabled": false,
+      "salt": 10520565,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "takesapillage:bastille": 1,
+        "takesapillage:pillager_camp": 2
+      }
+    },
+    {
+      "spacing": 8,
+      "separation": 4,
+      "name": "wythers:banyan_sparse_jungle",
+      "is_disabled": false,
+      "salt": 10387312,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "wythers:banyan_sparse_jungle": 1
+      }
+    },
+    {
+      "spacing": 6,
+      "separation": 3,
+      "name": "wythers:baobab_dry_tropical_forest",
+      "is_disabled": false,
+      "salt": 10387312,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "wythers:baobab_dry_tropical_forest": 1
+      }
+    },
+    {
+      "spacing": 16,
+      "separation": 8,
+      "name": "wythers:baobab_savanna",
+      "is_disabled": false,
+      "salt": 10387312,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "wythers:baobab_savanna": 1
+      }
+    },
+    {
+      "spacing": 6,
+      "separation": 3,
+      "name": "wythers:baobab_tropical_forest",
+      "is_disabled": false,
+      "salt": 10387312,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "wythers:baobab_tropical_forest": 1
+      }
+    },
+    {
+      "spacing": 24,
+      "separation": 8,
+      "name": "wythers:el_dorado",
+      "is_disabled": false,
+      "salt": 20083232,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "wythers:el_dorado": 1
+      }
+    },
+    {
+      "spacing": 3,
+      "separation": 1,
+      "name": "wythers:elephant_graveyard_fossils",
+      "is_disabled": false,
+      "salt": 14357921,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "wythers:elephant_graveyard_fossil": 1
+      }
+    },
+    {
+      "spacing": 4,
+      "separation": 2,
+      "name": "wythers:features",
+      "is_disabled": false,
+      "salt": 10387312,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "wythers:giant_fallen_log": 1
+      }
+    },
+    {
+      "spacing": 16,
+      "separation": 4,
+      "name": "wythers:villages",
+      "is_disabled": false,
+      "salt": 10387312,
+      "frequency": 1.0,
+      "override_global_spacing_and_separation_modifier": false,
+      "structure_weights": {
+        "wythers:village_badlands_desert": 1,
+        "wythers:village_wooded_badlands": 1,
+        "wythers:village_badlands": 1
+      }
+    }
+  ]
+}
