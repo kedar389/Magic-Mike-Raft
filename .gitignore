@@ -5,4 +5,8 @@ build.gradle
 settings.gradle
 .gradle
 server
+
+#Claude related stuff
 .claude
+.wolf
+CLAUDE.md
