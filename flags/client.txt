@@ -3,8 +3,8 @@
 # Set Java executable to: C:\Program Files\Java\jdk-21\bin\javaw.exe
 # Adjust -Xmx and -Xms based on available RAM (leave 3-4GB for Windows + other apps).
 
--Xmx8G
--Xms8G
+-Xmx12G
+-Xms12G
 -XX:+UnlockExperimentalVMOptions
 -XX:+UseZGC
 -XX:+ZGenerational
