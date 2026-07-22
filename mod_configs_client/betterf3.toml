@@ -66,7 +66,7 @@
 	color_high = 5635925
 	color_med = 16777045
 	name = "fps"
-	enabled = true
+	enabled = false
 	color_low = 16733525
 
 	[modules_left.lines]
