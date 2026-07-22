@@ -1,24 +1,46 @@
-- Make MODLIST
+--- Modpack managmenets
 - Create script that will add config and datapack to server, like copy over
-- Make Desert biomes bigger
+
 
 
 
 After mod balancing and revisits:
+--- Balance:
+- Deduplicate curio slots
+
+
+--- Biomes:
+- Use new woods from cluttered and them to the biomes in the william wythers
+- Change where flowers spawn
+- Make Desert biomes bigger by 0.5
+- Make other biomes bigger by 0.3
+
+--- Structures:
 - Make structures spawn on flat terain
+- Add waystones, remove option to mine them, make them hard to craft,
+
+
+--- Mobs:
 - Ban: flies, zombie with doors,  remove flies,
-- Chnage shadow creeper,  zombie with doors from BornInChaos, spawn stalker when is full moon,  maggots spawn,
-- Update origin config, balance stuff, Add compat between Iron spells and origins
+- Change shadow creeper,  zombie with doors from BornInChaos, spawn stalker when is full moon,  maggots spawn
 - Update caravans for illagers with new loot and different variants
 - Remve some mobs from alex mobs, remove flies
-- Update loot tables for strucutres, Add loot itegrations for new buildings 
+- Change mob spawns and to what biomes
+
+
+--- Loot tables:
+- Update loot tables for structures, Add loot integrations for new buildings
 - Update loot tables for traders, ribbits and for goblin traders and wandering
-- Add waystone, remove option to mine them, make them hard to craft,
-- Remove soul drops from companions, make it into other recipe
-- Deduplicate curio slots
-- Compat between Companions and Iron SPells
+- Add loot to caravans
 
 
+--- Mob drops
+- Remove soul drops from companions, make it into other recipe, for example exp can be made into souls or soemthing like that
 
--change settings
+
+--- Compats:
+- Update origin config, balance stuff, Add compat between Iron spells and origins
+- Compat between Companions and Iron Spells
+
+
 
