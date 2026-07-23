@@ -183,7 +183,7 @@ _version = 4
 			#
 			# If enabled, a chat message will be displayed when DH has too many chunks 
 			# queued for updating.
-			showUpdateQueueOverloadedChatWarning = true
+			showUpdateQueueOverloadedChatWarning = false
 			#
 			# If enabled, a message will be logged if explicit garbage collection 
 			# is disabled. 
@@ -576,7 +576,7 @@ _version = 4
 				#  
 				# Larger numbers texture more distant LODs 
 				# but increase memory usage.
-				maxTexturedLodDetailLevel = 2
+				maxTexturedLodDetailLevel = 3
 				#
 				# If true nearby and zoomed-in LODs will render with their block's 
 				# actual texture instead of a single flat color. 
@@ -771,7 +771,7 @@ _version = 4
 				# Note: this is a best effort number. 
 				# The actual render distance may be above or below this number 
 				# depending on your other graphic settings.
-				lodChunkRenderDistanceRadius = 128
+				lodChunkRenderDistanceRadius = 350
 				#
 				# How should the sides and bottom of grass block LODs render? 
 				# 
@@ -826,7 +826,7 @@ _version = 4
 				# 
 				# 0.0: No fog. 
 				# 1.0: Fully opaque fog.
-				farFogMax = "1.0"
+				farFogMax = "0.6"
 				#
 				# Determines if fog is drawn on DH LODs.
 				enableDhFog = true
@@ -836,7 +836,7 @@ _version = 4
 				# 0.0: Fog starts at the player's position. 
 				# 1.0: Fog starts at the closest edge of the vanilla render distance. 
 				# 1.414: Fog starts at the corner of the vanilla render distance.
-				farFogStart = "0.4"
+				farFogStart = "0.15"
 				#
 				# What is the minimum fog thickness? 
 				# 
@@ -858,7 +858,7 @@ _version = 4
 				farFogFalloff = "EXPONENTIAL_SQUARED"
 				#
 				# Used in conjunction with the Fog Falloff.
-				farFogDensity = "2.5"
+				farFogDensity = "7.0"
 				#
 				# Where should the far fog end? 
 				# 

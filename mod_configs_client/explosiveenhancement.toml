@@ -10,7 +10,7 @@
 	showSparks = true
 	#Size of sparks
 	#Range: 0.0 ~ 1.7976931348623157E308
-	sparkSize = 5.3
+	sparkSize = 3.0
 	#Opacity of sparks
 	#Range: 0.0 ~ 1.0
 	sparkOpacity = 0.7
@@ -24,7 +24,7 @@
 	showUnderwaterBlastWave = true
 	#Number of bubbles for underwater explosions
 	#Range: > 0
-	bubbleAmount = 130
+	bubbleAmount = 50
 	#Show underwater sparks effects
 	showUnderwaterSparks = false
 	#Size of underwater sparks

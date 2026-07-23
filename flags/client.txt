@@ -8,6 +8,6 @@
 -XX:+UnlockExperimentalVMOptions
 -XX:+UseZGC
 -XX:+ZGenerational
--XX:+DisableExplicitGC
+-XX:+ExplicitGCInvokesConcurrent
 -XX:+AlwaysPreTouch
 -XX:+ParallelRefProcEnabled

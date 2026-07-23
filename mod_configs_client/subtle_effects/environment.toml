@@ -4,23 +4,23 @@ biomeColorRain = true
 
 [biomes]
 biomeParticlesRadius = 32
+mushroomSporeDensity = 10
 mushroomSporeBiomes = [
     "minecraft:mushroom_fields"
 ]
-mushroomSporeDensity = 10
+pollenDensity = 50
 pollenBiomes = [
     "minecraft:flower_forest",
     "minecraft:sunflower_plains"
 ]
-pollenDensity = 50
+sculkDustDensity = 10
 sculkDustBiomes = [
     "minecraft:deep_dark"
 ]
-sculkDustDensity = 10
 
 [geysers]
 useUpdatedSmoke = false
-flameGeyserSpawnChance = 0
+flameGeyserSpawnChance = 5
 flameGeyserSpawnableBlocks = [
     "minecraft:netherrack",
     "minecraft:blackstone",
@@ -29,7 +29,7 @@ flameGeyserSpawnableBlocks = [
 flameGeyserSoundVolume = 0.5
 flameGeyserActiveTime = 300
 flameGeyserInactiveTime = 500
-smokeGeyserSpawnChance = 0
+smokeGeyserSpawnChance = 5
 smokeGeyserSpawnableBlocks = [
     "minecraft:netherrack",
     "minecraft:blackstone",
@@ -51,7 +51,7 @@ bubbleGeyserActiveTime = 300
 bubbleGeyserInactiveTime = 500
 
 [fireflies]
-firefliesEnabled = false
+firefliesEnabled = true
 dimensionBlocklist = [
     "twilightforest:twilight_forest_type"
 ]
@@ -85,7 +85,7 @@ defaultDensity = 3
 ignoredSeasons = "DEFAULT"
 fireflyType = "ORIGINAL"
 fireflySoundVolume = 1.0
-onlyAllowInHabitatBiomes = false
+onlyAllowInHabitatBiomes = true
 habitatBiomes = [
     "minecraft:swamp",
     "minecraft:mangrove_swamp"
@@ -98,9 +98,9 @@ smallWaterfallsEnabled = true
 waterfallUpdateFrequency = 6
 randomizeWaterfallParticleRotation = false
 mediumWaterfallParticleDensity = 1.0
-mediumWaterfallHeightThreshold = 5
+mediumWaterfallHeightThreshold = 6
 forceSpawnMediumWaterfallParticles = true
 largeWaterfallsEnabled = true
 largeWaterfallParticleDensity = 1.0
-largeWaterfallHeightThreshold = 11
+largeWaterfallHeightThreshold = 10
 forceSpawnLargeWaterfallParticles = true
