@@ -41,6 +41,7 @@ After mod balancing and revisits:
 --- Compats:
 - Update origin config, balance stuff, Add compat between Iron spells and origins
 - Compat between Companions and Iron Spells
+- Add "Let's do Bakery" & check crosscompatibility with other recipes (Farmer's delight etc)
 
 
 
