@@ -18,8 +18,9 @@
 - [ ] Add waystones — remove the option to mine them, make them hard to craft
 
 ## Mobs
-- [ ] Ban and remove flies; ban zombies with doors
-- [ ] Change the shadow creeper and the zombie-with-doors from Born in Chaos; spawn the stalker on a full moon; add maggot spawns
+- [ ] Ban mobs with Mob controls.  Born in Chaos mobs: Door Knight, Corpse fly, Bloody Gadfly,
+- [x] Disable fly on eating rotten meat rule, disable maggots spawning rule
+- [ ] Allow the stalker from Born in chaos to spawn only a full moon and
 - [ ] Update illager caravans with new loot and different variants
 - [ ] Remove some mobs from Alex's Mobs (including flies)
 - [ ] Change mob spawns and which biomes they spawn in
