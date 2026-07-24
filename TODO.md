@@ -22,7 +22,8 @@
 - [x] Disable fly on eating rotten meat rule, disable maggots spawning rule
 - [ ] Allow the stalker from Born in chaos to spawn only a full moon and
 - [ ] Update illager caravans with new loot and different variants
-- [ ] Remove some mobs from Alex's Mobs (including flies)
+- [x] Ban 19 mobs from Alex's Mobs (via alexsmobs.toml spawn weights) — see [Modpack Wiki](docs/modpack-wiki.md)
+- [x] Reduce the spawn chance/count of catfish (weight 4 → 2)
 - [ ] Change mob spawns and which biomes they spawn in
 
 ## Loot Tables
