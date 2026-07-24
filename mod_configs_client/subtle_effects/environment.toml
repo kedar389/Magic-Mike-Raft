@@ -21,11 +21,7 @@ sculkDustBiomes = [
 [geysers]
 useUpdatedSmoke = false
 flameGeyserSpawnChance = 5
-flameGeyserSpawnableBlocks = [
-    "minecraft:netherrack",
-    "minecraft:blackstone",
-    "minecraft:soul_soil"
-]
+flameGeyserSpawnableBlocks = []
 flameGeyserSoundVolume = 0.5
 flameGeyserActiveTime = 300
 flameGeyserInactiveTime = 500

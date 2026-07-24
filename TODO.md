@@ -38,4 +38,4 @@
 - [ ] Add "Let's Do: Bakery" and check cross-compatibility with other recipes (Farmer's Delight, etc.)
 
 ## Visual
-- [ ] Remove fire fissures from the effects
+- [x] Remove fire fissures from the effects
