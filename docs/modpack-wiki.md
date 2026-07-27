@@ -1,6 +1,6 @@
 # Magic Minecraft Server — Modpack Wiki
 
-A reference of the deliberate **server-side** config in this modpack: what is set, **where** the setting lives, and (for mobs) **why**. This page is the single index for "is X changed, and how?" — progress/tasks are tracked in [`TODO.MD`](../TODO.MD), not here.
+A reference of the deliberate **server-side** config in this modpack: what is set, **where** the setting lives, and (for mobs) **why**. This page is the single index for "is X changed, and how?" — progress/tasks are tracked in [`TODO.MD`](../TODO.MD), not here. For the full list of biomes that generate on this server, see [`biomes.md`](biomes.md).
 
 ## How config works here
 
