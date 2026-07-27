@@ -4,7 +4,7 @@
 slots = [
 	"id=ring;size=2;operation=SET",
 	"id=rings;size=0;operation=SET",
-	"id=charm;size=1;operation=SET",
+	"id=charm;size=2;operation=SET",
 	"id=feet;size=1;operation=SET",
 	"id=hands;size=1;operation=SET",
 	"id=belt;size=1;operation=SET",
