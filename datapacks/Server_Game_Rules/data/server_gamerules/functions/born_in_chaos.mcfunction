@@ -11,6 +11,12 @@ gamerule maggotsAppearance false
 # NOTE: does NOT stop the corpse-fly swarm from eating rotten flesh (not gamerule-gated)
 gamerule corpseFlySpawn false
 
+# No naturally-spawning bloody gadflies (born_in_chaos_v1:bloody_gadfly)
+gamerule bloodyGadflySpawn false
+
+# No naturally-spawning door knights (born_in_chaos_v1:door_knight)
+gamerule doorKnightSpawn false
+
 # Keep these mechanics ON
 gamerule soulStratificationEffect true
 gamerule theappearanceoftheNightmareStalker true

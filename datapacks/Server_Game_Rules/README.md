@@ -11,10 +11,12 @@ for each mod — add a new function file here instead.
 ## Layout
 
 ```
-data/server_gamerules/functions/
-├── load.mcfunction      # run-once guard, fired by #minecraft:load
-├── apply.mcfunction     # calls each mod's rule function, then marks done
-└── born_in_chaos.mcfunction   # Born in Chaos (born_in_chaos_v1) rules
+data/server_gamerules/
+├── functions/
+│   ├── load.mcfunction              # fired by #minecraft:load: run-once baseline + (re)start dynamic loops
+│   ├── apply.mcfunction             # calls each mod's rule function, then marks done
+│   └─ born_in_chaos.mcfunction      # Born in Chaos (born_in_chaos_v1) static rules
+
 ```
 
 ## Rules currently applied
@@ -26,6 +28,8 @@ data/server_gamerules/functions/
 | `disappearanceofSpiritsUndertheSun` | `true`  | Spirit mobs burn/vanish in daylight |
 | `maggotsAppearance`                 | `false` | No maggots from corpses on death |
 | `corpseFlySpawn`                    | `false` | No naturally-spawning corpse flies * |
+| `bloodyGadflySpawn`                 | `false` | No naturally-spawning bloody gadflies |
+| `doorKnightSpawn`                   | `false` | No naturally-spawning door knights |
 | `soulStratificationEffect`          | `true`  | On |
 | `theappearanceoftheNightmareStalker`| `true`  | Nightmare Stalker can appear |
 | `generationofInfectedDiamonds`      | `true`  | Infected diamonds generate |

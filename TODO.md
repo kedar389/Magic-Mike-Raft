@@ -1,5 +1,10 @@
 # TODO
 
+## Mods to add
+
+
+
+
 ## Modpack Management
 - [ ] Create a script that copies config and datapacks over to the server
 
@@ -18,13 +23,13 @@
 - [ ] Add waystones — remove the option to mine them, make them hard to craft
 
 ## Mobs
-- [ ] Ban mobs with Mob controls.  Born in Chaos mobs: Door Knight, Corpse fly, Bloody Gadfly,
+- [ ] Ban Born in Chaos mobs: Door Knight, Corpse fly, Bloody Gadfly
 - [x] Disable fly on eating rotten meat rule, disable maggots spawning rule
-- [ ] Allow the stalker from Born in chaos to spawn only a full moon and
-- [ ] Update illager caravans with new loot and different variants
+- [ ] Allow the stalker from Born in chaos to spawn only a full moon
 - [x] Ban 19 mobs from Alex's Mobs (via alexsmobs.toml spawn weights) — see [Modpack Wiki](docs/modpack-wiki.md)
 - [x] Reduce the spawn chance/count of catfish (weight 4 → 2)
 - [ ] Change mob spawns and which biomes they spawn in
+- [ ] Update illager caravans with new loot and different variants
 
 ## Loot Tables
 - [ ] Update loot tables for structures; add loot integrations for new buildings
@@ -35,7 +40,7 @@
 - [ ] Remove soul drops from Companions; turn souls into another recipe instead (e.g. convert XP into souls)
 
 ## Compats
-- [ ] Update origin config, balance stuff, and add compat between Iron's Spells and Origins
+- [ ] Add compat between Iron's Spells and Origins
 - [ ] Add compat between Companions and Iron's Spells
 - [ ] Add "Let's Do: Bakery" and check cross-compatibility with other recipes (Farmer's Delight, etc.)
 
