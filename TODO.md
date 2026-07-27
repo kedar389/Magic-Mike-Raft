@@ -1,8 +1,9 @@
 # TODO
 
 ## Mods to add
-
-
+- [] add lets do bakery
+- [] add ascended arcana
+- [] Add feur extension jungle
 
 
 ## Modpack Management
@@ -10,7 +11,7 @@
 
 ## Balance
 - [x] Deduplicate curio slots
-- [ ] Merge item stat categories
+- [] Merge jump height, experience gain,dropped experience, dodge chance, critical damage, arrow damage, armor peirce,  attributes
 
 ## Biomes
 - [ ] Use the new woods from Cluttered and add them to the biomes in William Wythers
@@ -23,7 +24,7 @@
 - [ ] Add waystones — remove the option to mine them, make them hard to craft
 
 ## Mobs
-- [ ] Ban Born in Chaos mobs: Door Knight, Corpse fly, Bloody Gadfly
+- [x] Ban Born in Chaos mobs: Door Knight, Corpse fly, Bloody Gadfly
 - [x] Disable fly on eating rotten meat rule, disable maggots spawning rule
 - [ ] Allow the stalker from Born in chaos to spawn only a full moon
 - [x] Ban 19 mobs from Alex's Mobs (via alexsmobs.toml spawn weights) — see [Modpack Wiki](docs/modpack-wiki.md)
@@ -39,6 +40,7 @@
 ## Mob Drops
 - [ ] Remove soul drops from Companions; turn souls into another recipe instead (e.g. convert XP into souls)
 
+
 ## Compats
 - [ ] Add compat between Iron's Spells and Origins
 - [ ] Add compat between Companions and Iron's Spells
@@ -46,3 +48,7 @@
 
 ## Visual
 - [x] Remove fire fissures from the effects
+- [ ] Remove water bubble fissures from the effects
+
+## UI
+- [] Fix hearts in the UI to not overlap on each other
