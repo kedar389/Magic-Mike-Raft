@@ -48,7 +48,7 @@
 
 ## Visual
 - [x] Remove fire fissures from the effects
-- [ ] Remove water bubble fissures from the effects
+- [X] Remove water bubble fissures from the effects
 
 ## UI
 - [] Fix hearts in the UI to not overlap on each other

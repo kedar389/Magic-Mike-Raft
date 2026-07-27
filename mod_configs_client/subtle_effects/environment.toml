@@ -35,13 +35,7 @@ smokeGeyserSoundVolume = 0.2
 smokeGeyserActiveTime = 300
 smokeGeyserInactiveTime = 500
 bubbleGeyserSpawnChance = 5
-bubbleGeyserSpawnableBlocks = [
-    "minecraft:sand",
-    "minecraft:red_sand",
-    "minecraft:gravel",
-    "minecraft:dirt",
-    "minecraft:clay"
-]
+bubbleGeyserSpawnableBlocks = []
 bubbleGeyserSoundVolume = 0.5
 bubbleGeyserActiveTime = 300
 bubbleGeyserInactiveTime = 500
