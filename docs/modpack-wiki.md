@@ -48,6 +48,19 @@ Disabled via each mob's `<mob>SpawnWeight = 0` in [`mod_configs_server/alexsmobs
 
 _Sources: [AlexsMobs #382 (Leafcutter TPS lag)](https://github.com/Alex-the-666/AlexsMobs/issues/382), [SteamPunk #83 (fish/lobster/terrapin overpopulation)](https://github.com/LunaPixelStudios/SteamPunk/issues/83)._
 
+### Born in Chaos
+
+Born in Chaos has no config file — spawns are disabled via its custom game rules
+(set in the [Game Rules](#game-rules) datapack). Natural spawning is turned off for:
+
+| Mob | Reason | Rule (off) |
+|---|---|---|
+| Corpse Fly | Swarm clutter / lag | `corpseFlySpawn` |
+| Bloody Gadfly | Swarm clutter / lag | `bloodyGadflySpawn` |
+| Door Knight | Owner preference | `doorKnightSpawn` |
+
+Also off: **Maggots** from corpses on death (`maggotsAppearance`) — a death effect rather than a natural spawn. See [Game Rules → Born in Chaos](#born-in-chaos-1) for the full rule list.
+
 ---
 
 ## Game Rules
@@ -84,13 +97,50 @@ Spawn-rate and biome tuning that isn't a full ban.
 
 ## Loot Tables
 
-_None yet._
+### End Remastered eyes — vanilla chests
+
+Datapack [`datapacks/eyes_of_ender_drops/`](../datapacks/eyes_of_ender_drops/) (see its README for the full scheme). Eyes injected into vanilla chest loot:
+
+| Eye | Chest | Chance |
+|---|---|---|
+| `cursed_eye` | Bastion treasure | 50% |
+| `black_eye` | Buried treasure | 30% |
+| `black_eye` | Shipwreck treasure | 5% |
+| `corrupted_eye` | Pillager outpost | 30% |
+| `magical_eye` | Woodland mansion | 10% |
+
+Default End Remastered chest sources (mineshaft, desert pyramid, igloo, jungle temple, nether bridge, simple dungeon) are **disabled** — those eyes now come from bosses (below).
 
 ---
 
 ## Mob Drops
 
-_None yet._
+### End Remastered eyes — mobs & bosses
+
+Datapack [`datapacks/eyes_of_ender_drops/`](../datapacks/eyes_of_ender_drops/).
+
+**Boss drops (guaranteed):**
+
+| Eye | Boss | Mod |
+|---|---|---|
+| `old_eye` | Ancient Remnant | Cataclysm |
+| `lost_eye` | The Harbinger | Cataclysm |
+| `nether_eye` | Netherite Monstrosity | Cataclysm |
+| `exotic_eye` | Coralssus | Cataclysm (only source; recipe removed) |
+| `cold_eye` | Lich | Bosses of Mass Destruction (player kill) |
+| `rogue_eye` | Sculptor | Mowzie's Mobs (player kill) |
+| `undead_soul` (→ craft `undead_eye`) | Maledictus | Cataclysm |
+
+**Injected into vanilla mob drops:**
+
+| Eye / item | Mob | Chance |
+|---|---|---|
+| `guardian_eye` | Elder Guardian | 30% |
+| `magical_eye` | Evoker | 5% |
+| `wither_eye` | Wither | 90% ×2 rolls |
+| `witch_pupil` (→ craft `witch_eye`) | Witch | 10% |
+
+Crafted eyes: `undead_eye` (shaped) and `witch_eye` (`ender_eye` + `witch_pupil`, shapeless).
 
 ---
 

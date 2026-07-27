@@ -11,12 +11,10 @@ for each mod — add a new function file here instead.
 ## Layout
 
 ```
-data/server_gamerules/
-├── functions/
-│   ├── load.mcfunction              # fired by #minecraft:load: run-once baseline + (re)start dynamic loops
-│   ├── apply.mcfunction             # calls each mod's rule function, then marks done
-│   └─ born_in_chaos.mcfunction      # Born in Chaos (born_in_chaos_v1) static rules
-
+data/server_gamerules/functions/
+├── load.mcfunction         # fired by #minecraft:load; runs the baseline once
+├── apply.mcfunction        # calls each mod's rule function, then marks done
+└── born_in_chaos.mcfunction  # Born in Chaos (born_in_chaos_v1) rules
 ```
 
 ## Rules currently applied
