@@ -29,6 +29,7 @@ WorldGen:
 
 
 Structure:
+    Feur Jungle
     Better Village
     Integrated villages + Loot Integrations
     DungeonNowLoading
@@ -37,8 +38,8 @@ Structure:
     DnT ANcient city overhaul
     DnT stronghold 
     DnT Pillager outpost 
-
     Formations Nether
+
     Yung:
         Better dungeons
         better jungle temple
@@ -47,10 +48,11 @@ Structure:
         Better desert temples
         nether fortresses 
         ocean monuments
+
     DnT Pillager outpost
     
     Ribbits
-    Grim Kingdoms: Lost structures & ruins
+    Grim Kingdoms Lost structures & ruins
     BetterArcheology* + loot integrations
     Cataclysm* + loot integrations
     Mowzie mobs*
@@ -100,7 +102,6 @@ End overhaul:
 
 Pillager Overhaul:
     Raids enhanced - new minibosses
-    Illager revolution - new mobs, enchants, new sword
     Illage and spillage - new pillagers and boss pillagers
     It takes a pillage - New structures, mobs
     Enchant With mob - turn off enchants for rnadom mobs
@@ -137,9 +138,10 @@ Trinkets and items:
 
 
 
-Enchant Overhauls: 
-    Enchancement
-    Majrusz Echantmens
+Enchant Overhauls:
+    Ascendant Arcana
+    Ascendant Compatibility
+    Majrusz Echantments
 
 
 

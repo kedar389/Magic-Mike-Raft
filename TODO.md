@@ -1,10 +1,10 @@
 # TODO
 
 ## Mods to add
-- [] add lets do bakery
-- [] add ascended arcana
-- [] Add feur extension jungle
-
+- [] add lets do bakery, needs checking the farm and charm that is being pulled ind
+- [X] add ascended arcana
+- [x] Add feur extension jungle
+- [x] Add colorful hearts
 
 ## Modpack Management
 - [ ] Create a script that copies config and datapacks over to the server
@@ -53,3 +53,4 @@
 
 ## UI
 - [] Fix hearts in the UI to not overlap on each other
+- [] Add support for obscuria tips
