@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+version = project.mod_version
+group = 'com.ironscompanions'
+archivesBaseName = project.mod_id
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+minecraft {
+    // Official (Mojang) mappings, same as the OriginSpellSchools sibling mod.
+    mappings channel: 'official', version: '1.20.1'
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'debug'
+            mods { irons_companions { source sourceSets.main } }
+        }
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'debug'
+            mods { irons_companions { source sourceSets.main } }
+        }
+    }
+}
+
+repositories {
+    maven { url = 'https://cursemaven.com'; content { includeGroup 'curse.maven' } }
+    // GeckoLib / Curios mavens (needed at runtime for Companions to load in dev):
+    maven { url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
+    maven { url = 'https://maven.blamejared.com' }
+    mavenCentral()
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.0'
+
+    // --- Iron's Spells 'n Spellbooks 3.16.2 (compile API) ---
+    implementation fg.deobf('curse.maven:irons-spells-855414:8364933')
+
+    // --- Companions + GTBC libs: deobf'd from the local jars in ./libs/ ---------------
+    // Copy these out of `servers_folder/magic server/mods/` into `mod_compats/IronsCompanions/libs/`
+    // before building. We reference their real classes (projectile entities, geo school), so they
+    // must be compile deps. CurseMaven file IDs unknown -> local jars keep the build reproducible.
+    implementation fg.deobf(files('libs/companions-forge-1.20.1-1.2.3.jar'))
+    implementation fg.deobf(files('libs/gtbcs_spell_lib-1.5.0-1.20.1.jar'))
+    implementation fg.deobf(files('libs/gtbcs_geomancy_plus-2.0.0-1.20.1.jar'))
+
+    // Runtime-only transitive deps so a dev run can actually load Companions.
+    runtimeOnly fg.deobf(files('libs/geckolib-forge-1.20.1-4.8.4.jar'))
+    runtimeOnly fg.deobf(files('libs/knightlib-forge-1.20.1-1.6.1.jar'))
+    runtimeOnly fg.deobf(files('libs/curios-forge-5.14.1+1.20.1.jar'))
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title'    : 'irons_companions',
+            'Specification-Vendor'   : 'irons_companions',
+            'Specification-Version'  : '1',
+            'Implementation-Title'   : project.name,
+            'Implementation-Version' : project.jar.archiveVersion,
+            'Implementation-Vendor'  : 'irons_companions',
+        ])
+    }
+}

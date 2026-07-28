@@ -1,0 +1,55 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+    modId="irons_companions"
+    version="0.1.0"
+    displayName="Iron's Companions"
+    description='''
+Compatibility + content bridge between Iron's Spells 'n Spellbooks and the Companions! mod.
+Converts Companions' magic-book effects into real Iron's Spells (scroll + spellbook castable),
+retypes companion ability damage to the correct magic schools, and adds armour/ally bridges.
+'''
+
+[[dependencies.irons_companions]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.irons_companions]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1,1.21)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.irons_companions]]
+    modId="irons_spellbooks"
+    mandatory=true
+    versionRange="[3.16,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.irons_companions]]
+    modId="companions"
+    mandatory=true
+    versionRange="[1.2.3,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.irons_companions]]
+    modId="gtbcs_spell_lib"
+    mandatory=true
+    versionRange="[1.5,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.irons_companions]]
+    modId="gtbcs_geomancy_plus"
+    mandatory=true
+    versionRange="[2.0,)"
+    ordering="AFTER"
+    side="BOTH"
