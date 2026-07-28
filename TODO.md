@@ -22,7 +22,7 @@
 
 ## Structures
 - [ ] Make structures spawn on flat terrain
-- [ ] Add waystones — remove the option to mine them, make them hard to craft
+- [x] Add waystones — remove the option to mine them, make them hard to craft, make them sparse like 500 blocks, give travel a reasonable XP-based scaling cost (usable by endgame, harder early game — not crazy). Waystone recipe uses warp stone; disable warp stone crafting (later added to expensive trader trades). For now warp stone should be unobtainable.
 
 ## Mobs
 - [x] Ban Born in Chaos mobs: Door Knight, Corpse fly, Bloody Gadfly

@@ -16,6 +16,7 @@ A reference of the deliberate **server-side** config in this modpack: what is se
 4. [Loot Tables](#loot-tables)
 5. [Mob Drops](#mob-drops)
 6. [Attributes](#attributes)
+7. [Waystones](#waystones)
 
 ---
 
@@ -165,7 +166,58 @@ Iron's Lib ships its own fork of 7 of those attributes (same names, same descrip
 | Healing received | `irons_lib:healing_received` | `attributeslib:healing_received` |
 | Mining speed | `irons_lib:mining_speed` | `attributeslib:mining_speed` |
 
-**Still duplicated (not merged):** Tinkers' Construct (`Critical Damage`, `Experience`, `Mining Speed`), Cataclysm (`additional_critical_damage`, `nature_heal`) and Obscure API / Aquamirae (`criticalDamage`, `criticalHit`, `dodge`, `penetration`, `healingPower`). The remap transfers modifier amounts without rescaling, and these mods' value conventions are unverified (Obscure API looks like whole percent points vs Apothic's fractions). **Jump height** is not duplicated — `tconstruct:generic.jump_boost` is the only jump-height attribute; Artifacts / Unique Accessories / More Relics / Botania change jump height in code. Details in the datapack's [README](../datapacks/Attribute_Merge/README.md).
+### Cataclysm + Obscure API merged by KubeJS bridge
+
+Script [`kubejs/server_scripts/attribute_merge_bridge.js`](../kubejs/server_scripts/attribute_merge_bridge.js).
+
+These two families **cannot** use the datapack remap above, because the remap transfers the modifier amount as-is and neither shares Apothic's conventions:
+
+- **Cataclysm** counts in percent **points** — The Annihilator grants `ADDITION 75.0` meaning "+75% crit damage", which remapped onto Apothic's 1.5-based multiplier would be a 76.5× crit. Needs a ×0.01 rescale.
+- **Obscure API** reads its attributes by **summing** the amounts of ADDITION + MULTIPLY_BASE + MULTIPLY_TOTAL modifiers additively (`ObscureAPIAttributes.getPercent`), and Aquamirae grants them as `MULTIPLY_BASE` (e.g. `0.3`). Under the vanilla math Apothic uses, `MULTIPLY_BASE` on a base-0 attribute (dodge, crit chance) contributes **nothing** — a raw remap would silently delete those bonuses.
+
+So the script reads each source the way its own mod does, re-applies it to the Apothic attribute as a transient `ADDITION` modifier (rescaled), and cancels the source so its owning mod contributes nothing. Re-synced once per second per player; nothing is written to player data.
+
+| Merged stat | From | To | Scale |
+|---|---|---|---|
+| Critical damage (percent points) | `cataclysm:additional_critical_damage` | `attributeslib:crit_damage` | ×0.01 |
+| Critical damage | `obscure_api:critical_damage` | `attributeslib:crit_damage` | ×1 |
+| Crit chance | `obscure_api:critical_hit` | `attributeslib:crit_chance` | ×1 |
+| Dodge chance | `obscure_api:dodge` | `attributeslib:dodge_chance` | ×1 |
+| Armor penetration (% of armor) | `obscure_api:penetration` | `attributeslib:armor_shred` | ×1 |
+| Healing received | `obscure_api:healing_power` | `attributeslib:healing_received` | ×1 |
+
+Obscure's Penetration is a *percentage* of armor ignored, so its twin is `armor_shred` (percentage armor reduction), not `armor_pierce` (flat armor points).
+
+Note: an Aquamirae item's own tooltip still lists its Obscure API stat lines (that's what the item grants); the **player's** total now lives on the Apothic stat. The value is applied once, but it is described in both places.
+
+**Deliberately left alone:** **Tinkers' Construct** (`Critical Damage`, `Experience`, `Mining Speed` — owner's call to skip Tinkers integration); `obscure_api` `parry` / `accuracy` / `resilience` / `regeneration` / `magic_damage` / `magic_resistance` and `cataclysm` `nature_heal` / `eat_speed` / `charge_time`, which have no Apothic counterpart to merge into. **Jump height** is not duplicated at all — `tconstruct:generic.jump_boost` is the only jump-height attribute; Artifacts / Unique Accessories / More Relics / Botania change jump height in code. Details in the datapack's [README](../datapacks/Attribute_Merge/README.md).
+
+---
+
+## Waystones
+
+Waystones are a **discovered, XP-gated** travel network — not a cheap early convenience.
+Two systems: mod config for world-gen + XP, and KubeJS for the recipes.
+
+**World-gen & teleport cost** — [`mod_configs_server/waystones-common.toml`](../mod_configs_server/waystones-common.toml):
+
+| Setting | Value | Effect |
+|---|---|---|
+| `worldGen.frequency` | `31` | ~500 blocks between world-gen waystones (was 25 ≈ 400) — sparse |
+| `restrictions.generatedWaystonesUnbreakable` | `true` | World-gen waystones cannot be mined |
+| `xpCost.minimumBaseXpCost` | `1.0` | Every warp costs ≥ 1 level |
+| `xpCost.maximumBaseXpCost` | `5.0` | Long-haul cap of 5 levels (was 3) |
+| `xpCost.blocksPerXpLevel` | `1000` | Cost scales 1 level per 1000 blocks between the min/max |
+| `xpCost.*XpCostMultiplier` (waystone, warpStone, sharestone, portstone, warpPlate, global, inventoryButton) | `1.0` | All warp methods now pay the base cost (were `0.0` = free) |
+
+Because Minecraft XP levels get progressively more expensive, a flat few-level cost stings early game but is trivial by endgame — **usable at endgame, harder early**. All values are tunable.
+
+**Recipes** — [`kubejs/server_scripts/waystones_balance.js`](../kubejs/server_scripts/waystones_balance.js):
+
+| Item | Change |
+|---|---|
+| `waystones:warp_stone` | Recipe **removed** — no survival craft. Intended as a future expensive trader trade (see [`TODO.MD`](../TODO.MD)); unobtainable for now. |
+| `waystones:waystone` | **Unchanged** — the mod's default recipe already requires a Warp Stone (3× stone bricks + 4× obsidian + 1× Warp Stone). Since Warp Stone is unobtainable, the waystone is uncraftable too, so waystones are currently **only** available from world gen. |
 
 ---
 
