@@ -1,0 +1,4 @@
+{
+  "from": "irons_lib:healing_received",
+  "to": "attributeslib:healing_received"
+}

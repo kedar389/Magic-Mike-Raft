@@ -11,7 +11,8 @@
 
 ## Balance
 - [x] Deduplicate curio slots
-- [] Merge jump height, experience gain,dropped experience, dodge chance, critical damage, arrow damage, armor peirce,  attributes
+- [x] Merge duplicate attributes — Iron's Lib set (crit damage, dodge chance, arrow damage, armor pierce, experience gained, healing received, mining speed) folded into Apothic Attributes via [`datapacks/Attribute_Merge/`](datapacks/Attribute_Merge/)
+- [ ] Merge remaining duplicate attributes: Tinkers' (Critical Damage, Experience, Mining Speed), Cataclysm (`additional_critical_damage`), Obscure API/Aquamirae (crit damage, crit hit, dodge, penetration) — blocked on confirming their value scales (remap does not rescale amounts); jump height has only ONE attribute (Tinkers'), other mods do it in code — see [`Attribute_Merge/README.md`](datapacks/Attribute_Merge/README.md)
 
 ## Biomes
 - [ ] Use the new woods from Cluttered and add them to the biomes in William Wythers

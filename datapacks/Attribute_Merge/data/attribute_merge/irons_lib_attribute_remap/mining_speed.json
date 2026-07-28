@@ -1,0 +1,4 @@
+{
+  "from": "irons_lib:mining_speed",
+  "to": "attributeslib:mining_speed"
+}

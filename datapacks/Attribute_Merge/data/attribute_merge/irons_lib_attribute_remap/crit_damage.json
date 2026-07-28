@@ -1,0 +1,4 @@
+{
+  "from": "irons_lib:crit_damage",
+  "to": "attributeslib:crit_damage"
+}

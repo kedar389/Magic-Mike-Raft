@@ -1,0 +1,6 @@
+{
+  "pack": {
+    "pack_format": 15,
+    "description": "Merges duplicate RPG attributes into Apothic Attributes"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "from": "irons_lib:arrow_damage",
+  "to": "attributeslib:arrow_damage"
+}

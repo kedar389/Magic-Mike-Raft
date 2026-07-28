@@ -15,6 +15,7 @@ A reference of the deliberate **server-side** config in this modpack: what is se
 3. [Mob Biome Spawns](#mob-biome-spawns)
 4. [Loot Tables](#loot-tables)
 5. [Mob Drops](#mob-drops)
+6. [Attributes](#attributes)
 
 ---
 
@@ -141,6 +142,30 @@ Datapack [`datapacks/eyes_of_ender_drops/`](../datapacks/eyes_of_ender_drops/).
 | `witch_pupil` (→ craft `witch_eye`) | Witch | 10% |
 
 Crafted eyes: `undead_eye` (shaped) and `witch_eye` (`ender_eye` + `witch_pupil`, shapeless).
+
+---
+
+## Attributes
+
+### Duplicate attributes merged into Apothic Attributes
+
+Datapack [`datapacks/Attribute_Merge/`](../datapacks/Attribute_Merge/).
+
+**Apothic Attributes (`attributeslib:*`) is the canonical attribute set** — it owns the Attributes GUI, the tooltips and the combat formulas in `config/attributeslib.cfg` (currently stock — not tracked in the repo).
+
+Iron's Lib ships its own fork of 7 of those attributes (same names, same descriptions, same value conventions), so each stat existed twice. Iron's Lib's built-in Apothic compat is gated on modid `apothic_attributes`, but the installed Apothic Attributes 1.20.1-1.3.7 declares modid `attributeslib` — so it never fires. Iron's Lib also reads attribute remaps from datapacks (`irons_lib_attribute_remap`), which is what this datapack uses: item/curio modifiers for the `irons_lib` attribute are rewritten onto the Apothic one, so they **stack on a single attribute** and the Iron's Lib handlers stop contributing (no double-dipping).
+
+| Merged stat | From | To |
+|---|---|---|
+| Critical damage | `irons_lib:crit_damage` | `attributeslib:crit_damage` |
+| Dodge chance | `irons_lib:dodge_chance` | `attributeslib:dodge_chance` |
+| Arrow damage | `irons_lib:arrow_damage` | `attributeslib:arrow_damage` |
+| Armor pierce | `irons_lib:armor_pierce` | `attributeslib:armor_pierce` |
+| Experience gained (mob + block XP) | `irons_lib:experience_gained` | `attributeslib:experience_gained` |
+| Healing received | `irons_lib:healing_received` | `attributeslib:healing_received` |
+| Mining speed | `irons_lib:mining_speed` | `attributeslib:mining_speed` |
+
+**Still duplicated (not merged):** Tinkers' Construct (`Critical Damage`, `Experience`, `Mining Speed`), Cataclysm (`additional_critical_damage`, `nature_heal`) and Obscure API / Aquamirae (`criticalDamage`, `criticalHit`, `dodge`, `penetration`, `healingPower`). The remap transfers modifier amounts without rescaling, and these mods' value conventions are unverified (Obscure API looks like whole percent points vs Apothic's fractions). **Jump height** is not duplicated — `tconstruct:generic.jump_boost` is the only jump-height attribute; Artifacts / Unique Accessories / More Relics / Botania change jump height in code. Details in the datapack's [README](../datapacks/Attribute_Merge/README.md).
 
 ---
 
