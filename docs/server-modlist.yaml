@@ -1,206 +1,192 @@
+# Server modlist (MC 1.20.1 Forge + Sinytra Connector)
+# Legend:
+#   *   = also listed in another section
+#   #   = considered but not included
 
 Performance:
-    Krypton - Network
-    Ferrite core- memory optimizaiotns
-    AllTheLeaks - fix memory leaks
-    Noisium - For generation optimizaiotns
-    Modern FIx - Modern Fixes
-    Radium Reforged - optimizations (or Canary)
-    C2ME 
-    Get It together drops
-    Clumps
-    Structure Layout Optimizer
-    
-Utilities:    
-    spark
-    chunky
-    structurify
-    Mob COntrol
-    Command aliases
-    WITS
-    CraftTweaker
-    kube js
+  - Krypton                     # network stack optimizations
+  - FerriteCore                 # memory optimizations
+  - AllTheLeaks                 # fixes memory leaks
+  - Noisium                     # worldgen optimizations
+  - ModernFix                   # general startup and runtime fixes
+  - Radium Reforged             # tick and pathfinding optimizations (or Canary)
+  - C2ME                        # parallel chunk loading and generation
+  - Get It Together, Drops!     # merges dropped items
+  - Clumps                      # merges XP orbs
+  - Structure Layout Optimizer  # faster structure placement checks
 
-WorldGen:
-    DistantHorizons for server side
-    Wiliam wither overhauls
-    Nullscape
-    Amplified nether
+Utilities:
+  - spark                       # profiler for TPS and memory
+  - Chunky                      # pre-generates chunks
+  - Structurify                 # per-structure spawn control
+  - Mob Control                 # mob spawn rules and caps
+  - Command Aliases             # custom command shortcuts
+  - WITS                        # What Is This Slot, slot tooltips
+  - CraftTweaker                # recipe scripting
+  - KubeJS                      # scripted recipes, loot and events
 
+Worldgen:
+  - Distant Horizons            # server-side LOD support
+  - WWOO                        # William Wythers' Overhauled Overworld
+  - Nullscape                   # End terrain overhaul
+  - Amplified Nether            # full-height Nether terrain
 
-Structure:
-    Feur Jungle
-    Better Village
-    Integrated villages + Loot Integrations
-    DungeonNowLoading
-    Explorify
-    DnT + Loot Integrations
-    DnT ANcient city overhaul
-    DnT stronghold 
-    DnT Pillager outpost 
-    Formations Nether
+Structures:
+  - Feur Jungle                 # jungle biome and structures
+  - Better Village              # village overhaul
+  - Integrated Villages         # + Loot Integrations
+  - Dungeon Now Loading         # extra dungeon variants
+  - Explorify                   # small vanilla-style structures
+  - Dungeons and Taverns        # DnT, base module + Loot Integrations
+  - DnT Ancient City Overhaul
+  - DnT Stronghold Overhaul
+  - DnT Pillager Outpost Overhaul
+  - Formations Nether           # Nether terrain formations
 
-    Yung:
-        Better dungeons
-        better jungle temple
-        better mineshafts
-        Better witch huts
-        Better desert temples
-        nether fortresses 
-        ocean monuments
+  - Yung's:
+      - Better Dungeons
+      - Better Jungle Temples
+      - Better Mineshafts
+      - Better Witch Huts
+      - Better Desert Temples
+      - Better Nether Fortresses
+      - Better Ocean Monuments
 
-    DnT Pillager outpost
-    
-    Ribbits
-    Grim Kingdoms Lost structures & ruins
-    BetterArcheology* + loot integrations
-    Cataclysm* + loot integrations
-    Mowzie mobs*
-    BoMD structures *
-    BornInChaos Structures*
-    It takes a pillage* + loot integration
-    Conjurer*
-    Friends and foes*
-    Companions*
-    TInkers construct*
-    Sea Dwellers*
-    Hunter return*
-    waystones*
-    jaden nether expansion* + delight
+  - Content mods that add structures:
+      - Ribbits                       # frog village and NPCs
+      - "Grim Kingdoms: Lost Structures & Ruins"
+      - BetterArcheology*             # + Loot Integrations
+      - L_Ender's Cataclysm*          # + Loot Integrations
+      - Mowzie's Mobs*
+      - Bosses of Mass Destruction*   # BoMD
+      - Born in Chaos*
+      - It Takes a Pillage*           # + Loot Integrations
+      - Conjurer*
+      - Friends & Foes*
+      - Companions*
+      - Tinkers' Construct*
+      - Sea Dwellers*
+      - Hunter's Return*
+      - Waystones*
+      - Jaden's Nether Expansion*     # + its Delight addon
 
 Mobs:
-    Alex Mobs
-    Friends and foes
-    BornInChaos Structures
-    Variants and venture
-    Companions
-    Creeper overhaul
-    Enderman overhaul
-    Sea Dwellers
+  - Alex's Mobs                 # overworld creatures
+  - Friends & Foes              # unused Mojang mob concepts
+  - Born in Chaos               # undead overhaul and new mobs
+  - Variants & Ventures         # vanilla mob variants
+  - Companions                  # tameable companions
+  - Creeper Overhaul            # per-biome creeper models
+  - Enderman Overhaul           # per-dimension enderman variants
+  - Sea Dwellers                # ocean mobs
 
+Bosses:
+  - Mowzie's Mobs
+  - Bosses of Mass Destruction  # BoMD
+  - L_Ender's Cataclysm
 
-Bosess:
-    Mowzie mobs
-    BOMD
-    Cataclysm
-
-
-
-Nether ovehaul:
-    Amplified nether*
-    WWOO*
-    jaden nether expansion
-    Nether depths upgrade
-    wither reincarnated
+Nether overhaul:
+  - Amplified Nether*
+  - WWOO*
+  - Jaden's Nether Expansion
+  - Nether Depths Upgrade       # lava oceans and lava mobs
+  - Wither Reincarnated         # Wither fight overhaul
 
 End overhaul:
-    Nullscape*
-    true ending (dragon oss overhaul)
-    #endergetic expansion ?
+  - Nullscape*
+  - True Ending                 # Ender Dragon boss overhaul
+  # - Endergetic Expansion      # undecided
 
-
-
-Pillager Overhaul:
-    Raids enhanced - new minibosses
-    Illage and spillage - new pillagers and boss pillagers
-    It takes a pillage - New structures, mobs
-    Enchant With mob - turn off enchants for rnadom mobs
-    Friends and foes - Iceologer and illusioner
-    Conjurer - boss pillager with structure
-    Aquamire - biome, pillager boss, animals , gear
-    Hunter reborn
-    Illagers wear armor
-    Pillager caravans 
-    Structures:
-        DnT Pillager outpost*
-
+Pillager overhaul:
+  - Raids Enhanced              # new raid minibosses
+  - Illage and Spillage         # new pillagers and pillager bosses
+  - It Takes a Pillage          # new structures and mobs
+  - Enchant With Mob            # disable enchants on random mobs
+  - Friends & Foes              # Iceologer and Illusioner
+  - Conjurer                    # pillager boss with its own structure
+  - Aquamirae                   # biome, pillager boss, animals and gear
+  - Hunter's Return            # hunter-type illagers
+  - Illagers Wear Armor         # armored illager variants
+  - Pillager Caravans           # roaming pillager convoys
+  - Structures:
+      - DnT Pillager Outpost Overhaul*
 
 Piglin overhaul:
-    RPQ Quest*
-
+  - RPG Quest*                  # piglin questlines
 
 Tech mods:
-    Create
-        - Create Slice and dice
-    Botania
-
+  - Create                      # kinetic machinery
+  - "Create: Slice and Dice"    # automated Farmer's Delight processing
+  - Botania                     # flower-based magic tech
 
 Trinkets and items:
-    TInkers construct
-    ewewukeks Musket mod
-    Epic knights
-    Relics
-    More relics
-    Artifacts
-    Relics:Artifacts compat
-    Unique accesories
-    
+  - Tinkers' Construct          # tool forging and smeltery
+  - Ewewukek's Musket Mod       # black-powder firearms
+  - Epic Knights                # medieval armor, shields and weapons
+  - Relics                      # passive trinkets
+  - More Relics                 # extra Relics content
+  - Artifacts                   # loot-chest trinkets
+  - Relics x Artifacts Compat
+  - Unique Accessories          # curios-slot accessories
 
+Enchantment overhauls:
+  - Ascendant Arcana            # new enchantments and effects
+  - Ascendant Compatibility     # cross-mod enchant support
+  - Majrusz's Enchantments      # extra enchantments
 
+Alchemy overhauls: []           # TBD
 
-Enchant Overhauls:
-    Ascendant Arcana
-    Ascendant Compatibility
-    Majrusz Echantments
-
-
-
-Alchemy overhauls:
-
-
-Water overhauls:
-
+Water overhauls: []             # TBD
 
 Gameplay:
-    Simple voice chat
-    Carry On
+  - Simple Voice Chat           # proximity voice
+  - Carry On                    # pick up and carry blocks and mobs
 
-OVerhauls AND ADDONS:
-    Gravestone mod + Curios COmpat
-    Easy Anvils
-    Origins (Fabric)
-    Medieval Origins
-    Better archeology
-    End Remastered
-    Supplementaries
-    REALM RPG:
-        Fallen ADventurers
-        Quest and rewards
-    Aleki nifty ships (research)
-    waystones
-    iron spells and spellsboks
-    iron spells mowzie compat
-    iron spells illage and spillage.  
+Overhauls and addons:
+  - Gravestone Mod              # + Curios compat
+  - Easy Anvils                 # removes anvil level cap
+  - Origins                     # Fabric mod via Connector
+  - Medieval Origins            # extra origins
+  - BetterArcheology            # archaeology expansion
+  - End Remastered              # multi-eye End portal progression
+  - Supplementaries             # decorative and functional blocks
+  - Realm RPG:
+      - Fallen Adventurers      # humanoid adventurer mobs
+      - Quests and Rewards      # quest board progression
+  - Aleki's Nifty Ships         # research first, may conflict with Create
+  - Waystones                   # fast travel network
+  - Iron's Spells 'n Spellbooks # spellcasting system
+  - Iron's Spells x Mowzie's Mobs compat
+  - Iron's Spells x Illage and Spillage compat
 
 Food:
-    Spice of life apple eddition
-    Farmer delight
-    Alex delight
-    Aquamire delight
-    Ender delight
-    Fruits delight
-    Chef delight
-    Ender cataclysm delight
-    Nether delight
-    Storage delight
-    Ocean delight
-    Farmers respite
-    jaden nether expansion
-    Nether depths compat
-    Bosses Delight (BOMD)
-    Lets do vinery
+  - "Spice of Life: Apple Edition"  # diet variety incentive
+  - Farmer's Delight             # base cooking system
+  - Alex's Delight               # Alex's Mobs compat
+  - Aquamirae Delight
+  - Ender's Delight
+  - Fruits Delight
+  - Chef's Delight
+  - Cataclysm Delight
+  - Nether's Delight
+  - Storage Delight
+  - Ocean's Delight
+  - Farmer's Respite             # tea and coffee brewing
+  - Jaden's Nether Expansion Delight
+  - Nether Depths Upgrade compat
+  - Bosses Delight               # BoMD compat
+  - "Let's Do: Vinery"           # wine making
 
-Furniture items:
-    cluttered
+Furniture:
+  - Cluttered                    # small decorative clutter items
 
-
-Client side needed:
-    Cool Rain
-    Subtle effects
-    Jade
-    JEI
-    Explosive Enchancement
-    Wither spawn animation
-    Just Enough archeology (Maybe can be just client side)
-    Just enough resources (Maybe can be just client side)
-    xaero waystone compat
+Also required on the client:
+  - Cool Rain
+  - Subtle Effects
+  - Jade
+  - JEI
+  - Explosive Enhancement
+  - Wither Spawn Animation
+  - Just Enough Archeology       # may be client-only, verify
+  - Just Enough Resources        # may be client-only, verify
+  - Xaero's Waystones Compat

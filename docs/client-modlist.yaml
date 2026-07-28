@@ -1,75 +1,68 @@
-Performance:
-  Ferrite core- memory optimizaiotns
-  AllTheLeaks - fix memory leaks
-  Modern FIx - Modern Fixes
-  Embeddium
-  Chloride(Embeddium++)
-  ImmediatelyFast
-  Oculus
+# Client modlist (MC 1.20.1 Forge + Sinytra Connector)
+# Legend:
+#   *   = also listed in another section
+#   #   = considered but not included
 
+Performance:
+  - FerriteCore                 # memory optimizations
+  - AllTheLeaks                 # fixes memory leaks
+  - ModernFix                   # general startup and runtime fixes
+  - Embeddium                   # rendering engine (Sodium port)
+  - Chloride                    # Embeddium++ successor, extra render options
+  - ImmediatelyFast             # batches rendering calls
+  - Oculus                      # shader support (Iris port)
 
 Graphics:
-  DistantHorizons
+  - Distant Horizons            # LOD terrain beyond render distance
 
-
-
-Music and Sound overhauls:
-  Sound physic remastered
-  Pop
-  Subtle effects
-  Projectile sounds
-  ambient sounds
-  # Presence footsteps
-  # Dynamic Surroundings
-
+Music and sound overhauls:
+  - Sound Physics Remastered    # reverb and occlusion
+  - Pop                         # UI and interaction sounds
+  - Subtle Effects              # extra ambient particles and sounds
+  - Projectile Sounds           # whoosh and impact sounds for projectiles
+  - AmbientSounds               # biome and time-of-day ambience
+  # - Presence Footsteps        # per-block footstep sounds
+  # - Dynamic Surroundings      # larger ambience overhaul, overlaps the above
 
 Effects:
-  Cave Dust
-  Falling leaves
-  Visuality
-  Particle effects
-  Cool rain
-  Immersive Thunder
-  Explosive enhancements
-  Subtle effects
-  
-  
+  - Cave Dust                   # dust particles in caves
+  - Falling Leaves              # leaf particles from trees
+  - Visuality                   # small visual particle additions
+  - Particle Effects            # extra particles for common actions
+  - Cool Rain                   # improved rain visuals
+  - Immersive Thunder           # thunder flashes and effects
+  - Explosive Enhancement       # better explosion visuals
+  - Subtle Effects*             # also listed under sound overhauls
 
 UI upgrades:
-  JEI
-  Jade
-  Jade Addons
-  BetterF3
-  Enchantment Descriptions
-  Obscure tooltips
-  Client Sort
-  Xaero Map and minimap
-  Appleskin
-  BetterAdvancments
-  immersive ui
-  colorful hearts
-  # auto hud
-  
-
+  - JEI                         # Just Enough Items, recipe lookup
+  - Jade                        # block and entity tooltips (HWYLA-style)
+  - Jade Addons                 # Jade support for modded blocks
+  - BetterF3                    # configurable debug overlay
+  - Enchantment Descriptions    # explains enchantments in tooltips
+  - Obscure Tooltips            # cleaner, richer item tooltips
+  - Client Sort                 # client-side inventory sorting
+  - Xaero's World Map           # full world map
+  - Xaero's Minimap             # minimap with waypoints
+  - AppleSkin                   # hunger and saturation info
+  - Better Advancements         # improved advancements screen
+  - Immersive UI                # animated, polished vanilla screens
+  - Colorful Hearts             # compact, colored health bar
+  # - AutoHUD                   # fades HUD elements when idle
 
 Animations:
-  Wither Spawn Animation (Client and server) 
-  visual workbench
-  fresh animations
-  #eating animation
-
+  - Wither Spawn Animation      # needed on both client and server
+  - Visual Workbench            # shows items placed in the crafting table
+  - Fresh Animations            # resource-pack-driven mob animations
+  # - Eating Animation          # visible food in hand while eating
 
 Shaders:
-  ANY**
+  - Any                         # player's choice, Oculus-compatible
 
-
-
-
-
-Migrate-1.21.1:
-  DNL
-  Aquamirae
-  Illage and spillage
-  Illager revolution
-  Conjurer
-  Tinker
+Migrate to 1.21.1:
+  # Mods still pending a 1.21.1 update before the pack can move version.
+  - Dungeon Now Loading         # DNL, loading-screen dungeon tips
+  - Aquamirae                   # ocean biome, boss and gear
+  - Illage and Spillage         # new illagers and illager bosses
+  - Conjurer                   # pillager boss with its own structure
+  - Tinkers' Construct          # tool forging and smeltery
