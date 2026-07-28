@@ -32,7 +32,7 @@ Worldgen:
   - Amplified Nether            # full-height Nether terrain
 
 Structures:
-  - Feur Jungle                 # jungle biome and structures
+  - Feur Jungle                 # structures
   - Better Village              # village overhaul
   - Integrated Villages         # + Loot Integrations
   - Dungeon Now Loading         # extra dungeon variants
@@ -64,7 +64,6 @@ Structures:
       - Conjurer*
       - Friends & Foes*
       - Companions*
-      - Tinkers' Construct*
       - Sea Dwellers*
       - Hunter's Return*
       - Waystones*
@@ -120,7 +119,6 @@ Tech mods:
   - Botania                     # flower-based magic tech
 
 Trinkets and items:
-  - Tinkers' Construct          # tool forging and smeltery
   - Ewewukek's Musket Mod       # black-powder firearms
   - Epic Knights                # medieval armor, shields and weapons
   - Relics                      # passive trinkets
