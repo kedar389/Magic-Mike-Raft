@@ -1,0 +1,58 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+version = project.mod_version
+group = 'com.attributemerge'
+archivesBaseName = project.mod_id
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+minecraft {
+    // Official (Mojang) mappings, same as the IronsCompanions / OriginSpellSchools siblings.
+    mappings channel: 'official', version: '1.20.1'
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'debug'
+            mods { attribute_merge { source sourceSets.main } }
+        }
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'debug'
+            mods { attribute_merge { source sourceSets.main } }
+        }
+    }
+}
+
+repositories {
+    maven { url = 'https://cursemaven.com'; content { includeGroup 'curse.maven' } }
+    mavenCentral()
+}
+
+dependencies {
+    // Forge only. The mod resolves every attribute it touches by ResourceLocation at runtime, so
+    // it needs no compile dependency on Apothic Attributes / Cataclysm / Obscure API, and it loads
+    // (and no-ops) fine if any of them are absent. Keeps the build trivially reproducible.
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.0'
+
+    // @Nullable — Forge already brings this on the compile classpath, declared for clarity.
+    compileOnly 'org.jetbrains:annotations:24.1.0'
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title'    : 'attribute_merge',
+            'Specification-Vendor'   : 'attribute_merge',
+            'Specification-Version'  : '1',
+            'Implementation-Title'   : project.name,
+            'Implementation-Version' : project.jar.archiveVersion,
+            'Implementation-Vendor'  : 'attribute_merge',
+        ])
+    }
+}
