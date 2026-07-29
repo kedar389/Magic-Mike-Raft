@@ -166,16 +166,16 @@ Iron's Lib ships its own fork of 7 of those attributes (same names, same descrip
 | Healing received | `irons_lib:healing_received` | `attributeslib:healing_received` |
 | Mining speed | `irons_lib:mining_speed` | `attributeslib:mining_speed` |
 
-### Cataclysm + Obscure API merged by KubeJS bridge
+### Cataclysm + Obscure API merged by the `attribute_merge` mod
 
-Script [`kubejs/server_scripts/attribute_merge_bridge.js`](../kubejs/server_scripts/attribute_merge_bridge.js).
+Mod [`mod_compats/AttributeMerge/`](../mod_compats/AttributeMerge/) (`attribute_merge`, Forge 1.20.1-47.4.0). **Needs building — no JDK in the dev environment, so it ships unbuilt.**
 
 These two families **cannot** use the datapack remap above, because the remap transfers the modifier amount as-is and neither shares Apothic's conventions:
 
 - **Cataclysm** counts in percent **points** — The Annihilator grants `ADDITION 75.0` meaning "+75% crit damage", which remapped onto Apothic's 1.5-based multiplier would be a 76.5× crit. Needs a ×0.01 rescale.
 - **Obscure API** reads its attributes by **summing** the amounts of ADDITION + MULTIPLY_BASE + MULTIPLY_TOTAL modifiers additively (`ObscureAPIAttributes.getPercent`), and Aquamirae grants them as `MULTIPLY_BASE` (e.g. `0.3`). Under the vanilla math Apothic uses, `MULTIPLY_BASE` on a base-0 attribute (dodge, crit chance) contributes **nothing** — a raw remap would silently delete those bonuses.
 
-So the script reads each source the way its own mod does, re-applies it to the Apothic attribute as a transient `ADDITION` modifier (rescaled), and cancels the source so its owning mod contributes nothing. Re-synced once per second per player; nothing is written to player data.
+So the mod listens to `ItemAttributeModifierEvent` (at `LOW` priority, after Iron's Lib) and rewrites the modifier **as the item declares it** — draining the duplicate attribute and re-adding each modifier on the Apothic one with the amount scaled and the operation forced to `ADDITION`. Nothing ticks and there is no per-player state: the bonus never reaches the duplicate attribute, so its owning mod contributes nothing without needing a cancelling modifier, the item's own tooltip shows the canonical stat, and mobs wearing the gear are covered too.
 
 | Merged stat | From | To | Scale |
 |---|---|---|---|

@@ -1,0 +1,6 @@
+{
+  "pack": {
+    "pack_format": 15,
+    "description": "Appends the source mod to attribute names\nin the Apothic Attributes screen."
+  }
+}
