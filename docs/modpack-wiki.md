@@ -188,9 +188,71 @@ So the mod listens to `ItemAttributeModifierEvent` (at `LOW` priority, after Iro
 
 Obscure's Penetration is a *percentage* of armor ignored, so its twin is `armor_shred` (percentage armor reduction), not `armor_pierce` (flat armor points).
 
-Note: an Aquamirae item's own tooltip still lists its Obscure API stat lines (that's what the item grants); the **player's** total now lives on the Apothic stat. The value is applied once, but it is described in both places.
+Because the rewrite happens at the item level, an Aquamirae weapon's tooltip lists the **Apothic** stat directly — tooltip and character sheet agree.
+
+### Hiding the duplicate rows from the Attributes GUI
+
+Client config [`mod_configs_client/attributeslib.cfg`](../mod_configs_client/attributeslib.cfg) → `general` → `Hidden Attributes`.
+
+Merging moves the **values**; it does not unregister the attributes, so the duplicate rows still appear in the Apothic Attributes screen (reading their base value) until they are hidden. Added to the hidden list: all 7 `irons_lib:*`, the 5 merged `obscure_api:*` (`critical_damage`, `critical_hit`, `dodge`, `penetration`, `healing_power`) and `cataclysm:additional_critical_damage`. Left visible: `tconstruct:*` (not merged), the unmerged Obscure stats (`parry`, `accuracy`, `resilience`, `regeneration`, `magic_damage`, `magic_resistance`) and `gtbcs_spell_lib` spell-crit stats. This is a **client-side** file — the GUI is client-only.
+
+### Every "critical damage" attribute in the pack
+
+Registered base / min / max, read out of the installed jars. Six rows show in the Attributes GUI until the hidden list below is applied:
+
+| GUI label | Attribute | Base | Min | Max | Status |
+|---|---|---|---|---|---|
+| Crit Damage | `attributeslib:crit_damage` | 1.5 | 1.0 | 100 | **canonical** — fed by Unique Accessories, the datapack remap and the mod |
+| Critical Damage | `irons_lib:crit_damage` | 1.0 | 0.0 | 1024 | remapped by datapack → hidden |
+| Critical Damage | `obscure_api:critical_damage` | 2.0 | 0.0 | 100 | merged by the mod (Aquamirae) → hidden |
+| % Critical Damage | `cataclysm:additional_critical_damage` | 0.0 | −512 | 512 | merged by the mod ×0.01 → hidden |
+| Critical Damage | `tconstruct:player.critical_damage` | 1.5 | 0.0 | 100 | **left as-is** (Tinkers not merged) |
+| Spell Critical Damage | `gtbcs_spell_lib:spell_crit_damage` | 1.0 | 1.0 | 10 | different stat (spell crits only) — left as-is |
+
+Attribute registrars pack-wide (all of them): Apothic Attributes, Iron's Lib, Iron's Spellbooks, Obscure API, Cataclysm, Tinkers' Construct, Geomancy spell lib, Geomancy Plus, Caelus. No other mod registers an attribute.
+
+### Dodge chance — where it comes from
+
+| Source | Mechanism | Amount |
+|---|---|---|
+| **Unique Accessories** — Black Belt (belt) | `attributeslib:dodge_chance`, `ADDITION` | `blackBeltDodgeChance = 0.15` → +15%; also grants temporary attack-damage + move-speed buffs on a successful dodge |
+| **Unique Accessories** — Championship Belt (belt) | `attributeslib:dodge_chance` via curio tick | `championshipBeltDodgeChance = 0.05` → +5% (plus armor) |
+| **Unique Accessories** — Hero Emblem (charm) | `attributeslib:dodge_chance`, only at 1 HP | `heroEmblem1HpDodgeChance = 0.2` → +20% |
+| **Medieval Origins** — Moon Elf, "Nimble" power | **NOT an attribute** — `origins:modify_damage_taken` (`multiply_total_multiplicative −2.0`) gated on predicate `medievalorigins:dodge_chance` = `random_chance 0.2` | flat 20% chance to negate **any** incoming damage, with end-rod particles + enderman sound |
+
+Amounts are configurable in `config/uniqueaccessories-common.toml` (present on both server and client; stock values above).
+
+Two consequences worth knowing:
+
+- The Moon Elf dodge is invisible to the Attributes GUI and rolls **independently** of the Apothic stat, so Black Belt + Moon Elf ≈ 32% effective (`1 − 0.85 × 0.8`), not 35%. It could be rewritten as an `origins:attribute` power in a datapack to fold into `attributeslib:dodge_chance` — but note Apothic's dodge only applies to **melee** damage from entities in range, while the power negates any damage type, so converting it would be a nerf, not just a display change.
+- `irons_lib:dodge_chance` and `obscure_api:dodge` are registered and their handlers work, but **nothing in the pack grants them** (Aquamirae grants accuracy / crit damage / crit hit / penetration, not dodge). They were empty rows → hidden.
+
+### Which mods actually feed these stats
+
+| Attribute family | Granted by | Notes |
+|---|---|---|
+| Apothic `attributeslib:*` (canonical) | **Unique Accessories** | armor pierce, arrow damage, arrow velocity, crit chance, crit damage, dodge chance, draw speed, mining speed — already canonical, nothing to merge |
+| Obscure API `obscure_api:*` | **Aquamirae** (accuracy, critical damage, critical hit, penetration), **Aquamirae Delight** (critical hit) | vanilla item modifiers, `MULTIPLY_BASE` → merged by the mod |
+| Cataclysm `cataclysm:*` | **Cataclysm itself** — The Annihilator (`ADDITION 75.0`) and The Immolator (`ADDITION 60.0`) for crit damage; `nature_heal` via its armor tiers + food mixin | → crit damage merged by the mod, `nature_heal` left alone |
+| Tinkers `tconstruct:*` | **Tinkers itself** (tool/armor modifiers: `dragonborn`, `experienced`, `haste`) | not merged, by choice |
+| Iron's Lib `irons_lib:*` | **nothing** | No installed mod grants them. Iron's Spellbooks' only `irons_lib:` references are a particle texture and a worldgen processor. The rows were pure noise → hidden; the datapack remap stays as a safety net |
 
 **Deliberately left alone:** **Tinkers' Construct** (`Critical Damage`, `Experience`, `Mining Speed` — owner's call to skip Tinkers integration); `obscure_api` `parry` / `accuracy` / `resilience` / `regeneration` / `magic_damage` / `magic_resistance` and `cataclysm` `nature_heal` / `eat_speed` / `charge_time`, which have no Apothic counterpart to merge into. **Jump height** is not duplicated at all — `tconstruct:generic.jump_boost` is the only jump-height attribute; Artifacts / Unique Accessories / More Relics / Botania change jump height in code. Details in the datapack's [README](../datapacks/Attribute_Merge/README.md).
+
+### Showing the source mod in the Attributes GUI
+
+Client resource pack [`resourcepacks/Attribute_Mod_Labels/`](../resourcepacks/Attribute_Mod_Labels/).
+
+Apothic Attributes has no built-in way to show which mod an attribute belongs to. Because merging leaves several stats with the same name, this pack appends the source mod in parentheses to each attribute's display name — `Crit Damage (Apotheosis)`, `Spell Power (Iron's Spellbooks)`, `Parry (Obscure API)`, `Max Health (Minecraft)`, etc. It's a lang-key override (`assets/minecraft/lang/en_us.json`), one flat file overriding every namespace's keys.
+
+**Full coverage: 119 attributes across 13 sources** — Minecraft, Forge, Apotheosis (`attributeslib`), Iron's Spellbooks, Iron's Lib, Tinkers' Construct, Obscure API, Cataclysm, GTBC's SpellLib, GTBC's Geomancy Plus, Additional Entity Attributes, Reach Entity Attributes, Botania. Additional Entity Attributes and Reach Entity Attributes are client-only (Sinytra Connector, bundled with Origins), so the scan was run against the **client** instance's `mods/`, not the server modset. All base strings verified from the jars (vanilla from the client jar, Forge from `forge-1.20.1-47.4.16`).
+
+Two things to know:
+
+- **The override is global, not GUI-only** — the same name string is reused on item/curio tooltips and in JEI (`+7% Crit Chance (Apotheosis)`, `+2 Max Health (Minecraft)`), not just the Attributes screen. With vanilla stats now labelled too, that suffix appears on essentially all gear tooltips. Scoping it to the GUI alone would need a client mixin.
+- **Merged/hidden attributes are still labelled** but won't show in the GUI — `irons_lib:*`, the merged `obscure_api:*` and `cataclysm:additional_critical_damage` are in the Hidden Attributes list; their labels only surface if a source item tooltip lists them.
+
+Client-only — no server file. Copy into the client instance's `resourcepacks/` and enable it above the mod defaults.
 
 ---
 

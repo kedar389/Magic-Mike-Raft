@@ -55,7 +55,7 @@ server modset, so the scan was run against the client instance's `mods/`.
   shows on essentially all gear tooltips. There is no pure-resourcepack way to
   scope it to the GUI — that needs a client mixin mod. If the tooltip noise is
   too much, switch to the short grey-tag style or drop to a mixin.
-- **Merged/hidden attributes are still labelled.** `irons_lib:*`, the bridged
+- **Merged/hidden attributes are still labelled.** `irons_lib:*`, the
   `obscure_api:*` (criticalDamage / criticalHit / dodge / penetration /
   healingPower) and `cataclysm:additional_critical_damage` are merged into
   Apotheosis and hidden from the GUI by `mod_configs_client/attributeslib.cfg`,

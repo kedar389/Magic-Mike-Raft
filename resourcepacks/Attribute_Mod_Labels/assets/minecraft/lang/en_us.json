@@ -108,7 +108,7 @@
   "attribute.obscure_api.regeneration": "Regeneration (Obscure API)",
   "attribute.obscure_api.resilience": "Resilience (Obscure API)",
 
-  "_comment_8_cataclysm": "L_Ender's Cataclysm (modid: cataclysm). additional_critical_damage is bridged to Apotheosis and hidden; nature_heal stays visible. Names keep Cataclysm's leading '%' convention.",
+  "_comment_8_cataclysm": "L_Ender's Cataclysm (modid: cataclysm). additional_critical_damage is merged into Apotheosis and hidden; nature_heal stays visible. Names keep Cataclysm's leading '%' convention.",
   "attribute.cataclysm.additional_critical_damage": "% Critical Damage (Cataclysm)",
   "attribute.cataclysm.nature_heal": "% Nature Heal (Cataclysm)",
 

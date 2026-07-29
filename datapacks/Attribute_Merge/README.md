@@ -78,16 +78,32 @@ Apothic value conventions the merged stats land in (from `ALObjects`):
 `healing_received` base 1.0 (multiplier), `armor_pierce` base 0.0 (flat armor
 points).
 
-## Deliberately NOT merged (yet)
+## Handled elsewhere, or not at all
 
-- **Tinkers' Construct** (`Critical Damage`, `Experience`, `Mining Speed`),
-  **Cataclysm** (`additional_critical_damage`, `nature_heal`) and **Obscure API**
-  (`criticalDamage`, `criticalHit`, `dodge`, `penetration`, `healingPower`,
-  used by Aquamirae). The remap transfers modifier amounts **without scaling**,
-  and these mods' unit conventions are unverified — Obscure API in particular
-  looks like whole percent points (`20` = 20%) where Apothic uses fractions
-  (`0.2`), which would be a 100× error. Verify base/min/max in the Apothic
-  Attributes GUI (or the mods' sources) before adding remaps for them.
+**Cataclysm and Obscure API are merged by the `attribute_merge` mod instead** —
+[`mod_compats/AttributeMerge/`](../../mod_compats/AttributeMerge/). Neither can
+use this datapack, because the remap transfers the modifier amount as-is
+(verified by reading the jars):
+
+| Family | Why the remap can't do it |
+|---|---|
+| `cataclysm:additional_critical_damage` (base 0.0, −512…512) | Percent **points** — The Annihilator grants `ADDITION 75.0` = "+75% crit damage". On Apothic's 1.5-based multiplier that is a 76.5× crit. Needs ×0.01. |
+| `obscure_api:*` (Aquamirae) | `ObscureAPIAttributes.getPercent` **sums** the amounts of ADDITION + MULTIPLY_BASE + MULTIPLY_TOTAL, and Aquamirae grants them as `MULTIPLY_BASE` (e.g. `0.3`). Vanilla math (what Apothic uses) makes `MULTIPLY_BASE` on a base-0 attribute contribute **nothing** — the bonus would be silently deleted. |
+
+The mod rewrites each modifier onto the Apothic attribute as the item declares
+it, scaling the amount and forcing `ADDITION`. Obscure's caps confirm its values
+are fractions, not percent points: dodge 0.8, crit hit / penetration 1.0, crit
+damage / healing power 10.
+
+Not merged at all:
+
+- **Tinkers' Construct** (`player.critical_damage` base 1.5, `player.experience_multiplier`
+  and `player.mining_speed_multiplier` both base 1.0) — conventions actually
+  *do* match Apothic's, but Tinkers integration is deliberately out of scope by
+  owner's decision.
+- `obscure_api` `parry` / `accuracy` / `resilience` / `regeneration` /
+  `magic_damage` / `magic_resistance`, and `cataclysm` `nature_heal` /
+  `eat_speed` / `charge_time` — no Apothic counterpart to merge into.
 - **Jump height** — there is only **one** jump-height attribute in the pack
   (`tconstruct:generic.jump_boost`, "Jump Height"). Artifacts' Bunny Hoppers,
   Unique Accessories' Durable Spring, More Relics' Gravitum Strider and

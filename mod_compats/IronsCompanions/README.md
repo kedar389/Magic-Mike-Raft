@@ -131,22 +131,35 @@ ability damage → **IS blood** magic damage. (Scythe lifesteal left as-is unles
 
 ---
 
-## 6. Data / loot changes (datapack)
+## 6. Data / loot changes
 
-- **Add** the Naginata Legendary scroll to the **Sacred Pontiff** loot table (and/or His Holiness).
-- **Remove** `companions:book_naginata` crafting recipe; strip removed books from loot/trades.
-- **JEI-hide** all `companions:book_*` items.
+- **Naginata scroll** → dropped by **Sacred Pontiff / His Holiness** via a Java loot event
+  (`event/CompanionsLootEvents`), so the scroll NBT is built with the IS API.
+- **Remove recipes** for all nine `companions:book_*` → KubeJS `server_scripts` (`event.remove`).
+- **JEI-hide** all `companions:book_*` → KubeJS `client_scripts` (`JEIEvents.hideItems`).
 - Distribute Ice Tornado / Stone Spikes / Heal Ring scrolls via loot/trades (tables TBD).
 
 ## 7. Implementation phases
 
-1. **Scaffold** — folder, `build.gradle`, `mods.toml`, main class, mixin config (mirror OriginSpellSchools).
-2. **Spells** — register 4 IS spells (schools/rarities/cooldowns above) spawning the Companions projectiles.
-3. **Damage retype + Blood weapons** (5D/5E) via damage events.
-4. **Armour bridges** (5F) via equipment/damage events + attributes.
-5. **Ally/faction** (5G).
-6. **Datapack** — Pontiff loot, recipe/loot removal, JEI-hide.
-7. **Soul Mage AI** (5C) via Mixin — last, hardest.
+> Status: scaffolded (not compiled — no local JDK). `VERIFY(build)` markers flag every unverified
+> IS/Companions API touchpoint.
+
+1. ✅ **Scaffold** — `build.gradle`, `mods.toml`, main class (mirrors OriginSpellSchools). Uses local
+   deobf jars from `libs/`.
+2. ✅ **Spells** — 4 `AbstractSpell`s (`spell/`) spawning the Companions projectiles; loot drop in
+   `event/CompanionsLootEvents`.
+3. ✅ **Damage retype + Blood weapons** (5D/5E) — `event/CompanionDamageEvents` (re-deals under IS
+   `<school>_magic` damage type).
+4. ✅ **Armour bridges** (5F) — `event/CompanionArmorEvents` (mage-set IS-damage cut, holy-robe +holy
+   spell power).
+5. ✅ **Ally/faction** (5G) — `event/CompanionAllyEvents` (no friendly fire done; heal-ally targeting
+   deferred to Phase 7 mixin pass).
+6. ✅ **Removals (KubeJS)** — `kubejs/server_scripts/irons_companions_removals.js` removes all nine
+   `companions:book_*` recipes; `kubejs/client_scripts/irons_companions_hide_books.js` JEI-hides them.
+   (Replaces the earlier `datapacks/Irons_Companions_Data/`, now deleted.)
+7. ✅ **Soul Mage AI** (5C) — `soulmage/SoulMageIronsSpellGoal` + `SoulMageAiEvents` inject an
+   IS-scroll-casting goal (`EntityJoinLevelEvent` + reflection on `goalSelector`; **no mixin needed**).
+   The old book goals go inert once the books are gone. Heal-ally targeting (5G) still TODO.
 
 ## 8. Open items (confirm from source at build time)
 
