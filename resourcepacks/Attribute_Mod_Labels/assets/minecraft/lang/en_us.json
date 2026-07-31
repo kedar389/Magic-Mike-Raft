@@ -72,19 +72,6 @@
   "attribute.irons_spellbooks.summon_damage": "Summon Damage (Iron's Spellbooks)",
   "attribute.irons_spellbooks.casting_movespeed": "Casting Movement Speed (Iron's Spellbooks)",
 
-  "_comment_5_tconstruct": "Tinkers' Construct (modid: tconstruct).",
-  "attribute.name.tconstruct.player.use_item_speed": "Use Item Speed (Tinkers' Construct)",
-  "attribute.name.tconstruct.player.critical_damage": "Critical Damage (Tinkers' Construct)",
-  "attribute.name.tconstruct.player.mining_speed_multiplier": "Mining Speed (Tinkers' Construct)",
-  "attribute.name.tconstruct.player.experience_multiplier": "Experience (Tinkers' Construct)",
-  "attribute.name.tconstruct.player.jump_count": "Jumps (Tinkers' Construct)",
-  "attribute.name.tconstruct.generic.protection_cap": "Max Protection (Tinkers' Construct)",
-  "attribute.name.tconstruct.generic.jump_boost": "Jump Height (Tinkers' Construct)",
-  "attribute.name.tconstruct.generic.safe_fall_distance": "Safe Fall Distance (Tinkers' Construct)",
-  "attribute.name.tconstruct.generic.crouch_damage_multiplier": "Crouch Damage (Tinkers' Construct)",
-  "attribute.name.tconstruct.generic.knockback_multiplier": "Knockback (Tinkers' Construct)",
-  "attribute.name.tconstruct.generic.good_effect_duration_multiplier": "Good Potion Time (Tinkers' Construct)",
-  "attribute.name.tconstruct.generic.bad_effect_duration_multiplier": "Bad Potion Time (Tinkers' Construct)",
 
   "_comment_6_irons_lib": "Iron's Lib (modid: irons_lib). Merged into attributeslib by Attribute_Merge and hidden from the GUI; labelled to disambiguate the duplicate names if a tooltip surfaces them.",
   "attribute.name.irons_lib.armor_pierce": "Armor Pierce (Iron's Lib)",
@@ -95,7 +82,7 @@
   "attribute.name.irons_lib.dodge_chance": "Dodge Chance (Iron's Lib)",
   "attribute.name.irons_lib.healing_received": "Healing Received (Iron's Lib)",
 
-  "_comment_7_obscure_api": "Obscure API (modid: obscure_api) — Aquamirae's attribute lib. criticalDamage/criticalHit/dodge/penetration/healingPower are merged and hidden from the GUI; labels only surface on Aquamirae item tooltips. parry/accuracy/resilience/regeneration/magicDamage/magicResistance stay visible in the GUI.",
+  "_comment_7_obscure_api": "Obscure API (modid: obscure_api), Aquamirae's attribute lib. criticalDamage/criticalHit/dodge/penetration/healingPower are merged and hidden from the GUI; labels only surface on Aquamirae item tooltips. parry/accuracy/resilience/regeneration/magicDamage/magicResistance stay visible in the GUI.",
   "attribute.obscure_api.accuracy": "Accuracy (Obscure API)",
   "attribute.obscure_api.criticalDamage": "Critical Damage (Obscure API)",
   "attribute.obscure_api.criticalHit": "Critical Hit (Obscure API)",
@@ -112,7 +99,7 @@
   "attribute.cataclysm.additional_critical_damage": "% Critical Damage (Cataclysm)",
   "attribute.cataclysm.nature_heal": "% Nature Heal (Cataclysm)",
 
-  "_comment_9_gtbcs": "GTBC's SpellLib + Geomancy Plus (modids gtbcs_spell_lib, gtbcs_geomancy_plus) — Companions spell ecosystem.",
+  "_comment_9_gtbcs": "GTBC's SpellLib + Geomancy Plus (modids gtbcs_spell_lib, gtbcs_geomancy_plus), Companions spell ecosystem.",
   "attribute.gtbcs_spell_lib.spell_damage": "Spell Damage (GTBC's SpellLib)",
   "attribute.gtbcs_spell_lib.magic_projectile_damage": "Magic Projectile Damage (GTBC's SpellLib)",
   "attribute.gtbcs_spell_lib.spell_crit_chance": "Spell Critical Chance (GTBC's SpellLib)",
@@ -120,7 +107,7 @@
   "attribute.gtbcs_geomancy_plus.geo_magic_resist": "Geo Magic Resistance (GTBC's Geomancy Plus)",
   "attribute.gtbcs_geomancy_plus.geo_spell_power": "Geo Spell Power (GTBC's Geomancy Plus)",
 
-  "_comment_10_additional_entity_attributes": "Additional Entity Attributes (modid: additionalentityattributes) — client-side via Sinytra Connector (bundled with Origins/Apoli). Several names collide with other mods (Crit Damage, Mining Speed, Jump Height), which is exactly why the label helps.",
+  "_comment_10_additional_entity_attributes": "Additional Entity Attributes (modid: additionalentityattributes), client-side via Sinytra Connector (bundled with Origins/Apoli). Several names collide with other mods (Crit Damage, Mining Speed, Jump Height), which is exactly why the label helps.",
   "attribute.name.additionalentityattributes.generic.water_speed": "Water Speed (Additional Entity Attributes)",
   "attribute.name.additionalentityattributes.generic.lava_speed": "Lava Speed (Additional Entity Attributes)",
   "attribute.name.additionalentityattributes.generic.lung_capacity": "Lung Capacity (Additional Entity Attributes)",
@@ -135,7 +122,7 @@
   "attribute.name.additionalentityattributes.player.dropped_experience": "Dropped Experience (Additional Entity Attributes)",
   "attribute.name.additionalentityattributes.player.collection_range": "Collection Range (Additional Entity Attributes)",
 
-  "_comment_11_reach_entity_attributes": "Reach Entity Attributes (modid: reach-entity-attributes) — client-side via Sinytra Connector. Coexists with Forge's own block_reach/entity_reach, so the label disambiguates.",
+  "_comment_11_reach_entity_attributes": "Reach Entity Attributes (modid: reach-entity-attributes), client-side via Sinytra Connector. Coexists with Forge's own block_reach/entity_reach, so the label disambiguates.",
   "attribute.name.generic.reach-entity-attributes.reach": "Reach (Reach Entity Attributes)",
   "attribute.name.generic.reach-entity-attributes.attack_range": "Attack Range (Reach Entity Attributes)",
 
