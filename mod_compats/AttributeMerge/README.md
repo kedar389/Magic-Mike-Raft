@@ -7,7 +7,7 @@ each stat is one number that stacks in one place.
 ## Why a mod and not the datapack
 
 Iron's Lib's datapack remap (`datapacks/Attribute_Merge/`) handles the 7 Iron's Lib duplicates, but
-it transfers the modifier amount as-is — no rescale, no operation change. These two blockers force a
+it transfers the modifier amount as-is, no rescale, no operation change. These two blockers force a
 code hook, both measured from the installed jars:
 
 - **Cataclysm** counts in percent **points**: `The_Annihilator.initAttributes` grants
@@ -21,7 +21,7 @@ code hook, both measured from the installed jars:
 
 ## Merge table
 
-`MergeRules.TABLE` — source → canonical, scale, forced operation:
+`MergeRules.TABLE`, source → canonical, scale, forced operation:
 
 | From | To | Scale |
 |---|---|---|
@@ -35,9 +35,9 @@ code hook, both measured from the installed jars:
 Penetration is a *percentage* of armor ignored → `armor_shred` (percentage armor reduction), not
 `armor_pierce` (flat armor points).
 
-**Not merged:** Tinkers' Construct (owner's decision); `obscure_api` `parry` / `accuracy` /
+**Not merged:** `obscure_api` `parry` / `accuracy` /
 `resilience` / `regeneration` / `magic_damage` / `magic_resistance` and `cataclysm` `nature_heal` /
-`eat_speed` / `charge_time` — no Apothic counterpart exists.
+`eat_speed` / `charge_time`, no Apothic counterpart exists.
 
 ## How it works
 
@@ -59,7 +59,7 @@ Determinism matters: vanilla removes an item's modifiers by recomputing the same
 unequip, so the transform must be pure. Including the target id stops the two crit-damage rules
 from colliding when both land on `attributeslib:crit_damage`.
 
-**Cost:** for any item without a duplicate attribute — everything in the pack bar a handful — the
+**Cost:** for any item without a duplicate attribute, everything in the pack bar a handful, the
 handler does one `isEmpty()` check and a few identity-hash lookups, allocating nothing.
 
 **Not covered:** attributes granted by potions, spells or per-tick code instead of item modifiers,
@@ -69,7 +69,7 @@ listener next to the item one.
 
 ## Build
 
-No local JDK in this dev environment (see `.wolf/cerebrum.md`), so **this has not been compiled** —
+No local JDK in this dev environment (see `.wolf/cerebrum.md`), so **this has not been compiled** ,
 it is scaffolded to the same conventions as the sibling compat mods (Forge 1.20.1-47.4.0, official
 mappings, JDK 17 toolchain auto-provisioned by the foojay resolver in `settings.gradle`).
 

@@ -15,7 +15,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
 /**
- * Phase 4 — Companions armour ↔ Iron's Spells bridges:
+ * Phase 4, Companions armour ↔ Iron's Spells bridges:
  * <ul>
  *   <li><b>Mage set</b> also reduces incoming IS spell damage (10% per worn piece, tunable).</li>
  *   <li><b>Holy Robe set</b> grants +10% holy spell power per worn piece.</li>

@@ -2,8 +2,8 @@
 
 Reworks where **End Remastered** (`endrem`) eyes come from. End Remastered
 replaces the single vanilla Eye of Ender with ~12 unique eyes that must each be
-found to open the End portal. This datapack **boss-gates** most eyes — they drop
-(guaranteed) from modded bosses — while keeping a few in vanilla chests/mobs and
+found to open the End portal. This datapack **boss-gates** most eyes, they drop
+(guaranteed) from modded bosses, while keeping a few in vanilla chests/mobs and
 **disabling** the mod's default random-chest sources for eyes that now come from
 a boss.
 
@@ -12,14 +12,14 @@ a boss.
 
 ## Where each eye comes from now
 
-### Boss drops — guaranteed (full loot-table overrides)
+### Boss drops, guaranteed (full loot-table overrides)
 
 | Eye | Boss | Mod | Notes |
 |---|---|---|---|
 | `old_eye`     | Ancient Remnant      | Cataclysm | guaranteed ×1 |
 | `lost_eye`    | The Harbinger        | Cataclysm | guaranteed ×1 |
 | `nether_eye`  | Netherite Monstrosity| Cataclysm | guaranteed ×1 |
-| `exotic_eye`  | Coralssus            | Cataclysm | guaranteed ×1 (only source — recipe removed) |
+| `exotic_eye`  | Coralssus            | Cataclysm | guaranteed ×1 (only source, recipe removed) |
 | `cold_eye`    | Lich                 | Bosses of Mass Destruction | guaranteed on **player** kill |
 | `rogue_eye`   | Sculptor             | Mowzie's Mobs | guaranteed on **player** kill |
 | `undead_soul` *(component)* | Maledictus | Cataclysm | guaranteed ×1 → craft `undead_eye` |
@@ -27,7 +27,7 @@ a boss.
 These files fully redefine each mob's loot table (the boss still drops its normal
 items too).
 
-### Injected into vanilla chests (Forge loot modifiers — added on top of vanilla loot)
+### Injected into vanilla chests (Forge loot modifiers, added on top of vanilla loot)
 
 | Eye | Chest | Chance |
 |---|---|---|
@@ -69,7 +69,7 @@ loot modifiers are neutered (`random_chance: 0.0`, so they never inject):
 | Skeleton horse | `undead_soul` | Maledictus |
 
 Also: the **`exotic_eye` crafting recipe is removed** (overridden to produce
-`minecraft:air`) — the exotic eye is now Coralssus-only.
+`minecraft:air`), the exotic eye is now Coralssus-only.
 
 ## Install (server)
 

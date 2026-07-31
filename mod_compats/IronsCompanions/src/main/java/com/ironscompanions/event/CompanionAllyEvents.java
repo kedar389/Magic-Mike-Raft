@@ -9,9 +9,9 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 /**
- * Phase 5 — ally/faction rules between the player, their Iron's Spells summons, and their Companions.
+ * Phase 5, ally/faction rules between the player, their Iron's Spells summons, and their Companions.
  *
- * <p>Implemented: <b>no friendly fire</b> — an attack is cancelled when attacker and victim share an
+ * <p>Implemented: <b>no friendly fire</b>, an attack is cancelled when attacker and victim share an
  * owner, or when one owns the other. Owner is read via {@link OwnableEntity} (Companions' tamables and
  * IS summons both expose an owner UUID).
  *

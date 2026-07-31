@@ -1,6 +1,6 @@
 # Local build dependencies
 
-ForgeGradle deobfs these at build time (see `build.gradle`). They are **not** committed —
+ForgeGradle deobfs these at build time (see `build.gradle`). They are **not** committed ,
 copy them here from `servers_folder/magic server/mods/` before building:
 
 ```

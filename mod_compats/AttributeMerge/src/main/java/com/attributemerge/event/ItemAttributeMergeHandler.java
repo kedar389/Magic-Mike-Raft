@@ -33,12 +33,12 @@ import java.util.UUID;
  *
  * <p>Cost: the handler runs on {@link ItemAttributeModifierEvent}, which fires when an item's
  * modifiers are computed (equip, equipment tick, tooltip). For an item with no duplicate attributes
- * — every item in the pack except a handful — it does one {@code isEmpty()} check plus at most a
+ *, every item in the pack except a handful, it does one {@code isEmpty()} check plus at most a
  * few identity-hash lookups, and allocates nothing.
  *
  * <p>Not covered (unchanged from any other approach): attributes granted by potions, spells or
  * per-tick code rather than item modifiers, and curio slots (nothing in the pack grants these
- * attributes from a curio — Unique Accessories already grants the Apothic ones directly). If that
+ * attributes from a curio, Unique Accessories already grants the Apothic ones directly). If that
  * changes, add a {@code CurioAttributeModifierEvent} listener alongside this one.
  */
 @Mod.EventBusSubscriber(modid = AttributeMerge.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -59,7 +59,7 @@ public final class ItemAttributeMergeHandler {
         if (modifiers.isEmpty()) return;
 
         // Collect first: the multimap view must not be mutated while iterating it.
-        // Stays null — no allocation — for items that carry none of the duplicate attributes.
+        // Stays null, no allocation, for items that carry none of the duplicate attributes.
         List<Attribute> hits = null;
         for (Attribute attribute : modifiers.keySet()) {
             if (MergeRules.get(attribute) != null) {

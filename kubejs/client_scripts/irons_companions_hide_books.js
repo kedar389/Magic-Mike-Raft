@@ -1,8 +1,8 @@
 // priority: 0
-// Iron's Companions — hide the removed/converted Companions "magic books" from JEI.
+// Iron's Companions, hide the removed/converted Companions "magic books" from JEI.
 //
 // They are unobtainable (recipes removed in server_scripts, replaced by Iron's Spells scrolls), so
-// hiding them keeps JEI clean. Client-side only — JEIEvents run on the client.
+// hiding them keeps JEI clean. Client-side only, JEIEvents run on the client.
 
 JEIEvents.hideItems((event) => {
   const hiddenBooks = [

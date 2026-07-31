@@ -1,4 +1,4 @@
-# Born in Chaos (mod id: born_in_chaos_v1) — game rules
+# Born in Chaos (mod id: born_in_chaos_v1), game rules
 # These are the mod's own custom game rules; edit values here.
 
 # Spirit mobs burn/vanish in daylight

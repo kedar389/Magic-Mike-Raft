@@ -1,12 +1,12 @@
 
-# Waystones (BlayTheNinth) — server config. REPO SOURCE OF TRUTH.
+# Waystones (BlayTheNinth), server config. REPO SOURCE OF TRUTH.
 # Balance intent (see docs/modpack-wiki.md → Waystones):
 #   * World-gen waystones are the ONLY early source; sparse (~500 blocks) and unbreakable.
 #   * Warp Stone crafting is disabled (KubeJS); the Waystone recipe requires a Warp Stone,
 #     so waystones are uncraftable until Warp Stone becomes a (future) expensive trader trade.
 #   * Teleporting costs XP. Cost scales with distance (min 1 / max 5 levels). Because MC XP
 #     levels get progressively more expensive, a flat few-level cost stings early game but is
-#     trivial by endgame — usable at endgame, harder early, without being crazy.
+#     trivial by endgame, usable at endgame, harder early, without being crazy.
 # Recipe + item gating live in kubejs/server_scripts/waystones_balance.js (not this file).
 
 [inventoryButton]

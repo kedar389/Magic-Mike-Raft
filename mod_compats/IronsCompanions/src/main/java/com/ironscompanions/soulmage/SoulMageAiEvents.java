@@ -11,7 +11,7 @@ import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 
 /**
  * Adds {@link SoulMageIronsSpellGoal} to every Soul Mage as it joins the world. Uses reflection on
- * {@code Mob.goalSelector} (SRG {@code f_21345_}) so no Mixin/refmap is needed — consistent with the
+ * {@code Mob.goalSelector} (SRG {@code f_21345_}) so no Mixin/refmap is needed, consistent with the
  * rest of this mod being event-driven.
  *
  * <p>The Companions book goals are left in place; with the books removed they never fire, so they

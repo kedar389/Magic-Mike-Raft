@@ -58,7 +58,7 @@ public class SpellCastListener {
         // Get the player's current origin
         Optional<ResourceLocation> originIdOpt = getPlayerOriginId(serverPlayer);
         if (originIdOpt.isEmpty()) {
-            // Player hasn't chosen an origin yet — let them cast freely
+            // Player hasn't chosen an origin yet, let them cast freely
             return;
         }
         ResourceLocation originId = originIdOpt.get();

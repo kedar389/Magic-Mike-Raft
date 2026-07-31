@@ -16,7 +16,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
 /**
- * Heal Ring — recreation of the Companions {@code book_heal_ring} effect as a Nature-school spell.
+ * Heal Ring, recreation of the Companions {@code book_heal_ring} effect as a Nature-school spell.
  * Emanates a restorative ring around the caster (spawns {@link CompanionsProjectiles#HEAL_RING}).
  * Baseline: HEAL_RING_HEALING=6.0, HEAL_RING_COOLDOWN=200t (10s).
  */

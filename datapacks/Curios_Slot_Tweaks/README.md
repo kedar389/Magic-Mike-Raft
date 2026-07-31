@@ -14,7 +14,7 @@ Cataclysm items to the **standard** slot tags so they occupy the common slots.
 
 ## What it changes
 
-Adds items to two Curios item tags (`"replace": false` — additive, does not
+Adds items to two Curios item tags (`"replace": false`, additive, does not
 wipe other mods' entries):
 
 | Tag (`data/curios/tags/items/…`) | Items added |

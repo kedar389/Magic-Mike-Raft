@@ -16,7 +16,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
 /**
- * Phase 3 — retypes Companions ability damage into the matching Iron's Spells magic school, so it
+ * Phase 3, retypes Companions ability damage into the matching Iron's Spells magic school, so it
  * respects IS spell resistances and reads as real magic (e.g. Pontiff = holy, Crystallized Blood
  * sword/axe = blood). We re-deal the hit under the IS damage type {@code irons_spellbooks:<school>_magic};
  * IS's own resist handling then applies natively. A ThreadLocal guards against recursion.

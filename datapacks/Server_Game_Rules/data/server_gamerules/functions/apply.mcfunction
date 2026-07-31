@@ -1,5 +1,5 @@
 # Applies every mod's game-rule baseline, then marks itself done.
-# One function call per mod — add new mods below with their own function file
+# One function call per mod, add new mods below with their own function file
 # under this same folder (e.g. server_gamerules:alexsmobs).
 
 function server_gamerules:born_in_chaos

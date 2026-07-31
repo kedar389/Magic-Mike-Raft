@@ -15,7 +15,7 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.item.ItemStack;
 
 /**
- * Phase 7 — makes the Soul Mage cast Iron's Spells based on the scrolls in its 3-slot inventory,
+ * Phase 7, makes the Soul Mage cast Iron's Spells based on the scrolls in its 3-slot inventory,
  * instead of the (removed) Companions magic books. Any IS spell inscribed on a scroll placed in the
  * Soul Mage can be cast at its target. The old {@code SoulMage*Goal}s go inert on their own once the
  * books are gone (their {@code hasRequiredBook()} always fails), so we only need to add this goal.

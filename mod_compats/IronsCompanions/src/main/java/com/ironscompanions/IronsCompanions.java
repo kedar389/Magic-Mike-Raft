@@ -14,7 +14,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Iron's Companions — bridges Iron's Spells 'n Spellbooks with the Companions! mod.
+ * Iron's Companions, bridges Iron's Spells 'n Spellbooks with the Companions! mod.
  *
  * <p>Phase 1-2 (this scaffold): registers the four converted spells (Ice Tornado, Stone Spikes,
  * Heal Ring, Naginata) and drops the Naginata scroll from the Sacred Pontiff. Later phases add

@@ -40,7 +40,7 @@ dependencies {
     // (and no-ops) fine if any of them are absent. Keeps the build trivially reproducible.
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.0'
 
-    // @Nullable — Forge already brings this on the compile classpath, declared for clarity.
+    // @Nullable, Forge already brings this on the compile classpath, declared for clarity.
     compileOnly 'org.jetbrains:annotations:24.1.0'
 }
 

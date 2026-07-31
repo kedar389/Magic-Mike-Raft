@@ -50,7 +50,7 @@ minecraft {
 }
 
 repositories {
-    // CurseMaven — reproducible dependency sourcing by project + file ID.
+    // CurseMaven, reproducible dependency sourcing by project + file ID.
     maven {
         url = 'https://cursemaven.com'
         content { includeGroup 'curse.maven' }
@@ -71,7 +71,7 @@ dependencies {
     runtimeOnly fg.deobf('curse.maven:playeranimator-658587:4587214')
     runtimeOnly fg.deobf('curse.maven:caelus-308989:5281700')
 
-    // Error Prone — bug-pattern static analysis, runs inside compileJava.
+    // Error Prone, bug-pattern static analysis, runs inside compileJava.
     // Pinned to 2.42.0 (last release that runs on JDK 17; 2.43+ needs JDK 21).
     errorprone 'com.google.errorprone:error_prone_core:2.42.0'
 

@@ -17,7 +17,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 /**
- * Ice Tornado — recreation of the Companions {@code book_ice_tornado} effect as an Ice-school spell.
+ * Ice Tornado, recreation of the Companions {@code book_ice_tornado} effect as an Ice-school spell.
  * Spawns the original {@link CompanionsProjectiles#TORNADO} entity so the animation is identical.
  * Config baseline from companions.toml: ICE_TORNADO_DAMAGE=3.0, ICE_TORNADO_COOLDOWN=200t (10s).
  * "Tiers" are modelled as spell levels; scrolls are distributed at Uncommon/Rare/Epic (README 5A-i).

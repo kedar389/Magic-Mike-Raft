@@ -22,9 +22,9 @@ cd pack
 packwiz modrinth install <slug-or-url>       # e.g. packwiz modrinth install jei
 packwiz curseforge install <slug-or-url>     # if it's CurseForge-only
 
-# 2. Set the side — EDIT the generated file, there is no CLI flag:
+# 2. Set the side, EDIT the generated file, there is no CLI flag:
 #    open  pack/mods/<mod>.pw.toml  and set:
-#        side = "both"      # content: custom blocks/items/entities  (DEFAULT — safe)
+#        side = "both"      # content: custom blocks/items/entities  (DEFAULT, safe)
 #        side = "server"    # server-only: vanilla-block structures, worldgen, perf/util
 #        side = "client"    # client-only: rendering, JEI, minimap, sound, particles, UI
 #    ⚠ If a structure/content mod adds CUSTOM blocks it MUST be "both",
@@ -33,7 +33,7 @@ packwiz curseforge install <slug-or-url>     # if it's CurseForge-only
 # 3. Regenerate the index
 packwiz refresh
 
-# 4. (later) update CHANGELOG.md and export — see below
+# 4. (later) update CHANGELOG.md and export, see below
 ```
 
 Other packwiz operations (run inside `pack/`):
@@ -52,7 +52,7 @@ packwiz url add <name> <url>   # add a mod from a raw URL (not on MR/CF)
 
 ```powershell
 # The scripted path: builds the compat mod jar, refreshes, and exports both formats
-.\scripts\export_pack.ps1        # (created in Step 6 — not yet written)
+.\scripts\export_pack.ps1        # (created in Step 6, not yet written)
 
 # Manual equivalent, from pack/
 packwiz refresh

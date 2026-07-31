@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
  *                        0.01 when the source counts percent POINTS and the target uses fractions
  * @param forceOperation  operation to use on the rewritten modifier, or {@code null} to keep the
  *                        original. Needed because some mods read their attributes with a custom
- *                        formula where MULTIPLY_BASE behaves additively — see {@link MergeRules}.
+ *                        formula where MULTIPLY_BASE behaves additively, see {@link MergeRules}.
  */
 public record MergeRule(
         ResourceLocation from,

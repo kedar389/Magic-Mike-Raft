@@ -19,17 +19,17 @@ Copy the folders into each instance's `kubejs/`:
   (server_scripts only strictly needed there; client_scripts are ignored on a dedicated server).
 - **Client:** `<Prism>/instances/Client/minecraft/kubejs/` (needs client_scripts for the JEI-hide).
 
-## Current scripts — Iron's Companions compat
+## Current scripts, Iron's Companions compat
 
-- `server_scripts/irons_companions_removals.js` — removes crafting recipes for all nine
+- `server_scripts/irons_companions_removals.js`, removes crafting recipes for all nine
   `companions:book_*` magic books (converted → Iron's Spells scrolls, or cut entirely).
-- `client_scripts/irons_companions_hide_books.js` — hides those nine books from JEI.
+- `client_scripts/irons_companions_hide_books.js`, hides those nine books from JEI.
 
-## Current scripts — Waystones balance
+## Current scripts, Waystones balance
 
-- `server_scripts/waystones_balance.js` — disables the `waystones:warp_stone` recipe (Warp Stone
+- `server_scripts/waystones_balance.js`, disables the `waystones:warp_stone` recipe (Warp Stone
   is a future expensive trader trade). The `waystones:waystone` recipe is left as the mod default,
-  which already requires a Warp Stone — so with Warp Stone gone, waystones are only obtainable from
+  which already requires a Warp Stone, so with Warp Stone gone, waystones are only obtainable from
   world gen. World-gen/XP tuning lives in `mod_configs_server/waystones-common.toml`.
   See `docs/modpack-wiki.md` → Waystones.
 

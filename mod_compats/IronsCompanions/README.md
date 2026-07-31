@@ -1,9 +1,9 @@
-# Iron's Companions — Compatibility / Content Mod
+# Iron's Companions, Compatibility / Content Mod
 
 > **Provisional mod id:** `irons_companions` · **Loader:** Forge 1.20.1 (47.4.0) · **Status:** design locked, not yet built
 >
 > Bridges **Iron's Spells 'n Spellbooks** (`irons_spellbooks` 3.16.2) with the **Companions!** mod
-> (`companions` 1.2.3, by Xylonity/ModderG — GPL v3, source: <https://github.com/Xylonity/Companions>).
+> (`companions` 1.2.3, by Xylonity/ModderG, GPL v3, source: <https://github.com/Xylonity/Companions>).
 >
 > Sibling of the existing `mod_compats/OriginSpellSchools` mod and follows the same build layout.
 
@@ -13,8 +13,8 @@
 
 Two goals:
 
-1. **Convert Companions' "magic book" spells into first-class Iron's Spells (IS) spells** — castable from a
-   Scroll *and* inscribable into any spellbook/grimoire — recreating each effect, animation, and behaviour
+1. **Convert Companions' "magic book" spells into first-class Iron's Spells (IS) spells**, castable from a
+   Scroll *and* inscribable into any spellbook/grimoire, recreating each effect, animation, and behaviour
    **exactly** (they reuse the original Companions projectile entities, so visuals are pixel-identical).
 2. **Weave the two mods together**: correct IS damage schools on companion abilities, armour-set bridges,
    ally/faction rules, and a Soul Mage that casts real IS spells.
@@ -22,7 +22,7 @@ Two goals:
 ## 2. Environment constraints
 
 - **No JDK/Gradle in the dev environment** (see `.wolf/cerebrum.md`). This mod will be **scaffolded here and
-  built elsewhere** — same "scaffold now, verify later" approach used for OriginSpellSchools. Datapack-side
+  built elsewhere**, same "scaffold now, verify later" approach used for OriginSpellSchools. Datapack-side
   changes (loot/recipe/JEI-hide) work immediately without a build.
 - Target Forge **1.20.1-47.4.0** to match the live server.
 
@@ -41,12 +41,12 @@ Two goals:
 
 One Forge mod, four surfaces:
 
-- **Content** — register new IS spells (`AbstractSpell` subclasses) that spawn the existing Companions
+- **Content**, register new IS spells (`AbstractSpell` subclasses) that spawn the existing Companions
   projectile entities.
-- **Forge events** (clean, external) — armour-set bonuses, mage-set IS-damage reduction, holy-robe holy bonus,
+- **Forge events** (clean, external), armour-set bonuses, mage-set IS-damage reduction, holy-robe holy bonus,
   ally healing, no-friendly-fire, and companion-ability damage retyping.
-- **Mixins** (invasive) — Soul Mage AI (cast IS spells from inventory scrolls).
-- **Datapacks** — disable/hide removed books, add the Naginata scroll to the Sacred Pontiff loot table.
+- **Mixins** (invasive), Soul Mage AI (cast IS spells from inventory scrolls).
+- **Datapacks**, disable/hide removed books, add the Naginata scroll to the Sacred Pontiff loot table.
 
 > **Item removal is external, not a fork.** Removed books are stripped of recipes/loot and JEI-hidden; their
 > registry entries technically remain but become unobtainable. (Decision 2026-07-27.)
@@ -83,7 +83,7 @@ Transformer rather than copying assets.
 converted books above (players get the IS spell instead of the book).
 
 Removal steps (datapack, no build):
-- Remove/override crafting recipes (e.g. `data/companions/recipes/book_naginata.json` — the relic-gold recipe).
+- Remove/override crafting recipes (e.g. `data/companions/recipes/book_naginata.json`, the relic-gold recipe).
 - Strip them from any Companions loot/trade tables.
 - Hide all `companions:book_*` items in JEI (`data`/JEI blacklist tag).
 
@@ -92,7 +92,7 @@ Removal steps (datapack, no build):
 Replace the Soul Mage's book-based attack goals (`SoulMageTornadoGoal`, `SoulMageStoneSpikesGoal`,
 `SoulMageHealRingGoal`, `SoulMageNaginataGoal`) so it **casts real IS spells chosen from scrolls in its
 inventory**, pool = the full IS spell registry. IS already supports non-player casters (`MagicData` /
-`IMagicEntity`); implement via Mixin into the Soul Mage entity/goal set. **Hardest item — build last.**
+`IMagicEntity`); implement via Mixin into the Soul Mage entity/goal set. **Hardest item, build last.**
 
 ### 5D. Companion ability damage → IS schools
 
@@ -141,23 +141,23 @@ ability damage → **IS blood** magic damage. (Scythe lifesteal left as-is unles
 
 ## 7. Implementation phases
 
-> Status: scaffolded (not compiled — no local JDK). `VERIFY(build)` markers flag every unverified
+> Status: scaffolded (not compiled, no local JDK). `VERIFY(build)` markers flag every unverified
 > IS/Companions API touchpoint.
 
-1. ✅ **Scaffold** — `build.gradle`, `mods.toml`, main class (mirrors OriginSpellSchools). Uses local
+1. ✅ **Scaffold**, `build.gradle`, `mods.toml`, main class (mirrors OriginSpellSchools). Uses local
    deobf jars from `libs/`.
-2. ✅ **Spells** — 4 `AbstractSpell`s (`spell/`) spawning the Companions projectiles; loot drop in
+2. ✅ **Spells**, 4 `AbstractSpell`s (`spell/`) spawning the Companions projectiles; loot drop in
    `event/CompanionsLootEvents`.
-3. ✅ **Damage retype + Blood weapons** (5D/5E) — `event/CompanionDamageEvents` (re-deals under IS
+3. ✅ **Damage retype + Blood weapons** (5D/5E), `event/CompanionDamageEvents` (re-deals under IS
    `<school>_magic` damage type).
-4. ✅ **Armour bridges** (5F) — `event/CompanionArmorEvents` (mage-set IS-damage cut, holy-robe +holy
+4. ✅ **Armour bridges** (5F), `event/CompanionArmorEvents` (mage-set IS-damage cut, holy-robe +holy
    spell power).
-5. ✅ **Ally/faction** (5G) — `event/CompanionAllyEvents` (no friendly fire done; heal-ally targeting
+5. ✅ **Ally/faction** (5G), `event/CompanionAllyEvents` (no friendly fire done; heal-ally targeting
    deferred to Phase 7 mixin pass).
-6. ✅ **Removals (KubeJS)** — `kubejs/server_scripts/irons_companions_removals.js` removes all nine
+6. ✅ **Removals (KubeJS)**, `kubejs/server_scripts/irons_companions_removals.js` removes all nine
    `companions:book_*` recipes; `kubejs/client_scripts/irons_companions_hide_books.js` JEI-hides them.
    (Replaces the earlier `datapacks/Irons_Companions_Data/`, now deleted.)
-7. ✅ **Soul Mage AI** (5C) — `soulmage/SoulMageIronsSpellGoal` + `SoulMageAiEvents` inject an
+7. ✅ **Soul Mage AI** (5C), `soulmage/SoulMageIronsSpellGoal` + `SoulMageAiEvents` inject an
    IS-scroll-casting goal (`EntityJoinLevelEvent` + reflection on `goalSelector`; **no mixin needed**).
    The old book goals go inert once the books are gone. Heal-ally targeting (5G) still TODO.
 

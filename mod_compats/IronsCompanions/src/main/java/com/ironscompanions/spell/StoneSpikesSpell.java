@@ -20,7 +20,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 /**
- * Stone Spikes — recreation of the Companions {@code book_stone_spikes} effect in the Geomancy Plus
+ * Stone Spikes, recreation of the Companions {@code book_stone_spikes} effect in the Geomancy Plus
  * {@code geo} school (there is no "teramancy" school). Spawns the original
  * {@link CompanionsProjectiles#STONE_SPIKE} entity. Baseline: STONE_SPIKE_DAMAGE=4.0, cooldown=140t.
  */

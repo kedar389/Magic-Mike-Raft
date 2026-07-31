@@ -11,24 +11,24 @@ Several mods in the pack each ship their own attribute for the same concept.
 The pack currently has these duplicate families (scanned from the jars in
 `servers_folder/magic server/mods`):
 
-| Concept | Apothic Attributes | Iron's Lib | Tinkers' Construct | Cataclysm | Obscure API |
-|---|---|---|---|---|---|
-| Critical damage | `attributeslib:crit_damage` | `irons_lib:crit_damage` | `Critical Damage` (`player.critical_damage`) | `additional_critical_damage` | `criticalDamage` |
-| Crit chance | `attributeslib:crit_chance` | — | — | — | `criticalHit` |
-| Dodge chance | `attributeslib:dodge_chance` | `irons_lib:dodge_chance` | — | — | `dodge` |
-| Arrow damage | `attributeslib:arrow_damage` | `irons_lib:arrow_damage` | — | — | — |
-| Armor pierce | `attributeslib:armor_pierce` | `irons_lib:armor_pierce` | — | — | `penetration` |
-| Experience gained | `attributeslib:experience_gained` | `irons_lib:experience_gained` | `player.experience_multiplier` | — | — |
-| Healing received | `attributeslib:healing_received` | `irons_lib:healing_received` | — | `nature_heal` | `healingPower` |
-| Mining speed | `attributeslib:mining_speed` | `irons_lib:mining_speed` | `player.mining_speed_multiplier` | — | — |
+| Concept | Apothic Attributes | Iron's Lib | Cataclysm | Obscure API |
+|---|---|---|---|---|
+| Critical damage | `attributeslib:crit_damage` | `irons_lib:crit_damage` | `additional_critical_damage` | `criticalDamage` |
+| Crit chance | `attributeslib:crit_chance` | - | - | `criticalHit` |
+| Dodge chance | `attributeslib:dodge_chance` | `irons_lib:dodge_chance` | - | `dodge` |
+| Arrow damage | `attributeslib:arrow_damage` | `irons_lib:arrow_damage` | - | - |
+| Armor pierce | `attributeslib:armor_pierce` | `irons_lib:armor_pierce` | - | `penetration` |
+| Experience gained | `attributeslib:experience_gained` | `irons_lib:experience_gained` | - | - |
+| Healing received | `attributeslib:healing_received` | `irons_lib:healing_received` | `nature_heal` | `healingPower` |
+| Mining speed | `attributeslib:mining_speed` | `irons_lib:mining_speed` | - | - |
 
-**Apothic Attributes is the canonical set** — it owns the Attributes GUI, the
+**Apothic Attributes is the canonical set**: it owns the Attributes GUI, the
 tooltip/description layer, the combat formulas (`config/attributeslib.cfg`) and
 covers the widest set of stats.
 
 Iron's Lib's 7 attributes are a straight fork of the Apothic ones (identical
 names, identical descriptions, identical value conventions). Iron's Lib even
-ships its own Apothic compat that remaps them away — but it is gated on modid
+ships its own Apothic compat that remaps them away, but it is gated on modid
 **`apothic_attributes`**, while the installed Apothic Attributes 1.20.1-1.3.7
 declares modid **`attributeslib`** (Shadows renamed the mod later). So that
 built-in merge never fires on this pack, and both sets stay live.
@@ -52,14 +52,14 @@ Consequences:
 - The bonus lands on the Apothic attribute, so **it stacks** with every other
   source of that stat and is visible in the Apothic Attributes GUI.
 - The Iron's Lib attribute stops receiving modifiers, so Iron's own handlers
-  (crit multiplier, dodge, XP, break speed, healing) contribute nothing — no
+  (crit multiplier, dodge, XP, break speed, healing) contribute nothing, no
   double-dipping. No cancel/zeroing hack needed.
 - No value scaling happens: the modifier amount is transferred as-is. That is
   safe here only because the two sets share the same conventions.
 
 ## What it changes
 
-`data/attribute_merge/irons_lib_attribute_remap/` — 7 remaps, all
+`data/attribute_merge/irons_lib_attribute_remap/`, 7 remaps, all
 `irons_lib:X` → `attributeslib:X`:
 
 | File | From | To |
@@ -80,32 +80,18 @@ points).
 
 ## Handled elsewhere, or not at all
 
-**Cataclysm and Obscure API are merged by the `attribute_merge` mod instead** —
+**Cataclysm and Obscure API are merged by the `attribute_merge` mod instead** ,
 [`mod_compats/AttributeMerge/`](../../mod_compats/AttributeMerge/). Neither can
-use this datapack, because the remap transfers the modifier amount as-is
-(verified by reading the jars):
-
-| Family | Why the remap can't do it |
-|---|---|
-| `cataclysm:additional_critical_damage` (base 0.0, −512…512) | Percent **points** — The Annihilator grants `ADDITION 75.0` = "+75% crit damage". On Apothic's 1.5-based multiplier that is a 76.5× crit. Needs ×0.01. |
-| `obscure_api:*` (Aquamirae) | `ObscureAPIAttributes.getPercent` **sums** the amounts of ADDITION + MULTIPLY_BASE + MULTIPLY_TOTAL, and Aquamirae grants them as `MULTIPLY_BASE` (e.g. `0.3`). Vanilla math (what Apothic uses) makes `MULTIPLY_BASE` on a base-0 attribute contribute **nothing** — the bonus would be silently deleted. |
-
-The mod rewrites each modifier onto the Apothic attribute as the item declares
-it, scaling the amount and forcing `ADDITION`. Obscure's caps confirm its values
-are fractions, not percent points: dodge 0.8, crit hit / penetration 1.0, crit
-damage / healing power 10.
+use this datapack: the remap transfers the modifier amount as-is, and both need
+a rescale or an operation change. That README has the reasoning and the merge
+table.
 
 Not merged at all:
 
-- **Tinkers' Construct** (`player.critical_damage` base 1.5, `player.experience_multiplier`
-  and `player.mining_speed_multiplier` both base 1.0) — conventions actually
-  *do* match Apothic's, but Tinkers integration is deliberately out of scope by
-  owner's decision.
 - `obscure_api` `parry` / `accuracy` / `resilience` / `regeneration` /
   `magic_damage` / `magic_resistance`, and `cataclysm` `nature_heal` /
-  `eat_speed` / `charge_time` — no Apothic counterpart to merge into.
-- **Jump height** — there is only **one** jump-height attribute in the pack
-  (`tconstruct:generic.jump_boost`, "Jump Height"). Artifacts' Bunny Hoppers,
+  `eat_speed` / `charge_time`, no Apothic counterpart to merge into.
+- **Jump height** is not an attribute in this pack at all. Artifacts' Bunny Hoppers,
   Unique Accessories' Durable Spring, More Relics' Gravitum Strider and
   Botania's Sojourner's Sash all change jump height in **code**, not through an
   attribute, so there is nothing to remap. Making those feed one attribute
@@ -115,7 +101,7 @@ Not merged at all:
 
 ## Verifying
 
-Server log on load/`reload` — Iron's Lib logs
+Server log on load/`reload`, Iron's Lib logs
 `[Attribute Remapper] Unknown attribute remap {} -> {} (missing registry entry)`
 if an id is wrong, and `Failed to parse attribute remap {}: {}` on a bad file.
 Silence = all 7 applied. In game, equip an Iron's Spells piece that grants e.g.

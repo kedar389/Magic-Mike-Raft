@@ -17,10 +17,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 /**
- * Naginata — recreation of the Companions {@code book_naginata} effect as a LEGENDARY Holy spell.
+ * Naginata, recreation of the Companions {@code book_naginata} effect as a LEGENDARY Holy spell.
  * Rains naginatas down onto the target ({@link CompanionsProjectiles#NAGINATA}). This spell is a
- * boss drop (Sacred Pontiff — see {@code CompanionsLootEvents}); the book is removed.
- * Baseline: NAGINATA_COOLDOWN=140t (7s). Damage is hardcoded in the projectile class — VERIFY from
+ * boss drop (Sacred Pontiff, see {@code CompanionsLootEvents}); the book is removed.
+ * Baseline: NAGINATA_COOLDOWN=140t (7s). Damage is hardcoded in the projectile class, VERIFY from
  * {@code HolinessNaginataProjectile} in the Companions source and mirror it into baseSpellPower.
  */
 public class NaginataSpell extends AbstractSpell {

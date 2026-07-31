@@ -1,5 +1,5 @@
 // priority: 0
-// Iron's Companions — remove the crafting recipes of the removed/converted Companions "magic books".
+// Iron's Companions, remove the crafting recipes of the removed/converted Companions "magic books".
 //
 // The 4 converted books (ice_tornado, heal_ring, stone_spikes, naginata) are replaced by real
 // Iron's Spells scrolls; the other 5 (ice_shard, fire_mark, brace, magic_ray, black_hole) are cut.
