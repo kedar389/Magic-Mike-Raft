@@ -1,0 +1,69 @@
+{
+  "name": "minecraft:miner_main_room_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+	{	
+      "weight": 1,
+      "element": {
+        "location": "realmrpg_quests:miner_houses/miner_main_room_1",
+        "processors": "realmrpg_quests:mossy_age",
+		"projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+	{	
+      "weight": 1,
+      "element": {
+        "location": "realmrpg_quests:miner_houses/miner_main_room_2",
+        "processors": "realmrpg_quests:mossy_age",
+		"projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+	{	
+      "weight": 1,
+      "element": {
+        "location": "realmrpg_quests:miner_houses/miner_main_room_3",
+        "processors": "realmrpg_quests:mossy_age",
+		"projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+	{	
+      "weight": 1,
+      "element": {
+        "location": "realmrpg_quests:miner_houses/miner_main_room_4",
+        "processors": "realmrpg_quests:mossy_age",
+		"projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+	{	
+      "weight": 1,
+      "element": {
+        "location": "realmrpg_quests:miner_houses/miner_main_room_5",
+        "processors": "realmrpg_quests:mossy_age",
+		"projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+	{	
+      "weight": 1,
+      "element": {
+        "location": "realmrpg_quests:miner_houses/miner_main_room_6",
+        "processors": "realmrpg_quests:mossy_age",
+		"projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+	{	
+      "weight": 1,
+      "element": {
+        "location": "realmrpg_quests:miner_houses/miner_main_room_7",
+        "processors": "realmrpg_quests:mossy_age",
+		"projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

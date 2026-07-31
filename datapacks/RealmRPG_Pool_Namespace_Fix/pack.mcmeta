@@ -1,0 +1,6 @@
+{
+  "pack": {
+    "pack_format": 15,
+    "description": "Supplies RealmRPG Quests' jigsaw pools under the minecraft: namespace its NBTs wrongly ask for"
+  }
+}
