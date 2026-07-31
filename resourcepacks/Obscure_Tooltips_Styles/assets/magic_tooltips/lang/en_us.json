@@ -1,0 +1,22 @@
+{
+  "label.magic_tooltips.relic": "Relic",
+  "label.magic_tooltips.artifact": "Artifact",
+  "label.magic_tooltips.accessory": "Accessory",
+  "label.magic_tooltips.accessory_rare": "Accessory · Rare",
+  "label.magic_tooltips.accessory_epic": "Accessory · Epic",
+
+  "label.magic_tooltips.spellbook": "Spellbook",
+  "label.magic_tooltips.scroll": "Spell Scroll",
+  "label.magic_tooltips.staff": "Staff",
+  "label.magic_tooltips.rune": "Rune",
+  "label.magic_tooltips.upgrade_orb": "Upgrade Orb",
+
+  "label.magic_tooltips.school_fire": "Fire Magic",
+  "label.magic_tooltips.school_ice": "Ice Magic",
+  "label.magic_tooltips.school_lightning": "Lightning Magic",
+  "label.magic_tooltips.school_holy": "Holy Magic",
+  "label.magic_tooltips.school_ender": "Ender Magic",
+  "label.magic_tooltips.school_blood": "Blood Magic",
+  "label.magic_tooltips.school_nature": "Nature Magic",
+  "label.magic_tooltips.school_evocation": "Evocation Magic"
+}

@@ -1,0 +1,11 @@
+{
+  "priority": 100,
+  "provider": {
+    "type": "obscure_tooltips:translatable",
+    "key": "label.magic_tooltips.artifact"
+  },
+  "filter": {
+    "type": "obscure_tooltips:item",
+    "values": [ "#artifacts:artifacts" ]
+  }
+}

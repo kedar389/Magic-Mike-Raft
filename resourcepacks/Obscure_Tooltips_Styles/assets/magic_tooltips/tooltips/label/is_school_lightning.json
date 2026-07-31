@@ -1,0 +1,19 @@
+{
+  "priority": 115,
+  "provider": {
+    "type": "obscure_tooltips:translatable",
+    "key": "label.magic_tooltips.school_lightning"
+  },
+  "filter": {
+    "type": "obscure_tooltips:item",
+    "values": [
+      "irons_spellbooks:electromancer_helmet",
+      "irons_spellbooks:electromancer_chestplate",
+      "irons_spellbooks:electromancer_leggings",
+      "irons_spellbooks:electromancer_boots",
+      "irons_spellbooks:lightning_rune",
+      "irons_spellbooks:lightning_upgrade_orb",
+      "irons_spellbooks:lightning_rod"
+    ]
+  }
+}

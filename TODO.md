@@ -53,4 +53,5 @@
 
 ## UI
 - [] Fix hearts in the UI to not overlap on each other
-- [] Add support for obscuria tips
+- [x] Add support for obscuria tips, [`resourcepacks/Obscure_Tooltips_Styles/`](resourcepacks/Obscure_Tooltips_Styles/) gives Relics, More Relics, Unique Accessories, Artifacts and Iron's Spellbooks their own Obscure Tooltips label and panel style, instead of everything reading "Rare"/"Uncommon" in the same grey box. Iron's Spellbooks is coloured by SCHOOL (8 schools, armour mapping read out of `ExtendedArmorMaterials`). Needs enabling in Options → Resource Packs after deploy
+- [x] Enable the built-in **Vibrant Tooltips** pack (it was off, so no rarity panels, enchant glint or cursed glint rendered at all) and the new styles pack, both switched on in [`client_configuration/options.txt`](client_configuration/options.txt), the new repo home for the vanilla client options file. Deploy: copy `resourcepacks/Obscure_Tooltips_Styles/` into the instance FIRST, then the `resourcePacks:` line, Minecraft silently drops pack ids it cannot resolve

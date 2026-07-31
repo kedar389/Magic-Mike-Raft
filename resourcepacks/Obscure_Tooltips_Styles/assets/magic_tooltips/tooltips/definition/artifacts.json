@@ -1,0 +1,8 @@
+{
+  "priority": 150,
+  "style": "magic_tooltips:artifact",
+  "filter": {
+    "type": "obscure_tooltips:item",
+    "values": [ "#artifacts:artifacts" ]
+  }
+}

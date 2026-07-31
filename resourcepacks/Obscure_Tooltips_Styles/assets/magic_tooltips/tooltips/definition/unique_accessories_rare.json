@@ -1,0 +1,8 @@
+{
+  "priority": 160,
+  "style": "magic_tooltips:accessory_rare",
+  "filter": {
+    "type": "obscure_tooltips:item",
+    "values": [ "#uniqueaccessories:accessory_box_rare" ]
+  }
+}

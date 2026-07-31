@@ -1,0 +1,11 @@
+{
+  "priority": 120,
+  "provider": {
+    "type": "obscure_tooltips:translatable",
+    "key": "label.magic_tooltips.accessory_epic"
+  },
+  "filter": {
+    "type": "obscure_tooltips:item",
+    "values": [ "#uniqueaccessories:accessory_box_epic" ]
+  }
+}

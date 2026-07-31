@@ -1,0 +1,16 @@
+{
+  "priority": 155,
+  "style": "magic_tooltips:school_fire",
+  "filter": {
+    "type": "obscure_tooltips:item",
+    "values": [
+      "irons_spellbooks:pyromancer_helmet",
+      "irons_spellbooks:pyromancer_chestplate",
+      "irons_spellbooks:pyromancer_leggings",
+      "irons_spellbooks:pyromancer_boots",
+      "irons_spellbooks:fire_rune",
+      "irons_spellbooks:fire_upgrade_orb",
+      "irons_spellbooks:pyrium_staff"
+    ]
+  }
+}

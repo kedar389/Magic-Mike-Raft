@@ -1,0 +1,17 @@
+{
+  "priority": 155,
+  "style": "magic_tooltips:school_blood",
+  "filter": {
+    "type": "obscure_tooltips:item",
+    "values": [
+      "irons_spellbooks:cultist_helmet",
+      "irons_spellbooks:cultist_chestplate",
+      "irons_spellbooks:cultist_leggings",
+      "irons_spellbooks:cultist_boots",
+      "irons_spellbooks:blood_rune",
+      "irons_spellbooks:blood_upgrade_orb",
+      "irons_spellbooks:blood_staff",
+      "irons_spellbooks:improved_blood_staff"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "priority": 115,
+  "provider": {
+    "type": "obscure_tooltips:translatable",
+    "key": "label.magic_tooltips.school_holy"
+  },
+  "filter": {
+    "type": "obscure_tooltips:item",
+    "values": [
+      "irons_spellbooks:priest_helmet",
+      "irons_spellbooks:priest_chestplate",
+      "irons_spellbooks:priest_leggings",
+      "irons_spellbooks:priest_boots",
+      "irons_spellbooks:holy_rune",
+      "irons_spellbooks:holy_upgrade_orb"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "priority": 105,
+  "provider": {
+    "type": "obscure_tooltips:translatable",
+    "key": "label.magic_tooltips.rune"
+  },
+  "filter": {
+    "type": "obscure_tooltips:item",
+    "values": [
+      "#irons_spellbooks:inscribed_rune",
+      "irons_spellbooks:blank_rune"
+    ]
+  }
+}

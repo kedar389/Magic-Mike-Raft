@@ -1,0 +1,15 @@
+{
+  "priority": 155,
+  "style": "magic_tooltips:school_evocation",
+  "filter": {
+    "type": "obscure_tooltips:item",
+    "values": [
+      "irons_spellbooks:archevoker_helmet",
+      "irons_spellbooks:archevoker_chestplate",
+      "irons_spellbooks:archevoker_leggings",
+      "irons_spellbooks:archevoker_boots",
+      "irons_spellbooks:evocation_rune",
+      "irons_spellbooks:evocation_upgrade_orb"
+    ]
+  }
+}

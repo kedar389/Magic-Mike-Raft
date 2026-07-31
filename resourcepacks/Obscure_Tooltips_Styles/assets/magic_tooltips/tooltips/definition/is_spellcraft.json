@@ -1,0 +1,33 @@
+{
+  "priority": 145,
+  "style": "magic_tooltips:spellcraft",
+  "filter": {
+    "type": "obscure_tooltips:any_of",
+    "terms": [
+      {
+        "type": "obscure_tooltips:item",
+        "values": [
+          "#curios:spellbook",
+          "#irons_spellbooks:staff",
+          "#irons_spellbooks:inscribed_rune",
+          "irons_spellbooks:scroll",
+          "irons_spellbooks:scroll_pouch"
+        ]
+      },
+      {
+        "type": "obscure_tooltips:all_of",
+        "terms": [
+          {
+            "type": "obscure_tooltips:mod",
+            "mods": [ "irons_spellbooks" ]
+          },
+          {
+            "type": "obscure_tooltips:id",
+            "target": "PATH",
+            "ends_with": "_upgrade_orb"
+          }
+        ]
+      }
+    ]
+  }
+}

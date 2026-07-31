@@ -1,0 +1,11 @@
+{
+  "priority": 105,
+  "provider": {
+    "type": "obscure_tooltips:translatable",
+    "key": "label.magic_tooltips.scroll"
+  },
+  "filter": {
+    "type": "obscure_tooltips:item",
+    "values": [ "irons_spellbooks:scroll" ]
+  }
+}

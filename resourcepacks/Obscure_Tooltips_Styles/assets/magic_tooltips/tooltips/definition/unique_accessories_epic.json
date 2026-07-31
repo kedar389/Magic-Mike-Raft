@@ -1,0 +1,8 @@
+{
+  "priority": 170,
+  "style": "magic_tooltips:accessory_epic",
+  "filter": {
+    "type": "obscure_tooltips:item",
+    "values": [ "#uniqueaccessories:accessory_box_epic" ]
+  }
+}

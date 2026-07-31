@@ -1,0 +1,8 @@
+{
+  "panel": "magic_tooltips:radiant",
+  "icon": "magic_tooltips:burst",
+  "effects": [
+    "magic_tooltips:radiant_ray_glow",
+    "magic_tooltips:radiant_shimmer"
+  ]
+}

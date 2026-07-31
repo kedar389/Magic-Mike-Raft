@@ -1,0 +1,15 @@
+{
+  "priority": 155,
+  "style": "magic_tooltips:school_nature",
+  "filter": {
+    "type": "obscure_tooltips:item",
+    "values": [
+      "irons_spellbooks:plagued_helmet",
+      "irons_spellbooks:plagued_chestplate",
+      "irons_spellbooks:plagued_leggings",
+      "irons_spellbooks:plagued_boots",
+      "irons_spellbooks:nature_rune",
+      "irons_spellbooks:nature_upgrade_orb"
+    ]
+  }
+}

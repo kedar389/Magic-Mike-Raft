@@ -1,0 +1,28 @@
+{
+  "priority": 100,
+  "provider": {
+    "type": "obscure_tooltips:translatable",
+    "key": "label.magic_tooltips.relic"
+  },
+  "filter": {
+    "type": "obscure_tooltips:all_of",
+    "terms": [
+      {
+        "type": "obscure_tooltips:mod",
+        "mods": [ "relics", "morerelics" ]
+      },
+      {
+        "type": "obscure_tooltips:none_of",
+        "terms": [
+          {
+            "type": "obscure_tooltips:item",
+            "values": [
+              "relics:relic_experience_bottle",
+              "relics:solid_snowball"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

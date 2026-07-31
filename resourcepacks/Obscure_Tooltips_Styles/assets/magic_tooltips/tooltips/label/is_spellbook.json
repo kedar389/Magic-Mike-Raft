@@ -1,0 +1,11 @@
+{
+  "priority": 105,
+  "provider": {
+    "type": "obscure_tooltips:translatable",
+    "key": "label.magic_tooltips.spellbook"
+  },
+  "filter": {
+    "type": "obscure_tooltips:item",
+    "values": [ "#curios:spellbook" ]
+  }
+}
