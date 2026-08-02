@@ -5,6 +5,7 @@
 - [X] add ascended arcana
 - [x] Add feur extension jungle
 - [x] Add colorful hearts
+- [ ] Add **[Async Locator](https://modrinth.com/mod/async-locator)** (server-side only). `/locate` and villager explorer map trades share one code path, `ServerLevel.findNearestMapStructure(tag, pos, radius, skipExistingChunks)`; the trade version runs a **100-chunk** radius search with `skipExistingChunks=true` on the main thread whenever a villager levels up or restocks, a real stutter source on 172 mods. Covers the `/locate` command, villager map trade offers, dolphin treasure finding and chest exploration maps. Caveat: it patches **vanilla paths only** ("other mods may need to implement usage of this mod themselves"), so the datapack tag route under Structures benefits but MoreJS-authored trades likely do not, which is an argument for the datapack route
 
 ## Modpack Management
 - [ ] Create a script that copies config and datapacks over to the server
@@ -25,6 +26,12 @@
 
 ## Structures
 - [ ] Make structures spawn on flat terrain
+- [ ] **Buyable explorer maps that lead to modded structures.** Villager trades are hardcoded in `VillagerTrades.TRADES` (static map, class-init), so there is no datapack registry for them on 1.20.1, and KubeJS `2001.6.5` ships only `VillagerProfessionBuilder`/`VillagerTypeBuilder`, no trade event. Three routes:
+  - **Datapack, retarget the existing cartographer trades** (preferred): the two vanilla map trades resolve through structure tags, `data/minecraft/tags/worldgen/structure/on_ocean_explorer_maps.json` (vanilla `["minecraft:monument"]`) and `on_woodland_explorer_maps.json` (vanilla `["minecraft:mansion"]`). Add structure IDs with `"replace": false` and the trade retargets. Limits: only 2 trade slots total, pooled nearest-wins so you can't pick which structure, and the map keeps the vanilla name/icon
+  - **Datapack, `minecraft:exploration_map` loot function** for chest loot or a `/loot give @s loot <table>` shop, one table per structure, no slot limit. `destination` is a plain tag id with **no `#`** (vanilla `chests/shipwreck_map` omits it and defaults to `on_treasure_maps`). `#dungeonnowloading:temple_of_duality` already exists in the DNL jar and works as-is
+  - **[MoreJS](https://modrinth.com/mod/morejs)** (1.20.1 Forge, needs KubeJS, already present) for genuine new cartographer trades, `MoreJS.villagerTrades(e => ...)` + `VillagerUtils.createStructureMapTrade(input, structure)` chained with `.displayName()/.marker()/.scale()/.noPreview()`
+  - Decide route before building, see the Async Locator caveat under Mods to add
+- [ ] Sanity-check map search cost against the new rarities set in [`mod_configs_server/structurify.json`](mod_configs_server/structurify.json): `temple_of_duality` at spacing 32 resolves fast and close, `air_villages` at spacing 188 will be the slow one and lands thousands of blocks out
 - [x] Add waystones, remove the option to mine them, make them hard to craft, make them sparse like 500 blocks, give travel a reasonable XP-based scaling cost (usable by endgame, harder early game, not crazy). Waystone recipe uses warp stone; disable warp stone crafting (later added to expensive trader trades). For now warp stone should be unobtainable.
 
 ## Mobs
