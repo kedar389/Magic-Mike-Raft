@@ -1,14 +1,67 @@
 # Server JVM flags (Java 21 + ZGC)
 # Copy contents into user_jvm_args.txt in the server folder.
-# Adjust -Xmx and -Xms based on available RAM (leave 2-3GB for OS).
 
+# Equal min and max so the heap never resizes. Measured peak use on this pack is ~5G.
 -Xms8G
 -Xmx8G
--XX:+UnlockExperimentalVMOptions
+
+# Distant Horizons requires a concurrent collector: ZGC on Java 21+, Shenandoah on 8-17.
+# G1 causes the stutter DH warns about. Non-generational: ZGenerational is opt-in on
+# 21.0.x and not stable enough here.
 -XX:+UseZGC
--XX:+ZGenerational
--XX:+DisableExplicitGC
+
+# Fault the whole heap in at startup rather than during play.
 -XX:+AlwaysPreTouch
--XX:+PerfDisableSharedMem
+
+# Never return heap to the OS.
 -XX:-ZUncommit
--XX:+ParallelRefProcEnabled
+
+# Cap vanilla's background worker pool. Default is (CPU threads - 1), so 23 on a 24-thread
+# machine, which oversubscribes badly when a client runs on the same box. Raise if the
+# server ever runs alone.
+-Dmax.bg.threads=10
+
+# 173 mods settle at ~325M metaspace. Sets the initial high-water mark past that so
+# metaspace collections stop firing during mod init. Startup-only effect.
+-XX:MetaspaceSize=512M
+
+# Skip the hsperfdata file. Side effect: jps and jstat cannot see this JVM; spark is
+# in-process and unaffected.
+-XX:+PerfDisableSharedMem
+
+# Diagnostics go to logs/ instead of the server root.
+-XX:ErrorFile=logs/hs_err_pid%p.log
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:HeapDumpPath=logs
+
+# NOT USED, and why. Most published "Distant Horizons flag sets" are Aikar G1 templates,
+# so their GC half does nothing under ZGC.
+#
+#   -XX:+ZGenerational              opt-in and not stable on 21.0.x. Its load barriers are
+#                                   inlined into JIT-compiled code, so a bug in them faults
+#                                   inside compiled methods rather than in the GC.
+#   -XX:+DisableExplicitGC          DH calls System.gc() to release LOD buffers and warns
+#                                   at startup when this blocks it. The flag exists to
+#                                   stop G1 stutter, which ZGC does not have.
+#   -XX:+ParallelRefProcEnabled     G1/CMS only
+#   -XX:MaxGCPauseMillis            G1 only
+#   -XX:GCTimeRatio                 G1 only
+#   -XX:G1*                         G1 only
+#   -XX:AllocatePrefetchStyle=3     G1 oriented, marginal
+#   -XX:+UnlockExperimentalVMOptions  nothing here is experimental
+#   -XX:+UseNUMA                    single NUMA node on this CPU, no effect
+#   -XX:+UseLargePages              needs a Windows privilege grant
+#   -XX:+UseFastUnorderedTimeStamps experimental, can report bogus timings
+#   -XX:+UseCriticalJavaThreadPriority, -XX:ThreadPriorityPolicy=1
+#                                   raises server thread priority at the expense of a
+#                                   client sharing the machine
+#   -XX:+UseStringDeduplication     works with ZGC on 18+, but the heap has headroom to
+#                                   spare, so there is nothing to reclaim
+#   -XX:ReservedCodeCacheSize=400M, -XX:{Profiled,NonProfiled,NonNMethod}CodeHeapSize
+#                                   measured peak is ~60% of the 240M default
+#   -XX:-DontCompileHugeMethods, -XX:MaxNodeLimit, -XX:NodeLimitFudgeFactor
+#                                   lets the JIT compile Minecraft's oversized methods.
+#                                   Genuinely useful for a modpack. Costs compile time and
+#                                   code cache, so pair with a larger code cache. Add these
+#                                   on their own, after any other change has been confirmed
+#                                   good, so a regression has one obvious cause.
