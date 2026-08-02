@@ -84,12 +84,47 @@ handler does one `isEmpty()` check and a few identity-hash lookups, allocating n
 **Not covered:** attributes granted by potions, spells or per-tick code instead of item modifiers.
 
 **Curios.** For well-behaved curios, Iron's Lib's remapper already covers `CurioAttributeModifierEvent`,
-and Unique Accessories grants the Apothic attributes directly. Cataclysm's curios cannot be reached
-by any listener: `CuriosItem.getAttributeModifiers` posts the event but returns its own local
-`LinkedHashMultimap`, while `CurioAttributeModifierEvent.getModifiableMap()` lazily copies with
-`LinkedHashMultimap.create(originalModifiers)`, so `addModifier` and `removeAttribute` write to a
-copy that is discarded. `cataclysm:ring_of_grudged` is affected, see
-`docs/technical-notes.md`.
+and Unique Accessories grants the Apothic attributes directly. Cataclysm's curios need the mixin
+below.
+
+## The Cataclysm curio mixin
+
+`CuriosItem.getAttributeModifiers` cannot be influenced by any event listener. It posts
+`CurioAttributeModifierEvent` and then returns **its own local `LinkedHashMultimap`**, not
+`event.getModifiers()`, while `CurioAttributeModifierEvent.getModifiableMap()` lazily copies with
+`LinkedHashMultimap.create(originalModifiers)`. So `addModifier` and `removeAttribute` both write to
+a copy that is thrown away.
+
+Cataclysm also gates a curio's attributes on the slot it sits in:
+
+```java
+if (slotContext.identifier().equals(this.attributeSlot) && this.attributes != null) { ... }
+```
+
+`attributeSlot` is baked in at registration. `ring_of_grudged` declares `"rings"`, but the pack sets
+`id=rings;size=0` in `curios-common.toml` and routes the item into the standard `ring` slot so every
+ring shares one slot, so the gate fails and the ring grants nothing at all.
+
+`mixin/CataclysmCuriosMixin.java` fixes both, and both are needed: fixing only the gate would give
+the ring a raw `cataclysm:additional_critical_damage`, which Cataclysm's own handler applies as a
+working +10% crit while the row stays hidden and the value never reaches `attributeslib:crit_damage`,
+an invisible buff.
+
+| Injection | Effect |
+|---|---|
+| `@Redirect` on the method's only `String.equals` | `ring` satisfies `rings`, nothing else |
+| `@Inject` at `RETURN`, mutating `cir.getReturnValue()` | `MergeEngine.mergeInPlace` on the map actually returned |
+
+Verified against the installed jar: the method has exactly one `String.equals` (offset 13, the gate)
+and exactly one `areturn` (offset 109), so neither injection is ambiguous. Both use `require = 1`, so
+a Cataclysm update that moves either one fails at load rather than silently reverting the ring.
+
+Still no compile dependencies. The mixin targets Cataclysm by name string
+(`@Mixin(targets = "com.github.L_Ender.cataclysm.items.CuriosItem.CuriosItem")`) and captures no
+target method arguments, which keeps Curios' `SlotContext` off the classpath too. Every annotation
+sets `remap = false`, so no refmap is generated or needed. `AttributeMergeMixinPlugin` skips the
+whole config when Cataclysm is absent, checking `LoadingModList` because mixin configs are queried
+during class loading, before `ModList` exists.
 
 ## Build
 
@@ -114,6 +149,12 @@ Merging 9 duplicate attribute(s) into Apothic Attributes
   cataclysm:additional_critical_damage -> attributeslib:crit_damage (x0.01)
   ...
 ```
+
+No mixin errors for `attribute_merge.mixins.json` should appear. If Cataclysm is absent, the plugin
+skips the config silently.
+
+Equip **Ring of the Grudge** in a `ring` slot: Crit Damage should go from 1.5 to 1.6, with no
+`% Critical Damage` row.
 
 Then hold **The Annihilator** (`ADDITION 75.0`): its tooltip should show **+75% Crit Damage** on the
 Apothic stat, the Attributes GUI should read **225%** crit damage (1.5 base + 0.75), and Cataclysm's

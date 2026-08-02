@@ -1,6 +1,7 @@
 package com.attributemerge.event;
 
 import com.attributemerge.AttributeMerge;
+import com.attributemerge.MergeEngine;
 import com.attributemerge.MergeRules;
 import com.google.common.collect.Multimap;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -10,11 +11,9 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Rewrites duplicate-attribute modifiers onto their canonical Apothic attribute at the moment the
@@ -77,29 +76,8 @@ public final class ItemAttributeMergeHandler {
             if (drained == null) continue;
 
             for (AttributeModifier original : drained) {
-                event.addModifier(rule.target(), rewrite(original, rule));
+                event.addModifier(rule.target(), MergeEngine.rewrite(original, rule));
             }
         }
-    }
-
-    private static AttributeModifier rewrite(AttributeModifier original, MergeRules.Resolved rule) {
-        return new AttributeModifier(
-                deriveId(original.getId(), rule.targetId()),
-                original.getName(),
-                original.getAmount() * rule.scale(),
-                rule.forceOperation() != null ? rule.forceOperation() : original.getOperation()
-        );
-    }
-
-    /**
-     * A new UUID per (original modifier, target attribute), derived deterministically.
-     *
-     * <p>Determinism is load-bearing: vanilla removes an item's modifiers by recomputing the same
-     * multimap on unequip, so the rewritten modifier must come out identical every time. Deriving
-     * from the target id as well keeps two different source attributes that map to the same target
-     * (Cataclysm and Obscure crit damage both feed {@code crit_damage}) from colliding.
-     */
-    private static UUID deriveId(UUID originalId, String targetId) {
-        return UUID.nameUUIDFromBytes((originalId + "|" + targetId).getBytes(StandardCharsets.UTF_8));
     }
 }

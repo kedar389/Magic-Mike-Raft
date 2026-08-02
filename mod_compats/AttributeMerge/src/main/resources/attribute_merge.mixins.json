@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.attributemerge.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "plugin": "com.attributemerge.mixin.AttributeMergeMixinPlugin",
+  "minVersion": "0.8.5",
+  "mixins": [
+    "CataclysmCuriosMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

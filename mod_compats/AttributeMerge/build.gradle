@@ -53,6 +53,11 @@ jar {
             'Implementation-Title'   : project.name,
             'Implementation-Version' : project.jar.archiveVersion,
             'Implementation-Vendor'  : 'attribute_merge',
+            // This is what actually registers the mixin config on Forge 1.20.1. The [[mixins]]
+            // block in mods.toml is accepted by the parser and then never handed to Mixin: the
+            // config simply does not appear in Mixin's "Preparing ..." list and no error is
+            // logged. Every mixin mod in the pack uses this manifest attribute.
+            'MixinConfigs'           : 'attribute_merge.mixins.json',
         ])
     }
 }

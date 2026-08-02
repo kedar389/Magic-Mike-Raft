@@ -92,8 +92,15 @@ public final class MergeRules {
      *
      * <p>Empty until {@link #resolve()} runs, and empty afterwards if none of the duplicate mods
      * are installed, which is the cheap early-out for the event handler.
+     *
+     * <p>{@code volatile} because it is written once on the mod-loading thread during
+     * {@code FMLCommonSetupEvent} and then read from the server thread and the client render thread
+     * (tooltips recompute an item's modifiers per frame). FML's loading pipeline almost certainly
+     * publishes it safely already, but nothing in the JMM guarantees that, and a volatile read of a
+     * field that never changes again costs nothing measurable. The map itself is never mutated after
+     * publication, so the reads need no further synchronisation.
      */
-    private static Map<Attribute, Resolved> resolved = Map.of();
+    private static volatile Map<Attribute, Resolved> resolved = Map.of();
 
     private MergeRules() {
     }
