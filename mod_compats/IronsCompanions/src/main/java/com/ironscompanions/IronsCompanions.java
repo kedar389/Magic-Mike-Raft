@@ -2,6 +2,7 @@ package com.ironscompanions;
 
 import com.ironscompanions.event.CompanionAllyEvents;
 import com.ironscompanions.event.CompanionArmorEvents;
+import com.ironscompanions.event.CompanionBookRemovalEvents;
 import com.ironscompanions.event.CompanionDamageEvents;
 import com.ironscompanions.event.CompanionsLootEvents;
 import com.ironscompanions.soulmage.SoulMageAiEvents;
@@ -38,6 +39,8 @@ public class IronsCompanions {
         MinecraftForge.EVENT_BUS.register(new CompanionArmorEvents());  // Phase 4: mage-set / holy-robe bridges
         MinecraftForge.EVENT_BUS.register(new CompanionAllyEvents());   // Phase 5: no friendly fire
         MinecraftForge.EVENT_BUS.register(new SoulMageAiEvents());      // Phase 7: Soul Mage casts IS spells from scrolls
+        MinecraftForge.EVENT_BUS.register(new CompanionBookRemovalEvents()); // Phase 6: strip magic-book recipes
+        // JEI-hiding of the same books lives in compat/IronsCompanionsJeiPlugin (loaded by JEI, client only).
 
         LOGGER.info("[IronsCompanions] Initialised.");
     }

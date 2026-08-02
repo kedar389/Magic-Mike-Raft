@@ -36,6 +36,7 @@ Two goals:
 | `gtbcs_geomancy_plus` (2.0.0) | Owns the **`geo`** school used by Stone Spikes | ✅ after |
 | `apothic_attributes` / `attributeslib` | Spell-power / resist attributes for armour bridges | ✅ |
 | `curios` | Reads worn armour for set bonuses (equipment events) | optional |
+| `jei` (15.20.0.112) | Hides the removed magic books from the item list (API only, client) | optional |
 
 ## 4. Architecture
 
@@ -46,7 +47,7 @@ One Forge mod, four surfaces:
 - **Forge events** (clean, external), armour-set bonuses, mage-set IS-damage reduction, holy-robe holy bonus,
   ally healing, no-friendly-fire, and companion-ability damage retyping.
 - **Mixins** (invasive), Soul Mage AI (cast IS spells from inventory scrolls).
-- **Datapacks**, disable/hide removed books, add the Naginata scroll to the Sacred Pontiff loot table.
+- **Removals**, strip the recipes of the removed books (reload listener) and hide them via a JEI plugin.
 
 > **Item removal is external, not a fork.** Removed books are stripped of recipes/loot and JEI-hidden; their
 > registry entries technically remain but become unobtainable. (Decision 2026-07-27.)
@@ -82,10 +83,14 @@ Transformer rather than copying assets.
 `book_ice_shard`, `book_magic_ray`, `book_fire_mark`, `book_brace`, `book_black_hole`, **and** the four
 converted books above (players get the IS spell instead of the book).
 
-Removal steps (datapack, no build):
-- Remove/override crafting recipes (e.g. `data/companions/recipes/book_naginata.json`, the relic-gold recipe).
-- Strip them from any Companions loot/trade tables.
-- Hide all `companions:book_*` items in JEI (`data`/JEI blacklist tag).
+Removal steps, all inside this mod (`CompanionBooks` holds the one list of nine ids):
+- `event/CompanionBookRemovalEvents`, an `AddReloadListenerEvent` listener that filters the
+  `RecipeManager` and drops every recipe whose output is one of the books. Matching on output catches
+  the recipe whatever its path or type, and it re-runs on `/reload`.
+- `compat/IronsCompanionsJeiPlugin`, a `@JeiPlugin` calling `removeIngredientsAtRuntime` so the books
+  vanish from the item list. Client only, loaded by JEI's own plugin scan.
+- Loot/trade tables: not yet checked. If Companions grants books through loot, add a
+  `LootTableLoadEvent` filter alongside the recipe strip (see section 8).
 
 ### 5C. Soul Mage casts Iron's Spells
 
@@ -135,8 +140,8 @@ ability damage → **IS blood** magic damage. (Scythe lifesteal left as-is unles
 
 - **Naginata scroll** → dropped by **Sacred Pontiff / His Holiness** via a Java loot event
   (`event/CompanionsLootEvents`), so the scroll NBT is built with the IS API.
-- **Remove recipes** for all nine `companions:book_*` → KubeJS `server_scripts` (`event.remove`).
-- **JEI-hide** all `companions:book_*` → KubeJS `client_scripts` (`JEIEvents.hideItems`).
+- **Remove recipes** for all nine `companions:book_*` → `event/CompanionBookRemovalEvents`.
+- **JEI-hide** all `companions:book_*` → `compat/IronsCompanionsJeiPlugin`.
 - Distribute Ice Tornado / Stone Spikes / Heal Ring scrolls via loot/trades (tables TBD).
 
 ## 7. Implementation phases
@@ -154,9 +159,8 @@ ability damage → **IS blood** magic damage. (Scythe lifesteal left as-is unles
    spell power).
 5. ✅ **Ally/faction** (5G), `event/CompanionAllyEvents` (no friendly fire done; heal-ally targeting
    deferred to Phase 7 mixin pass).
-6. ✅ **Removals (KubeJS)**, `kubejs/server_scripts/irons_companions_removals.js` removes all nine
-   `companions:book_*` recipes; `kubejs/client_scripts/irons_companions_hide_books.js` JEI-hides them.
-   (Replaces the earlier `datapacks/Irons_Companions_Data/`, now deleted.)
+6. ✅ **Removals**, `CompanionBooks` (the single list of nine ids) +
+   `event/CompanionBookRemovalEvents` (recipe strip) + `compat/IronsCompanionsJeiPlugin` (JEI hide).
 7. ✅ **Soul Mage AI** (5C), `soulmage/SoulMageIronsSpellGoal` + `SoulMageAiEvents` inject an
    IS-scroll-casting goal (`EntityJoinLevelEvent` + reflection on `goalSelector`; **no mixin needed**).
    The old book goals go inert once the books are gone. Heal-ally targeting (5G) still TODO.
@@ -167,6 +171,9 @@ ability damage → **IS blood** magic damage. (Scythe lifesteal left as-is unles
 - Exact Ice Tornado per-level damage curve.
 - Whether Companions projectile constructors are public (else add AccessTransformer).
 - Final companion→school mapping sign-off (5D).
+- `RecipeManager#getRecipes()` / `#replaceRecipes(Iterable)` visibility in 1.20.1 official mappings
+  (fallback: reflection on the `recipes`/`byName` maps).
+- Whether any Companions loot or trade table grants the removed books.
 
 ## 9. References
 

@@ -9,21 +9,16 @@ Radek deploys these to the live instances himself (do not edit the live instance
 |---|---|---|---|
 | `server_scripts/` | server (incl. client's integrated server) | `/reload` | recipes, tags, loot |
 | `client_scripts/` | client only | F3+T | JEI events, tooltips |
-| `startup_scripts/` | both, at load | restart | registries (none yet) |
+| `startup_scripts/` | both, at load | restart | registries |
+
+Only `server_scripts/` currently holds anything.
 
 ## Deploy
 
-Copy the folders into each instance's `kubejs/`:
+Copy the folder into each instance's `kubejs/`:
 
-- **Servers:** `servers_folder/magic server/kubejs/` and `servers_folder/testing_server/kubejs/`
-  (server_scripts only strictly needed there; client_scripts are ignored on a dedicated server).
-- **Client:** `<Prism>/instances/Client/minecraft/kubejs/` (needs client_scripts for the JEI-hide).
-
-## Current scripts, Iron's Companions compat
-
-- `server_scripts/irons_companions_removals.js`, removes crafting recipes for all nine
-  `companions:book_*` magic books (converted → Iron's Spells scrolls, or cut entirely).
-- `client_scripts/irons_companions_hide_books.js`, hides those nine books from JEI.
+- **Servers:** `servers_folder/magic server/kubejs/` and `servers_folder/testing_server/kubejs/`.
+- **Client:** nothing to deploy while there are no `client_scripts/`.
 
 ## Current scripts, Waystones balance
 
@@ -32,6 +27,3 @@ Copy the folders into each instance's `kubejs/`:
   which already requires a Warp Stone, so with Warp Stone gone, waystones are only obtainable from
   world gen. World-gen/XP tuning lives in `mod_configs_server/waystones-common.toml`.
   See `docs/modpack-wiki.md` → Waystones.
-
-> These supersede the earlier `datapacks/Irons_Companions_Data/` recipe override (removed). See
-> `mod_compats/IronsCompanions/README.md` for the full compat design.
