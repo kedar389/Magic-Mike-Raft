@@ -30,9 +30,36 @@ import java.util.Map;
  * <p>Obscure's {@code penetration} is a percentage of armor ignored, so its Apothic twin is
  * {@code armor_shred} (percentage armor reduction), not {@code armor_pierce} (flat armor points).
  *
- * {@code obscure_api} parry / accuracy / resilience / regeneration / magic_damage /
- * magic_resistance plus {@code cataclysm} nature_heal / eat_speed / charge_time, which have no
- * Apothic counterpart to merge into.
+ * <p><b>Additional Entity Attributes</b> ships inside Origins (Origins jar-in-jars Apoli, which
+ * jar-in-jars AEA) and is loaded by Sinytra Connector. Three of its 13 attributes duplicate an
+ * Apothic stat. All three carry the same unit as their Apothic twin, so they transfer at scale 1.0
+ * and keep their original operation: AEA reads its values through vanilla {@code getValue()}, so
+ * unlike Obscure API there is no custom formula to work around. Measured base / min / max:
+ *
+ * <table>
+ *   <tr><th>AEA</th><th>Apothic</th><th>Unit</th></tr>
+ *   <tr><td>{@code player.critical_bonus_damage} 0.5 / -1 / 1024</td>
+ *       <td>{@code crit_damage} 1.5 / 1 / 100</td>
+ *       <td>both land on the same crit multiplier, AEA counts the bonus above 1.0 and Apothic
+ *           counts the multiplier itself, so ADDITION is identical on both</td></tr>
+ *   <tr><td>{@code player.dig_speed} 0.0 / 0 / 2048</td>
+ *       <td>{@code mining_speed} 1.0 / 0 / 10</td>
+ *       <td>AEA applies {@code speed * (1 + value)}, Apothic multiplies by the value</td></tr>
+ *   <tr><td>{@code player.dropped_experience} 1.0 / 0 / 1024</td>
+ *       <td>{@code experience_gained} 1.0 / 0 / 1000</td>
+ *       <td>both are multipliers based at 1.0</td></tr>
+ * </table>
+ *
+ * <p>Because the base values differ, only ADDITION transfers exactly. A MULTIPLY_BASE or
+ * MULTIPLY_TOTAL modifier scales off a different base on each side. Nothing in the pack grants
+ * these three today, and Apoli's {@code origins:attribute} power emits ADDITION, so this is a
+ * forward-compatibility note rather than a live concern.
+ *
+ * <p>Not merged, no Apothic counterpart exists: {@code obscure_api} parry / accuracy / resilience /
+ * regeneration / magic_damage / magic_resistance, {@code cataclysm} nature_heal / eat_speed /
+ * charge_time, and the ten remaining {@code additionalentityattributes} ones. Of those ten, Origins'
+ * Merling grants {@code generic.water_speed} and Medieval Origins' Goblin grants
+ * {@code player.bonus_rare_loot_rolls} and {@code player.bonus_loot_count_rolls}.
  */
 public final class MergeRules {
 
@@ -47,7 +74,16 @@ public final class MergeRules {
             MergeRule.of("obscure_api:critical_hit", "attributeslib:crit_chance", 1.0D, ADD),
             MergeRule.of("obscure_api:dodge", "attributeslib:dodge_chance", 1.0D, ADD),
             MergeRule.of("obscure_api:penetration", "attributeslib:armor_shred", 1.0D, ADD),
-            MergeRule.of("obscure_api:healing_power", "attributeslib:healing_received", 1.0D, ADD)
+            MergeRule.of("obscure_api:healing_power", "attributeslib:healing_received", 1.0D, ADD),
+
+            // Additional Entity Attributes (via Origins -> Apoli). Same units, vanilla math, so
+            // the operation is left alone.
+            MergeRule.of("additionalentityattributes:player.critical_bonus_damage",
+                    "attributeslib:crit_damage", 1.0D, null),
+            MergeRule.of("additionalentityattributes:player.dig_speed",
+                    "attributeslib:mining_speed", 1.0D, null),
+            MergeRule.of("additionalentityattributes:player.dropped_experience",
+                    "attributeslib:experience_gained", 1.0D, null)
     );
 
     /**

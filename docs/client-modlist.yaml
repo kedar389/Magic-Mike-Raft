@@ -12,6 +12,9 @@ Performance:
   - ImmediatelyFast             # batches rendering calls
   - Oculus                      # shader support (Iris port)
 
+Compat mods (built from mod_compats/, not downloaded):
+  - Attribute Merge             # required on both sides: tooltips + mod-list handshake
+
 Graphics:
   - Distant Horizons            # LOD terrain beyond render distance
 

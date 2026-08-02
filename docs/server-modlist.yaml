@@ -136,6 +136,9 @@ Alchemy overhauls: []           # TBD
 
 Water overhauls: []             # TBD
 
+Compat mods (built from mod_compats/, not downloaded):
+  - Attribute Merge             # folds Cataclysm + Obscure API duplicate attributes into Apothic
+
 Gameplay:
   - Simple Voice Chat           # proximity voice
   - Carry On                    # pick up and carry blocks and mobs

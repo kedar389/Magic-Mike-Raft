@@ -4,10 +4,18 @@ Client resource pack. Appends the **source mod** in parentheses to attribute
 names, so the Apothic Attributes screen reads `Crit Damage (Apotheosis)`,
 `Spell Power (Iron's Spellbooks)`, `Max Health (Minecraft)`, etc.
 
-**Coverage:** 102 attributes across 12 sources: Minecraft, Forge,
+**Coverage:** 107 attributes across 12 sources: Minecraft, Forge,
 Apotheosis, Iron's Spellbooks, Iron's Lib, Obscure API,
 Cataclysm, GTBC's SpellLib, GTBC's Geomancy Plus, Additional Entity Attributes,
 Reach Entity Attributes, and Botania.
+
+Additional Entity Attributes is labelled **`(Origins)`**, not
+`(Additional Entity Attributes)`. It arrives as a jar-in-jar inside
+Origins -> Apoli, and the only powers that grant any of its attributes are
+Origins' Merling (`generic.water_speed`) and Medieval Origins' Goblin
+(`player.bonus_rare_loot_rolls`, `player.bonus_loot_count_rolls`), so Origins is
+where a player meets them. Four of its names are also shortened to read as
+stats: Swim Speed, Rare Loot Chance, Extra Loot Rolls, Pickup Range.
 
 ## Why
 
@@ -56,7 +64,9 @@ server modset, so the scan was run against the client instance's `mods/`.
   too much, switch to the short grey-tag style or drop to a mixin.
 - **Merged/hidden attributes are still labelled.** `irons_lib:*`, the
   `obscure_api:*` (criticalDamage / criticalHit / dodge / penetration /
-  healingPower) and `cataclysm:additional_critical_damage` are merged into
+  healingPower), `cataclysm:additional_critical_damage` and the three
+  `additionalentityattributes:*` duplicates (`player.critical_bonus_damage`,
+  `player.dig_speed`, `player.dropped_experience`) are merged into
   Apotheosis and hidden from the GUI by `mod_configs_client/attributeslib.cfg`,
   so their labels won't show in the Attributes screen, only on a source item's
   own tooltip, if one lists them. Their *values* live on the Apotheosis stat.

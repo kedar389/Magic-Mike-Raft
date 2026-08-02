@@ -80,22 +80,25 @@ points).
 
 ## Handled elsewhere, or not at all
 
-**Cataclysm and Obscure API are merged by the `attribute_merge` mod instead** ,
-[`mod_compats/AttributeMerge/`](../../mod_compats/AttributeMerge/). Neither can
-use this datapack: the remap transfers the modifier amount as-is, and both need
-a rescale or an operation change. That README has the reasoning and the merge
-table.
+**Cataclysm, Obscure API and Additional Entity Attributes are merged by the
+`attribute_merge` mod instead**,
+[`mod_compats/AttributeMerge/`](../../mod_compats/AttributeMerge/). Cataclysm and
+Obscure API cannot use this datapack: the remap transfers the modifier amount
+as-is, and both need a rescale or an operation change. AEA needs neither, but
+lives there so the whole merge table is one table. That README has the reasoning
+and the merge table.
 
 Not merged at all:
 
 - `obscure_api` `parry` / `accuracy` / `resilience` / `regeneration` /
   `magic_damage` / `magic_resistance`, and `cataclysm` `nature_heal` /
   `eat_speed` / `charge_time`, no Apothic counterpart to merge into.
-- **Jump height** is not an attribute in this pack at all. Artifacts' Bunny Hoppers,
-  Unique Accessories' Durable Spring, More Relics' Gravitum Strider and
-  Botania's Sojourner's Sash all change jump height in **code**, not through an
-  attribute, so there is nothing to remap. Making those feed one attribute
-  would need a mod/mixin, not a datapack.
+- **Jump height.** The only jump attribute in the pack is
+  `additionalentityattributes:generic.jump_height`, which nothing grants.
+  Artifacts' Bunny Hoppers, Unique Accessories' Durable Spring, More Relics'
+  Gravitum Strider and Botania's Sojourner's Sash all change jump height in
+  **code**, so there is nothing to remap. Making those feed that attribute would
+  need a mod/mixin, not a datapack.
 - Attributes granted by **potions, spells or per-tick code** rather than item /
   curio modifiers are not intercepted by the remapper.
 
