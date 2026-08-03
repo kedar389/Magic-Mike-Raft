@@ -390,6 +390,98 @@
       ]
     },
     {
+      "name": "betterdungeons:skeleton_dungeon",
+      "blacklisted_biomes": [
+        "#minecraft:is_ocean",
+        "#c:ocean",
+        "#minecraft:is_river",
+        "#c:river",
+        "#forge:is_water",
+        "#forge:is_desert",
+        "#wythers:is_desert",
+        "#minecraft:is_badlands",
+        "#forge:is_mushroom"
+      ],
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "betterdungeons:small_dungeon",
+      "blacklisted_biomes": [
+        "#minecraft:is_ocean",
+        "#c:ocean",
+        "#minecraft:is_river",
+        "#c:river",
+        "#forge:is_water",
+        "#forge:is_desert",
+        "#wythers:is_desert",
+        "#minecraft:is_badlands",
+        "#forge:is_mushroom"
+      ],
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "betterdungeons:spider_dungeon",
+      "blacklisted_biomes": [
+        "#minecraft:is_ocean",
+        "#c:ocean",
+        "#minecraft:is_river",
+        "#c:river",
+        "#forge:is_water",
+        "#forge:is_desert",
+        "#wythers:is_desert",
+        "#minecraft:is_badlands",
+        "#forge:is_mushroom"
+      ],
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "betterdungeons:zombie_dungeon",
+      "blacklisted_biomes": [
+        "#minecraft:is_ocean",
+        "#c:ocean",
+        "#minecraft:is_river",
+        "#c:river",
+        "#forge:is_water",
+        "#forge:is_desert",
+        "#wythers:is_desert",
+        "#minecraft:is_badlands",
+        "#forge:is_mushroom"
+      ],
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
       "name": "betterjungletemples:jungle_temple",
       "whitelisted_biomes": [
         "#minecraft:is_jungle"
@@ -528,6 +620,12 @@
     },
     {
       "name": "born_in_chaos_v1:firewell",
+      "whitelisted_biomes": [
+        "wythers:volcano",
+        "wythers:volcanic_crater",
+        "wythers:tropical_volcano",
+        "wythers:icy_volcano"
+      ],
       "override_global_flatness_check": true,
       "enable_flatness_check": true,
       "flatness_check_allow_non_solid_blocks": false,
@@ -850,7 +948,19 @@
     {
       "name": "companions:companions_monkey_temple",
       "whitelisted_biomes": [
-        "#minecraft:is_jungle"
+        "minecraft:jungle",
+        "minecraft:sparse_jungle",
+        "minecraft:bamboo_jungle",
+        "wythers:tropical_rainforest",
+        "wythers:flooded_rainforest",
+        "wythers:jungle_island",
+        "wythers:sandy_jungle",
+        "wythers:sparse_bamboo_jungle",
+        "wythers:bamboo_jungle_swamp",
+        "wythers:pantanal",
+        "wythers:eucalyptus_jungle",
+        "wythers:eucalyptus_jungle_canyon",
+        "wythers:sparse_eucalyptus_jungle"
       ]
     },
     {
@@ -1319,21 +1429,11 @@
         "wythers:dry_tropical_forest",
         "wythers:subtropical_forest",
         "wythers:subtropical_forest_edge",
-        "wythers:sandy_jungle",
-        "wythers:windswept_jungle",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
       "blacklisted_biomes": [
-        "minecraft:sparse_jungle",
-        "wythers:sparse_bamboo_jungle",
-        "wythers:dry_tropical_grassland",
-        "wythers:mushroom_island",
-        "wythers:pantanal",
-        "wythers:sandy_jungle",
-        "wythers:sparse_eucalyptus_jungle",
-        "wythers:sparse_eucalyptus_woodland",
-        "wythers:windswept_jungle"
+        "minecraft:sparse_jungle"
       ],
       "override_global_flatness_check": false,
       "enable_flatness_check": true,
@@ -1363,8 +1463,6 @@
         "wythers:dry_tropical_forest",
         "wythers:subtropical_forest",
         "wythers:subtropical_forest_edge",
-        "wythers:sandy_jungle",
-        "wythers:windswept_jungle",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
@@ -1396,8 +1494,6 @@
         "wythers:dry_tropical_forest",
         "wythers:subtropical_forest",
         "wythers:subtropical_forest_edge",
-        "wythers:sandy_jungle",
-        "wythers:windswept_jungle",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
@@ -1429,8 +1525,6 @@
         "wythers:dry_tropical_forest",
         "wythers:subtropical_forest",
         "wythers:subtropical_forest_edge",
-        "wythers:sandy_jungle",
-        "wythers:windswept_jungle",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
@@ -1462,8 +1556,6 @@
         "wythers:dry_tropical_forest",
         "wythers:subtropical_forest",
         "wythers:subtropical_forest_edge",
-        "wythers:sandy_jungle",
-        "wythers:windswept_jungle",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
@@ -1495,8 +1587,6 @@
         "wythers:dry_tropical_forest",
         "wythers:subtropical_forest",
         "wythers:subtropical_forest_edge",
-        "wythers:sandy_jungle",
-        "wythers:windswept_jungle",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
@@ -1528,8 +1618,6 @@
         "wythers:dry_tropical_forest",
         "wythers:subtropical_forest",
         "wythers:subtropical_forest_edge",
-        "wythers:sandy_jungle",
-        "wythers:windswept_jungle",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
@@ -1561,8 +1649,6 @@
         "wythers:dry_tropical_forest",
         "wythers:subtropical_forest",
         "wythers:subtropical_forest_edge",
-        "wythers:sandy_jungle",
-        "wythers:windswept_jungle",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
@@ -1594,8 +1680,6 @@
         "wythers:dry_tropical_forest",
         "wythers:subtropical_forest",
         "wythers:subtropical_forest_edge",
-        "wythers:sandy_jungle",
-        "wythers:windswept_jungle",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
@@ -1627,8 +1711,6 @@
         "wythers:dry_tropical_forest",
         "wythers:subtropical_forest",
         "wythers:subtropical_forest_edge",
-        "wythers:sandy_jungle",
-        "wythers:windswept_jungle",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
@@ -1660,8 +1742,6 @@
         "wythers:dry_tropical_forest",
         "wythers:subtropical_forest",
         "wythers:subtropical_forest_edge",
-        "wythers:sandy_jungle",
-        "wythers:windswept_jungle",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
@@ -1693,8 +1773,6 @@
         "wythers:dry_tropical_forest",
         "wythers:subtropical_forest",
         "wythers:subtropical_forest_edge",
-        "wythers:sandy_jungle",
-        "wythers:windswept_jungle",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
@@ -1726,8 +1804,6 @@
         "wythers:dry_tropical_forest",
         "wythers:subtropical_forest",
         "wythers:subtropical_forest_edge",
-        "wythers:sandy_jungle",
-        "wythers:windswept_jungle",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
@@ -1759,8 +1835,6 @@
         "wythers:dry_tropical_forest",
         "wythers:subtropical_forest",
         "wythers:subtropical_forest_edge",
-        "wythers:sandy_jungle",
-        "wythers:windswept_jungle",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
@@ -1922,6 +1996,34 @@
     },
     {
       "name": "gtbcs_geomancy_plus:geomancer_tower",
+      "whitelisted_biomes": [
+        "minecraft:windswept_hills",
+        "minecraft:windswept_gravelly_hills",
+        "minecraft:windswept_forest",
+        "minecraft:stony_peaks",
+        "minecraft:jagged_peaks",
+        "minecraft:frozen_peaks",
+        "minecraft:snowy_slopes",
+        "minecraft:meadow",
+        "minecraft:grove",
+        "wythers:highlands",
+        "wythers:highland_plains",
+        "wythers:forested_highlands",
+        "wythers:huangshan_highlands",
+        "wythers:jade_highlands",
+        "wythers:maple_mountains",
+        "wythers:tibesti_mountains",
+        "wythers:cool_stony_peaks",
+        "wythers:snowy_peaks",
+        "wythers:andesite_crags",
+        "wythers:aspen_crags",
+        "wythers:icy_crags",
+        "wythers:taiga_crags",
+        "wythers:old_growth_taiga_crags",
+        "wythers:temperate_rainforest_crags",
+        "wythers:autumnal_crags",
+        "wythers:tepui"
+      ],
       "override_global_flatness_check": false,
       "enable_flatness_check": true,
       "flatness_check_allow_non_solid_blocks": false,
@@ -2694,6 +2796,57 @@
       "flatness_check_max_height_difference": 21
     },
     {
+      "name": "realmrpg_quests:lumberjacks",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "flatness_check_mode": "AUTO",
+      "flatness_check_max_height_difference": 21,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "realmrpg_quests:miners",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "flatness_check_mode": "AUTO",
+      "flatness_check_max_height_difference": 21,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
+      "name": "realmrpg_quests:monster_hunters",
+      "override_global_flatness_check": false,
+      "enable_flatness_check": true,
+      "flatness_check_allow_non_solid_blocks": false,
+      "flatness_check_mode": "AUTO",
+      "flatness_check_max_height_difference": 21,
+      "override_global_biome_check": false,
+      "enable_biome_check": true,
+      "biome_check_mode": "BLACKLIST",
+      "biome_check_blacklisted_biomes": [
+        "#minecraft:is_river",
+        "#c:river",
+        "#minecraft:is_ocean",
+        "#c:ocean"
+      ]
+    },
+    {
       "name": "ribbits:ribbit_village",
       "override_global_flatness_check": true,
       "enable_flatness_check": true,
@@ -2772,8 +2925,8 @@
       }
     },
     {
-      "spacing": 188,
-      "separation": 90,
+      "spacing": 250,
+      "separation": 120,
       "name": "integrated_villages:air_villages",
       "is_disabled": false,
       "salt": 1982700828,
