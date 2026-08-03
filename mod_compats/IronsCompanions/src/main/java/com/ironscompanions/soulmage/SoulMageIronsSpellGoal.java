@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.CastSource;
 import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.api.spells.SpellData;
+import io.redspace.ironsspellbooks.api.spells.SpellSlot;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
@@ -86,10 +87,13 @@ public class SoulMageIronsSpellGoal extends Goal {
             if (stack.isEmpty()) {
                 continue;
             }
-            // VERIFY(build): ISpellContainer.get(stack) + getActiveSpells(). Scrolls/spellbooks both qualify.
+            // Scrolls and spellbooks both qualify. getActiveSpells() hands back slots, not the
+            // SpellData itself, so unwrap each one.
             ISpellContainer container = ISpellContainer.get(stack);
             if (container != null && !container.isEmpty()) {
-                spells.addAll(container.getActiveSpells());
+                for (SpellSlot slot : container.getActiveSpells()) {
+                    spells.add(slot.spellData());
+                }
             }
         }
         if (spells.isEmpty()) {

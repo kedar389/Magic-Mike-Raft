@@ -1,5 +1,6 @@
 package com.ironscompanions.spell;
 
+import com.ironscompanions.IronsCompanions;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -25,9 +27,11 @@ import net.minecraft.world.phys.Vec3;
  */
 public class NaginataSpell extends AbstractSpell {
 
+    private final ResourceLocation spellId = new ResourceLocation(IronsCompanions.MOD_ID, "naginata");
+
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.LEGENDARY)
-            .setSchoolResource(SchoolRegistry.HOLY_RESOURCE) // VERIFY constant name
+            .setSchoolResource(SchoolRegistry.HOLY_RESOURCE)
             .setMaxLevel(10)
             .setCooldownSeconds(7)
             .build();
@@ -38,6 +42,11 @@ public class NaginataSpell extends AbstractSpell {
         this.spellPowerPerLevel = 2;
         this.castTime = 20; // brief channel ("press key to increase accuracy")
         this.baseManaCost = 90;
+    }
+
+    @Override
+    public ResourceLocation getSpellResource() {
+        return spellId;
     }
 
     @Override

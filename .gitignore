@@ -13,6 +13,9 @@ mod_compats/**/.gradle
 radek_datapack.zip
 servers_folder
 
+# Third-party jars copied out of the live mods folder for compat-mod builds
+mod_compats/**/libs/*.jar
+
 #Claude related stuff
 .claude
 .wolf

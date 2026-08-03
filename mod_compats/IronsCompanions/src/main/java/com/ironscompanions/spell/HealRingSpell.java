@@ -1,5 +1,6 @@
 package com.ironscompanions.spell;
 
+import com.ironscompanions.IronsCompanions;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -22,9 +24,11 @@ import net.minecraft.world.level.Level;
  */
 public class HealRingSpell extends AbstractSpell {
 
+    private final ResourceLocation spellId = new ResourceLocation(IronsCompanions.MOD_ID, "heal_ring");
+
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.UNCOMMON)
-            .setSchoolResource(SchoolRegistry.NATURE_RESOURCE) // VERIFY constant name
+            .setSchoolResource(SchoolRegistry.NATURE_RESOURCE)
             .setMaxLevel(10)
             .setCooldownSeconds(10)
             .build();
@@ -35,6 +39,11 @@ public class HealRingSpell extends AbstractSpell {
         this.spellPowerPerLevel = 1;
         this.castTime = 0;
         this.baseManaCost = 50;
+    }
+
+    @Override
+    public ResourceLocation getSpellResource() {
+        return spellId;
     }
 
     @Override

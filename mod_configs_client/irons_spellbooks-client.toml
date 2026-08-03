@@ -22,14 +22,27 @@
 		#Allowed Values: Never, Always, Contextual
 		manaBarDisplay = "Contextual"
 		#Used to adjust mana bar's position (11 is one full hunger bar up).
+
+		#Sits the 98px bar directly above the armour row, left-aligned with the hotbar.
+		#X: Center anchors at width/2-49, the armour/health column starts at width/2-91, so -42.
+		#Y: positive moves UP (render does getBarY() - offset). Center's base Y is
+		#height-13-max(leftHeight,rightHeight) = height-62 with armour+hunger stacked, and the
+		#bar's visible box is 19px (5px gem + 11px body + the mana number at +11), so +8 leaves
+		#a ~3px gap above the armour row at height-49.
 		manaBarXOffset = 0
-		manaBarYOffset = 0
+		manaBarYOffset = 8
 		manaBarTextVisible = true
 		#Allowed Values: Hunger, XP, Center, TopLeft, TopRight, BottomLeft, BottomRight
-		#BottomRight, not Hunger: Origins power resource/cooldown bars are drawn by Apoli at a
+		#Center, not Hunger: Origins power resource/cooldown bars are drawn by Apoli at a
 		#hardcoded x = width/2+20..+91, y = height-47, which is exactly the band the Hunger anchor
 		#puts the 98px mana bar in. Apoli ignores Forge's rightHeight stack, so the two overlap.
-		manaBarAnchor = "BottomRight"
+		#Center + the offsets above put the bar at x = width/2-91..+7, entirely left of Apoli's
+		#x range, so it stays clear however far Apoli's bars roam vertically (they shift up 8px on
+		#low air and 8*floor(maxHealth/20) while riding). Center's Y also tracks Forge's
+		#leftHeight/rightHeight, so it lifts with the air and mount-health rows on its own.
+		#XP is not an option here: that anchor swaps to a different 188px-wide texture spanning
+		#width/2-94..+94, which crosses Apoli's band, and it hides itself while a horse jump charges.
+		manaBarAnchor = "Center"
 		manaTextXOffset = 0
 		manaTextYOffset = 0
 

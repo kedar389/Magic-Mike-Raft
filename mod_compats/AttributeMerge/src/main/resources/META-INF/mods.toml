@@ -22,8 +22,10 @@ for Cataclysm's, Obscure API's and Additional Entity Attributes' duplicate stats
 equivalents, rescaling the amount (Cataclysm counts percent points) and forcing ADDITION (Obscure
 delivers MULTIPLY_BASE but reads it additively). A mixin also repairs Cataclysm's curios, which
 discard event listener output, and aliases the ring slot so Ring of the Grudge works after the
-pack's slot reroute. Event-driven: nothing ticks. The seven Iron's Lib duplicates are handled
-separately by the Attribute_Merge datapack.
+pack's slot reroute. On the client, curio attribute lines are re-rendered through Apothic's
+formatter, which Curios does not use, so a curio shows +10% where it used to show +0.1.
+Event-driven: nothing ticks. The seven Iron's Lib duplicates are handled separately by the
+Attribute_Merge datapack.
 '''
 
 [[dependencies.attribute_merge]]

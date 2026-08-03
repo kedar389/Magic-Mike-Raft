@@ -51,9 +51,18 @@ dependencies {
     implementation fg.deobf(files('libs/gtbcs_spell_lib-1.5.0-1.20.1.jar'))
     implementation fg.deobf(files('libs/gtbcs_geomancy_plus-2.0.0-1.20.1.jar'))
 
+    // --- JEI (optional, client): API only, for the book-hiding plugin -----------------
+    // Version matches the installed jei-1.20.1-forge-15.20.0.112.jar. From maven.blamejared.com.
+    compileOnly fg.deobf('mezz.jei:jei-1.20.1-common-api:15.20.0.112')
+    compileOnly fg.deobf('mezz.jei:jei-1.20.1-forge-api:15.20.0.112')
+    runtimeOnly fg.deobf('mezz.jei:jei-1.20.1-forge:15.20.0.112')
+
+    // GeckoLib and KnightLib are compile deps, not runtime-only: Companions entities (the Soul Mage)
+    // implement GeoEntity, so javac needs them to resolve the class hierarchy we touch.
+    implementation fg.deobf(files('libs/geckolib-forge-1.20.1-4.8.4.jar'))
+    implementation fg.deobf(files('libs/knightlib-forge-1.20.1-1.6.1.jar'))
+
     // Runtime-only transitive deps so a dev run can actually load Companions.
-    runtimeOnly fg.deobf(files('libs/geckolib-forge-1.20.1-4.8.4.jar'))
-    runtimeOnly fg.deobf(files('libs/knightlib-forge-1.20.1-1.6.1.jar'))
     runtimeOnly fg.deobf(files('libs/curios-forge-5.14.1+1.20.1.jar'))
 }
 
