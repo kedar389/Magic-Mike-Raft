@@ -53,12 +53,6 @@ public class CompanionBookRemovalEvents {
                 stripBookRecipes(recipeManager, registries));
     }
 
-    /**
-     * VERIFY(build): {@code RecipeManager#getRecipes()} and {@code #replaceRecipes(Iterable)} are both
-     * public in 1.20.1 official mappings (the client uses the latter when the server syncs recipes).
-     * Confirm at compile time; if {@code replaceRecipes} turns out to be unavailable, the fallback is
-     * reflection on the {@code recipes} / {@code byName} maps.
-     */
     private static void stripBookRecipes(RecipeManager recipeManager, RegistryAccess registries) {
         Set<Item> books = Set.copyOf(CompanionBooks.items());
         if (books.isEmpty()) {
@@ -86,13 +80,12 @@ public class CompanionBookRemovalEvents {
     private static final int SWAP_SPELL_LEVEL = 1;
 
     /**
-     * Every book reward becomes a random <b>common</b> scroll.
+     * A random <b>common</b> scroll, drawn from the same lootable pool Iron's Spells' own chest loot uses
+     * ({@code isEnabled() && allowLooting()}).
      *
-     * <p>Deliberately not a 1:1 book-to-its-own-spell swap: Companions picks from a fixed pair per
-     * Minion variant (an overworld Minion rolls ice_shard or ice_tornado, 50/50), so mapping each book
-     * to its own spell handed out the same scroll half the time. Drawing at random from Iron's Spells'
-     * lootable pool ({@code isEnabled() && allowLooting()}) and keeping only common-rarity spells gives
-     * variety without making a Minion a source of high-tier scrolls.
+     * <p>Not a 1:1 book-to-its-spell swap: Companions rolls from a fixed pair per Minion variant (an
+     * overworld Minion gives ice_shard or ice_tornado, 50/50), so a 1:1 map would hand out the same
+     * scroll half the time. Restricting to common keeps a Minion from being a high-tier scroll farm.
      */
     private static ItemStack randomScroll(RandomSource random) {
         AbstractSpell spell = new SpellFilter().getRandomSpell(random, CompanionBookRemovalEvents::isCommon);
@@ -122,9 +115,8 @@ public class CompanionBookRemovalEvents {
             itemEntity.discard();
             return;
         }
-        // Swap the stack rather than discarding and re-spawning: the entity keeps its identity, so the
-        // client updates in place. Discarding a just-joined ItemEntity left a visible book on the
-        // ground that could not be picked up.
+        // Swap the stack in place. Discarding a just-joined ItemEntity leaves a client-side ghost that
+        // renders but cannot be picked up.
         itemEntity.setItem(replacement);
         IronsCompanions.LOGGER.debug("[IronsCompanions] Swapped dropped {} for {}", bookId, replacement);
     }

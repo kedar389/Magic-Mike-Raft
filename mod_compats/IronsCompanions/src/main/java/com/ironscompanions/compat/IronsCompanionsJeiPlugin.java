@@ -32,10 +32,6 @@ public class IronsCompanionsJeiPlugin implements IModPlugin {
         return UID;
     }
 
-    /**
-     * VERIFY(build): {@code IIngredientManager#removeIngredientsAtRuntime} is the JEI 15.x (1.20.1)
-     * hiding API, matching the installed jei-1.20.1-forge-15.20.0.112.
-     */
     @Override
     public void onRuntimeAvailable(IJeiRuntime runtime) {
         List<Item> books = CompanionBooks.items();

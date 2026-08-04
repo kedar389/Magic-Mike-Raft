@@ -1,89 +1,51 @@
 package com.ironscompanions.spell;
 
-import com.ironscompanions.IronsCompanions;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
-import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.CastSource;
 import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 /**
- * Stone Spikes, recreation of the Companions {@code book_stone_spikes} effect in the Geomancy Plus
- * {@code geo} school (there is no "teramancy" school). Spawns the original
- * {@link CompanionsProjectiles#STONE_SPIKE} entity. Baseline: STONE_SPIKE_DAMAGE=4.0, cooldown=140t.
+ * Stone Spikes, the {@code book_stone_spikes} effect in Geomancy Plus's {@code geo} school: a cone of
+ * {@link CompanionsProjectiles#STONE_SPIKE} erupting forward from the caster, each snapped to the
+ * ground beneath it. Numbers follow the book (damage 4.0, cooldown 140t), with a channel added.
+ *
+ * <p>The book plays no release sound of its own, so the school's default cast sound is used.
  */
-public class StoneSpikesSpell extends AbstractSpell {
+public class StoneSpikesSpell extends CompanionsSpell {
 
-    /**
-     * The geo school is owned by Geomancy Plus. {@code DefaultConfig#setSchoolResource} takes the
-     * school's plain id (see {@code SchoolRegistry.ICE_RESOURCE} and friends), not a ResourceKey.
-     */
+    /** Owned by Geomancy Plus. {@code setSchoolResource} takes the school's plain id. */
     private static final ResourceLocation GEO_SCHOOL = new ResourceLocation("gtbcs_geomancy_plus", "geo");
 
-    private final ResourceLocation spellId = new ResourceLocation(IronsCompanions.MOD_ID, "stone_spikes");
-
-    /**
-     * The original erupts a forward cone: 10 spikes sweeping a yaw arc in front of the caster, each at
-     * an increasing distance and snapped to the ground.
-     */
     private static final int SPIKE_COUNT = 10;
-    private static final float CONE_DEGREES = 60f;   // total arc, so +/-30 either side of the look
-    private static final double FIRST_SPIKE = 1.5;   // distance of the nearest spike
-    private static final double SPIKE_STEP = 0.9;    // extra distance per spike
-
-    private final DefaultConfig defaultConfig = new DefaultConfig()
-            .setMinRarity(SpellRarity.RARE)
-            .setSchoolResource(GEO_SCHOOL)
-            .setMaxLevel(10)
-            .setCooldownSeconds(7)
-            .build();
+    private static final float CONE_DEGREES = 60f;  // total arc, so 30 either side of the look vector
+    private static final double FIRST_SPIKE = 1.5;  // distance of the nearest spike
+    private static final double SPIKE_STEP = 0.9;   // extra distance per spike
 
     public StoneSpikesSpell() {
+        super("stone_spikes",
+                new DefaultConfig()
+                        .setMinRarity(SpellRarity.RARE)
+                        .setSchoolResource(GEO_SCHOOL)
+                        .setMaxLevel(10)
+                        .setCooldownSeconds(7)
+                        .build(),
+                null);
         this.manaCostPerLevel = 8;
-        this.baseSpellPower = 4; // matches STONE_SPIKE_DAMAGE
+        this.baseSpellPower = 4;
         this.spellPowerPerLevel = 1;
-        this.castTime = 30; // channelled: the ground has to split before the spikes come up
+        this.castTime = 30;
         this.baseManaCost = 45;
     }
 
     @Override
-    public ResourceLocation getSpellResource() {
-        return spellId;
-    }
-
-    @Override
     public CastType getCastType() {
-        return CastType.LONG; // LONG = a channel with a cast bar; INSTANT ignores castTime
-    }
-
-    @Override
-    public DefaultConfig getDefaultConfig() {
-        return defaultConfig;
-    }
-
-    @Override
-    public Optional<SoundEvent> getCastStartSound() {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.empty();
-    }
-
-    @Override
-    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(Component.translatable("ui.irons_spellbooks.damage", getSpellPower(spellLevel, caster)));
+        return CastType.LONG;
     }
 
     @Override

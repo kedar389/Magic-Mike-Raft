@@ -16,13 +16,11 @@ import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.item.ItemStack;
 
 /**
- * Phase 7, makes the Soul Mage cast Iron's Spells based on the scrolls in its 3-slot inventory,
- * instead of the (removed) Companions magic books. Any IS spell inscribed on a scroll placed in the
- * Soul Mage can be cast at its target. The old {@code SoulMage*Goal}s go inert on their own once the
- * books are gone (their {@code hasRequiredBook()} always fails), so we only need to add this goal.
+ * Makes the Soul Mage cast whatever Iron's Spells scrolls sit in its three slots, at its current
+ * target. The stock {@code SoulMage*Goal}s go inert by themselves once the books are gone, since their
+ * {@code hasRequiredBook()} can no longer pass, so this goal is simply added alongside them.
  *
- * <p>VERIFY(build): the IS casting + spell-container API (see the marked calls). This is the piece
- * most likely to need adjustment against the shipped 3.16.2 API.
+ * <p>Scrolls reach those slots via {@code mixin/SoulMageBookSlotMixin}.
  */
 public class SoulMageIronsSpellGoal extends Goal {
 
@@ -106,7 +104,6 @@ public class SoulMageIronsSpellGoal extends Goal {
         if (target == null) {
             return;
         }
-        // VERIFY(build): SpellData accessors + mob-cast entrypoint.
         AbstractSpell spell = data.getSpell();
         int spellLevel = data.getLevel();
         MagicData magicData = new MagicData(false); // non-player caster

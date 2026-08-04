@@ -7,11 +7,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
 /**
- * Deferred registry for the four Companions-derived spells.
- *
- * <p>VERIFY: the registry key constant. Iron's Spells exposes its spell registry key; in 3.16.2
- * this is {@code SpellRegistry.SPELL_REGISTRY_KEY}. If the field name differs, the alternative is
- * {@code SpellRegistry.SPELL_REGISTRY.getRegistryKey()}.
+ * Deferred registry for the four Companions-derived spells. Registering here is also what makes them
+ * eligible for Iron's Spells' own scroll loot.
  */
 public final class IronsCompanionsSpells {
 

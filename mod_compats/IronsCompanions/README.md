@@ -16,8 +16,8 @@ Two goals:
 1. **Convert Companions' "magic book" spells into first-class Iron's Spells (IS) spells**, castable from a
    Scroll *and* inscribable into any spellbook/grimoire, recreating each effect, animation, and behaviour
    **exactly** (they reuse the original Companions projectile entities, so visuals are pixel-identical).
-2. **Weave the two mods together**: correct IS damage schools on companion abilities, armour-set bridges,
-   ally/faction rules, and a Soul Mage that casts real IS spells.
+2. **Weave the two mods together**: correct IS damage schools on companion abilities, a Holy Robe spell
+   power bridge, and a Soul Mage that casts real IS spells.
 
 ## 2. Build
 
@@ -49,8 +49,7 @@ One Forge mod, four surfaces:
 
 - **Content**, register new IS spells (`AbstractSpell` subclasses) that spawn the existing Companions
   projectile entities.
-- **Forge events** (clean, external), holy-robe holy bonus,
-  ally healing, no-friendly-fire, and companion-ability damage retyping.
+- **Forge events** (clean, external), holy-robe spell power, book removal, loot, and damage retyping.
 - **Mixin** (one), `SoulMageBookSlotMixin` widens the Soul Mage's book slots to accept IS spell
   containers. Its `mayPlace` is `instanceof AbstractMagicBook`, which no event can widen. The Soul Mage
   AI itself needs no mixin (see phase 7).
@@ -165,9 +164,8 @@ ability damage → **IS blood** magic damage. (Scythe lifesteal left as-is unles
 
 ### 5G. Ally / faction
 
-- IS heal/buff spells (Heal, Greater Heal, Healing Circle, Cloud of Regeneration, Blessing of Life, Haste,
-  etc.) treat owned companions as **valid ally targets**.
-- **No friendly fire** between owner ↔ IS summons ↔ Companions (shared ally check keyed on owner UUID).
+Not part of this mod. Friendly fire and ally targeting between the player, their IS summons and their
+Companions behave exactly as the two mods ship them. (Decision 2026-08-04.)
 
 ---
 
@@ -204,27 +202,24 @@ ability damage → **IS blood** magic damage. (Scythe lifesteal left as-is unles
 3. ✅ **Damage retype + Blood weapons** (5D/5E), `event/CompanionDamageEvents` (re-deals under IS
    `<school>_magic` damage type).
 4. ✅ **Armour bridge** (5F), `event/CompanionArmorEvents` (holy-robe +holy spell power).
-5. ✅ **Ally/faction** (5G), `event/CompanionAllyEvents` (no friendly fire done; heal-ally targeting
-   deferred to Phase 7 mixin pass).
+5. **Ally/faction** (5G), dropped, see 5G.
 6. ✅ **Removals**, `CompanionBooks` (the single list of nine ids + book → spell map) +
    `event/CompanionBookRemovalEvents` (recipe strip, Minion-reward swap) +
    `compat/IronsCompanionsJeiPlugin` (JEI hide).
 7. ✅ **Soul Mage AI** (5C), `soulmage/SoulMageIronsSpellGoal` + `SoulMageAiEvents` inject an
    IS-scroll-casting goal (`EntityJoinLevelEvent` + reflection on `goalSelector`; **no mixin needed**).
-   The old book goals go inert once the books are gone. Heal-ally targeting (5G) still TODO.
+   The old book goals go inert once the books are gone. Scrolls reach its slots via
+   `mixin/SoulMageBookSlotMixin`.
 
 ## 8. Open items (need a running game, not a compiler)
 
 - Naginata projectile damage (not in config; read `HolinessNaginataProjectile`). `baseSpellPower` is a
   placeholder 8.
 - Exact Ice Tornado per-level damage curve, and whether looted scrolls should be tiered above level 1.
-- `spell/CompanionsProjectiles` entity ids are still unconfirmed guesses, and the spawn helper is
-  untested. If a projectile constructor turns out to be non-public, add an AccessTransformer.
-- `IceTornadoSpell#onCast` targeting is a placeholder (3 blocks ahead), not the book's ground-aim.
 - Final companion→school mapping sign-off (5D).
-- Heal-ally targeting (5G).
-- Whether the cut books should really vanish when a Minion pops one, or be substituted with a
-  converted scroll so the reward is never empty.
+- Whether the Holy Robe's holy spell power should render on the item tooltip: the modifier is added
+  through `ItemAttributeModifierEvent` (the hook behind `ItemStack#getAttributeModifiers`, which is also
+  what Apothic Attributes reads), and it applies, but no tooltip line appears yet.
 
 ## 9. References
 

@@ -48,6 +48,43 @@ Current theory is chunk generation: C2ME placing structures plus DH's server-sid
 
 Next step: run `/spark profiler --timeout 300` while the lag is happening.
 
+## Ring of the Grudge grants nothing, testing
+
+`cataclysm:ring_of_grudged` gives no crit damage and shows no stat row. Not an attribute-merge gap.
+
+Fixed by a Mixin in `attribute_merge`, built and statically verified, not yet confirmed in game. See [the fix](#the-fix) below.
+
+Cataclysm gates every curio's attributes on the slot the curio sits in:
+
+```java
+if (slotContext.identifier().equals(this.attributeSlot) && this.attributes != null) { ... }
+```
+
+The ring's `attributeSlot` is hardcoded `"rings"` (`ModItems.lambda$static$150`, `ADDITIONAL_CRITICAL_DAMAGE`, `ADDITION 10.0`). [`mod_configs_server/curios-common.toml`](../mod_configs_server/curios-common.toml) sets `id=rings;size=0` and [`datapacks/Curios_Slot_Tweaks`](../datapacks/Curios_Slot_Tweaks/) routes the item into the standard `ring` slot, so the identifier is `ring`, the check fails, and the item contributes nothing at all.
+
+Reverting the reroute is not acceptable: every other ring in the pack uses the standard `ring` slot and that has to stay consistent.
+
+Fixing it from our side is blocked on Cataclysm discarding listener output. `CuriosItem.getAttributeModifiers` builds a `LinkedHashMultimap`, posts `CurioAttributeModifierEvent` with it, then returns **its own local map**, while `CurioAttributeModifierEvent.getModifiableMap()` lazily copies via `LinkedHashMultimap.create(originalModifiers)`. So `addModifier` and `removeAttribute` both write to a copy that is thrown away. Curios' own `CuriosImplMixinHooks.getAttributeModifiers` returns `event.getModifiers()` correctly, but Cataclysm overrides that path.
+
+Consequence beyond the ring: no event listener can modify any Cataclysm curio's attributes. In this pack that costs nothing else, because the only attributes Cataclysm curios grant are `cataclysm:nature_heal` (Vitality Ankh, no Apothic counterpart), `cataclysm:additional_critical_damage` (this ring), and vanilla or Forge ones. `withSlotModifier`, which the belts use for their extra talisman slots, is not slot-gated and survives a reroute.
+
+### The fix
+
+`mod_compats/AttributeMerge/src/main/java/com/attributemerge/mixin/CataclysmCuriosMixin.java`, two injections into `CuriosItem.getAttributeModifiers`, both `require = 1` so a Cataclysm update fails at load instead of silently reverting the ring to granting nothing:
+
+| Injection | Fixes |
+|---|---|
+| `@Redirect` on the method's only `String.equals` call | Makes `ring` satisfy `rings`, and nothing else, so the gate passes and Cataclysm populates its own map |
+| `@Inject` at `RETURN`, mutating `cir.getReturnValue()` | Runs `MergeEngine.mergeInPlace` on the map that is actually returned, so the `ADDITION 10.0` becomes `attributeslib:crit_damage +0.10` |
+
+Both were checked against the installed jar's bytecode: the method contains exactly one `String.equals` (offset 13, the gate) and exactly one `areturn` (offset 109), so neither injection is ambiguous.
+
+The mixin targets Cataclysm by name string (`@Mixin(targets = "...")`) and captures no target method arguments, which keeps both Cataclysm and Curios' `SlotContext` off the compile classpath. `AttributeMergeMixinPlugin` skips the config when Cataclysm is absent, checking `LoadingModList` rather than `ModList` because mixin configs are queried during class loading.
+
+Fixing only the gate would have been worse than the current state: the ring would grant raw `cataclysm:additional_critical_damage`, which Cataclysm's own handler reads as a working +10% crit, but the row is in `Hidden Attributes` and the value never reaches `attributeslib:crit_damage`, so it would be an invisible buff. Both injections are needed together.
+
+**Verify in game:** equip the ring in a `ring` slot. The Attributes GUI should show +10% on Crit Damage (`1.5` to `1.6`), and no `% Critical Damage` row should appear. Startup should log no mixin errors for `attribute_merge.mixins.json`.
+
 ## Distant Horizons LOD database, open
 
 `world/data/DistantHorizons.sqlite` is 5.3 GiB for the overworld alone, with separate databases for the Nether, End and the Iron's Spellbooks pocket dimension.
@@ -131,11 +168,71 @@ Set `enableDistantGeneration = false` to stop the server pre-generating LODs. Cl
 
 # Attribute audit
 
-Pack-wide findings. How the merge is implemented is in the three READMEs in the [index](#implementation-index).
+Pack-wide findings. How each layer is implemented is in the READMEs in the [index](#implementation-index).
 
-Apothic Attributes (`attributeslib:*`) is the canonical set. It owns the Attributes GUI, the tooltips and the combat formulas in `config/attributeslib.cfg` (stock, not tracked).
+Apothic Attributes (`attributeslib:*`) is the canonical set. It owns the Attributes GUI, the tooltips and the combat formulas in `config/attributeslib.cfg`.
 
-Every attribute registrar in the pack: Apothic Attributes, Iron's Lib, Iron's Spellbooks, Obscure API, Cataclysm, Geomancy spell lib, Geomancy Plus, Caelus. No other mod registers one.
+## How attributes are treated
+
+Five layers, in the order a stat passes through them.
+
+### 1. Merge everything onto Apothic Attributes
+
+One concept, one attribute. A duplicate is drained at the point the item declares it and re-added on the Apothic twin, so the value stacks with every other source of that stat and the owning mod's own handler sees its base value and contributes nothing. No double-dipping, no cancelling modifier.
+
+A stat is only merged when an Apothic counterpart exists. Where none does, the attribute stays live and visible on its own.
+
+### 2. Hide the leftovers, via the Apothic config
+
+Merging moves values, it does not unregister attributes, so a merged source still renders a row at its base value. [`mod_configs_client/attributeslib.cfg`](../mod_configs_client/attributeslib.cfg) lists those in `Hidden Attributes`.
+
+The list affects **the Attributes GUI only**. Item tooltips still show whatever the item declares.
+
+Currently hidden: the 7 `irons_lib:*`, 5 `obscure_api:*`, `cataclysm:additional_critical_damage`, and 3 `additionalentityattributes:*`, plus the 4 ApothicAttributes defaults.
+
+### 3. Label the source, via a resource pack
+
+With several mods shipping identically named attributes, the GUI alone cannot tell them apart. [`resourcepacks/Attribute_Mod_Labels/`](../resourcepacks/Attribute_Mod_Labels/) appends the source mod to every attribute name, so `Crit Damage (Apotheosis)` and `Crit Damage (Origins)` are distinguishable. 107 attributes, 12 sources.
+
+The override is global, not GUI-only: the same string appears on gear tooltips and in JEI.
+
+### 4. The merge mod, for item-declared attributes
+
+[`mod_compats/AttributeMerge/`](../mod_compats/AttributeMerge/) handles the families the datapack cannot, because it can rescale an amount and force an operation. It listens to `ItemAttributeModifierEvent` at `LOW` priority and rewrites duplicate modifiers onto the canonical attribute.
+
+Covers Cataclysm, Obscure API and Additional Entity Attributes. Zero compile dependencies: every attribute is resolved by `ResourceLocation` at runtime and a rule whose mod is absent is skipped with a debug line.
+
+The same listener also runs the reverse case, a stat that is not an attribute anywhere. `item/EpicKnightsPiercing` reads `WeaponType.armorPiercing` (an `int` percent, config-driven, nonzero on ten melee weapons) off the item and grants `attributeslib:armor_shred` at `amount / 100` on `MAINHAND`. Epic Knights' own mechanic is a *second* damage instance, not an attribute, so nothing gets drained and it has to be switched off separately: `disableArmorPiercing: true` in `general.json5`, on both sides, server for the damage and client for its tooltip line. Repo copies live in [`mod_configs_server/epicknights/`](../mod_configs_server/epicknights/) and [`mod_configs_client/epicknights/`](../mod_configs_client/epicknights/).
+
+### 5. The datapack, for Iron's Lib
+
+[`datapacks/Attribute_Merge/`](../datapacks/Attribute_Merge/) uses Iron's Lib's own `irons_lib_attribute_remap` registry for its 7 attributes. Iron's Lib intercepts both `ItemAttributeModifierEvent` and Curios' `CurioAttributeModifierEvent`, but transfers the amount as-is, which is why only Iron's Lib can use it.
+
+### Not covered by any layer
+
+- Stats granted by potions, spells or per-tick code instead of item modifiers.
+- Stats that are not attributes at all, unless layer 4 is taught to read them off the item, as it is for Epic Knights piercing. Companions has zero `AttributeModifier` references, so Crystallized Blood Scythe and Life Stealer implement their effects in code, and L_Ender's Delight runs its own capability stat system.
+- Cataclysm curios, except through a Mixin. `CuriosItem.getAttributeModifiers` posts `CurioAttributeModifierEvent` but returns its own map rather than the event's, and the event's mutator methods write to a `LinkedHashMultimap` copy, so every listener mutation is discarded. Layer 4 reaches them with a Mixin instead, layer 5 cannot reach them at all. See [Ring of the Grudge](#ring-of-the-grudge-grants-nothing-testing).
+
+## Every attribute registrar
+
+Read out of the installed jars, server and client:
+
+| Mod | Note |
+|---|---|
+| Apothic Attributes | canonical |
+| Iron's Lib | 7, merged by the datapack |
+| Obscure API | 12, 6 merged |
+| Cataclysm | 4, 1 merged |
+| Additional Entity Attributes | 13, 3 merged. Jar-in-jar inside Origins -> Apoli, loaded by Sinytra Connector |
+| Iron's Spellbooks, GTBC's SpellLib, GTBC's Geomancy Plus | per-school spell stats, not duplicates |
+| Botania | `pixieSpawnChance` |
+| Caelus | elytra flight |
+| Ascendant Arcana, Medieval Origins | not yet inventoried |
+| Dungeon Now Loading | `MaxHealthAttributeMixin` only, raises the vanilla `max_health` cap, registers nothing |
+| Connector | Sinytra, hosts the Fabric-side attributes |
+
+Tinkers' Construct is no longer installed, so its 12 `tconstruct:*` attributes are gone. `additionalentityattributes:generic.jump_height` is now the only working jump attribute in the pack. Nothing grants it.
 
 ## Every "critical damage" attribute
 
@@ -147,7 +244,10 @@ Registered base / min / max, read out of the installed jars:
 | Critical Damage | `irons_lib:crit_damage` | 1.0 | 0.0 | 1024 | remapped by datapack, hidden |
 | Critical Damage | `obscure_api:critical_damage` | 2.0 | 0.0 | 100 | merged by the mod, hidden |
 | % Critical Damage | `cataclysm:additional_critical_damage` | 0.0 | −512 | 512 | merged by the mod ×0.01, hidden |
+| Crit Damage | `additionalentityattributes:player.critical_bonus_damage` | 0.5 | −1.0 | 1024 | merged by the mod ×1, hidden |
 | Spell Critical Damage | `gtbcs_spell_lib:spell_crit_damage` | 1.0 | 1.0 | 10 | spell crits only |
+
+The AEA row needs no rescale despite its 0.5 base: it counts the bonus above 1.0 while Apothic counts the multiplier itself, so `1.0 + 0.5` and `1.5` describe the same crit and an `ADDITION` transfers unchanged. Only `ADDITION` transfers exactly, since the two bases differ.
 
 ## Which mods grant these stats
 
@@ -157,6 +257,8 @@ Registered base / min / max, read out of the installed jars:
 | Obscure API `obscure_api:*` | Aquamirae (accuracy, critical damage, critical hit, penetration), Aquamirae Delight (critical hit) |
 | Cataclysm `cataclysm:*` | Cataclysm itself: The Annihilator (`ADDITION 75.0`) and The Immolator (`ADDITION 60.0`) for crit damage, `nature_heal` via armor tiers and a food mixin |
 | Iron's Lib `irons_lib:*` | Nothing. No installed mod grants them. Iron's Spellbooks' only `irons_lib:` references are a particle texture and a worldgen processor. Hidden, with the datapack remap kept as a safety net |
+| AEA `additionalentityattributes:*` | Two powers only, out of 257 scanned across Origins and Medieval Origins. `origins:swim_speed` (Merling) grants `generic.water_speed`; `medievalorigins:goblin/greedy` grants `player.bonus_rare_loot_rolls` and `player.bonus_loot_count_rolls`. Nothing grants the three merged duplicates |
+| L_Ender's Delight | Its own capability stat system, not attributes of its own. `StatConsumableItem` increments a persistent `IPlayerStat`, and `PlayerStatEvents.onTick` applies transient modifiers for movement speed, attack speed, attack damage, armor, knockback resistance and swim speed, all vanilla or Forge attributes. Nothing to merge |
 
 ## Dodge chance is not one attribute
 
@@ -187,7 +289,7 @@ Each of these is documented once, in its own README.
 | Iron's Companions content/compat mod | [`mod_compats/IronsCompanions/README.md`](../mod_compats/IronsCompanions/README.md) |
 | Adding and updating mods, packwiz workflow | [`COMMANDS.md`](COMMANDS.md) |
 
-Both compat mods ship unbuilt. There is no JDK in the dev environment.
+JDK 17 is available at `C:\Program Files\Eclipse Adoptium\jdk-17.0.20.8-hotspot`, and JDK 21 at `C:\Program Files\Java\jdk-21.0.10`. `attribute_merge-0.1.0.jar` is built and deployed to the client instance. `irons_companions` and `originspellschools` are unbuilt.
 
 ---
 

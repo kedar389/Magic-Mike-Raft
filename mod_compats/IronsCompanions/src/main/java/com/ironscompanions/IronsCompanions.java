@@ -1,6 +1,5 @@
 package com.ironscompanions;
 
-import com.ironscompanions.event.CompanionAllyEvents;
 import com.ironscompanions.event.CompanionArmorEvents;
 import com.ironscompanions.event.CompanionBookRemovalEvents;
 import com.ironscompanions.event.CompanionDamageEvents;
@@ -15,11 +14,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Iron's Companions, bridges Iron's Spells 'n Spellbooks with the Companions! mod.
- *
- * <p>Phase 1-2 (this scaffold): registers the four converted spells (Ice Tornado, Stone Spikes,
- * Heal Ring, Naginata) and drops the Naginata scroll from the Sacred Pontiff. Later phases add
- * damage retyping, armour bridges, ally rules, and the Soul Mage AI (see README.md).
+ * Iron's Companions bridges Iron's Spells 'n Spellbooks with the Companions! mod: it turns the
+ * Companions magic books into real IS spells, removes the books, and retypes companion ability damage
+ * into IS schools. See README.md for the full feature list.
  */
 @Mod(IronsCompanions.MOD_ID)
 public class IronsCompanions {
@@ -29,19 +26,15 @@ public class IronsCompanions {
 
     public IronsCompanions() {
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
-
-        // Content: register our spells into Iron's Spells' spell registry.
         IronsCompanionsSpells.SPELLS.register(modBus);
 
-        // Runtime event handlers.
-        MinecraftForge.EVENT_BUS.register(new CompanionsLootEvents());  // Naginata scroll drop from Pontiff
-        MinecraftForge.EVENT_BUS.register(new CompanionDamageEvents()); // Phase 3: retype ability damage to IS schools
-        MinecraftForge.EVENT_BUS.register(new CompanionArmorEvents());  // Phase 4: mage-set / holy-robe bridges
-        MinecraftForge.EVENT_BUS.register(new CompanionAllyEvents());   // Phase 5: no friendly fire
-        MinecraftForge.EVENT_BUS.register(new SoulMageAiEvents());      // Phase 7: Soul Mage casts IS spells from scrolls
-        MinecraftForge.EVENT_BUS.register(new CompanionBookRemovalEvents()); // Phase 6: strip magic-book recipes
-        // JEI-hiding of the same books lives in compat/IronsCompanionsJeiPlugin (loaded by JEI, client only).
+        MinecraftForge.EVENT_BUS.register(new CompanionsLootEvents());        // Naginata boss drop
+        MinecraftForge.EVENT_BUS.register(new CompanionDamageEvents());       // school retyping, spell damage
+        MinecraftForge.EVENT_BUS.register(new CompanionArmorEvents());        // holy robe spell power
+        MinecraftForge.EVENT_BUS.register(new CompanionBookRemovalEvents());  // recipes, Minion rewards
+        MinecraftForge.EVENT_BUS.register(new SoulMageAiEvents());            // Soul Mage casts from scrolls
 
+        // JEI hiding lives in compat/IronsCompanionsJeiPlugin, loaded by JEI on the client only.
         LOGGER.info("[IronsCompanions] Initialised.");
     }
 }

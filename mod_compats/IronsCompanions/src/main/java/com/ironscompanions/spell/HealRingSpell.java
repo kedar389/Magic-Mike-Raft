@@ -1,76 +1,47 @@
 package com.ironscompanions.spell;
 
-import com.ironscompanions.IronsCompanions;
+
 import dev.xylonity.companions.registry.CompanionsSounds;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
-import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import io.redspace.ironsspellbooks.api.spells.CastSource;
 import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
 /**
- * Heal Ring, recreation of the Companions {@code book_heal_ring} effect as a Nature-school spell.
- * Emanates a restorative ring around the caster (spawns {@link CompanionsProjectiles#HEAL_RING}).
- * Baseline: HEAL_RING_HEALING=6.0, HEAL_RING_COOLDOWN=200t (10s).
+ * Heal Ring, the {@code book_heal_ring} effect as a nature spell: a restorative
+ * {@link CompanionsProjectiles#HEAL_RING} at the caster's feet. Numbers follow the book (healing 6.0,
+ * cooldown 200t), with a channel added.
  */
-public class HealRingSpell extends AbstractSpell {
-
-    private final ResourceLocation spellId = new ResourceLocation(IronsCompanions.MOD_ID, "heal_ring");
-
-    private final DefaultConfig defaultConfig = new DefaultConfig()
-            .setMinRarity(SpellRarity.UNCOMMON)
-            .setSchoolResource(SchoolRegistry.NATURE_RESOURCE)
-            .setMaxLevel(10)
-            .setCooldownSeconds(10)
-            .build();
+public class HealRingSpell extends CompanionsSpell {
 
     public HealRingSpell() {
+        super("heal_ring",
+                new DefaultConfig()
+                        .setMinRarity(SpellRarity.UNCOMMON)
+                        .setSchoolResource(SchoolRegistry.NATURE_RESOURCE)
+                        .setMaxLevel(10)
+                        .setCooldownSeconds(10)
+                        .build(),
+                CompanionsSounds.SPELL_RELEASE_HEAL);
         this.manaCostPerLevel = 10;
-        this.baseSpellPower = 6; // matches HEAL_RING_HEALING
+        this.baseSpellPower = 6;
         this.spellPowerPerLevel = 1;
-        this.castTime = 25; // channelled, like IS's own mid-tier spells
+        this.castTime = 25;
         this.baseManaCost = 50;
     }
 
     @Override
-    public ResourceLocation getSpellResource() {
-        return spellId;
-    }
-
-    @Override
     public CastType getCastType() {
-        return CastType.LONG; // LONG = a channel with a cast bar; INSTANT ignores castTime
+        return CastType.LONG;
     }
 
     @Override
-    public DefaultConfig getDefaultConfig() {
-        return defaultConfig;
-    }
-
-    @Override
-    public Optional<SoundEvent> getCastStartSound() {
-        return Optional.empty();
-    }
-
-    /** The book's own release sound, so the spell sounds like the original. */
-    @Override
-    public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.of(CompanionsSounds.SPELL_RELEASE_HEAL.get());
-    }
-
-    @Override
-    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(Component.translatable("ui.irons_spellbooks.heal", getSpellPower(spellLevel, caster)));
+    protected String infoKey() {
+        return "ui.irons_spellbooks.heal";
     }
 
     @Override

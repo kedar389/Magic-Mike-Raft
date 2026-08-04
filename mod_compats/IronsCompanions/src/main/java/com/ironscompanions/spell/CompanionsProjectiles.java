@@ -18,11 +18,10 @@ import net.minecraftforge.registries.ForgeRegistries;
  * Spawns the original Companions projectile entities so the converted Iron's Spells render with
  * pixel-identical visuals and animations.
  *
- * <p>Ids verified against {@code CompanionsEntities} in the 1.2.3 jar. Note the {@code _projectile}
- * suffix: an earlier guess without it silently spawned <b>pigs</b>, because
- * {@code ForgeRegistries.ENTITY_TYPES.getValue()} returns the registry's default value (a pig) for an
- * unknown id rather than null. Hence the {@code containsKey} check below, never trust a null check on
- * a vanilla registry with a default value.
+ * <p>Ids are verified against {@code CompanionsEntities} in the 1.2.3 jar. Mind the
+ * {@code _projectile} suffix: {@code ForgeRegistries.ENTITY_TYPES.getValue()} answers an unknown id
+ * with the registry default, a pig, so a wrong id spawns livestock instead of returning null. That is
+ * what {@link #create} guards with {@code containsKey}.
  */
 public final class CompanionsProjectiles {
 
@@ -34,14 +33,13 @@ public final class CompanionsProjectiles {
     public static final ResourceLocation NAGINATA = new ResourceLocation("companions", "holiness_naginata");
 
     /**
-     * The spell that fired this projectile, written onto the entity so
-     * {@link com.ironscompanions.event.CompanionDamageEvents} can re-deal the hit through Iron's Spells.
+     * The spell that fired this projectile, so {@link com.ironscompanions.event.CompanionDamageEvents}
+     * can re-deal the hit through Iron's Spells.
      *
-     * <p>Needed because {@code BaseProjectile} exposes only a lifetime, no damage: each Companions
-     * projectile hardcodes its own damage from {@code CompanionsConfig}, so left alone it would ignore
-     * the scroll entirely. Carrying the spell rather than a pre-computed number is what lets the hit go
-     * through {@code DamageSources.applyDamage} with a real {@code SpellDamageSource}, and so pick up
-     * spell power, school resistance, crit and the correct death message.
+     * <p>Tagging is necessary because {@code BaseProjectile} exposes only a lifetime: each projectile
+     * hardcodes its damage from {@code CompanionsConfig} and would ignore the scroll. Carrying the spell
+     * rather than a number is what lets the hit go through {@code DamageSources.applyDamage} and pick up
+     * spell power, school resistance and the right death message.
      */
     public static final String TAG_SPELL = "irons_companions_spell";
 
@@ -75,8 +73,8 @@ public final class CompanionsProjectiles {
     }
 
     /**
-     * Spawns at {@code from} and launches it toward {@code target}. Used by Naginata, whose projectile
-     * extends {@code ThrownTrident}, so it needs a real velocity to fall on the target.
+     * Spawns at {@code from} and launches it toward {@code target}, for Naginata, whose projectile
+     * extends {@code ThrownTrident} and needs a real velocity to fall on its mark.
      */
     public static Entity spawnAimed(Level level, ResourceLocation id, LivingEntity owner, Vec3 from, Vec3 target,
                                     float velocity, float inaccuracy, double baseDamage,
@@ -115,8 +113,8 @@ public final class CompanionsProjectiles {
     }
 
     /**
-     * Highest solid surface at or below {@code startY} at (x, z), so ground effects erupt from the
-     * floor instead of hanging in the air. Falls back to {@code startY} if nothing solid is found.
+     * Highest solid surface at or below {@code startY} at (x, z), so ground effects erupt from the floor
+     * rather than hanging in the air. Falls back to {@code startY} when nothing solid is found.
      */
     public static double groundBelow(Level level, double x, double startY, double z) {
         int blockX = Mth.floor(x);

@@ -33,13 +33,9 @@ public class CompanionArmorEvents {
     // ---- Holy Robe: +holy spell power -------------------------------------------------------
 
     /**
-     * Attaches the bonus to the <b>item</b> rather than to the wearer.
-     *
-     * <p>An earlier version added a transient modifier to the entity on {@code LivingEquipmentChangeEvent}.
-     * That applied correctly but was invisible in the tooltip, because item tooltips are built from
-     * {@code ItemStack#getAttributeModifiers}, which knows nothing about entity-side modifiers. This
-     * event IS that method's hook, so vanilla now both shows the line and applies the attribute while
-     * the piece is worn, and there is nothing to clean up on unequip.
+     * Attaches the bonus to the <b>item</b>, not the wearer: this event is the hook behind
+     * {@code ItemStack#getAttributeModifiers}, so vanilla applies the attribute while the piece is worn,
+     * renders it in the tooltip, and removes it on unequip with no bookkeeping here.
      */
     @SubscribeEvent
     public void onItemAttributeModifiers(ItemAttributeModifierEvent event) {

@@ -22,17 +22,18 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
 /**
- * Retypes Companions ability damage into the matching Iron's Spells school, so it respects IS spell
- * resistances and reads as real magic, and pins the damage of our own spell projectiles to the spell
- * power written on the scroll.
+ * Two jobs, both done by cancelling a hit and re-dealing it:
+ * <ul>
+ *   <li>Companions ability damage is retyped into the matching Iron's Spells school, so it respects IS
+ *       spell resistance and reads as real magic.</li>
+ *   <li>Our own spell projectiles are re-dealt through IS itself, so they scale off the caster's spell
+ *       power instead of the Companions config value.</li>
+ * </ul>
  *
- * <p><b>Why {@link LivingAttackEvent} and not {@code LivingHurtEvent}.</b> We cancel the incoming hit
- * and re-deal it under an IS damage type. {@code LivingHurtEvent} fires from {@code actuallyHurt},
- * which is *after* {@code Entity.hurt} has already set {@code invulnerableTime = 20} and
- * {@code lastHurt = amount}; the re-deal then hits the "already invulnerable" branch, finds
- * {@code amount <= lastHurt} and is discarded, so every retyped hit did zero damage.
- * {@code LivingAttackEvent} fires before that window opens, so the re-deal lands. A ThreadLocal guards
- * the recursion.
+ * <p>This must hook {@link LivingAttackEvent}, not {@code LivingHurtEvent}: the latter fires from
+ * {@code actuallyHurt}, after {@code Entity.hurt} has set {@code invulnerableTime = 20} and
+ * {@code lastHurt = amount}, so a re-deal of the same amount lands in the "already invulnerable" branch
+ * and is discarded. A ThreadLocal guards the recursion.
  */
 public class CompanionDamageEvents {
 
@@ -105,14 +106,10 @@ public class CompanionDamageEvents {
 
     /**
      * Re-deals a hit from one of our spell projectiles through {@code DamageSources.applyDamage} with a
-     * real {@code SpellDamageSource}.
-     *
-     * <p>That is the same call every stock IS spell makes, so the hit gets the full treatment:
-     * {@code getSpellPower} (base + per level, times the config power multiplier, the generic
-     * {@code SPELL_POWER} attribute and the school's own power attribute), the target's school
-     * resistance, {@code SpellDamageEvent} for other addons, knockback and friendly-fire handling, and
-     * the spell's death message. Computing power at hit time also means buffs the caster gains
-     * mid-flight count, as they do for IS projectiles.
+     * real {@code SpellDamageSource}, the same call every stock IS spell makes. That is what earns the
+     * spell-power scaling, school resistance, {@code SpellDamageEvent}, knockback and friendly-fire
+     * handling, and the spell's death message. Power is read at hit time, so buffs gained mid-flight
+     * count, as they do for IS projectiles.
      *
      * @return true when the hit was handled here
      */
@@ -167,9 +164,9 @@ public class CompanionDamageEvents {
     }
 
     /**
-     * Asks the {@link SchoolType} for its own damage type rather than assembling
-     * {@code irons_spellbooks:<school>_magic} by hand. That string only holds for IS's built-in schools;
-     * Geomancy Plus's {@code geo} owns its own damage type, and building the id by hand threw for it.
+     * Asks the {@link SchoolType} for its damage type rather than assembling
+     * {@code irons_spellbooks:<school>_magic} by hand, which only holds for IS's built-in schools and
+     * throws for addon schools like Geomancy Plus's {@code geo}.
      */
     private static DamageSource buildSchoolDamage(Level level, ResourceLocation schoolId, Entity attacker, Entity direct) {
         SchoolType school = SchoolRegistry.getSchool(schoolId);
