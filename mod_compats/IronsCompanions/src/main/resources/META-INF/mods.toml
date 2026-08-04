@@ -26,10 +26,13 @@ retypes companion ability damage to the correct magic schools, and adds armour/a
     ordering="NONE"
     side="BOTH"
 
+# Iron's Spells declares version="1.20.1-3.16.2". Maven-style comparison reads that as major
+# version 1, so a range like "[3.16,)" can NEVER match it. The full prefixed form is what the
+# other IS addons in this pack use (gtbcs_geomancy_plus: "[1.20.1-3.15.0,)").
 [[dependencies.irons_companions]]
     modId="irons_spellbooks"
     mandatory=true
-    versionRange="[3.16,)"
+    versionRange="[1.20.1-3.16.0,)"
     ordering="AFTER"
     side="BOTH"
 

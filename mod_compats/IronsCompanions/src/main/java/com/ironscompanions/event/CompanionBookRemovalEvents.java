@@ -3,9 +3,14 @@ package com.ironscompanions.event;
 import com.ironscompanions.CompanionBooks;
 import com.ironscompanions.IronsCompanions;
 import com.ironscompanions.spell.SpellScrolls;
+import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
+import io.redspace.ironsspellbooks.api.spells.SpellRarity;
+import io.redspace.ironsspellbooks.loot.SpellFilter;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
@@ -16,7 +21,6 @@ import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,8 +82,29 @@ public class CompanionBookRemovalEvents {
         IronsCompanions.LOGGER.info("[IronsCompanions] Removed {} recipe(s) for Companions magic books.", removed);
     }
 
-    /** Level the swapped-in scrolls are inscribed at (matches the chest-loot scrolls). */
+    /** Level the swapped-in scrolls are inscribed at. */
     private static final int SWAP_SPELL_LEVEL = 1;
+
+    /**
+     * Every book reward becomes a random <b>common</b> scroll.
+     *
+     * <p>Deliberately not a 1:1 book-to-its-own-spell swap: Companions picks from a fixed pair per
+     * Minion variant (an overworld Minion rolls ice_shard or ice_tornado, 50/50), so mapping each book
+     * to its own spell handed out the same scroll half the time. Drawing at random from Iron's Spells'
+     * lootable pool ({@code isEnabled() && allowLooting()}) and keeping only common-rarity spells gives
+     * variety without making a Minion a source of high-tier scrolls.
+     */
+    private static ItemStack randomScroll(RandomSource random) {
+        AbstractSpell spell = new SpellFilter().getRandomSpell(random, CompanionBookRemovalEvents::isCommon);
+        if (spell == null || spell.equals(SpellRegistry.none())) {
+            return ItemStack.EMPTY;
+        }
+        return SpellScrolls.of(spell, SWAP_SPELL_LEVEL);
+    }
+
+    private static boolean isCommon(AbstractSpell spell) {
+        return spell.getMinRarity() == SpellRarity.COMMON.ordinal();
+    }
 
     @SubscribeEvent
     public void onEntityJoinLevel(EntityJoinLevelEvent event) {
@@ -91,15 +116,17 @@ public class CompanionBookRemovalEvents {
             return;
         }
 
-        RegistryObject<AbstractSpell> spell = CompanionBooks.spellFor(bookId);
-        if (spell == null) {
-            // Cut book, nothing replaces it (README 5B).
-            IronsCompanions.LOGGER.debug("[IronsCompanions] Discarded dropped cut book {}", bookId);
+        ItemStack replacement = randomScroll(itemEntity.level().getRandom());
+
+        if (replacement.isEmpty()) {
             itemEntity.discard();
             return;
         }
-        itemEntity.setItem(SpellScrolls.of(spell.get(), SWAP_SPELL_LEVEL));
-        IronsCompanions.LOGGER.debug("[IronsCompanions] Swapped dropped {} for its scroll", bookId);
+        // Swap the stack rather than discarding and re-spawning: the entity keeps its identity, so the
+        // client updates in place. Discarding a just-joined ItemEntity left a visible book on the
+        // ground that could not be picked up.
+        itemEntity.setItem(replacement);
+        IronsCompanions.LOGGER.debug("[IronsCompanions] Swapped dropped {} for {}", bookId, replacement);
     }
 
     /**

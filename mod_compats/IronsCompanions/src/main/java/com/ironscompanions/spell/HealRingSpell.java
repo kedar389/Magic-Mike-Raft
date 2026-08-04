@@ -1,6 +1,7 @@
 package com.ironscompanions.spell;
 
 import com.ironscompanions.IronsCompanions;
+import dev.xylonity.companions.registry.CompanionsSounds;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
@@ -37,7 +38,7 @@ public class HealRingSpell extends AbstractSpell {
         this.manaCostPerLevel = 10;
         this.baseSpellPower = 6; // matches HEAL_RING_HEALING
         this.spellPowerPerLevel = 1;
-        this.castTime = 0;
+        this.castTime = 25; // channelled, like IS's own mid-tier spells
         this.baseManaCost = 50;
     }
 
@@ -48,7 +49,7 @@ public class HealRingSpell extends AbstractSpell {
 
     @Override
     public CastType getCastType() {
-        return CastType.INSTANT;
+        return CastType.LONG; // LONG = a channel with a cast bar; INSTANT ignores castTime
     }
 
     @Override
@@ -61,9 +62,10 @@ public class HealRingSpell extends AbstractSpell {
         return Optional.empty();
     }
 
+    /** The book's own release sound, so the spell sounds like the original. */
     @Override
     public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.empty();
+        return Optional.of(CompanionsSounds.SPELL_RELEASE_HEAL.get());
     }
 
     @Override

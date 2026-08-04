@@ -1,6 +1,7 @@
 package com.ironscompanions.spell;
 
 import com.ironscompanions.IronsCompanions;
+import dev.xylonity.companions.registry.CompanionsSounds;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
@@ -63,9 +64,10 @@ public class IceTornadoSpell extends AbstractSpell {
         return Optional.empty();
     }
 
+    /** The book's own release sound, so the spell sounds like the original. */
     @Override
     public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.empty();
+        return Optional.of(CompanionsSounds.SPELL_RELEASE_TORNADO.get());
     }
 
     @Override
@@ -76,9 +78,12 @@ public class IceTornadoSpell extends AbstractSpell {
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         if (!level.isClientSide) {
-            // TODO(build): match the book's targeting (spawns at aimed ground). Placeholder: 3 blocks ahead.
-            Vec3 pos = entity.position().add(entity.getLookAngle().multiply(3, 0, 3));
-            CompanionsProjectiles.spawn(level, CompanionsProjectiles.TORNADO, entity, pos);
+            // Same placement as the original book: one block ahead on the horizontal look vector, at
+            // the caster's feet. The tornado works out its own ground height and travel from there.
+            Vec3 look = entity.getLookAngle();
+            Vec3 ahead = new Vec3(look.x, 0, look.z).normalize();
+            Vec3 pos = new Vec3(entity.getX() + ahead.x, entity.getY(), entity.getZ() + ahead.z);
+            CompanionsProjectiles.spawn(level, CompanionsProjectiles.TORNADO, entity, pos, this, spellLevel);
         }
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }

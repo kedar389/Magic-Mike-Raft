@@ -49,9 +49,11 @@ One Forge mod, four surfaces:
 
 - **Content**, register new IS spells (`AbstractSpell` subclasses) that spawn the existing Companions
   projectile entities.
-- **Forge events** (clean, external), armour-set bonuses, mage-set IS-damage reduction, holy-robe holy bonus,
+- **Forge events** (clean, external), holy-robe holy bonus,
   ally healing, no-friendly-fire, and companion-ability damage retyping.
-- **Mixins** (invasive), Soul Mage AI (cast IS spells from inventory scrolls).
+- **Mixin** (one), `SoulMageBookSlotMixin` widens the Soul Mage's book slots to accept IS spell
+  containers. Its `mayPlace` is `instanceof AbstractMagicBook`, which no event can widen. The Soul Mage
+  AI itself needs no mixin (see phase 7).
 - **Removals**, strip the recipes of the removed books (reload listener) and hide them via a JEI plugin.
 
 > **Item removal is external, not a fork.** Removed books are stripped of recipes/loot and JEI-hidden; their
@@ -69,10 +71,29 @@ the caster's spell power. Every one is available as a **Scroll** and **inscribab
 
 | Book (removed) | New IS spell | School | Base value | Cooldown | Rarity / tiers | Effect entity | Acquisition |
 |---|---|---|---|---|---|---|---|
-| `book_ice_tornado` | Ice Tornado | **ice** | 3.0 dmg/tick | 200t | tiered scrolls (see 5A-i) | `TornadoProjectile` | loot/trade |
-| `book_stone_spikes` | Stone Spikes | **geo** (Geomancy Plus) | 4.0 dmg | 140t | Rare | `StoneSpikeProjectile` | loot/trade |
-| `book_heal_ring` | Heal Ring | **nature** | +6.0 heal | 200t | Uncommon–Rare | `HealRingProjectile` | loot/trade |
-| `book_naginata` | Naginata | **holy** | TBD (from `HolinessNaginataProjectile`) | 140t | **Legendary** | `HolinessNaginataProjectile` | **drops from Sacred Pontiff** |
+| Book (removed) | Spell | School | Cast | Effect | Sound |
+|---|---|---|---|---|---|
+| `book_ice_tornado` | Ice Tornado | **ice** | instant, cd 10s | 1 tornado a block ahead | `SPELL_RELEASE_TORNADO` |
+| `book_stone_spikes` | Stone Spikes | **geo** (Geomancy Plus) | 30t channel, cd 7s | 10 spikes in a 60° forward cone, ground-snapped | school default |
+| `book_heal_ring` | Heal Ring | **nature** | 25t channel, cd 10s | ring at the caster | `SPELL_RELEASE_HEAL` |
+| `book_naginata` | Naginata | **holy** | 45t channel, cd 7s | 6 blades rain on the aimed point | `SPELL_RELEASE_SPEARS` |
+
+**Damage goes through Iron's Spells, not the Companions config.** `BaseProjectile` exposes no damage
+setter and each projectile hardcodes its own damage, so `CompanionsProjectiles` tags the entity with the
+firing spell and the scroll's level (`irons_companions_spell` / `_spell_level` in its persistent data).
+`CompanionDamageEvents` then cancels the projectile's own hit and re-deals it with
+`DamageSources.applyDamage(target, spell.getSpellPower(level, caster), spell.getDamageSource(projectile, caster))`,
+the same call stock IS spells make. That is what makes the hit scale like a normal spell:
+
+- `getSpellPower` = base + per-level, times the config `POWER_MULTIPLIER`, the generic
+  `irons_spellbooks:spell_power` attribute and the school's own power attribute;
+- the target's school resistance applies (`DamageSources.getResist`);
+- `SpellDamageEvent` fires, so other IS addons see it;
+- knockback, friendly fire and the spell's death message all behave as IS expects.
+
+Cooldown and mana only apply when cast from a spellbook, which is stock IS behaviour for every spell
+(`CastSource.consumesMana()` / `respectsCooldown()` are true only for `SPELLBOOK` and `SWORD`; a scroll is
+consumed instead).
 
 **5A-i · Ice Tornado tiers.** IS spells are level-scalable (1–N). Model "different tiers" as one spell whose
 damage scales per level off the 3.0 base, distributed as scrolls at **Uncommon → Rare → Epic** (higher tier =
@@ -88,7 +109,9 @@ Transformer rather than copying assets.
 `book_ice_shard`, `book_magic_ray`, `book_fire_mark`, `book_brace`, `book_black_hole`, **and** the four
 converted books above (players get the IS spell instead of the book).
 
-**How Companions actually hands the books out** (read from the 1.2.3 jar, 2026-08-03):
+**How Companions handed the books out** (read from the 1.2.3 jar, 2026-08-03). Recorded because it is
+what the removal has to cover, not because the replacements copy it: the scrolls use IS's own
+distribution instead (section 6).
 
 | Source | Books |
 |---|---|
@@ -135,13 +158,10 @@ ability damage → **IS blood** magic damage. (Scythe lifesteal left as-is unles
 
 ### 5F. Armour-set bridges
 
-- **Mage set** (`mage_hat`/`mage_coat`/`mage_leggings`): its "Mystic Reflection" reduction must **also reduce
-  incoming IS spell damage** (hook `SpellDamageEvent`/`LivingHurtEvent`; reduce when victim wears the set and
-  source is IS magic). Its now-defunct "-cooldown on Magic Books" bonus → **repurpose to IS cooldown
-  reduction / mana** (books no longer exist).
-- **Holy Robe set** (`holy_robe_mask`/`coat`/`leggings`): **+10% holy spell power per piece** (3 pieces =
-  +30%) via an AttributeModifier on the IS holy spell-power attribute, applied on equip change.
-- **Crystallized Blood set**: unchanged (its low-health damage reduction stays).
+- **Holy Robe set** (`holy_robe_mask`/`coat`/`leggings`): **+0.10 holy spell power per piece** (3 pieces =
+  +0.30) added through `ItemAttributeModifierEvent`, so the line renders on the item tooltip and vanilla
+  handles applying and removing it.
+- **Mage set**, **Crystallized Blood set**: untouched, exactly as Companions ships them.
 
 ### 5G. Ally / faction
 
@@ -153,16 +173,22 @@ ability damage → **IS blood** magic damage. (Scythe lifesteal left as-is unles
 
 ## 6. Data / loot changes
 
+- **Ice Tornado / Stone Spikes / Heal Ring scrolls** → **no code needed.** They ride Iron's Spells'
+  own scroll distribution. IS appends scrolls through the `irons_spellbooks:randomize_spell` loot
+  function, and an unfiltered `SpellFilter` resolves to `SpellRegistry.getEnabledSpells()` kept by
+  `isEnabled() && allowLooting()`, weighted by `getMinRarity()`. Registering a spell in that registry
+  is therefore enough: it appears wherever any other scroll appears (IS's eight `chest_loot`
+  modifiers, its five `entity_drops` modifiers, its own structure tables) at a rarity-appropriate
+  weight, and it scales with IS's own `quality` ranges. `allowLooting()` defaults to the school's flag,
+  which is true for ice, nature and (verified) Geomancy Plus's `geo`.
 - **Naginata scroll** → dropped by **Sacred Pontiff / His Holiness** (10%) via a Java loot event
-  (`event/CompanionsLootEvents`), so the scroll NBT is built with the IS API.
-- **Ice Tornado / Stone Spikes / Heal Ring scrolls** → `event/CompanionsLootEvents#onLootTableLoad`
-  appends a pool (`irons_companions_scroll_pool`, 1 roll) to every `minecraft:chests/*` table with the
-  three scrolls at **4.5% each**, mirroring the pool Companions used for its own chest-loot books.
-  Naginata is excluded, it is the boss drop. Scrolls are inscribed at level 1 for now (5A-i tiering
-  is still open). A scroll cannot be a plain `LootItem`, so the entry is the generic IS Scroll item
-  plus a `SetNbtFunction` tag taken from a real scroll built through `SpellScrolls`.
+  (`event/CompanionsLootEvents`), so the scroll NBT is built with the IS API. `NaginataSpell` overrides
+  `allowLooting()` to **false**, which is what keeps the legendary out of the generic scroll rolls and
+  boss-only.
 - **Remove recipes** for all nine `companions:book_*` → `event/CompanionBookRemovalEvents`.
-- **Swap Minion book rewards** for scrolls → same class, `onEntityJoinLevel`.
+- **Swap Minion book rewards** for a random **common** scroll → same class, `onEntityJoinLevel`. Not a
+  1:1 book-to-its-spell swap: Companions rolls a fixed pair per Minion variant (overworld = ice_shard or
+  ice_tornado, 50/50), so 1:1 handed out the same scroll half the time.
 - **JEI-hide** all `companions:book_*` → `compat/IronsCompanionsJeiPlugin`.
 
 ## 7. Implementation phases
@@ -177,8 +203,7 @@ ability damage → **IS blood** magic damage. (Scythe lifesteal left as-is unles
    `event/CompanionsLootEvents`.
 3. ✅ **Damage retype + Blood weapons** (5D/5E), `event/CompanionDamageEvents` (re-deals under IS
    `<school>_magic` damage type).
-4. ✅ **Armour bridges** (5F), `event/CompanionArmorEvents` (mage-set IS-damage cut, holy-robe +holy
-   spell power).
+4. ✅ **Armour bridge** (5F), `event/CompanionArmorEvents` (holy-robe +holy spell power).
 5. ✅ **Ally/faction** (5G), `event/CompanionAllyEvents` (no friendly fire done; heal-ally targeting
    deferred to Phase 7 mixin pass).
 6. ✅ **Removals**, `CompanionBooks` (the single list of nine ids + book → spell map) +

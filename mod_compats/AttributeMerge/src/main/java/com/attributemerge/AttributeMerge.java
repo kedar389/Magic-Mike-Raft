@@ -1,5 +1,6 @@
 package com.attributemerge;
 
+import com.attributemerge.item.EpicKnightsPiercing;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -19,6 +20,11 @@ import org.apache.logging.log4j.Logger;
  *       changed, which that remap cannot do, that is what this mod is for (see {@link MergeRules}
  *       for the measured reasons),</li>
  * </ul>
+ *
+ * <p>It also handles the opposite case, a stat that is not an attribute at all:
+ * {@link com.attributemerge.item.EpicKnightsPiercing} turns Epic Knights' armour piercing field into
+ * {@code attributeslib:armor_shred}. That one needs Epic Knights' own mechanic switched off in
+ * {@code config/epicknights/general.json5}, since there is no source attribute to drain.
  *
  * <p>Implementation is a single {@code ItemAttributeModifierEvent} listener
  * ({@link com.attributemerge.event.ItemAttributeMergeHandler}) that rewrites the modifier as the
@@ -40,5 +46,6 @@ public class AttributeMerge {
      */
     private void onCommonSetup(final FMLCommonSetupEvent event) {
         MergeRules.resolve();
+        EpicKnightsPiercing.resolve();
     }
 }

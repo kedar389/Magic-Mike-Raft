@@ -75,6 +75,10 @@ jar {
             'Implementation-Title'   : project.name,
             'Implementation-Version' : project.jar.archiveVersion,
             'Implementation-Vendor'  : 'irons_companions',
+            // This is what actually registers the mixin config on Forge 1.20.1. A [[mixins]] block in
+            // mods.toml parses and is then never handed to Mixin, with no error logged. Same approach
+            // as the AttributeMerge sibling.
+            'MixinConfigs'           : 'irons_companions.mixins.json',
         ])
     }
 }

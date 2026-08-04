@@ -1,35 +1,20 @@
 package com.ironscompanions.event;
 
-import java.util.Set;
 import java.util.UUID;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.event.ItemAttributeModifierEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
 /**
- * Phase 4, Companions armour ↔ Iron's Spells bridges:
- * <ul>
- *   <li><b>Mage set</b> also reduces incoming IS spell damage (10% per worn piece, tunable).</li>
- *   <li><b>Holy Robe set</b> grants +10% holy spell power per worn piece.</li>
- * </ul>
+ * Companions armour → Iron's Spells bridge: each <b>Holy Robe</b> piece grants holy spell power.
  *
- * <p>VERIFY(build): item ids are confirmed from the Companions lang file; the holy spell-power
- * attribute id {@code irons_spellbooks:holy_spell_power} is confirmed from the IS lang file.
+ * <p>The Mage set is left exactly as Companions ships it.
  */
 public class CompanionArmorEvents {
-
-    private static final Set<ResourceLocation> MAGE_SET = Set.of(
-            new ResourceLocation("companions", "mage_hat"),
-            new ResourceLocation("companions", "mage_coat"),
-            new ResourceLocation("companions", "mage_leggings"));
 
     private static final ResourceLocation HOLY_ROBE_MASK = new ResourceLocation("companions", "holy_robe_mask");
     private static final ResourceLocation HOLY_ROBE_COAT = new ResourceLocation("companions", "holy_robe_coat");
@@ -47,60 +32,43 @@ public class CompanionArmorEvents {
 
     // ---- Holy Robe: +holy spell power -------------------------------------------------------
 
+    /**
+     * Attaches the bonus to the <b>item</b> rather than to the wearer.
+     *
+     * <p>An earlier version added a transient modifier to the entity on {@code LivingEquipmentChangeEvent}.
+     * That applied correctly but was invisible in the tooltip, because item tooltips are built from
+     * {@code ItemStack#getAttributeModifiers}, which knows nothing about entity-side modifiers. This
+     * event IS that method's hook, so vanilla now both shows the line and applies the attribute while
+     * the piece is worn, and there is nothing to clean up on unequip.
+     */
     @SubscribeEvent
-    public void onEquipmentChange(LivingEquipmentChangeEvent event) {
-        LivingEntity entity = event.getEntity();
+    public void onItemAttributeModifiers(ItemAttributeModifierEvent event) {
         Attribute holyPower = ForgeRegistries.ATTRIBUTES.getValue(HOLY_SPELL_POWER);
         if (holyPower == null) {
             return;
         }
-        AttributeInstance inst = entity.getAttribute(holyPower);
-        if (inst == null) {
+        ResourceLocation worn = itemId(event.getItemStack());
+        if (worn == null) {
             return;
         }
-        switch (event.getSlot()) {
-            case HEAD -> applyPiece(inst, HOLY_HEAD, "irons_companions.holy_robe_head", itemId(event.getTo()), HOLY_ROBE_MASK);
-            case CHEST -> applyPiece(inst, HOLY_CHEST, "irons_companions.holy_robe_chest", itemId(event.getTo()), HOLY_ROBE_COAT);
-            case LEGS -> applyPiece(inst, HOLY_LEGS, "irons_companions.holy_robe_legs", itemId(event.getTo()), HOLY_ROBE_LEGGINGS);
+        switch (event.getSlotType()) {
+            case HEAD -> addPiece(event, holyPower, HOLY_HEAD, "irons_companions.holy_robe_head", worn, HOLY_ROBE_MASK);
+            case CHEST -> addPiece(event, holyPower, HOLY_CHEST, "irons_companions.holy_robe_chest", worn, HOLY_ROBE_COAT);
+            case LEGS -> addPiece(event, holyPower, HOLY_LEGS, "irons_companions.holy_robe_legs", worn, HOLY_ROBE_LEGGINGS);
             default -> {
                 /* other slots don't carry holy robe pieces */
             }
         }
     }
 
-    private static void applyPiece(AttributeInstance inst, UUID id, String name, ResourceLocation worn, ResourceLocation expected) {
-        inst.removeModifier(id); // idempotent
+    private static void addPiece(ItemAttributeModifierEvent event, Attribute attribute, UUID id, String name,
+                                 ResourceLocation worn, ResourceLocation expected) {
         if (expected.equals(worn)) {
-            inst.addTransientModifier(new AttributeModifier(id, name, HOLY_BONUS_PER_PIECE, AttributeModifier.Operation.ADDITION));
+            event.addModifier(attribute,
+                    new AttributeModifier(id, name, HOLY_BONUS_PER_PIECE, AttributeModifier.Operation.ADDITION));
         }
     }
 
-    // ---- Mage set: reduce incoming IS spell damage ------------------------------------------
-
-    @SubscribeEvent(priority = EventPriority.LOW)
-    public void onLivingHurt(LivingHurtEvent event) {
-        if (!isIronsMagic(event)) {
-            return;
-        }
-        int pieces = 0;
-        for (ItemStack armor : event.getEntity().getArmorSlots()) {
-            if (MAGE_SET.contains(itemId(armor))) {
-                pieces++;
-            }
-        }
-        if (pieces > 0) {
-            float factor = Math.max(0f, 1f - MAGE_REDUCTION_PER_PIECE * pieces);
-            event.setAmount(event.getAmount() * factor);
-        }
-    }
-
-    private static boolean isIronsMagic(LivingHurtEvent event) {
-        return event.getSource()
-                .typeHolder()
-                .unwrapKey()
-                .map(k -> k.location().getNamespace().equals("irons_spellbooks"))
-                .orElse(false);
-    }
 
     private static ResourceLocation itemId(ItemStack stack) {
         return stack == null || stack.isEmpty() ? null : ForgeRegistries.ITEMS.getKey(stack.getItem());
