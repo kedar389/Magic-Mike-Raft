@@ -2,7 +2,9 @@
 
 Forge 1.20.1-47.4.0 mod, sibling of `IronsCompanions` / `OriginSpellSchools`. Folds **Cataclysm**'s,
 **Obscure API**'s and **Additional Entity Attributes**' duplicate RPG attributes into the canonical
-**Apothic Attributes** set, so each stat is one number that stacks in one place.
+**Apothic Attributes** set, so each stat is one number that stacks in one place. It also gives
+**Epic Knights**' armour piercing a real attribute, which is the opposite problem: that mod carries
+the stat as a plain field and registers no attribute at all.
 
 ## Why a mod and not the datapack
 
@@ -87,6 +89,57 @@ handler does one `isEmpty()` check and a few identity-hash lookups, allocating n
 and Unique Accessories grants the Apothic attributes directly. Cataclysm's curios need the mixin
 below.
 
+## Epic Knights armour piercing
+
+Not a merge: Epic Knights registers no attribute, so there is no source to drain.
+`WeaponType.armorPiercing` is an `int` percent baked into the weapon type at registration and
+editable in `config/epicknights/weapons.json5`. Ten melee weapons carry a nonzero value:
+`lucerneHammer` 20, `stiletto` 15, `heavyWarHammer` 15, `ahlspiess` 12, `giantLance` 10,
+`zweihander` 4, `flameBladedSword` 4, `blacksmithHammer` 4, `estoc` 3, `concaveEdgedHalberd` 2. The
+other 18 sit at 0.
+
+`item/EpicKnightsPiercing` walks the item registry once at common setup, keeps the weapons that carry
+piercing in an identity map, and adds `attributeslib:armor_shred` `ADDITION armorPiercing / 100` on
+`MAINHAND`. Mainhand only: Epic Knights reads the attacker's main hand, and `armor_shred` is an
+attacker-side attribute. Resolved by name string, so there is still no compile dependency, and the
+whole thing is inert when Epic Knights is absent.
+
+**`disableArmorPiercing: true` in `config/epicknights/general.json5` is required, on both sides**
+(`mod_configs_server/epicknights/` and `mod_configs_client/epicknights/`). Without it the stat
+applies twice: `CommonEvents.onLivingHurt` always returns `EventResult.pass()` and discards
+`MedievalWeaponItem.onHurtEntity`'s return value, so the mod's piercing is a *second* damage instance
+on top of the normal hit rather than a replacement for it. The flag makes `getArmorPiercing()` return
+0, which fails the `!= 0` gate in `onHurtEntity`. Server side stops the damage, client side stops
+Epic Knights' own `armorpiercing` tooltip line, which is gated on the same getter, so this modifier's
+line replaces it instead of sitting beside it.
+
+Two consequences of that flag being the off-switch:
+
+- the amount is read from the private `armorPiercing` **field**, never through `getArmorPiercing()`,
+  which returns 0 once the flag is set and would leave every weapon with no modifier. It is re-read
+  per call rather than baked into the map, so an in-game config save still changes the stat; vanilla
+  removes modifiers by UUID, so a value that changes under an equipped item unequips cleanly;
+- `CombatHelper.getArmorPiercingFactor` returns `p / (1 - p)` for an Epic Knights weapon and `1.0`
+  for anything else, and scales shield durability damage in `MedievalShieldItem.onBlocked`. Those
+  weapons stop wearing down Epic Knights shields, which is how the 18 at `armorPiercing: 0` already
+  behave.
+
+`armor_shred` and not `armor_pierce` because the field is a percentage, and `armor_pierce` is flat
+armour points. Epic Knights deals `p × blocked` extra damage and lets armour reduce it again, a net
+multiplier of `(1-r)(1 + p×r)` on the raw hit, while `ALCombatRules.getDamageAfterArmor` does
+`armor -= armor × shred × (1 - min(toughness × 0.02, 0.6))`. Under Apothic's default `a / (a + armor)`
+formula with a = 10 and no toughness:
+
+| Armour | Piercing | Epic Knights | `armor_shred` |
+|---|---|---|---|
+| 20 | 15% | 0.367 | 0.370 |
+| 20 | 20% | 0.378 | 0.385 |
+| 40 | 15% | 0.224 | 0.227 |
+| 40 | 20% | 0.232 | 0.238 |
+
+Shred is a hair stronger at zero toughness and weaker against high-toughness targets, which Epic
+Knights ignores entirely.
+
 ## The Cataclysm curio mixin
 
 `CuriosItem.getAttributeModifiers` cannot be influenced by any event listener. It posts
@@ -126,6 +179,39 @@ sets `remap = false`, so no refmap is generated or needed. `AttributeMergeMixinP
 whole config when Cataclysm is absent, checking `LoadingModList` because mixin configs are queried
 during class loading, before `ModList` exists.
 
+The config is registered by the **`MixinConfigs` attribute in `META-INF/MANIFEST.MF`**, set from
+`build.gradle`. Forge 1.20.1 accepts a `[[mixins]]` block in `mods.toml` and never hands it to
+Mixin: the config simply never appears in Mixin's `Preparing <config>` list, with no warning and no
+error, and `require = 1` cannot fire for a config that was never loaded.
+
+## Curio tooltip formatting
+
+Curios renders its own "when worn" attribute lines in
+`ClientEventHandler.onTooltip`, using vanilla's `ItemStack.ATTRIBUTE_MODIFIER_FORMAT` and vanilla's
+`attribute.modifier.*` keys. It never consults `IFormattableAttribute`, so an Apothic attribute on a
+curio prints its raw value (`+0.1 Crit Damage`) while the same attribute on a weapon prints through
+`PercentBasedAttribute` (`+75%`). Apothic's `CuriosClientCompat` only adds the Attributes button to
+the Curios screen.
+
+`client/CurioTooltipFormatHandler` runs last on `ItemTooltipEvent` and re-renders those lines through
+Apothic's own static `IFormattableAttribute.toComponent`. Matching on the vanilla translation keys
+selects exactly the unformatted lines: Apothic rewrites equipment lines during tooltip construction,
+before any event fires, so a vanilla-keyed attribute line at `LOWEST` priority was added by a
+listener.
+
+This covers every curio from every mod, and every attribute rather than only `attributeslib` ones:
+Apothic's `AttributeMixin` injects `IFormattableAttribute` into vanilla's `Attribute` base class, so
+every attribute implements it and picks up either the flat default or its own override
+(`PercentBasedAttribute`, `BooleanAttribute`). A curio granting `generic.armor` renders exactly as
+armour with the same modifier does. Client only, and inert without Apothic Attributes.
+
+The amount is recovered by parsing the number vanilla already formatted, which is what lets the line
+be rebuilt without a compile dependency on Curios. Vanilla's `#.##` rounding is therefore inherited:
+an amount of 0.075 has already been printed as `0.08` and reformats to `8%`.
+
+Apothic is reached through `client/ApothicFormatter`, a `MethodHandle` on that one static method,
+resolved once and disabled after a single warning if it ever throws.
+
 ## Build
 
 Forge 1.20.1-47.4.0, official mappings, JDK 17 toolchain. The wrapper is present in this folder, and
@@ -148,13 +234,28 @@ Startup log, `attribute_merge` logger:
 Merging 9 duplicate attribute(s) into Apothic Attributes
   cataclysm:additional_critical_damage -> attributeslib:crit_damage (x0.01)
   ...
+Granting armorPiercing as attributeslib:armor_shred on 10 Epic Knights weapon(s)
 ```
 
-No mixin errors for `attribute_merge.mixins.json` should appear. If Cataclysm is absent, the plugin
-skips the config silently.
+The mixin config must be registered, which `debug.log` states outright:
+
+```
+Preparing attribute_merge.mixins.json (1)
+Mixing CataclysmCuriosMixin from attribute_merge.mixins.json into com.github.L_Ender...CuriosItem
+```
+
+Both lines missing means the config never reached Mixin, and every injection error it would have
+raised is missing with it. If Cataclysm is absent, the plugin skips the config silently.
 
 Equip **Ring of the Grudge** in a `ring` slot: Crit Damage should go from 1.5 to 1.6, with no
-`% Critical Damage` row.
+`% Critical Damage` row, and its tooltip should read **+10% Crit Damage** rather than `+0.1`. A
+curio's tooltip is not evidence the attribute applies: Curios renders a line for every slot the item
+is *tagged* for, and `ring_of_grudged` is still in Cataclysm's `rings` tag, where the gate passes
+even when the item can only be worn in `ring`. Confirm on the Attributes screen.
+
+Hold a **Lucerne Hammer**: its tooltip should show **+20% Armor Shred** and no `20% armor piercing`
+line, and the Attributes screen should read 20% Armor Shred. If the Epic Knights line is still there,
+that instance's `general.json5` was not updated and the stat is being applied twice.
 
 Then hold **The Annihilator** (`ADDITION 75.0`): its tooltip should show **+75% Crit Damage** on the
 Apothic stat, the Attributes GUI should read **225%** crit damage (1.5 base + 0.75), and Cataclysm's

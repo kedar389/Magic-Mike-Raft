@@ -3,6 +3,7 @@ package com.attributemerge.event;
 import com.attributemerge.AttributeMerge;
 import com.attributemerge.MergeEngine;
 import com.attributemerge.MergeRules;
+import com.attributemerge.item.EpicKnightsPiercing;
 import com.google.common.collect.Multimap;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -39,6 +40,9 @@ import java.util.List;
  * per-tick code rather than item modifiers, and curio slots (nothing in the pack grants these
  * attributes from a curio, Unique Accessories already grants the Apothic ones directly). If that
  * changes, add a {@code CurioAttributeModifierEvent} listener alongside this one.
+ *
+ * <p>The same listener also runs {@link EpicKnightsPiercing}, which goes the other way: it creates a
+ * modifier for a stat that was never an attribute.
  */
 @Mod.EventBusSubscriber(modid = AttributeMerge.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public final class ItemAttributeMergeHandler {
@@ -52,6 +56,16 @@ public final class ItemAttributeMergeHandler {
      */
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void onItemAttributeModifiers(ItemAttributeModifierEvent event) {
+        // Independent of the merge table: this one INVENTS a modifier for a stat that is not an
+        // attribute at all, so it must run outside the isEmpty / isEmpty-modifiers guards below.
+        // It only ever adds attributeslib:armor_shred, which is never a merge source, so the two
+        // passes cannot interfere.
+        EpicKnightsPiercing.apply(event);
+        mergeDuplicates(event);
+    }
+
+    /** Rewrite every duplicate attribute the item declares onto its canonical Apothic twin. */
+    private static void mergeDuplicates(ItemAttributeModifierEvent event) {
         if (MergeRules.isEmpty()) return;
 
         Multimap<Attribute, AttributeModifier> modifiers = event.getModifiers();

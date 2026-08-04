@@ -84,6 +84,15 @@ public final class MergeEngine {
      * (Cataclysm and Obscure crit damage both feed {@code crit_damage}) from colliding.
      */
     public static UUID deriveId(UUID originalId, String targetId) {
-        return UUID.nameUUIDFromBytes((originalId + "|" + targetId).getBytes(StandardCharsets.UTF_8));
+        return deriveId(originalId.toString(), targetId);
+    }
+
+    /**
+     * Same derivation for a modifier this mod invents rather than rewrites, where the source is an
+     * item id instead of an existing modifier's UUID
+     * ({@link com.attributemerge.item.EpicKnightsPiercing}).
+     */
+    public static UUID deriveId(String source, String targetId) {
+        return UUID.nameUUIDFromBytes((source + "|" + targetId).getBytes(StandardCharsets.UTF_8));
     }
 }
