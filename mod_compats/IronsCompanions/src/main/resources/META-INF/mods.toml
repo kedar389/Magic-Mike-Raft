@@ -57,6 +57,13 @@ retypes companion ability damage to the correct magic schools, and adds armour/a
     ordering="AFTER"
     side="BOTH"
 
+[[dependencies.irons_companions]]
+    modId="curios"
+    mandatory=true
+    versionRange="[5.14,)"
+    ordering="AFTER"
+    side="BOTH"
+
 # Optional: only used to hide the removed Companions magic books from the item list.
 [[dependencies.irons_companions]]
     modId="jei"

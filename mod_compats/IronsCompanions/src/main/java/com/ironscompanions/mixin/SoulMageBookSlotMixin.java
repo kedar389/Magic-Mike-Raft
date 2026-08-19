@@ -23,6 +23,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * name at runtime (Forge 1.20.1 keeps official class names and SRG member names in production). Class
  * names in the descriptor are therefore the official ones.
  */
+// Mixin injectors are called by injected bytecode, never from Java, and their signature is fixed by
+// the target method, so unused handlers and unread parameters are expected here rather than dead code.
+@SuppressWarnings({"UnusedMethod", "UnusedVariable"})
 @Mixin(targets = "dev.xylonity.companions.common.container.SoulMageContainerMenu$BookSlot", remap = false)
 public class SoulMageBookSlotMixin {
 

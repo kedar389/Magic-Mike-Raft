@@ -1,12 +1,13 @@
 package com.ironscompanions.spell;
 
+import dev.xylonity.companions.registry.CompanionsEntities;
 import dev.xylonity.companions.registry.CompanionsSounds;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
-import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
-import io.redspace.ironsspellbooks.api.spells.CastSource;
 import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
@@ -16,16 +17,17 @@ import net.minecraft.world.phys.Vec3;
 
 /**
  * Naginata, the {@code book_naginata} effect as a legendary holy spell: a volley of
- * {@link CompanionsProjectiles#NAGINATA} raining onto the aimed point. Cooldown follows the book
- * (140t); the base power is a placeholder until the projectile's own damage is read from source.
+ * {@code CompanionsEntities.HOLINESS_NAGINATA} raining onto the aimed point. Numbers follow the book
+ * (`NAGINATA_DAMAGE` 8.0, cooldown 140t), with a long channel for the volley.
  *
- * <p>Obtained only from the Sacred Pontiff (see {@code CompanionsLootEvents}), which
- * {@link #allowLooting()} is what enforces.
+ * <p>Obtained only from the crafted {@code companions:book_naginata} spellbook (see
+ * {@code mixin/NaginataBookSpellbookMixin}); {@link #allowLooting()} is what keeps it out of every other
+ * source.
  */
 public class NaginataSpell extends CompanionsSpell {
 
-    private static final int BLADE_COUNT = 6;
-    private static final double BLADE_SPREAD = 6.0;
+    private static final int BLADE_COUNT = 8;
+    private static final double BLADE_SPREAD = 12.0;
     private static final double BLADE_HEIGHT = 20.0;
     private static final double BLADE_HEIGHT_JITTER = 10.0;
     private static final float BLADE_VELOCITY = 1.5f;
@@ -64,19 +66,19 @@ public class NaginataSpell extends CompanionsSpell {
     }
 
     @Override
-    public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-        if (!level.isClientSide) {
-            Vec3 target = aimPoint(level, entity);
-            double damage = getSpellPower(spellLevel, entity);
-            for (int i = 0; i < BLADE_COUNT; i++) {
-                double x = target.x + (entity.getRandom().nextDouble() - 0.5) * BLADE_SPREAD;
-                double z = target.z + (entity.getRandom().nextDouble() - 0.5) * BLADE_SPREAD;
-                double y = target.y + BLADE_HEIGHT + entity.getRandom().nextDouble() * BLADE_HEIGHT_JITTER;
-                CompanionsProjectiles.spawnAimed(level, CompanionsProjectiles.NAGINATA, entity,
-                        new Vec3(x, y, z), target, BLADE_VELOCITY, BLADE_INACCURACY, damage, this, spellLevel);
-            }
+    protected void castOnServer(ServerLevel level, int spellLevel, LivingEntity caster) {
+        Vec3 target = aimPoint(level, caster);
+        double damage = getSpellPower(spellLevel, caster);
+        RandomSource random = caster.getRandom();
+        for (int i = 0; i < BLADE_COUNT; i++) {
+            double x = target.x + (random.nextDouble() - 0.5) * BLADE_SPREAD;
+            double z = target.z + (random.nextDouble() - 0.5) * BLADE_SPREAD;
+            double y = target.y + BLADE_HEIGHT + random.nextDouble() * BLADE_HEIGHT_JITTER;
+            Vec3 from = new Vec3(x, y, z);
+            CompanionsProjectiles.spawnAimed(level, CompanionsEntities.HOLINESS_NAGINATA, caster,
+                    from, target, BLADE_VELOCITY, BLADE_INACCURACY, damage, this, spellLevel);
+            NaginataShockwave.spawnSparkle(level, from);
         }
-        super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 
     /** The first block the caster is looking at within {@link #AIM_RANGE}, else that far along the look. */

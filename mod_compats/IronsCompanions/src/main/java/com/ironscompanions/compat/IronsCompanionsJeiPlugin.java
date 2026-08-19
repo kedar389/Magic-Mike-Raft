@@ -1,7 +1,10 @@
 package com.ironscompanions.compat;
 
-import com.ironscompanions.CompanionBooks;
 import com.ironscompanions.IronsCompanions;
+import com.ironscompanions.books.RemovedBooks;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
@@ -10,17 +13,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Hides the removed Companions magic books from JEI. They have no recipes left (see
- * {@link com.ironscompanions.event.CompanionBookRemovalEvents}) and cannot be obtained, so leaving
- * them in the item list is just noise.
+ * {@code recipe.RemovedBookRecipes}) and cannot be obtained, so leaving them in the item list is just
+ * noise.
  *
  * <p>JEI is an optional client-side dependency. This class is only ever loaded by JEI's own
- * {@code @JeiPlugin} scan, which does not happen on a dedicated server, so nothing else in the mod
- * may reference it.
+ * {@code @JeiPlugin} scan, which does not happen on a dedicated server, so nothing else in the mod may
+ * reference it.
  */
 @JeiPlugin
 public class IronsCompanionsJeiPlugin implements IModPlugin {
@@ -34,7 +34,7 @@ public class IronsCompanionsJeiPlugin implements IModPlugin {
 
     @Override
     public void onRuntimeAvailable(IJeiRuntime runtime) {
-        List<Item> books = CompanionBooks.items();
+        Set<Item> books = RemovedBooks.items();
         if (books.isEmpty()) {
             return;
         }

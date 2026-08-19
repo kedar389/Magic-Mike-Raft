@@ -1,6 +1,8 @@
 plugins {
     id 'java'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'checkstyle'
+    id 'net.ltgt.errorprone' version '5.1.0'
 }
 
 version = project.mod_version
@@ -45,11 +47,17 @@ dependencies {
 
     // --- Companions + GTBC libs: deobf'd from the local jars in ./libs/ ---------------
     // Copy these out of `servers_folder/magic server/mods/` into `mod_compats/IronsCompanions/libs/`
-    // before building. We reference their real classes (projectile entities, geo school), so they
-    // must be compile deps. CurseMaven file IDs unknown -> local jars keep the build reproducible.
+    // before building. CurseMaven file IDs unknown -> local jars keep the build reproducible.
+    //
+    // Companions is a compile dep: we name its projectile entities, its Soul Mage, its Soul Furnace
+    // recipe and its loot blocks.
     implementation fg.deobf(files('libs/companions-forge-1.20.1-1.2.3.jar'))
-    implementation fg.deobf(files('libs/gtbcs_spell_lib-1.5.0-1.20.1.jar'))
-    implementation fg.deobf(files('libs/gtbcs_geomancy_plus-2.0.0-1.20.1.jar'))
+    // The GTBC pair is runtime-only: nothing here imports them. Geomancy Plus is reached purely by id
+    // (`gtbcs_geomancy_plus:geo`, the school Stone Spikes casts in), so it just has to be loaded, and
+    // spell_lib comes along as its own dependency. Both stay mandatory in mods.toml, because that
+    // school has to exist when the spell is built.
+    runtimeOnly fg.deobf(files('libs/gtbcs_spell_lib-1.5.0-1.20.1.jar'))
+    runtimeOnly fg.deobf(files('libs/gtbcs_geomancy_plus-2.0.0-1.20.1.jar'))
 
     // --- JEI (optional, client): API only, for the book-hiding plugin -----------------
     // Version matches the installed jei-1.20.1-forge-15.20.0.112.jar. From maven.blamejared.com.
@@ -62,8 +70,12 @@ dependencies {
     implementation fg.deobf(files('libs/geckolib-forge-1.20.1-4.8.4.jar'))
     implementation fg.deobf(files('libs/knightlib-forge-1.20.1-1.6.1.jar'))
 
-    // Runtime-only transitive deps so a dev run can actually load Companions.
-    runtimeOnly fg.deobf(files('libs/curios-forge-5.14.1+1.20.1.jar'))
+    // Pinned to 2.42.0 (last release that runs on JDK 17; 2.43+ needs JDK 21).
+    errorprone 'com.google.errorprone:error_prone_core:2.42.0'
+
+    // Curios: a runtime dep for Companions, and a compile dep for us since
+    // event/NaginataBookAttributes listens on CurioAttributeModifierEvent.
+    implementation fg.deobf(files('libs/curios-forge-5.14.1+1.20.1.jar'))
 }
 
 jar {
@@ -80,5 +92,24 @@ jar {
             // as the AttributeMerge sibling.
             'MixinConfigs'           : 'irons_companions.mixins.json',
         ])
+    }
+}
+
+// ---- Quality tooling ----------------------------------------------------------
+// Mirrors mod_compats/OriginSpellSchools, minus Spotless's palantirJavaFormat: adopting that here
+// would reformat all 33 sources wholesale and bury real diffs. The checks below catch bugs, not layout.
+
+checkstyle {
+    toolVersion = '12.3.1'   // 13.x requires a JDK 21 daemon; 12.3.1 is the latest for Java 17
+    configFile = file('config/checkstyle/checkstyle.xml')
+    maxWarnings = 0
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.errorprone {
+        disableWarningsInGeneratedCode = true
+        // Minecraft compares entities and items by identity throughout, and Entity#equals compares by
+        // network id, which would be the surprising choice here rather than the safe one.
+        disable "ReferenceEquality"
     }
 }

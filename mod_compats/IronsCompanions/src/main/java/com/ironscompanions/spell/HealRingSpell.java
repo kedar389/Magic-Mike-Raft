@@ -1,19 +1,22 @@
 package com.ironscompanions.spell;
 
-
+import dev.xylonity.companions.config.CompanionsConfig;
+import dev.xylonity.companions.registry.CompanionsEntities;
 import dev.xylonity.companions.registry.CompanionsSounds;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
-import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
-import io.redspace.ironsspellbooks.api.spells.CastSource;
 import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
+import io.redspace.ironsspellbooks.api.util.Utils;
+import java.util.List;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.Level;
 
 /**
  * Heal Ring, the {@code book_heal_ring} effect as a nature spell: a restorative
- * {@link CompanionsProjectiles#HEAL_RING} at the caster's feet. Numbers follow the book (healing 6.0,
+ * {@code CompanionsEntities.HEAL_RING_PROJECTILE} at the caster's feet. Numbers follow the book (healing 6.0,
  * cooldown 200t), with a channel added.
  */
 public class HealRingSpell extends CompanionsSpell {
@@ -39,16 +42,21 @@ public class HealRingSpell extends CompanionsSpell {
         return CastType.LONG;
     }
 
+    /**
+     * The ring heals {@code CompanionsConfig.HEAL_RING_HEALING} and nothing else:
+     * {@code HealRingProjectile} reads that value itself and calls {@code heal} on everything in range,
+     * so unlike the damage spells the amount does not follow {@link #getSpellPower}. The tooltip reports
+     * the number the projectile will actually apply rather than the spell power the base class would
+     * print.
+     */
     @Override
-    protected String infoKey() {
-        return "ui.irons_spellbooks.heal";
+    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
+        return List.of(Component.translatable("ui.irons_spellbooks.healing",
+                Utils.stringTruncation(CompanionsConfig.HEAL_RING_HEALING, 1)));
     }
 
     @Override
-    public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-        if (!level.isClientSide) {
-            CompanionsProjectiles.spawn(level, CompanionsProjectiles.HEAL_RING, entity, entity.position());
-        }
-        super.onCast(level, spellLevel, entity, castSource, playerMagicData);
+    protected void castOnServer(ServerLevel level, int spellLevel, LivingEntity caster) {
+        CompanionsProjectiles.spawn(level, CompanionsEntities.HEAL_RING_PROJECTILE, caster, caster.position());
     }
 }

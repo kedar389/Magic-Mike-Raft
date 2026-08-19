@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+    "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+    "https://checkstyle.org/dtd/configuration_1_3.dtd">
+
+<!--
+  Shared with mod_compats/OriginSpellSchools; keep the two in step.
+  Lenient config: flags bug-prone patterns only, not style nitpicks. Formatting is owned by Spotless,
+  so no whitespace/brace/line-length rules here.
+
+  UnusedImports is added on top of the sibling's set: this mod has been refactored across packages
+  more than once, and a stale import is the residue that leaves behind.
+-->
+<module name="Checker">
+    <property name="severity" value="error"/>
+    <property name="charset" value="UTF-8"/>
+
+    <module name="TreeWalker">
+        <!-- Correctness / bug-prone patterns -->
+        <module name="EqualsHashCode"/>
+        <module name="CovariantEquals"/>
+        <module name="StringLiteralEquality"/>   <!-- catches == / != on String literals -->
+        <module name="EqualsAvoidNull"/>
+        <module name="FallThrough"/>
+        <module name="MissingSwitchDefault"/>
+        <module name="DefaultComesLast"/>
+        <module name="EmptyStatement"/>
+        <module name="SimplifyBooleanExpression"/>
+        <module name="SimplifyBooleanReturn"/>
+        <module name="IllegalInstantiation">
+            <property name="classes" value="java.lang.Boolean, java.lang.String"/>
+        </module>
+        <module name="ModifiedControlVariable"/>
+        <module name="MultipleVariableDeclarations"/>
+        <module name="OneStatementPerLine"/>
+        <module name="NoFinalizer"/>
+
+        <!-- Residue from moving classes between packages. -->
+        <module name="UnusedImports">
+            <property name="processJavadoc" value="true"/>
+        </module>
+        <module name="RedundantImport"/>
+    </module>
+</module>
