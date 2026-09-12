@@ -21,8 +21,6 @@
 ## Biomes
 - [ ] Use the new woods from Cluttered and add them to the biomes in William Wythers
 - [ ] Change where flowers spawn
-- [ ] Make desert biomes bigger by 0.5
-- [ ] Make other biomes bigger by 0.3
 
 ## Structures
 - [ ] Make structures spawn on flat terrain
