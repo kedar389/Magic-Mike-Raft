@@ -20,3 +20,4 @@ mod_compats/**/libs/*.jar
 .claude
 .wolf
 CLAUDE.md
+.vscode

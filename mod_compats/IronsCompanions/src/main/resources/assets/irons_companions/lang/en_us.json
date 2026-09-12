@@ -1,5 +1,6 @@
 {
   "item.irons_companions.his_holiness_scripture": "His Holiness Scripture",
+  "gui.irons_companions.soul_mage.no_summons": "Summoning spells will not be cast",
 
   "spell.irons_companions.ice_tornado": "Ice Tornado",
   "spell.irons_companions.ice_tornado.guide": "Summons an ice tornado of the ancient winds.",

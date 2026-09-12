@@ -42,7 +42,7 @@ These do not spawn:
 | Blobfish | Clutter |
 | Underminer | Tunneling illager, destructive |
 
-Set via `<mob>SpawnWeight = 0` in [`mod_configs_server/alexsmobs.toml`](../mod_configs_server/alexsmobs.toml). Leafcutter anthills via `leafcutterAnthillSpawnChance = 0.0`.
+Set via `<mob>SpawnWeight = 0` in [`mod_configs_server/alexsmobs.toml`](../server_configuration/mod_configs_server/alexsmobs.toml). Leafcutter anthills via `leafcutterAnthillSpawnChance = 0.0`.
 
 ### Born in Chaos
 
@@ -164,7 +164,7 @@ The Moon Elf dodge is not an attribute. It does not show in the Attributes GUI a
 
 XP levels get progressively more expensive, so a flat few-level cost is a larger share of early-game XP than late.
 
-Settings in [`mod_configs_server/waystones-common.toml`](../mod_configs_server/waystones-common.toml), recipe changes in [`kubejs/server_scripts/waystones_balance.js`](../kubejs/server_scripts/waystones_balance.js).
+Settings in [`mod_configs_server/waystones-common.toml`](../server_configuration/mod_configs_server/waystones-common.toml), recipe changes in [`kubejs/server_scripts/waystones_balance.js`](../kubejs/server_scripts/waystones_balance.js).
 
 ---
 
@@ -178,7 +178,7 @@ Ascendant Arcana replaces vanilla enchanting with a capacity/relic system and di
 | `hide_xp_bar` | `false` | XP bar stays on the HUD |
 | `xp_per_level` | `30` | Linear curve, 30 XP per level |
 
-[`mod_configs_server/ascendant_arcana/server.json5`](../mod_configs_server/ascendant_arcana/server.json5).
+[`mod_configs_server/ascendant_arcana/server.json5`](../server_configuration/mod_configs_server/ascendant_arcana/server.json5).
 
 ---
 

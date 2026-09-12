@@ -31,8 +31,8 @@ entirely. This mod puts everything Companions does that is magic onto IS's terms
 6. **Crystallized Blood runs on Blood Vials**: the Soul Furnace recipe takes an IS Blood Vial rather
    than rotten flesh, and IS recipes calling for a vial take Crystallized Blood, so the two mods' blood
    lines feed each other (6A).
-7. **The Soul Mage casts IS spells** from scrolls in its book slots, in place of Companions' book goals
-   (5C).
+7. **The Soul Mage casts IS spells** from scrolls in its book slots, in place of Companions' book goals:
+   one every 1-2s, cycling its whole rotation, never a summon, and never without a clear line (5C).
 
 Sibling of `mod_compats/OriginSpellSchools`, same build layout.
 
@@ -86,8 +86,9 @@ handler is stateless, so the classes themselves are registered rather than insta
 | `attribute` | `CompanionArmorBonuses` and `NaginataBookBonuses`, both built on `AttributeBonus` |
 | `books` | `RemovedBooks` (the one list of eight ids), `RemovedBookDrops`, `RemovedBookLoot` |
 | `recipe` | `RecipeRewrites` (one reload listener, one sweep) and its `RecipeRule`s: `RemovedBookRecipes`, `BloodChainRecipes` |
-| `soulmage` | `SoulMageSpellcasting` (injects the goal) and `SoulMageIronsSpellGoal` |
+| `soulmage` | `SoulMageSpellcasting` (injects the goals), `SoulMageIronsSpellGoal`, `SoulMageLineUpGoal`, `SummonSpells` |
 | `mixin` | the four mixins; must stay one package, that is what `irons_companions.mixins.json` names, which lists `ImbuedSpellTooltipMixin` under `client` |
+| `client` | `NaginataBookTooltip` (the Scripture's spellbook tooltip) and `SoulMageScreenNote`, both subscribed through `@Mod.EventBusSubscriber(Dist.CLIENT)` |
 | `client` | `NaginataBookTooltip` (the Scripture's spellbook tooltip), subscribed through `@Mod.EventBusSubscriber(Dist.CLIENT)` |
 | `compat` | `IronsCompanionsJeiPlugin`, loaded only by JEI's own plugin scan |
 
@@ -255,11 +256,39 @@ Removal steps, all inside this mod (`books/RemovedBooks` holds the one list of e
 
 ### 5C. Soul Mage casts Iron's Spells
 
-Replace the Soul Mage's book-based attack goals (`SoulMageTornadoGoal`, `SoulMageStoneSpikesGoal`,
-`SoulMageHealRingGoal`, `SoulMageNaginataGoal`) so it **casts real IS spells chosen from scrolls in its
-inventory**, pool = the full IS spell registry. IS already supports non-player casters (`MagicData` /
-`IMagicEntity`); implement via Mixin into the Soul Mage entity/goal set. **Hardest item, build last.**
+The Soul Mage casts real IS spells from whatever scrolls and spellbooks sit in its three book slots,
+which `mixin/SoulMageBookSlotMixin` widens to accept them. `soulmage/SoulMageSpellcasting` adds two goals
+to every Soul Mage as it joins the world, both at **priority 3**, where Companions puts its own book
+goals: `SoulMageIronsSpellGoal` casts through `CastSource.MOB` with a throwaway `MagicData`, since a mob
+has no mana pool of its own, and `SoulMageLineUpGoal` walks the mage into a clear line on its target.
 
+Three rules shape what comes out:
+
+| Rule | Why | Where |
+|---|---|---|
+| **No summons** | a mage that fills the field with minions of its own is not what the slots are for | `soulmage/SummonSpells` |
+| **Every spell before any repeat** | picking uniformly at random lands on the same scroll for casts on end | `SoulMageIronsSpellGoal#pickSpell` |
+| **Never without a clear line** | spells leave along the mage's look vector, so cover ate the cast | `SoulMageIronsSpellGoal#canSeeLivingTarget` |
+
+**Cadence** is 8-28 ticks between casts plus the goal's own 12-tick cast: a spell every 1-2 seconds.
+
+**Identifying a summon** takes a list, because Iron's Spells marks them in no way: every summon spell is a
+plain `AbstractSpell`, and the machinery they share (`SummonManager`, `IMagicSummon`) is only reached at
+cast time. The list in `SummonSpells` comes from a bytecode scan of every spell mod in the pack for
+references to that machinery, which found `raise_dead`, `summon_vex`, `summon_horse`, `summon_polar_bear`
+and `summon_swords` in Iron's Spells, and `solar_chorus` in Geomancy Plus. That last one is why the list
+is explicit rather than a name match: it summons two Umvuthana but is not called `summon_` anything.
+`summon_ender_chest` is on the list too, summoning no minion but being no use to a mob either. Name hints
+(`summon`, `conjure`, `minion`, `raise_dead`) cover what gets added later.
+
+**Lining up** exists because Companions gives the mage no goal that approaches a target at all: only
+follow-owner and stroll, both at priority 4. Without it, a target that stepped behind a tree would end the
+fight, since the casting goal will not fire without line of sight. It chases up to 24 blocks and stops the
+moment the line is clear. Holding `Flag.MOVE` is also what keeps a sitting mage seated, since vanilla's
+`SitWhenOrderedToGoal` holds the same flag at priority 1.
+
+The player-facing note lives in `client/SoulMageScreenNote`, which writes "Summoning spells will not be
+cast" under Companions' own book screen through `ScreenEvent.Render.Post`.
 ### 5D. Companion ability damage → IS schools
 
 Retype companion ability damage to the correct IS school (via `SpellDamageEvent` / `LivingHurtEvent`),
@@ -362,10 +391,10 @@ recipe a later Iron's Spells version adds. Ingredients that merely *contain* the
    (recipe strip), `books/RemovedBookDrops` (Minion-reward swap), `books/RemovedBookLoot` (chest loot)
    and `compat/IronsCompanionsJeiPlugin` (JEI hide). Plus `recipe/BloodChainRecipes` for the blood-vial
    chain (6A).
-7. ✅ **Soul Mage AI** (5C), `soulmage/SoulMageIronsSpellGoal` + `soulmage/SoulMageSpellcasting` inject an
-   IS-scroll-casting goal (`EntityJoinLevelEvent` + reflection on `goalSelector`; **no mixin needed**).
+7. ✅ **Soul Mage AI** (5C), `soulmage/SoulMageSpellcasting` adds `SoulMageIronsSpellGoal` and
+   `SoulMageLineUpGoal` (`EntityJoinLevelEvent` + reflection on `goalSelector`; **no mixin needed**).
    The old book goals go inert once the books are gone. Scrolls reach its slots via
-   `mixin/SoulMageBookSlotMixin`.
+   `mixin/SoulMageBookSlotMixin`, and `soulmage/SummonSpells` keeps summons out of the rotation.
 
 ## 8. Open items (need a running game, not a compiler)
 

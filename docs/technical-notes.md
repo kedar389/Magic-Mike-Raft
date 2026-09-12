@@ -60,7 +60,7 @@ Cataclysm gates every curio's attributes on the slot the curio sits in:
 if (slotContext.identifier().equals(this.attributeSlot) && this.attributes != null) { ... }
 ```
 
-The ring's `attributeSlot` is hardcoded `"rings"` (`ModItems.lambda$static$150`, `ADDITIONAL_CRITICAL_DAMAGE`, `ADDITION 10.0`). [`mod_configs_server/curios-common.toml`](../mod_configs_server/curios-common.toml) sets `id=rings;size=0` and [`datapacks/Curios_Slot_Tweaks`](../datapacks/Curios_Slot_Tweaks/) routes the item into the standard `ring` slot, so the identifier is `ring`, the check fails, and the item contributes nothing at all.
+The ring's `attributeSlot` is hardcoded `"rings"` (`ModItems.lambda$static$150`, `ADDITIONAL_CRITICAL_DAMAGE`, `ADDITION 10.0`). [`mod_configs_server/curios-common.toml`](../server_configuration/mod_configs_server/curios-common.toml) sets `id=rings;size=0` and [`datapacks/Curios_Slot_Tweaks`](../datapacks/Curios_Slot_Tweaks/) routes the item into the standard `ring` slot, so the identifier is `ring`, the check fails, and the item contributes nothing at all.
 
 Reverting the reroute is not acceptable: every other ring in the pack uses the standard `ring` slot and that has to stay consistent.
 
@@ -149,13 +149,13 @@ The two performance settings that belong to no datapack or compat mod.
 
 spark enables its background profiler by default on dedicated servers, sampling continuously from boot. On Windows the low-overhead engine is unavailable: the log confirms `The async-profiler engine is not supported for your os/arch (windows10/amd64), so the built-in Java engine will be used instead`, leaving the JVM thread-dump sampler, which costs more.
 
-[`mod_configs_server/spark.json`](../mod_configs_server/spark.json) sets `backgroundProfiler: false`. On-demand `/spark profiler` still works.
+[`mod_configs_server/spark.json`](../server_configuration/mod_configs_server/spark.json) sets `backgroundProfiler: false`. On-demand `/spark profiler` still works.
 
 The key must be present and explicitly `false`. spark treats a missing key as enabled on servers (`didEnableByDefault`), so deleting the line re-enables it. There is no JVM flag equivalent.
 
 ## Distant Horizons, server-side distant generation
 
-The server runs DH with `enableDistantGeneration = true`, generating LOD chunks off-thread. Threading in [`mod_configs_server/DistantHorizons.toml`](../mod_configs_server/DistantHorizons.toml):
+The server runs DH with `enableDistantGeneration = true`, generating LOD chunks off-thread. Threading in [`mod_configs_server/DistantHorizons.toml`](../server_configuration/mod_configs_server/DistantHorizons.toml):
 
 | Setting | Value | Effect |
 |---|---|---|
@@ -184,7 +184,7 @@ A stat is only merged when an Apothic counterpart exists. Where none does, the a
 
 ### 2. Hide the leftovers, via the Apothic config
 
-Merging moves values, it does not unregister attributes, so a merged source still renders a row at its base value. [`mod_configs_client/attributeslib.cfg`](../mod_configs_client/attributeslib.cfg) lists those in `Hidden Attributes`.
+Merging moves values, it does not unregister attributes, so a merged source still renders a row at its base value. [`mod_configs_client/attributeslib.cfg`](../client_configuration/mod_configs_client/attributeslib.cfg) lists those in `Hidden Attributes`.
 
 The list affects **the Attributes GUI only**. Item tooltips still show whatever the item declares.
 
@@ -202,7 +202,7 @@ The override is global, not GUI-only: the same string appears on gear tooltips a
 
 Covers Cataclysm, Obscure API and Additional Entity Attributes. Zero compile dependencies: every attribute is resolved by `ResourceLocation` at runtime and a rule whose mod is absent is skipped with a debug line.
 
-The same listener also runs the reverse case, a stat that is not an attribute anywhere. `item/EpicKnightsPiercing` reads `WeaponType.armorPiercing` (an `int` percent, config-driven, nonzero on ten melee weapons) off the item and grants `attributeslib:armor_shred` at `amount / 100` on `MAINHAND`. Epic Knights' own mechanic is a *second* damage instance, not an attribute, so nothing gets drained and it has to be switched off separately: `disableArmorPiercing: true` in `general.json5`, on both sides, server for the damage and client for its tooltip line. Repo copies live in [`mod_configs_server/epicknights/`](../mod_configs_server/epicknights/) and [`mod_configs_client/epicknights/`](../mod_configs_client/epicknights/).
+The same listener also runs the reverse case, a stat that is not an attribute anywhere. `item/EpicKnightsPiercing` reads `WeaponType.armorPiercing` (an `int` percent, config-driven, nonzero on ten melee weapons) off the item and grants `attributeslib:armor_shred` at `amount / 100` on `MAINHAND`. Epic Knights' own mechanic is a *second* damage instance, not an attribute, so nothing gets drained and it has to be switched off separately: `disableArmorPiercing: true` in `general.json5`, on both sides, server for the damage and client for its tooltip line. Repo copies live in [`mod_configs_server/epicknights/`](../server_configuration/mod_configs_server/epicknights/) and [`mod_configs_client/epicknights/`](../client_configuration/mod_configs_client/epicknights/).
 
 ### 5. The datapack, for Iron's Lib
 

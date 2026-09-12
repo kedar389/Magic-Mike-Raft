@@ -15,7 +15,7 @@
 - [x] Merge duplicate attributes, Iron's Lib set (crit damage, dodge chance, arrow damage, armor pierce, experience gained, healing received, mining speed) folded into Apothic Attributes via [`datapacks/Attribute_Merge/`](datapacks/Attribute_Merge/)
 - [x] Merge Cataclysm + Obscure API/Aquamirae duplicate attributes (crit damage, crit chance, dodge, penetration→armor shred, healing power) into Apothic, written as the [`attribute_merge`](mod_compats/AttributeMerge/) Forge mod (rewrites the modifier on `ItemAttributeModifierEvent`, nothing ticks). They can't use the datapack remap: Cataclysm is percent points (needs ×0.01), Obscure delivers MULTIPLY_BASE but reads it additively (needs forced ADDITION). Replaced the earlier KubeJS polling bridge
 - [ ] **Build `mod_compats/AttributeMerge/`** (`gradle build`, no JDK in this dev env, so it ships uncompiled) and drop `attribute_merge-0.1.0.jar` into each instance's `mods/`
-- [x] Hide the duplicate attribute rows from the Apothic Attributes GUI (`Hidden Attributes` in [`mod_configs_client/attributeslib.cfg`](mod_configs_client/attributeslib.cfg)), merging moves values but leaves the rows registered; needs the CLIENT config redeployed
+- [x] Hide the duplicate attribute rows from the Apothic Attributes GUI (`Hidden Attributes` in [`mod_configs_client/attributeslib.cfg`](client_configuration/mod_configs_client/attributeslib.cfg)), merging moves values but leaves the rows registered; needs the CLIENT config redeployed
 - [ ] In-game sanity check after building: log shows `Merging 6 duplicate attribute(s)`, and The Annihilator (`ADDITION 75.0`) reads **+75% Crit Damage** on its tooltip with the Apothic stat at **225%** (1.5 base + 0.75), appearing **once**
 
 ## Biomes
@@ -31,7 +31,7 @@
   - **Datapack, `minecraft:exploration_map` loot function** for chest loot or a `/loot give @s loot <table>` shop, one table per structure, no slot limit. `destination` is a plain tag id with **no `#`** (vanilla `chests/shipwreck_map` omits it and defaults to `on_treasure_maps`). `#dungeonnowloading:temple_of_duality` already exists in the DNL jar and works as-is
   - **[MoreJS](https://modrinth.com/mod/morejs)** (1.20.1 Forge, needs KubeJS, already present) for genuine new cartographer trades, `MoreJS.villagerTrades(e => ...)` + `VillagerUtils.createStructureMapTrade(input, structure)` chained with `.displayName()/.marker()/.scale()/.noPreview()`
   - Decide route before building, see the Async Locator caveat under Mods to add
-- [ ] Sanity-check map search cost against the new rarities set in [`mod_configs_server/structurify.json`](mod_configs_server/structurify.json): `temple_of_duality` at spacing 32 resolves fast and close, `air_villages` at spacing 188 will be the slow one and lands thousands of blocks out
+- [ ] Sanity-check map search cost against the new rarities set in [`mod_configs_server/structurify.json`](server_configuration/mod_configs_server/structurify.json): `temple_of_duality` at spacing 32 resolves fast and close, `air_villages` at spacing 188 will be the slow one and lands thousands of blocks out
 - [x] Add waystones, remove the option to mine them, make them hard to craft, make them sparse like 500 blocks, give travel a reasonable XP-based scaling cost (usable by endgame, harder early game, not crazy). Waystone recipe uses warp stone; disable warp stone crafting (later added to expensive trader trades). For now warp stone should be unobtainable.
 
 ## Mobs
