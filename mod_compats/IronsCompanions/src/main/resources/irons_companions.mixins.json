@@ -6,7 +6,8 @@
   "mixins": [
     "SoulMageBookSlotMixin",
     "HolinessNaginataMixin",
-    "NaginataBookSpellbookMixin"
+    "NaginataBookSpellbookMixin",
+    "MageStaffCastingMixin"
   ],
   "client": [
     "ImbuedSpellTooltipMixin"

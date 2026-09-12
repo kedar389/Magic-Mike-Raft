@@ -1,6 +1,7 @@
 package com.ironscompanions;
 
 import com.ironscompanions.attribute.CompanionArmorBonuses;
+import com.ironscompanions.attribute.MageStaffBonuses;
 import com.ironscompanions.attribute.NaginataBookBonuses;
 import com.ironscompanions.books.RemovedBookDrops;
 import com.ironscompanions.books.RemovedBookLoot;
@@ -53,6 +54,7 @@ public class IronsCompanions {
         forgeBus.register(RecipeRewrites.class);           // book recipes, blood vial <-> crystallized blood
         forgeBus.register(SoulMageSpellcasting.class);     // Soul Mage casts from scrolls
         forgeBus.register(NaginataBookBonuses.class);      // worn mana + holy power
+        forgeBus.register(MageStaffBonuses.class);         // mage staff held bonuses
 
         // The client tooltip subscribes itself through @Mod.EventBusSubscriber(Dist.CLIENT), and JEI
         // hiding lives in compat/IronsCompanionsJeiPlugin, which JEI loads on the client only.

@@ -22,6 +22,9 @@ public final class ItemIds {
     /** Kept obtainable and turned into a spellbook, unlike the books in {@code books.RemovedBooks}. */
     public static final ResourceLocation NAGINATA_BOOK = ModIds.companions("book_naginata");
 
+    /** Companions' taming reagent for the Soul Mage, turned into an Iron's Spells staff. */
+    public static final ResourceLocation MAGE_STAFF = ModIds.companions("mage_staff");
+
     public static final ResourceLocation CRYSTALLIZED_BLOOD = ModIds.companions("crystallized_blood");
     public static final ResourceLocation BLOOD_VIAL = ModIds.ironsSpells("blood_vial");
 
