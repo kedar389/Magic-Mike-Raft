@@ -33,6 +33,8 @@ entirely. This mod puts everything Companions does that is magic onto IS's terms
    lines feed each other (6A).
 7. **The Soul Mage casts IS spells** from scrolls in its book slots, in place of Companions' book goals:
    one every 1-2s, cycling its whole rotation, never a summon, and never without a clear line (5C).
+8. **The Mage Staff becomes a real IS staff**: right-click casts the spell selected on the equipped
+   spellbook, and it carries spell power, summon damage and max mana in hand (5H).
 
 Sibling of `mod_compats/OriginSpellSchools`, same build layout.
 
@@ -83,13 +85,12 @@ handler is stateless, so the classes themselves are registered rather than insta
 | *(root)* | `IronsCompanions` (entry point), `ModIds` (every other mod's namespace and its id factories), `ItemIds` (the ids named by more than one feature, and the one deferred way to resolve an id to an `Item`) |
 | `spell` | the four converted spells, `CompanionsProjectiles` (spawns Companions' own entities), `SpellTag` (which spell fired a projectile), `NaginataShockwave`, `SpellScrolls` |
 | `damage` | `CompanionsDamageBridge` (one `LivingAttackEvent` handler, two jobs) and `CompanionsSchools` (the entity → school table) |
-| `attribute` | `CompanionArmorBonuses` and `NaginataBookBonuses`, both built on `AttributeBonus` |
+| `attribute` | `CompanionArmorBonuses`, `NaginataBookBonuses` and `MageStaffBonuses`, all built on `AttributeBonus` |
 | `books` | `RemovedBooks` (the one list of eight ids), `RemovedBookDrops`, `RemovedBookLoot` |
 | `recipe` | `RecipeRewrites` (one reload listener, one sweep) and its `RecipeRule`s: `RemovedBookRecipes`, `BloodChainRecipes` |
 | `soulmage` | `SoulMageSpellcasting` (injects the goals), `SoulMageIronsSpellGoal`, `SoulMageLineUpGoal`, `SummonSpells` |
-| `mixin` | the four mixins; must stay one package, that is what `irons_companions.mixins.json` names, which lists `ImbuedSpellTooltipMixin` under `client` |
+| `mixin` | the five mixins; must stay one package, that is what `irons_companions.mixins.json` names, which lists `ImbuedSpellTooltipMixin` under `client` |
 | `client` | `NaginataBookTooltip` (the Scripture's spellbook tooltip) and `SoulMageScreenNote`, both subscribed through `@Mod.EventBusSubscriber(Dist.CLIENT)` |
-| `client` | `NaginataBookTooltip` (the Scripture's spellbook tooltip), subscribed through `@Mod.EventBusSubscriber(Dist.CLIENT)` |
 | `compat` | `IronsCompanionsJeiPlugin`, loaded only by JEI's own plugin scan |
 
 Four things are worth knowing before changing any of it:
@@ -256,39 +257,57 @@ Removal steps, all inside this mod (`books/RemovedBooks` holds the one list of e
 
 ### 5C. Soul Mage casts Iron's Spells
 
-The Soul Mage casts real IS spells from whatever scrolls and spellbooks sit in its three book slots,
-which `mixin/SoulMageBookSlotMixin` widens to accept them. `soulmage/SoulMageSpellcasting` adds two goals
-to every Soul Mage as it joins the world, both at **priority 3**, where Companions puts its own book
-goals: `SoulMageIronsSpellGoal` casts through `CastSource.MOB` with a throwaway `MagicData`, since a mob
-has no mana pool of its own, and `SoulMageLineUpGoal` walks the mage into a clear line on its target.
+`soulmage/SoulMageSpellcasting` adds two goals to every Soul Mage at priority 3, where Companions puts its
+own book goals: `SoulMageIronsSpellGoal` casts the scrolls in the mage's three slots,
+`SoulMageLineUpGoal` walks it into a clear line when it has none. The slots accept scrolls through
+`mixin/SoulMageBookSlotMixin`. Casts use `CastSource.MOB` and a throwaway `MagicData`, since a mob has no
+mana pool.
 
-Three rules shape what comes out:
+**What it casts** — first match wins (`chooseSpell`):
 
-| Rule | Why | Where |
-|---|---|---|
-| **No summons** | a mage that fills the field with minions of its own is not what the slots are for | `soulmage/SummonSpells` |
-| **Every spell before any repeat** | picking uniformly at random lands on the same scroll for casts on end | `SoulMageIronsSpellGoal#pickSpell` |
-| **Never without a clear line** | spells leave along the mage's look vector, so cover ate the cast | `SoulMageIronsSpellGoal#canSeeLivingTarget` |
+| When | Casts |
+|---|---|
+| target is mid-cast | counterspell |
+| hit for ≥20% max HP in the last 60t, and HP < 60% | escape spell |
+| own HP < 40% | self-heal |
+| carrying a harmful effect | cleanse |
+| ally under 60% HP within 8 blocks | ally heal, aimed at the worst of them if the spell takes a target |
+| first cast against a new target | one buff |
+| clear line to target | attack rotation |
+| nothing to fight, sheep within 8 blocks | wololo |
 
-**Cadence** is 8-28 ticks between casts plus the goal's own 12-tick cast: a spell every 1-2 seconds.
+Every spell in the pack has a role in `soulmage/SpellRoles`; anything unlisted there is an attack with
+reach, which is most of the registry. The rotation skips summons, the wasted list, anything on cooldown,
+short-range spells beyond 8 blocks, and anything already cast this round. 8-28 ticks between casts.
 
-**Identifying a summon** takes a list, because Iron's Spells marks them in no way: every summon spell is a
-plain `AbstractSpell`, and the machinery they share (`SummonManager`, `IMagicSummon`) is only reached at
-cast time. The list in `SummonSpells` comes from a bytecode scan of every spell mod in the pack for
-references to that machinery, which found `raise_dead`, `summon_vex`, `summon_horse`, `summon_polar_bear`
-and `summon_swords` in Iron's Spells, and `solar_chorus` in Geomancy Plus. That last one is why the list
-is explicit rather than a name match: it summons two Umvuthana but is not called `summon_` anything.
-`summon_ender_chest` is on the list too, summoning no minion but being no use to a mob either. Name hints
-(`summon`, `conjure`, `minion`, `raise_dead`) cover what gets added later.
+**Wasted** is the notable list — spells that do nothing in a mob's hands. Player utility (`portal`,
+`recall`, `pocket_dimension`, `summon_ender_chest`, `touch_dig`, `spectral_hammer`, `planar_sight`,
+`throw`, `gluttony`), travel a walking mob cannot use (`angel_wing`, `ascension`,
+`gtbcs_geomancy_plus:seismic_surf`), and buffs to things it never does: `echoing_strikes` buffs
+non-magical attacks, and `sacrifice` detonates summons it never has. `invisibility` is an escape instead:
+mobs lose aggro, and it breaks when the mage next deals damage.
 
-**Lining up** exists because Companions gives the mage no goal that approaches a target at all: only
-follow-owner and stroll, both at priority 4. Without it, a target that stepped behind a tree would end the
-fight, since the casting goal will not fire without line of sight. It chases up to 24 blocks and stops the
-moment the line is clear. Holding `Flag.MOVE` is also what keeps a sitting mage seated, since vanilla's
-`SitWhenOrderedToGoal` holds the same flag at priority 1.
+**How it casts** — one `onCast` is only correct for `INSTANT`:
 
-The player-facing note lives in `client/SoulMageScreenNote`, which writes "Summoning spells will not be
-cast" under Companions' own book screen through `ScreenEvent.Render.Post`.
+| `CastType` | |
+|---|---|
+| `INSTANT` | `onCast` after a 6t wind-up |
+| `LONG` | charge for `getEffectiveCastTime`, `onCast` at the end |
+| `CONTINUOUS` | `onCast` at the start, `onServerCastTick` every tick |
+
+`LONG` and `CONTINUOUS` run through `MagicData`: `initiateCast` → `handleCastDuration` →
+`onServerCastComplete`, aborted by `shouldAIStopCasting`. The mage strafes while channelling.
+
+Facts behind the design:
+
+- `RayOfSiphoningSpell.onCast` is empty; all of it is in `onServerCastTick`.
+- `HealSpell.onCast` heals the caster, so allies can only be healed by area spells.
+- `portal`, `recall`, `pocket_dimension`, `touch_dig`, `planar_sight` run inside `instanceof Player`.
+- `AbstractSpell` publishes no range. `SpellRoles.SHORT_RANGE` is a judged list, not measured.
+- Cooldowns are the spell's own (Heal 30s, Blaze Storm 20s, Cone of Cold 12s), times `COOLDOWN_SCALE`.
+- `wololo` only dyes sheep.
+- `WizardAttackGoal` cannot be reused: it needs `IMagicEntity`.
+
 ### 5D. Companion ability damage → IS schools
 
 Retype companion ability damage to the correct IS school (via `SpellDamageEvent` / `LivingHurtEvent`),
@@ -328,6 +347,44 @@ but renders as a percentage in the tooltip.
 
 Not part of this mod. Friendly fire and ally targeting between the player, their IS summons and their
 Companions behave exactly as the two mods ship them. (Decision 2026-08-04.)
+
+### 5H. Mage Staff, a real Iron's Spells staff
+
+`companions:mage_staff` casts and carries attributes the way IS's own six staves do. Two halves:
+
+- `mixin/MageStaffCastingMixin` merges the five methods that are the whole of IS's `CastingItem` into
+  Companions' `GenericGeckoItem` and forwards each to an instance of it. Right-click casts the spell
+  selected on the equipped spellbook, holding channels, releasing ends the cast; mana, cooldowns,
+  `CastSource`, the spell wheel and the cast animation all come from
+  `AbstractSpell#attemptInitiateCast`, which is what `CastingItem` calls. The mage staff is the only
+  item registered under `GenericGeckoItem`, so the mixin reaches nothing else.
+- `attribute/MageStaffBonuses` adds what it carries in the main hand, through
+  `ItemAttributeModifierEvent`:
+
+| | |
+|---|---|
+| Attack damage | 4 (a 3.0 `ADDITION` modifier under `Item.BASE_ATTACK_DAMAGE_UUID`) |
+| Attack speed | 1 (a -3.0 modifier under `Item.BASE_ATTACK_SPEED_UUID`) |
+| Spell power | +10% |
+| Summon damage | +15% |
+| Max mana | +50 |
+
+`data/irons_spellbooks/tags/items/staff.json` adds it to `#irons_spellbooks:staff`, which is what the
+`Obscure_Tooltips_Styles` resource pack filters on to label an item "Staff".
+
+**Why that kit.** Every IS staff specialises in one school. This one has none: spell power applies to
+all of them, so it raises every companion ability `CompanionsDamageBridge` re-deals as spell damage,
+whatever school that ability carries. Summon damage is the headline rather than a perk, 15% against
+the Blood Staff's 10%. No other staff grants max mana, and the grant is flat because the attribute's
+base is 100, next to the 200 a spellbook adds.
+
+**Why those numbers.** The staff costs two sticks and a soul gem, one diamond smelted over three soul
+charges in a Soul Furnace: repeatable, early, no boss gate. 3.0 damage at -3.0 speed is the Artificer
+Cane's, which puts the staff between the Graybeard Staff and the Ice Staff. The recipe is Companions'
+own, unchanged.
+
+Taming a Golden Allay into a Soul Mage still consumes a mage staff, and still works: that is an entity
+interaction, which resolves before `Item#use`.
 
 ---
 
@@ -395,6 +452,10 @@ recipe a later Iron's Spells version adds. Ingredients that merely *contain* the
    `SoulMageLineUpGoal` (`EntityJoinLevelEvent` + reflection on `goalSelector`; **no mixin needed**).
    The old book goals go inert once the books are gone. Scrolls reach its slots via
    `mixin/SoulMageBookSlotMixin`, and `soulmage/SummonSpells` keeps summons out of the rotation.
+
+8. ✅ **Mage Staff** (5H), `mixin/MageStaffCastingMixin` forwards IS's `CastingItem` onto Companions'
+   `GenericGeckoItem`, `attribute/MageStaffBonuses` adds the held attributes, and
+   `data/irons_spellbooks/tags/items/staff.json` puts it in the staff tag.
 
 ## 8. Open items (need a running game, not a compiler)
 
