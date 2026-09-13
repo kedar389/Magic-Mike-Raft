@@ -9,6 +9,7 @@ import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.api.spells.SpellData;
 import io.redspace.ironsspellbooks.api.spells.SpellSlot;
+import io.redspace.ironsspellbooks.capabilities.magic.SyncedSpellData;
 import io.redspace.ironsspellbooks.capabilities.magic.TargetEntityCastData;
 import java.util.EnumSet;
 import java.util.HashMap;
@@ -78,8 +79,12 @@ public class SoulMageIronsSpellGoal extends Goal {
     private final int minCooldown;
     private final int maxCooldown;
 
-    /** One ledger for every cast: a mob has no capability to keep mana or cast state in. */
-    private final MagicData magicData = new MagicData(false);
+    /**
+     * One ledger for every cast: a mob has no capability to keep mana or cast state in. Built the way
+     * {@code AbstractSpellCastingMob} builds its own — {@code isMob} true, and a {@link SyncedSpellData} of
+     * its own, which is what {@code initiateCast} writes the casting flag into.
+     */
+    private final MagicData magicData;
 
     /** Spell ids cast since the rotation last wrapped. Cleared once every spell has had its turn. */
     private final Set<String> castThisRound = new HashSet<>();
@@ -106,6 +111,8 @@ public class SoulMageIronsSpellGoal extends Goal {
 
     public SoulMageIronsSpellGoal(SoulMageEntity mage, int minCooldown, int maxCooldown) {
         this.mage = mage;
+        this.magicData = new MagicData(true);
+        this.magicData.setSyncedData(new SyncedSpellData(mage));
         this.minCooldown = minCooldown;
         this.maxCooldown = maxCooldown;
         // MOVE as well as LOOK, because a channelled spell circles the target while it runs.

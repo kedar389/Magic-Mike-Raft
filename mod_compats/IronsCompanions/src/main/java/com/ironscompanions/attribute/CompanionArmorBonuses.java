@@ -38,8 +38,15 @@ public final class CompanionArmorBonuses {
     private static final double BLOOD_BONUS_PER_PIECE = 0.05d;
 
     /**
+     * Three Mage pieces at +5% resistance to every school, so 15% off all magic on the full set. The set's
+     * own tooltip is "wards that absorb magical damage", which Companions applies to its own damage only;
+     * {@code spell_resist} is the same promise against Iron's Spells.
+     */
+    private static final double MAGE_BONUS_PER_PIECE = 0.05d;
+
+    /**
      * {@code MULTIPLY_BASE} so the tooltip reads "+10%" rather than "+0.1". The effect matches
-     * {@code ADDITION} here: both attributes are Iron's Spells {@code MagicPercentAttribute}s with a base
+     * {@code ADDITION} here: the attributes are Iron's Spells {@code MagicPercentAttribute}s with a base
      * of 1.0, and multiply-base modifiers sum rather than compound.
      */
     private static final AttributeModifier.Operation OPERATION = AttributeModifier.Operation.MULTIPLY_BASE;
@@ -59,7 +66,13 @@ public final class CompanionArmorBonuses {
             new Piece("crystallized_blood_leggings", EquipmentSlot.LEGS,
                     IronsSpellsAttributes.BLOOD_MAGIC_RESIST, BLOOD_BONUS_PER_PIECE),
             new Piece("crystallized_blood_boots", EquipmentSlot.FEET,
-                    IronsSpellsAttributes.BLOOD_MAGIC_RESIST, BLOOD_BONUS_PER_PIECE));
+                    IronsSpellsAttributes.BLOOD_MAGIC_RESIST, BLOOD_BONUS_PER_PIECE),
+            new Piece("mage_hat", EquipmentSlot.HEAD,
+                    IronsSpellsAttributes.SPELL_RESIST, MAGE_BONUS_PER_PIECE),
+            new Piece("mage_coat", EquipmentSlot.CHEST,
+                    IronsSpellsAttributes.SPELL_RESIST, MAGE_BONUS_PER_PIECE),
+            new Piece("mage_leggings", EquipmentSlot.LEGS,
+                    IronsSpellsAttributes.SPELL_RESIST, MAGE_BONUS_PER_PIECE));
 
     private static final Lazy<Map<Item, WornPiece>> BONUSES = Lazy.concurrentOf(CompanionArmorBonuses::resolve);
 

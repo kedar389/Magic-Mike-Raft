@@ -11,6 +11,7 @@ final class IronsSpellsAttributes {
     static final ResourceLocation SUMMON_DAMAGE = ModIds.ironsSpells("summon_damage");
     static final ResourceLocation HOLY_SPELL_POWER = ModIds.ironsSpells("holy_spell_power");
     static final ResourceLocation BLOOD_MAGIC_RESIST = ModIds.ironsSpells("blood_magic_resist");
+    static final ResourceLocation SPELL_RESIST = ModIds.ironsSpells("spell_resist");
 
     private IronsSpellsAttributes() {
     }

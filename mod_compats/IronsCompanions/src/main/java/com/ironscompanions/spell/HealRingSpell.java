@@ -1,6 +1,5 @@
 package com.ironscompanions.spell;
 
-import dev.xylonity.companions.config.CompanionsConfig;
 import dev.xylonity.companions.registry.CompanionsEntities;
 import dev.xylonity.companions.registry.CompanionsSounds;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
@@ -16,8 +15,12 @@ import net.minecraft.world.entity.LivingEntity;
 
 /**
  * Heal Ring, the {@code book_heal_ring} effect as a nature spell: a restorative
- * {@code CompanionsEntities.HEAL_RING_PROJECTILE} at the caster's feet. Numbers follow the book (healing 6.0,
- * cooldown 200t), with a channel added.
+ * {@code CompanionsEntities.HEAL_RING_PROJECTILE} at the caster's feet, healing everything friendly it
+ * covers.
+ *
+ * <p>Healing scales with the scroll through {@code mixin/HealRingScalingMixin}, and the numbers sit
+ * between IS's own heals: 4 + 1 per level against Heal's 5 (single target, 30s) and Healing Circle's 2
+ * (lingering, 25s), on a 20s cooldown because this one is an instant burst over an area.
  */
 public class HealRingSpell extends CompanionsSpell {
 
@@ -27,36 +30,37 @@ public class HealRingSpell extends CompanionsSpell {
                         .setMinRarity(SpellRarity.UNCOMMON)
                         .setSchoolResource(SchoolRegistry.NATURE_RESOURCE)
                         .setMaxLevel(10)
-                        .setCooldownSeconds(10)
+                        .setCooldownSeconds(20)
                         .build(),
                 CompanionsSounds.SPELL_RELEASE_HEAL);
         this.manaCostPerLevel = 10;
-        this.baseSpellPower = 6;
+        this.baseSpellPower = 4;
         this.spellPowerPerLevel = 1;
         this.castTime = 25;
-        this.baseManaCost = 50;
+        this.baseManaCost = 40;
     }
 
     @Override
     public CastType getCastType() {
         return CastType.LONG;
     }
-
     /**
-     * The ring heals {@code CompanionsConfig.HEAL_RING_HEALING} and nothing else:
-     * {@code HealRingProjectile} reads that value itself and calls {@code heal} on everything in range,
-     * so unlike the damage spells the amount does not follow {@link #getSpellPower}. The tooltip reports
-     * the number the projectile will actually apply rather than the spell power the base class would
-     * print.
+     * Healing follows {@link #getSpellPower}, the way the damage spells do, so the tooltip prints it
+     * rather than the Companions config number the projectile would otherwise apply.
      */
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(Component.translatable("ui.irons_spellbooks.healing",
-                Utils.stringTruncation(CompanionsConfig.HEAL_RING_HEALING, 1)));
+                Utils.stringTruncation(getSpellPower(spellLevel, caster), 1)));
     }
 
+    /**
+     * Tagged with the spell and its level, which is what {@code mixin/HealRingScalingMixin} reads to scale
+     * the heal. An untagged ring, the kind Companions' own mobs cast, keeps the config amount.
+     */
     @Override
     protected void castOnServer(ServerLevel level, int spellLevel, LivingEntity caster) {
-        CompanionsProjectiles.spawn(level, CompanionsEntities.HEAL_RING_PROJECTILE, caster, caster.position());
+        CompanionsProjectiles.spawn(level, CompanionsEntities.HEAL_RING_PROJECTILE, caster, caster.position(),
+                this, spellLevel);
     }
 }
