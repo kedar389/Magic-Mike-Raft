@@ -490,10 +490,20 @@
     {
       "name": "dungeonnowloading:temple_of_duality",
       "whitelisted_biomes": [
+        "minecraft:jungle",
+        "minecraft:sparse_jungle",
+        "wythers:tropical_rainforest",
+        "wythers:highland_tropical_rainforest",
+        "wythers:tropical_forest",
+        "wythers:tropical_forest_canyon",
+        "wythers:jungle_canyon",
+        "wythers:flooded_rainforest",
+        "wythers:jungle_island",
         "wythers:jungle_river",
         "wythers:bamboo_jungle_swamp",
         "wythers:bamboo_jungle_canyon"
-      ]
+      ],
+      "exclude_from_overlap_prevention": true
     },
     {
       "name": "endersdelight:end_house",
