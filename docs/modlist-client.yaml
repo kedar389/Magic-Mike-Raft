@@ -57,7 +57,6 @@ Animations:
   - Wither Spawn Animation      # needed on both client and server
   - Visual Workbench            # shows items placed in the crafting table
   - Fresh Animations            # resource-pack-driven mob animations
-  # - Eating Animation          # visible food in hand while eating
 
 Shaders:
   - Any                         # player's choice, Oculus-compatible

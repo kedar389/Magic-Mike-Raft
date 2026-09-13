@@ -4,16 +4,16 @@
 #   #   = considered but not included
 
 Performance:
-  - Krypton                     # network stack optimizations
-  - FerriteCore                 # memory optimizations
-  - AllTheLeaks                 # fixes memory leaks
-  - Noisium                     # worldgen optimizations
-  - ModernFix                   # general startup and runtime fixes
-  - Radium Reforged             # tick and pathfinding optimizations (or Canary)
-  - C2ME                        # parallel chunk loading and generation
-  - Get It Together, Drops!     # merges dropped items
-  - Clumps                      # merges XP orbs
-  - Structure Layout Optimizer  # faster structure placement checks
+  - Krypton
+  - FerriteCore
+  - AllTheLeaks
+  - Noisium
+  - ModernFix
+  - Radium Reforged
+  - C2ME
+  - Get It Together, Drops!
+  - Clumps
+  - Structure Layout Optimizer
 
 Utilities:
   - spark                       # profiler for TPS and memory
@@ -21,63 +21,93 @@ Utilities:
   - Structurify                 # per-structure spawn control
   - Mob Control                 # mob spawn rules and caps
   - Command Aliases             # custom command shortcuts
-  - WITS                        # What Is This Slot, slot tooltips
-  - CraftTweaker                # recipe scripting
-  - KubeJS                      # scripted recipes, loot and events
+  - WITS                        # What Is This Structure
+  - CraftTweaker
+  - KubeJS
 
 Worldgen:
-  - Distant Horizons            # server-side LOD support
-  - WWOO                        # William Wythers' Overhauled Overworld
-  - Nullscape                   # End terrain overhaul
-  - Amplified Nether            # full-height Nether terrain
+  - Distant Horizons
+  - WWOO
+  - Nullscape
+  - Amplified Nether
+  - Streams reflow
 
 Structures:
-  - Feur Jungle                 # structures
-  - Better Village              # village overhaul
-  - Integrated Villages         # + Loot Integrations
-  - Dungeon Now Loading         # extra dungeon variants
-  - Explorify                   # small vanilla-style structures
-  - Dungeons and Taverns        # DnT, base module + Loot Integrations
-  - DnT Ancient City Overhaul
-  - DnT Stronghold Overhaul
-  - DnT Pillager Outpost Overhaul
-  - Formations Nether           # Nether terrain formations
+  - Plains and forests:
+      - BetterArcheology
+      - Hunter's Return*
 
-  - Yung's:
-      - Better Dungeons
-      - Better Jungle Temples
-      - Better Mineshafts
-      - Better Witch Huts
-      - Better Desert Temples
-      - Better Nether Fortresses
-      - Better Ocean Monuments
+  - Villages:
+    - Better Village
+    - Integrated Villages
+    - Ribbits
+
+  - Jungle:
+    - Feur Jungle
+    - Dungeon Now Loading
+    - BetterArcheology
+    - Yung's Better Jungle Temples
+  - Savanna:
+      - Mowzie's Mobs*
+
+  - Desert:
+      - Yung's Better Desert Temples
+
+  - Swamp:
+      - Yung's Better Witch Huts
+
+  - Badlands:
+       - BetterArcheology
+  -
+
+  - Underground Dungeons:
+      - Yung's Better Dungeons
+      - Dungeon Now Loading
+      - DnT Stronghold Overhaul
+      - Yung's Better Mineshafts
+      - DnT Stronghold Overhaul
+      - DnT Ancient City Overhaul
+
+  - Pillager structures:
+      - DnT Pillager Outpost Overhaul
+      - It Takes a Pillage
+      - Conjurer
+      - Companions
+  - Mountains and snow:
+      - "Grim Kingdoms: Lost Structures & Ruins"
+
+  - Random structures:
+      - Explorify
+      - Dungeons and Taverns
+
+  - Ocean:
+      - Yung's Better Ocean Monuments
+      - Sea Dwellers*
+
+  - Nether:
+    - Formations Nether
+    - Yung's Better Nether Fortresses
+    - Jaden's Nether Expansion*
+
+  - End: []
 
   - Content mods that add structures:
-      - Ribbits                       # frog village and NPCs
-      - "Grim Kingdoms: Lost Structures & Ruins"
-      - BetterArcheology*             # + Loot Integrations
       - L_Ender's Cataclysm*          # + Loot Integrations
-      - Mowzie's Mobs*
       - Bosses of Mass Destruction*   # BoMD
       - Born in Chaos*
-      - It Takes a Pillage*           # + Loot Integrations
-      - Conjurer*
       - Friends & Foes*
-      - Companions*
-      - Sea Dwellers*
-      - Hunter's Return*
       - Waystones*
-      - Jaden's Nether Expansion*     # + its Delight addon
 
 Mobs:
-  - Alex's Mobs                 # overworld creatures
-  - Friends & Foes              # unused Mojang mob concepts
-  - Born in Chaos               # undead overhaul and new mobs
-  - Variants & Ventures         # vanilla mob variants
-  - Companions                  # tameable companions
-  - Creeper Overhaul            # per-biome creeper models
-  - Enderman Overhaul           # per-dimension enderman variants
-  - Sea Dwellers                # ocean mobs
+  - Alex's Mobs
+  - Friends & Foes
+  - Born in Chaos
+  - Variants & Ventures
+  - Companions
+  - Creeper Overhaul
+  - Enderman Overhaul
+  - Sea Dwellers
+  - Spider overhaul
 
 Bosses:
   - Mowzie's Mobs
@@ -121,23 +151,26 @@ Tech mods:
 Trinkets and items:
   - Ewewukek's Musket Mod       # black-powder firearms
   - Epic Knights                # medieval armor, shields and weapons
-  - Relics                      # passive trinkets
-  - More Relics                 # extra Relics content
-  - Artifacts                   # loot-chest trinkets
+  - Relics
+  - More Relics
+  - Artifacts
   - Relics x Artifacts Compat
-  - Unique Accessories          # curios-slot accessories
+  - Unique Accessories
 
 Enchantment overhauls:
   - Ascendant Arcana            # new enchantments and effects
   - Ascendant Compatibility     # cross-mod enchant support
-  - Majrusz's Enchantments      # extra enchantments
+  - #Majrusz's Enchantments      # extra enchantments, has some bug
 
 Alchemy overhauls: []           # TBD
 
-Water overhauls: []             # TBD
+Water overhauls: []
+
+
 
 Compat mods (built from mod_compats/, not downloaded):
   - Attribute Merge             # folds Cataclysm + Obscure API duplicate attributes into Apothic
+  - Iron Companion compat
 
 Gameplay:
   - Simple Voice Chat           # proximity voice
@@ -181,7 +214,7 @@ Food:
 Furniture:
   - Cluttered                    # small decorative clutter items
 
-Also required on the client:
+Also required on the server becuase of client:
   - Cool Rain
   - Subtle Effects
   - Jade
