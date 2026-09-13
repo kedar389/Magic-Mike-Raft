@@ -1,0 +1,34 @@
+{
+  "tier": "large",
+  "leader": {
+    "type": "illageandspillage:igniter"
+  },
+  "members": [
+    {
+      "type": "minecraft:pillager",
+      "count": 4
+    },
+    {
+      "type": "takesapillage:skirmisher",
+      "count": 3
+    },
+    {
+      "type": "takesapillage:archer",
+      "count": 2
+    },
+    {
+      "type": "enchantwithmob:enchanter",
+      "count": 1
+    },
+    {
+      "type": "illageandspillage:crocofang",
+      "count": 1
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:purple_carpet",
+      "count": 6,
+      "cargo": "magic_caravans:cargo/magic_dust"
+    }
+  ]
+}

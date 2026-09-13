@@ -1,0 +1,22 @@
+{
+  "weight": 1000,
+  "biomes": "#magic_caravans:has_swamp_caravan",
+  "pools": [
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:bog_alchemists_tier_1",
+        "magic_caravans:bog_alchemists_tier_2",
+        "magic_caravans:bog_alchemists_tier_3"
+      ]
+    },
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:fen_poisoners_tier_1",
+        "magic_caravans:fen_poisoners_tier_2",
+        "magic_caravans:fen_poisoners_tier_3"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "tier": "large",
+  "leader": {
+    "type": "illageandspillage:igniter"
+  },
+  "members": [
+    {
+      "type": "minecraft:pillager",
+      "count": 5
+    },
+    {
+      "type": "takesapillage:skirmisher",
+      "count": 4
+    },
+    {
+      "type": "enchantwithmob:enchanter",
+      "count": 1
+    },
+    {
+      "type": "companions:illager_golem",
+      "count": 2
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:orange_carpet",
+      "count": 6,
+      "cargo": "magic_caravans:cargo/ore"
+    }
+  ]
+}

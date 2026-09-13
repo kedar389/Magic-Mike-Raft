@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "wythers:salt_lakes_white",
+      "required": false
+    },
+    {
+      "id": "wythers:salt_lakes_pink",
+      "required": false
+    },
+    {
+      "id": "wythers:salt_lakes_turquoise",
+      "required": false
+    },
+    {
+      "id": "wythers:danakil_desert",
+      "required": false
+    },
+    {
+      "id": "wythers:mud_pools",
+      "required": false
+    }
+  ]
+}

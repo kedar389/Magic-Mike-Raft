@@ -1,0 +1,14 @@
+{
+  "weight": 1000,
+  "biomes": "#magic_caravans:has_outback_caravan",
+  "pools": [
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:outback_runners_tier_1",
+        "magic_caravans:outback_runners_tier_2",
+        "magic_caravans:outback_runners_tier_3"
+      ]
+    }
+  ]
+}

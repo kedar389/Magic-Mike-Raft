@@ -1,0 +1,40 @@
+{
+  "tier": "large",
+  "leader": {
+    "type": "illageandspillage:absorber"
+  },
+  "members": [
+    {
+      "type": "takesapillage:legioner",
+      "count": 5
+    },
+    {
+      "type": "takesapillage:skirmisher",
+      "count": 4
+    },
+    {
+      "type": "minecraft:pillager",
+      "count": 3
+    },
+    {
+      "type": "enchantwithmob:enchanter",
+      "count": 1
+    },
+    {
+      "type": "raidsenhanced:golem_of_last_resort",
+      "count": 1
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:orange_carpet",
+      "count": 3,
+      "cargo": "magic_caravans:cargo/ore"
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:orange_carpet",
+      "count": 3,
+      "cargo": "magic_caravans:cargo/machinery"
+    }
+  ]
+}

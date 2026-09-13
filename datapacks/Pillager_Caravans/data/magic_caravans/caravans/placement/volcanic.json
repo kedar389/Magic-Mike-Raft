@@ -1,0 +1,30 @@
+{
+  "weight": 1000,
+  "biomes": "#magic_caravans:has_volcanic_caravan",
+  "pools": [
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:ore_train_tier_1",
+        "magic_caravans:ore_train_tier_2",
+        "magic_caravans:ore_train_tier_3"
+      ]
+    },
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:ash_scavengers_tier_1",
+        "magic_caravans:ash_scavengers_tier_2",
+        "magic_caravans:ash_scavengers_tier_3"
+      ]
+    },
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:rune_smelters_tier_1",
+        "magic_caravans:rune_smelters_tier_2",
+        "magic_caravans:rune_smelters_tier_3"
+      ]
+    }
+  ]
+}

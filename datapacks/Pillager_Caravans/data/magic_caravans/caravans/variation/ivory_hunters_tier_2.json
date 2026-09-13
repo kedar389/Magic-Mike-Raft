@@ -1,0 +1,26 @@
+{
+  "tier": "medium",
+  "leader": {
+    "type": "hunters_return:hunter"
+  },
+  "members": [
+    {
+      "type": "takesapillage:archer",
+      "count": 4
+    },
+    {
+      "type": "minecraft:pillager",
+      "count": 2
+    },
+    {
+      "type": "alexsmobs:elephant",
+      "count": 1
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:white_carpet",
+      "count": 4,
+      "cargo": "magic_caravans:cargo/bone"
+    }
+  ]
+}

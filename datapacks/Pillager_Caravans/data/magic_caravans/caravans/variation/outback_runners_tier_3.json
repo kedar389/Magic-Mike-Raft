@@ -1,0 +1,36 @@
+{
+  "tier": "large",
+  "leader": {
+    "type": "hunters_return:hunter"
+  },
+  "members": [
+    {
+      "type": "takesapillage:archer",
+      "count": 4
+    },
+    {
+      "type": "takesapillage:skirmisher",
+      "count": 2
+    },
+    {
+      "type": "enchantwithmob:enchanter",
+      "count": 1
+    },
+    {
+      "type": "minecraft:ravager",
+      "count": 1
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:white_carpet",
+      "count": 3,
+      "cargo": "magic_caravans:cargo/bone"
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:white_carpet",
+      "count": 3,
+      "cargo": "magic_caravans:cargo/provisions"
+    }
+  ]
+}

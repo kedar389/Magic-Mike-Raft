@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "wythers:volcano",
+      "required": false
+    },
+    {
+      "id": "wythers:volcanic_crater",
+      "required": false
+    },
+    {
+      "id": "wythers:volcanic_chamber",
+      "required": false
+    },
+    {
+      "id": "wythers:tropical_volcano",
+      "required": false
+    },
+    {
+      "id": "wythers:icy_volcano",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "weight": 1000,
+  "biomes": "#magic_caravans:has_autumnal_caravan",
+  "pools": [
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:harvest_wake_tier_1",
+        "magic_caravans:harvest_wake_tier_2",
+        "magic_caravans:harvest_wake_tier_3"
+      ]
+    }
+  ]
+}

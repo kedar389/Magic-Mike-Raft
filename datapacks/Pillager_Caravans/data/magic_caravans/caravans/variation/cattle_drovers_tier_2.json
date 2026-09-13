@@ -1,0 +1,30 @@
+{
+  "tier": "medium",
+  "leader": {
+    "type": "minecraft:vindicator"
+  },
+  "members": [
+    {
+      "type": "minecraft:pillager",
+      "count": 4
+    },
+    {
+      "type": "takesapillage:skirmisher",
+      "count": 2
+    },
+    {
+      "type": "minecraft:cow",
+      "count": 3
+    },
+    {
+      "type": "alexsmobs:emu",
+      "count": 3
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:brown_carpet",
+      "count": 2,
+      "cargo": "magic_caravans:cargo/livestock"
+    }
+  ]
+}

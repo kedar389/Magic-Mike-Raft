@@ -1,0 +1,32 @@
+{
+  "tier": "medium",
+  "leader": {
+    "type": "hunters_return:hunter"
+  },
+  "members": [
+    {
+      "type": "minecraft:pillager",
+      "count": 4
+    },
+    {
+      "type": "takesapillage:archer",
+      "count": 2
+    },
+    {
+      "type": "alexsmobs:capuchin_monkey",
+      "count": 1
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:brown_carpet",
+      "count": 2,
+      "cargo": "magic_caravans:cargo/livestock"
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:brown_carpet",
+      "count": 2,
+      "cargo": "magic_caravans:cargo/furs"
+    }
+  ]
+}

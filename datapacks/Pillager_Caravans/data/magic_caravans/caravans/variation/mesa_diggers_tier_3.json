@@ -1,0 +1,40 @@
+{
+  "tier": "large",
+  "leader": {
+    "type": "minecraft:vindicator"
+  },
+  "members": [
+    {
+      "type": "minecraft:pillager",
+      "count": 5
+    },
+    {
+      "type": "takesapillage:legioner",
+      "count": 4
+    },
+    {
+      "type": "takesapillage:skirmisher",
+      "count": 3
+    },
+    {
+      "type": "enchantwithmob:enchanter",
+      "count": 1
+    },
+    {
+      "type": "illageandspillage:igniter",
+      "count": 3
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:orange_carpet",
+      "count": 3,
+      "cargo": "magic_caravans:cargo/ore"
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:orange_carpet",
+      "count": 3,
+      "cargo": "magic_caravans:cargo/gems"
+    }
+  ]
+}

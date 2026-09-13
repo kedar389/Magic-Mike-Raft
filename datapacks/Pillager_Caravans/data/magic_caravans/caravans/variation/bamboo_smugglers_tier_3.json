@@ -1,0 +1,30 @@
+{
+  "tier": "large",
+  "leader": {
+    "type": "minecraft:illusioner"
+  },
+  "members": [
+    {
+      "type": "minecraft:pillager",
+      "count": 4
+    },
+    {
+      "type": "takesapillage:skirmisher",
+      "count": 2
+    },
+    {
+      "type": "enchantwithmob:enchanter",
+      "count": 1
+    },
+    {
+      "type": "minecraft:illusioner",
+      "count": 3
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:yellow_carpet",
+      "count": 6,
+      "cargo": "magic_caravans:cargo/provisions"
+    }
+  ]
+}

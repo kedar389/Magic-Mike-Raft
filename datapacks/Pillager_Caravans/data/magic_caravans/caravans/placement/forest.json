@@ -1,0 +1,30 @@
+{
+  "weight": 1000,
+  "biomes": "#magic_caravans:has_forest_caravan",
+  "pools": [
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:dye_traders_tier_1",
+        "magic_caravans:dye_traders_tier_2",
+        "magic_caravans:dye_traders_tier_3"
+      ]
+    },
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:timber_gang_tier_1",
+        "magic_caravans:timber_gang_tier_2",
+        "magic_caravans:timber_gang_tier_3"
+      ]
+    },
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:illusionists_troupe_tier_1",
+        "magic_caravans:illusionists_troupe_tier_2",
+        "magic_caravans:illusionists_troupe_tier_3"
+      ]
+    }
+  ]
+}

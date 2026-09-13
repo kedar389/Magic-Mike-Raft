@@ -1,0 +1,22 @@
+{
+  "tier": "medium",
+  "leader": {
+    "type": "minecraft:vindicator"
+  },
+  "members": [
+    {
+      "type": "minecraft:pillager",
+      "count": 4
+    },
+    {
+      "type": "takesapillage:legioner",
+      "count": 2
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:orange_carpet",
+      "count": 4,
+      "cargo": "magic_caravans:cargo/ore"
+    }
+  ]
+}

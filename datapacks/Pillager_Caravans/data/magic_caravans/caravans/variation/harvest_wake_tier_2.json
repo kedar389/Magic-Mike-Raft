@@ -1,0 +1,28 @@
+{
+  "tier": "medium",
+  "leader": {
+    "type": "minecraft:evoker"
+  },
+  "members": [
+    {
+      "type": "minecraft:pillager",
+      "count": 4
+    },
+    {
+      "type": "takesapillage:legioner",
+      "count": 2
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:brown_carpet",
+      "count": 2,
+      "cargo": "magic_caravans:cargo/harvest"
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:brown_carpet",
+      "count": 2,
+      "cargo": "magic_caravans:cargo/textiles"
+    }
+  ]
+}

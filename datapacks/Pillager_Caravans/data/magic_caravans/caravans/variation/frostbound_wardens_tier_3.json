@@ -1,0 +1,40 @@
+{
+  "tier": "large",
+  "leader": {
+    "type": "friendsandfoes:iceologer"
+  },
+  "members": [
+    {
+      "type": "takesapillage:legioner",
+      "count": 4
+    },
+    {
+      "type": "minecraft:pillager",
+      "count": 3
+    },
+    {
+      "type": "takesapillage:archer",
+      "count": 2
+    },
+    {
+      "type": "enchantwithmob:enchanter",
+      "count": 1
+    },
+    {
+      "type": "friendsandfoes:iceologer",
+      "count": 2
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:purple_carpet",
+      "count": 3,
+      "cargo": "magic_caravans:cargo/magic_dust"
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:purple_carpet",
+      "count": 3,
+      "cargo": "magic_caravans:cargo/runes"
+    }
+  ]
+}

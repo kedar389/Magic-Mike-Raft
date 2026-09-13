@@ -1,0 +1,34 @@
+{
+  "tier": "large",
+  "leader": {
+    "type": "minecraft:evoker"
+  },
+  "members": [
+    {
+      "type": "minecraft:vindicator",
+      "count": 5
+    },
+    {
+      "type": "takesapillage:legioner",
+      "count": 4
+    },
+    {
+      "type": "enchantwithmob:enchanter",
+      "count": 1
+    },
+    {
+      "type": "illageandspillage:absorber",
+      "count": 1
+    },
+    {
+      "type": "alexsmobs:crow",
+      "count": 2
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:black_carpet",
+      "count": 6,
+      "cargo": "magic_caravans:cargo/grave_goods"
+    }
+  ]
+}

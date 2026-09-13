@@ -1,0 +1,40 @@
+{
+  "tier": "large",
+  "leader": {
+    "type": "minecraft:evoker"
+  },
+  "members": [
+    {
+      "type": "minecraft:vindicator",
+      "count": 5
+    },
+    {
+      "type": "takesapillage:legioner",
+      "count": 4
+    },
+    {
+      "type": "takesapillage:archer",
+      "count": 3
+    },
+    {
+      "type": "enchantwithmob:enchanter",
+      "count": 1
+    },
+    {
+      "type": "companions:illager_golem",
+      "count": 2
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:light_blue_carpet",
+      "count": 3,
+      "cargo": "magic_caravans:cargo/gems"
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:light_blue_carpet",
+      "count": 3,
+      "cargo": "magic_caravans:cargo/relics"
+    }
+  ]
+}

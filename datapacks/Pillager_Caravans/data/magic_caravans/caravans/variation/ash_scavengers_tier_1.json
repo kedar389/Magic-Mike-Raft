@@ -1,0 +1,22 @@
+{
+  "tier": "small",
+  "leader": {
+    "type": "illageandspillage:igniter"
+  },
+  "members": [
+    {
+      "type": "minecraft:pillager",
+      "count": 2
+    },
+    {
+      "type": "takesapillage:skirmisher",
+      "count": 1
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:purple_carpet",
+      "count": 2,
+      "cargo": "magic_caravans:cargo/magic_dust"
+    }
+  ]
+}

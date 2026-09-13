@@ -1,0 +1,22 @@
+{
+  "weight": 1000,
+  "biomes": "#magic_caravans:has_coast_caravan",
+  "pools": [
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:ice_fishers_tier_1",
+        "magic_caravans:ice_fishers_tier_2",
+        "magic_caravans:ice_fishers_tier_3"
+      ]
+    },
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:wreckers_tier_1",
+        "magic_caravans:wreckers_tier_2",
+        "magic_caravans:wreckers_tier_3"
+      ]
+    }
+  ]
+}

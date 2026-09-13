@@ -1,0 +1,30 @@
+{
+  "weight": 1000,
+  "biomes": "#magic_caravans:has_mystical_caravan",
+  "pools": [
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:sporecallers_tier_1",
+        "magic_caravans:sporecallers_tier_2",
+        "magic_caravans:sporecallers_tier_3"
+      ]
+    },
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:sculk_cultists_tier_1",
+        "magic_caravans:sculk_cultists_tier_2",
+        "magic_caravans:sculk_cultists_tier_3"
+      ]
+    },
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:crystal_coven_tier_1",
+        "magic_caravans:crystal_coven_tier_2",
+        "magic_caravans:crystal_coven_tier_3"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "weight": 1000,
+  "biomes": "#magic_caravans:has_salt_flats_caravan",
+  "pools": [
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:salt_traders_tier_1",
+        "magic_caravans:salt_traders_tier_2",
+        "magic_caravans:salt_traders_tier_3"
+      ]
+    }
+  ]
+}

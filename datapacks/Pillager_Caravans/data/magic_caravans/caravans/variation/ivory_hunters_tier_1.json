@@ -1,0 +1,22 @@
+{
+  "tier": "small",
+  "leader": {
+    "type": "hunters_return:hunter"
+  },
+  "members": [
+    {
+      "type": "takesapillage:archer",
+      "count": 2
+    },
+    {
+      "type": "minecraft:pillager",
+      "count": 1
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:white_carpet",
+      "count": 2,
+      "cargo": "magic_caravans:cargo/bone"
+    }
+  ]
+}

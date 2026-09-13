@@ -1,0 +1,34 @@
+{
+  "tier": "large",
+  "leader": {
+    "type": "hunters_return:hunter"
+  },
+  "members": [
+    {
+      "type": "minecraft:pillager",
+      "count": 5
+    },
+    {
+      "type": "takesapillage:archer",
+      "count": 4
+    },
+    {
+      "type": "enchantwithmob:enchanter",
+      "count": 1
+    },
+    {
+      "type": "minecraft:ravager",
+      "count": 1
+    },
+    {
+      "type": "minecraft:wolf",
+      "count": 2
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:brown_carpet",
+      "count": 6,
+      "cargo": "magic_caravans:cargo/furs"
+    }
+  ]
+}

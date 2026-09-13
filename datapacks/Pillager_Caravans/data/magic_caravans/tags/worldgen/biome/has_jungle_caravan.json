@@ -1,0 +1,49 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "minecraft:jungle",
+      "required": false
+    },
+    {
+      "id": "minecraft:sparse_jungle",
+      "required": false
+    },
+    {
+      "id": "wythers:tropical_rainforest",
+      "required": false
+    },
+    {
+      "id": "wythers:highland_tropical_rainforest",
+      "required": false
+    },
+    {
+      "id": "wythers:flooded_jungle",
+      "required": false
+    },
+    {
+      "id": "wythers:sandy_jungle",
+      "required": false
+    },
+    {
+      "id": "wythers:windswept_jungle",
+      "required": false
+    },
+    {
+      "id": "wythers:jungle_island",
+      "required": false
+    },
+    {
+      "id": "wythers:eucalyptus_jungle",
+      "required": false
+    },
+    {
+      "id": "wythers:eucalyptus_jungle_canyon",
+      "required": false
+    },
+    {
+      "id": "wythers:sparse_eucalyptus_jungle",
+      "required": false
+    }
+  ]
+}

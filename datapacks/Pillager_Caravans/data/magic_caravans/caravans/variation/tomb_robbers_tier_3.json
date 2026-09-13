@@ -1,0 +1,30 @@
+{
+  "tier": "large",
+  "leader": {
+    "type": "minecraft:evoker"
+  },
+  "members": [
+    {
+      "type": "minecraft:pillager",
+      "count": 5
+    },
+    {
+      "type": "takesapillage:archer",
+      "count": 4
+    },
+    {
+      "type": "enchantwithmob:enchanter",
+      "count": 1
+    },
+    {
+      "type": "illageandspillage:absorber",
+      "count": 1
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:yellow_carpet",
+      "count": 6,
+      "cargo": "magic_caravans:cargo/relics"
+    }
+  ]
+}

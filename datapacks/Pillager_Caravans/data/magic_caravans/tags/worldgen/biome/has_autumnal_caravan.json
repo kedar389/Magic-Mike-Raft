@@ -1,0 +1,33 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "wythers:autumnal_forest",
+      "required": false
+    },
+    {
+      "id": "wythers:autumnal_forest_edge",
+      "required": false
+    },
+    {
+      "id": "wythers:autumnal_birch_forest",
+      "required": false
+    },
+    {
+      "id": "wythers:autumnal_flower_forest",
+      "required": false
+    },
+    {
+      "id": "wythers:autumnal_plains",
+      "required": false
+    },
+    {
+      "id": "wythers:autumnal_swamp",
+      "required": false
+    },
+    {
+      "id": "wythers:autumnal_crags",
+      "required": false
+    }
+  ]
+}

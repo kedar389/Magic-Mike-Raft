@@ -1,0 +1,28 @@
+{
+  "tier": "small",
+  "leader": {
+    "type": "friendsandfoes:iceologer"
+  },
+  "members": [
+    {
+      "type": "takesapillage:legioner",
+      "count": 2
+    },
+    {
+      "type": "minecraft:pillager",
+      "count": 1
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:purple_carpet",
+      "count": 1,
+      "cargo": "magic_caravans:cargo/magic_dust"
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:purple_carpet",
+      "count": 1,
+      "cargo": "magic_caravans:cargo/runes"
+    }
+  ]
+}

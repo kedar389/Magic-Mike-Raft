@@ -1,0 +1,28 @@
+{
+  "tier": "medium",
+  "leader": {
+    "type": "minecraft:witch"
+  },
+  "members": [
+    {
+      "type": "minecraft:witch",
+      "count": 4
+    },
+    {
+      "type": "takesapillage:archer",
+      "count": 2
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:lime_carpet",
+      "count": 2,
+      "cargo": "magic_caravans:cargo/alchemy"
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:lime_carpet",
+      "count": 2,
+      "cargo": "magic_caravans:cargo/magic_dust"
+    }
+  ]
+}

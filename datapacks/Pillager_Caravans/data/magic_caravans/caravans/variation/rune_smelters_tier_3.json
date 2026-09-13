@@ -1,0 +1,40 @@
+{
+  "tier": "large",
+  "leader": {
+    "type": "illageandspillage:igniter"
+  },
+  "members": [
+    {
+      "type": "takesapillage:legioner",
+      "count": 5
+    },
+    {
+      "type": "minecraft:pillager",
+      "count": 4
+    },
+    {
+      "type": "takesapillage:skirmisher",
+      "count": 3
+    },
+    {
+      "type": "enchantwithmob:enchanter",
+      "count": 1
+    },
+    {
+      "type": "companions:illager_golem",
+      "count": 2
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:purple_carpet",
+      "count": 3,
+      "cargo": "magic_caravans:cargo/arcane_metal"
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:purple_carpet",
+      "count": 3,
+      "cargo": "magic_caravans:cargo/ore"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "tier": "medium",
+  "leader": {
+    "type": "minecraft:vindicator"
+  },
+  "members": [
+    {
+      "type": "minecraft:pillager",
+      "count": 3
+    },
+    {
+      "type": "takesapillage:archer",
+      "count": 1
+    },
+    {
+      "type": "alexsmobs:seagull",
+      "count": 1
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:blue_carpet",
+      "count": 4,
+      "cargo": "magic_caravans:cargo/salvage"
+    }
+  ]
+}

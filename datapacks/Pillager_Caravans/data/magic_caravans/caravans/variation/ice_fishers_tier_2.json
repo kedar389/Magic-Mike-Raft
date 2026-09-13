@@ -1,0 +1,26 @@
+{
+  "tier": "medium",
+  "leader": {
+    "type": "hunters_return:hunter"
+  },
+  "members": [
+    {
+      "type": "minecraft:pillager",
+      "count": 3
+    },
+    {
+      "type": "takesapillage:archer",
+      "count": 1
+    },
+    {
+      "type": "alexsmobs:seal",
+      "count": 1
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:blue_carpet",
+      "count": 4,
+      "cargo": "magic_caravans:cargo/fish"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "weight": 1000,
+  "biomes": "#magic_caravans:has_badlands_caravan",
+  "pools": [
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:tomb_robbers_tier_1",
+        "magic_caravans:tomb_robbers_tier_2",
+        "magic_caravans:tomb_robbers_tier_3"
+      ]
+    },
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:canyon_prospectors_tier_1",
+        "magic_caravans:canyon_prospectors_tier_2",
+        "magic_caravans:canyon_prospectors_tier_3"
+      ]
+    },
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:mesa_diggers_tier_1",
+        "magic_caravans:mesa_diggers_tier_2",
+        "magic_caravans:mesa_diggers_tier_3"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "tier": "large",
+  "leader": {
+    "type": "irons_spellbooks:archevoker"
+  },
+  "members": [
+    {
+      "type": "minecraft:pillager",
+      "count": 5
+    },
+    {
+      "type": "takesapillage:skirmisher",
+      "count": 4
+    },
+    {
+      "type": "takesapillage:archer",
+      "count": 3
+    },
+    {
+      "type": "enchantwithmob:enchanter",
+      "count": 1
+    },
+    {
+      "type": "illageandspillage:absorber",
+      "count": 1
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:purple_carpet",
+      "count": 3,
+      "cargo": "magic_caravans:cargo/runes"
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:purple_carpet",
+      "count": 3,
+      "cargo": "magic_caravans:cargo/gems"
+    }
+  ]
+}

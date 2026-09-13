@@ -1,0 +1,44 @@
+{
+  "tier": "medium",
+  "leader": {
+    "type": "minecraft:illusioner"
+  },
+  "members": [
+    {
+      "type": "minecraft:illusioner",
+      "count": 3
+    },
+    {
+      "type": "minecraft:pillager",
+      "count": 2
+    },
+    {
+      "type": "takesapillage:archer",
+      "count": 1
+    },
+    {
+      "type": "alexsmobs:potoo",
+      "count": 2
+    },
+    {
+      "type": "alexsmobs:raccoon",
+      "count": 2
+    },
+    {
+      "type": "minecraft:wolf",
+      "count": 2
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:magenta_carpet",
+      "count": 1,
+      "cargo": "magic_caravans:cargo/trinkets"
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:magenta_carpet",
+      "count": 1,
+      "cargo": "magic_caravans:cargo/livestock"
+    }
+  ]
+}

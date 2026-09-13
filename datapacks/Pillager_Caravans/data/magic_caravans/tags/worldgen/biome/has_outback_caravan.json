@@ -1,0 +1,37 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "wythers:outback",
+      "required": false
+    },
+    {
+      "id": "wythers:outback_desert",
+      "required": false
+    },
+    {
+      "id": "wythers:ayers_rock",
+      "required": false
+    },
+    {
+      "id": "wythers:kwongan_heath",
+      "required": false
+    },
+    {
+      "id": "wythers:eucalyptus_woodland",
+      "required": false
+    },
+    {
+      "id": "wythers:sparse_eucalyptus_woodland",
+      "required": false
+    },
+    {
+      "id": "wythers:eucalyptus_salubris_woodland",
+      "required": false
+    },
+    {
+      "id": "wythers:billabong",
+      "required": false
+    }
+  ]
+}

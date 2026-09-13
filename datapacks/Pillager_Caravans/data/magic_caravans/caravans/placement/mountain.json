@@ -1,0 +1,38 @@
+{
+  "weight": 1000,
+  "biomes": "#magic_caravans:has_mountain_caravan",
+  "pools": [
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:frostbound_wardens_tier_1",
+        "magic_caravans:frostbound_wardens_tier_2",
+        "magic_caravans:frostbound_wardens_tier_3"
+      ]
+    },
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:deep_delvers_tier_1",
+        "magic_caravans:deep_delvers_tier_2",
+        "magic_caravans:deep_delvers_tier_3"
+      ]
+    },
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:ore_train_tier_1",
+        "magic_caravans:ore_train_tier_2",
+        "magic_caravans:ore_train_tier_3"
+      ]
+    },
+    {
+      "weight": 10,
+      "variations": [
+        "magic_caravans:geode_cutters_tier_1",
+        "magic_caravans:geode_cutters_tier_2",
+        "magic_caravans:geode_cutters_tier_3"
+      ]
+    }
+  ]
+}
