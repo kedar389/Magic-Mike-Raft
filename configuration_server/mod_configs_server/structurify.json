@@ -1,79 +1,39 @@
 {
-  "config_version": "2.0.29",
-  "config_datetime": "2026-07-31_13-52-30",
+  "config_version": "2.0.35",
+  "config_datetime": "2026-09-13_16-35-39",
   "general": {
-    "disable_all_structures": false,
     "prevent_structure_overlap": true,
-    "enable_global_spacing_and_separation_modifier": true,
-    "global_spacing_and_separation_modifier": 1.0
+    "enable_global_spacing_and_separation_modifier": true
   },
   "structure_namespaces": [
     {
       "name": "born_in_chaos_v1",
-      "is_disabled": false,
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
+    },
+    {
+      "name": "dungeonnowloading",
+      "exclude_from_overlap_prevention": true
     },
     {
       "name": "grim_kingdoms",
-      "is_disabled": false,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "hunters_return",
-      "is_disabled": false,
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures",
-      "is_disabled": false,
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "realmrpg_quests",
-      "is_disabled": false,
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "takesapillage",
-      "is_disabled": false,
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     }
   ],
   "structures": [
@@ -85,11 +45,7 @@
     },
     {
       "name": "minecraft:pillager_outpost",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "minecraft:ruined_portal_swamp",
@@ -111,38 +67,22 @@
     },
     {
       "name": "minecraft:village_desert",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "minecraft:village_plains",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "minecraft:village_savanna",
       "whitelisted_biomes": [
         "#minecraft:is_savanna"
       ],
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "minecraft:village_snowy",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "minecraft:village_taiga",
@@ -156,330 +96,102 @@
       ],
       "max_horizontal_distance_from_center": 60,
       "max_vertical_distance_from_center": 60,
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "betterarcheology:archeologist_camp_grassy",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "betterarcheology:archeologist_camp_redsand",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "betterarcheology:archeologist_camp_sand",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "betterarcheology:buried_ruins_sand",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "betterarcheology:desert_obelisk",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "betterarcheology:fossil_chicken_birch",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "betterarcheology:fossil_creeper",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "betterarcheology:fossil_sheep_0",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "betterarcheology:light_temple",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "betterarcheology:mesa_ruins",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "betterarcheology:mott",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "betterarcheology:ruins_sand",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "betterarcheology:stonehenge_grassy",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "betterarcheology:temple_jungle",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "betterarcheology:tumulus_grassy",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "betterarcheology:villager_grave",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "betterdungeons:skeleton_dungeon",
-      "blacklisted_biomes": [
-        "#minecraft:is_ocean",
-        "#c:ocean",
-        "#minecraft:is_river",
-        "#c:river",
-        "#forge:is_water",
-        "#forge:is_desert",
-        "#wythers:is_desert",
-        "#minecraft:is_badlands",
-        "#forge:is_mushroom"
-      ],
       "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "betterdungeons:small_dungeon",
-      "blacklisted_biomes": [
-        "#minecraft:is_ocean",
-        "#c:ocean",
-        "#minecraft:is_river",
-        "#c:river",
-        "#forge:is_water",
-        "#forge:is_desert",
-        "#wythers:is_desert",
-        "#minecraft:is_badlands",
-        "#forge:is_mushroom"
-      ],
       "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "betterdungeons:spider_dungeon",
-      "blacklisted_biomes": [
-        "#minecraft:is_ocean",
-        "#c:ocean",
-        "#minecraft:is_river",
-        "#c:river",
-        "#forge:is_water",
-        "#forge:is_desert",
-        "#wythers:is_desert",
-        "#minecraft:is_badlands",
-        "#forge:is_mushroom"
-      ],
       "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "betterdungeons:zombie_dungeon",
-      "blacklisted_biomes": [
-        "#minecraft:is_ocean",
-        "#c:ocean",
-        "#minecraft:is_river",
-        "#c:river",
-        "#forge:is_water",
-        "#forge:is_desert",
-        "#wythers:is_desert",
-        "#minecraft:is_badlands",
-        "#forge:is_mushroom"
-      ],
       "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "betterjungletemples:jungle_temple",
@@ -489,157 +201,101 @@
     },
     {
       "name": "betterwitchhuts:witch_circle",
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "born_in_chaos_v1:clown_caravan_plains",
       "override_global_flatness_check": true,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
       "override_global_biome_check": true,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "born_in_chaos_v1:clown_caravan_savanna",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "born_in_chaos_v1:clown_caravan_taiga",
       "override_global_flatness_check": true,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
       "override_global_biome_check": true,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "born_in_chaos_v1:dark_tower_forest",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "born_in_chaos_v1:dark_tower_plain",
       "override_global_flatness_check": true,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
       "override_global_biome_check": true,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "born_in_chaos_v1:dark_tower_taiga",
       "override_global_flatness_check": true,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
       "override_global_biome_check": true,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "born_in_chaos_v1:farm",
       "override_global_flatness_check": true,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
       "override_global_biome_check": true,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "born_in_chaos_v1:firewell",
       "whitelisted_biomes": [
         "wythers:volcano",
         "wythers:volcanic_crater",
-        "wythers:tropical_volcano",
-        "wythers:icy_volcano"
+        "wythers:tropical_volcano"
+      ],
+      "blacklisted_biomes": [
+        "minecraft:plains",
+        "minecraft:sunflower_plains",
+        "minecraft:snowy_plains",
+        "minecraft:ice_spikes",
+        "minecraft:desert",
+        "minecraft:forest",
+        "minecraft:flower_forest",
+        "minecraft:birch_forest",
+        "minecraft:dark_forest",
+        "minecraft:old_growth_birch_forest",
+        "minecraft:old_growth_pine_taiga",
+        "minecraft:old_growth_spruce_taiga",
+        "minecraft:taiga",
+        "minecraft:snowy_taiga",
+        "minecraft:savanna",
+        "minecraft:savanna_plateau",
+        "minecraft:windswept_hills",
+        "minecraft:windswept_gravelly_hills",
+        "minecraft:windswept_forest",
+        "minecraft:windswept_savanna",
+        "minecraft:jungle",
+        "minecraft:sparse_jungle",
+        "minecraft:bamboo_jungle",
+        "minecraft:badlands",
+        "minecraft:eroded_badlands",
+        "minecraft:wooded_badlands",
+        "minecraft:meadow",
+        "minecraft:grove",
+        "minecraft:snowy_slopes",
+        "minecraft:frozen_peaks",
+        "minecraft:jagged_peaks",
+        "minecraft:stony_peaks",
+        "minecraft:mushroom_fields",
+        "minecraft:dripstone_caves",
+        "minecraft:lush_caves"
       ],
       "override_global_flatness_check": true,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
       "override_global_biome_check": true,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "born_in_chaos_v1:grave_2003wise",
@@ -720,208 +376,76 @@
     {
       "name": "born_in_chaos_v1:mound_of_hounds",
       "override_global_flatness_check": true,
-      "enable_flatness_check": false,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": true,
-      "enable_biome_check": false,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "override_global_biome_check": true
     },
     {
       "name": "born_in_chaos_v1:observation_tower_forest",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "born_in_chaos_v1:observation_tower_plains",
       "override_global_flatness_check": true,
-      "enable_flatness_check": false,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": true,
-      "enable_biome_check": false,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "override_global_biome_check": true
     },
     {
       "name": "bosses_of_mass_destruction:lich_tower",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": true,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "flatness_check_allow_non_solid_blocks": true
     },
     {
       "name": "bosses_of_mass_destruction:obsidilith_arena",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "cataclysm:abandoned_spire",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "cataclysm:abandoned_temple",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "cataclysm:abandoned_village",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "cataclysm:acropolis",
-      "override_global_biome_check": true,
       "enable_biome_check": true,
-      "biome_check_mode": "STRICT",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "biome_check_mode": "STRICT"
     },
     {
       "name": "cataclysm:cursed_pyramid",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "cataclysm:desert_occupied_village",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "cataclysm:desert_site",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "cataclysm:frosted_prison",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "cataclysm:ruined_citadel",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "companions:companions_babayaga",
       "whitelisted_biomes": [
         "#forge:is_swamp"
       ],
-      "override_global_biome_check": false,
       "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
       "biome_check_blacklisted_biomes": [
         "wythers:marsh",
         "#minecraft:is_ocean",
@@ -930,25 +454,12 @@
     },
     {
       "name": "companions:companions_factory",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "companions:companions_monkey_temple",
       "whitelisted_biomes": [
-        "minecraft:jungle",
         "minecraft:sparse_jungle",
         "minecraft:bamboo_jungle",
         "wythers:tropical_rainforest",
@@ -968,353 +479,130 @@
       "whitelisted_biomes": [
         "#wythers:is_dark_forest"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "conjurer_illager:theatre",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "dungeonnowloading:temple_of_duality",
       "whitelisted_biomes": [
-        "#minecraft:is_jungle"
-      ],
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_ocean"
+        "wythers:jungle_river",
+        "wythers:bamboo_jungle_swamp",
+        "wythers:bamboo_jungle_canyon"
       ]
     },
     {
       "name": "endersdelight:end_house",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "explorify:badlands_pyramid",
       "whitelisted_biomes": [
         "#minecraft:is_badlands"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:black_spiral",
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:campsite",
       "whitelisted_biomes": [
         "#minecraft:is_taiga"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:dark_forest_settlement",
       "whitelisted_biomes": [
         "#wythers:is_dark_forest"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:desert_shrine",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:farmstead",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:guide_post_cold",
       "whitelisted_biomes": [
         "#forge:is_cold/overworld"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:guide_post_warm",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:mangrove_hut",
       "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "explorify:mausoleum",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:ruins",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:supply_cache/birch",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:supply_cache/dark",
       "whitelisted_biomes": [
         "#wythers:is_dark_forest"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:supply_cache/desert",
       "whitelisted_biomes": [
         "#wythers:is_desert"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:supply_cache/forest",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:supply_cache/jungle",
       "whitelisted_biomes": [
         "#minecraft:is_jungle"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:supply_cache/mangrove",
-      "override_global_flatness_check": true,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:supply_cache/taiga",
@@ -1324,97 +612,37 @@
       "blacklisted_biomes": [
         "minecraft:taiga",
         "minecraft:snowy_taiga",
-        "minecraft:old_growth_pine_taiga",
-        "minecraft:old_growth_spruce_taiga"
+        "minecraft:old_growth_spruce_taiga",
+        "minecraft:old_growth_pine_taiga"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:tavern",
       "whitelisted_biomes": [
         "#forge:is_plains"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:watchtower/plains",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:watchtower/savanna",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "explorify:watchtower/taiga",
       "whitelisted_biomes": [
         "#minecraft:is_taiga"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "feur_extension_jungle:ancient_statue",
@@ -1426,29 +654,14 @@
         "wythers:tropical_forest",
         "wythers:tropical_forest_canyon",
         "wythers:jungle_canyon",
-        "wythers:dry_tropical_forest",
-        "wythers:subtropical_forest",
-        "wythers:subtropical_forest_edge",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
       "blacklisted_biomes": [
         "minecraft:sparse_jungle"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "feur_extension_jungle:big_melon",
@@ -1460,26 +673,11 @@
         "wythers:tropical_forest",
         "wythers:tropical_forest_canyon",
         "wythers:jungle_canyon",
-        "wythers:dry_tropical_forest",
-        "wythers:subtropical_forest",
-        "wythers:subtropical_forest_edge",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "feur_extension_jungle:fountain",
@@ -1491,26 +689,11 @@
         "wythers:tropical_forest",
         "wythers:tropical_forest_canyon",
         "wythers:jungle_canyon",
-        "wythers:dry_tropical_forest",
-        "wythers:subtropical_forest",
-        "wythers:subtropical_forest_edge",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "feur_extension_jungle:lost_explorer",
@@ -1522,26 +705,11 @@
         "wythers:tropical_forest",
         "wythers:tropical_forest_canyon",
         "wythers:jungle_canyon",
-        "wythers:dry_tropical_forest",
-        "wythers:subtropical_forest",
-        "wythers:subtropical_forest_edge",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "feur_extension_jungle:old_house",
@@ -1553,26 +721,11 @@
         "wythers:tropical_forest",
         "wythers:tropical_forest_canyon",
         "wythers:jungle_canyon",
-        "wythers:dry_tropical_forest",
-        "wythers:subtropical_forest",
-        "wythers:subtropical_forest_edge",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "feur_extension_jungle:protector",
@@ -1584,26 +737,11 @@
         "wythers:tropical_forest",
         "wythers:tropical_forest_canyon",
         "wythers:jungle_canyon",
-        "wythers:dry_tropical_forest",
-        "wythers:subtropical_forest",
-        "wythers:subtropical_forest_edge",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "feur_extension_jungle:pyramid",
@@ -1615,26 +753,11 @@
         "wythers:tropical_forest",
         "wythers:tropical_forest_canyon",
         "wythers:jungle_canyon",
-        "wythers:dry_tropical_forest",
-        "wythers:subtropical_forest",
-        "wythers:subtropical_forest_edge",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "feur_extension_jungle:tree_ancestral",
@@ -1646,26 +769,27 @@
         "wythers:tropical_forest",
         "wythers:tropical_forest_canyon",
         "wythers:jungle_canyon",
-        "wythers:dry_tropical_forest",
-        "wythers:subtropical_forest",
-        "wythers:subtropical_forest_edge",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
+    },
+    {
+      "name": "feur_extension_jungle:tree_ancestral_house",
+      "whitelisted_biomes": [
+        "minecraft:jungle",
+        "minecraft:sparse_jungle",
+        "wythers:tropical_rainforest",
+        "wythers:highland_tropical_rainforest",
+        "wythers:tropical_forest",
+        "wythers:tropical_forest_canyon",
+        "wythers:jungle_canyon",
+        "wythers:flooded_rainforest",
+        "wythers:jungle_island"
+      ],
+      "enable_flatness_check": true,
+      "enable_biome_check": true
     },
     {
       "name": "feur_extension_jungle:tree_double",
@@ -1677,26 +801,11 @@
         "wythers:tropical_forest",
         "wythers:tropical_forest_canyon",
         "wythers:jungle_canyon",
-        "wythers:dry_tropical_forest",
-        "wythers:subtropical_forest",
-        "wythers:subtropical_forest_edge",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "feur_extension_jungle:tree_giant",
@@ -1708,26 +817,11 @@
         "wythers:tropical_forest",
         "wythers:tropical_forest_canyon",
         "wythers:jungle_canyon",
-        "wythers:dry_tropical_forest",
-        "wythers:subtropical_forest",
-        "wythers:subtropical_forest_edge",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "feur_extension_jungle:tree_old",
@@ -1739,26 +833,11 @@
         "wythers:tropical_forest",
         "wythers:tropical_forest_canyon",
         "wythers:jungle_canyon",
-        "wythers:dry_tropical_forest",
-        "wythers:subtropical_forest",
-        "wythers:subtropical_forest_edge",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "feur_extension_jungle:tree_spline",
@@ -1770,26 +849,11 @@
         "wythers:tropical_forest",
         "wythers:tropical_forest_canyon",
         "wythers:jungle_canyon",
-        "wythers:dry_tropical_forest",
-        "wythers:subtropical_forest",
-        "wythers:subtropical_forest_edge",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "feur_extension_jungle:tree_stump",
@@ -1801,26 +865,11 @@
         "wythers:tropical_forest",
         "wythers:tropical_forest_canyon",
         "wythers:jungle_canyon",
-        "wythers:dry_tropical_forest",
-        "wythers:subtropical_forest",
-        "wythers:subtropical_forest_edge",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "feur_extension_jungle:village",
@@ -1832,167 +881,61 @@
         "wythers:tropical_forest",
         "wythers:tropical_forest_canyon",
         "wythers:jungle_canyon",
-        "wythers:dry_tropical_forest",
-        "wythers:subtropical_forest",
-        "wythers:subtropical_forest_edge",
         "wythers:flooded_rainforest",
         "wythers:jungle_island"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "friendsandfoes:citadel",
-      "override_global_flatness_check": true,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": true,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "friendsandfoes:iceologer_cabin",
       "whitelisted_biomes": [
         "#forge:is_cold/overworld"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "friendsandfoes:illusioner_shack",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "friendsandfoes:illusioner_training_grounds",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "grim_kingdoms:blackridge_watch",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": true,
-      "enable_biome_check": false,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "override_global_biome_check": true
     },
     {
       "name": "grim_kingdoms:chill_hallmanor",
       "override_global_biome_check": true,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "grim_kingdoms:decrown_monolith",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "grim_kingdoms:frozen_onion_fort",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": true,
-      "enable_biome_check": false,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "override_global_biome_check": true
     },
     {
       "name": "grim_kingdoms:silentgale_citadel",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "grim_kingdoms:zweiberg",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "gtbcs_geomancy_plus:geomancer_tower",
@@ -2000,756 +943,285 @@
         "minecraft:windswept_hills",
         "minecraft:windswept_gravelly_hills",
         "minecraft:windswept_forest",
-        "minecraft:stony_peaks",
-        "minecraft:jagged_peaks",
-        "minecraft:frozen_peaks",
-        "minecraft:snowy_slopes",
-        "minecraft:meadow",
         "minecraft:grove",
-        "wythers:highlands",
-        "wythers:highland_plains",
         "wythers:forested_highlands",
-        "wythers:huangshan_highlands",
         "wythers:jade_highlands",
-        "wythers:maple_mountains",
         "wythers:tibesti_mountains",
-        "wythers:cool_stony_peaks",
         "wythers:snowy_peaks",
         "wythers:andesite_crags",
         "wythers:aspen_crags",
-        "wythers:icy_crags",
         "wythers:taiga_crags",
         "wythers:old_growth_taiga_crags",
         "wythers:temperate_rainforest_crags",
         "wythers:autumnal_crags",
         "wythers:tepui"
       ],
-      "override_global_flatness_check": false,
+      "blacklisted_biomes": [
+        "minecraft:meadow",
+        "wythers:cool_plains",
+        "wythers:highlands"
+      ],
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "hunters_return:hunter_house",
       "override_global_flatness_check": true,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "integrated_villages:cabin_village",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "integrated_villages:clockwork_village",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "integrated_villages:kutcha_village",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "integrated_villages:marketstead_village",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "integrated_villages:mediterranean_village",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "integrated_villages:mossy_mounds",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "integrated_villages:oasis_village",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "integrated_villages:tavern_village",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "irons_spellbooks:ancient_battleground",
-      "override_global_flatness_check": true,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": true,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "irons_spellbooks:citadel",
-      "override_global_flatness_check": true,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": true,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "irons_spellbooks:evoker_fort",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "irons_spellbooks:ice_spider_den",
-      "override_global_flatness_check": true,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": true,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "irons_spellbooks:mangrove_hut",
-      "override_global_flatness_check": true,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "irons_spellbooks:mountain_tower",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "irons_spellbooks:pyromancer_tower",
-      "override_global_flatness_check": true,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": true,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "netherdepthsupgrade:nether_fortress_piece",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "netherexp:chapel",
       "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
       "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "netherexp:devils_bluff",
       "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
       "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:badlands_miner_outpost",
       "whitelisted_biomes": [
         "#minecraft:is_badlands"
       ],
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:bunker",
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:desert_ruins",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:firewatch_tower_birch",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures:firewatch_tower_cherry",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures:firewatch_tower_dark_oak",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures:firewatch_tower_forest",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures:firewatch_tower_jungle",
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:firewatch_tower_mangrove",
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:firewatch_tower_savanna",
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:firewatch_tower_swamp",
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:firewatch_tower_taiga",
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:hamlet",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures:illager_camp",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:illager_hideout",
-      "override_global_flatness_check": true,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": true,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:illager_manor",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:jungle_ruins",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:mangrove_witch_hut",
       "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures:nether_skeleton_tower_basalt",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures:nether_skeleton_tower_crimson",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures:nether_skeleton_tower_soul",
       "whitelisted_biomes": [
         "#netherexp:soul_sand_valleys"
       ],
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures:nether_skeleton_tower_warped",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures:piglin_camp",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures:piglin_outstation",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:ruin_town",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:skeleton_camp_crimson",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:skeleton_camp_soul",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:skeleton_camp_warped",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures:skeleton_camp_waste",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures:stray_fort",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures:tavern_birch",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures:tavern_cherry",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures:tavern_oak",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
       "enable_biome_check": true,
-      "biome_check_mode": "STRICT",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "biome_check_mode": "STRICT"
     },
     {
       "name": "nova_structures:tavern_snowy",
       "whitelisted_biomes": [
         "#forge:is_snowy"
       ],
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "nova_structures:village_jungle",
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "nova_structures:well_birch",
@@ -2760,99 +1232,35 @@
     },
     {
       "name": "nova_structures:witch_villa",
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "realmrpg_quests:cooks",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "realmrpg_quests:headless_skeletons",
-      "override_global_flatness_check": true,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "realmrpg_quests:lumberjacks",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "realmrpg_quests:miners",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "realmrpg_quests:monster_hunters",
-      "override_global_flatness_check": false,
       "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21,
-      "override_global_biome_check": false,
-      "enable_biome_check": true,
-      "biome_check_mode": "BLACKLIST",
-      "biome_check_blacklisted_biomes": [
-        "#minecraft:is_river",
-        "#c:river",
-        "#minecraft:is_ocean",
-        "#c:ocean"
-      ]
+      "enable_biome_check": true
     },
     {
       "name": "ribbits:ribbit_village",
-      "override_global_flatness_check": true,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "supplementaries:way_sign",
@@ -2872,105 +1280,68 @@
     },
     {
       "name": "takesapillage:pillager_camp",
-      "override_global_flatness_check": true,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "wythers:banyan_sparse_jungle",
-      "override_global_flatness_check": true,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "wythers:village_badlands",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "wythers:village_badlands_desert",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     },
     {
       "name": "wythers:village_wooded_badlands",
-      "override_global_flatness_check": false,
-      "enable_flatness_check": true,
-      "flatness_check_allow_non_solid_blocks": false,
-      "flatness_check_mode": "AUTO",
-      "flatness_check_max_height_difference": 21
+      "enable_flatness_check": true
     }
   ],
   "structure_sets": [
     {
-      "spacing": 1024,
-      "separation": 800,
       "name": "cataclysm:acropolis",
-      "is_disabled": false,
-      "salt": 913530101,
-      "frequency": 1.0,
-      "override_global_spacing_and_separation_modifier": false,
-      "structure_weights": {
-        "cataclysm:acropolis": 1
-      }
+      "spacing": 1024,
+      "separation": 800
     },
     {
-      "spacing": 250,
-      "separation": 120,
-      "name": "integrated_villages:air_villages",
-      "is_disabled": false,
-      "salt": 1982700828,
-      "frequency": 1.0,
-      "override_global_spacing_and_separation_modifier": true,
-      "structure_weights": {
-        "integrated_villages:airship_village": 1
-      }
-    },
-    {
+      "name": "dungeonnowloading:temple_of_duality",
       "spacing": 32,
       "separation": 12,
-      "name": "dungeonnowloading:temple_of_duality",
-      "is_disabled": false,
-      "salt": 83979417,
-      "frequency": 1.0,
-      "override_global_spacing_and_separation_modifier": true,
+      "override_global_spacing_and_separation_modifier": true
+    },
+    {
+      "name": "integrated_villages:air_villages",
+      "spacing": 250,
+      "separation": 120,
+      "override_global_spacing_and_separation_modifier": true
+    },
+    {
+      "name": "integrated_villages:regular_villages",
       "structure_weights": {
-        "dungeonnowloading:temple_of_duality": 1
+        "integrated_villages:pirate_village": 10,
+        "integrated_villages:tavern_village": 43,
+        "integrated_villages:mediterranean_village": 43,
+        "integrated_villages:kutcha_village": 43,
+        "integrated_villages:oasis_village": 43,
+        "integrated_villages:mossy_mounds": 43,
+        "integrated_villages:cabin_village": 43,
+        "integrated_villages:quark/minka_village": 43,
+        "integrated_villages:marketstead_village": 43,
+        "integrated_villages:clockwork_village": 43,
+        "integrated_villages:sunken_village": 43
       }
     },
     {
-      "spacing": 125,
-      "separation": 100,
       "name": "mowziesmobs:umvuthana_groves",
-      "is_disabled": false,
-      "salt": 23311138,
-      "frequency": 1.0,
-      "override_global_spacing_and_separation_modifier": false,
-      "structure_weights": {
-        "mowziesmobs:umvuthana_grove": 1
-      }
+      "spacing": 125,
+      "separation": 100
     },
     {
-      "spacing": 150,
-      "separation": 100,
       "name": "mowziesmobs:wrought_chambers",
-      "is_disabled": false,
-      "salt": 23217347,
-      "frequency": 1.0,
-      "override_global_spacing_and_separation_modifier": false,
-      "structure_weights": {
-        "mowziesmobs:wrought_chamber": 1
-      }
+      "spacing": 150,
+      "separation": 100
     }
   ],
   "structure_template_pools": []
