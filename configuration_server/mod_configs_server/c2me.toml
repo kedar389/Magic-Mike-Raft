@@ -20,7 +20,7 @@ version = 3
 # 
 defaultGlobalExecutorParallelismExpression = "default"
 # (Default: 12) Configures the parallelism of global executor
-globalExecutorParallelism = 3
+globalExecutorParallelism = 12
 
 [fixes]
 	# (Default: true) Enforces safe world random access.  
