@@ -66,6 +66,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "supplementaries:flax",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 8
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:pink_dye",
           "weight": 1,
           "functions": [
@@ -81,6 +95,20 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:lime_dye",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 8
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:cyan_dye",
           "weight": 1,
           "functions": [
             {

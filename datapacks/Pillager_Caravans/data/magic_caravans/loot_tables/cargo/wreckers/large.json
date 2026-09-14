@@ -52,6 +52,34 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:prismarine_shard",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "seadwellers:depth_nugget",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:oak_planks",
           "weight": 1,
           "functions": [
@@ -98,17 +126,27 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:prismarine_shard",
+          "name": "aquamirae:oxygen_tank",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:prismarine_crystals",
           "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 2,
-                "max": 6
+                "min": 1,
+                "max": 3
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aquamirae:fin_cutter",
+          "weight": 1
         }
       ]
     },

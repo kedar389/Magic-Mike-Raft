@@ -72,7 +72,31 @@
         },
         {
           "type": "minecraft:item",
+          "name": "seadwellers:gold_relics",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cluttered:book_open",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:golden_apple",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "betterarcheology:diamond_brush",
           "weight": 1
         }
       ]

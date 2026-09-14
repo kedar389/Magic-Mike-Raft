@@ -54,6 +54,34 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "supplementaries:bomb",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:chain",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 6
+              }
+            }
+          ]
         }
       ]
     },
@@ -80,6 +108,11 @@
         },
         {
           "type": "minecraft:item",
+          "name": "magistuarmory:gambeson_chestplate",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:crossbow",
           "weight": 1
         }
@@ -95,6 +128,11 @@
         {
           "type": "minecraft:item",
           "name": "magistuarmory:knight_chestplate",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "born_in_chaos_v1:dark_metal_armor_helmet",
           "weight": 1
         }
       ]

@@ -80,6 +80,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:calcite",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 8
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:amethyst_block",
           "weight": 1,
           "functions": [
@@ -91,6 +105,11 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:budding_amethyst",
+          "weight": 1
         }
       ]
     }

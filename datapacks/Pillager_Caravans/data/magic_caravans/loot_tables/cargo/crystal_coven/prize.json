@@ -25,6 +25,11 @@
         },
         {
           "type": "minecraft:item",
+          "name": "gtbcs_geomancy_plus:geo_upgrade_orb",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:diamond_block",
           "weight": 1
         },
@@ -59,11 +64,25 @@
         {
           "type": "minecraft:item",
           "name": "irons_spellbooks:rare_ink",
-          "weight": 1
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
         },
         {
           "type": "minecraft:item",
           "name": "gtbcs_geomancy_plus:geo_rune",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "irons_spellbooks:protection_rune",
           "weight": 1
         },
         {
@@ -110,7 +129,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "irons_spellbooks:rare_ink",
+          "name": "seadwellers:aquamarine_crystal",
           "weight": 1,
           "functions": [
             {
@@ -121,6 +140,11 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "ascendant_arcana:restorine_cluster",
+          "weight": 1
         }
       ]
     }

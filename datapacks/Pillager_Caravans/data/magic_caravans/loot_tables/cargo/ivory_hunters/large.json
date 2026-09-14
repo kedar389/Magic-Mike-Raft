@@ -38,6 +38,34 @@
         },
         {
           "type": "minecraft:item",
+          "name": "born_in_chaos_v1:bundle_of_bones",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "born_in_chaos_v1:bone_handle",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:bone_block",
           "weight": 1,
           "functions": [
@@ -46,6 +74,20 @@
               "count": {
                 "min": 1,
                 "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 8
               }
             }
           ]
@@ -89,6 +131,16 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:goat_horn",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "born_in_chaos_v1:bone_heart",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "musketmod:musket",
           "weight": 1
         }
       ]

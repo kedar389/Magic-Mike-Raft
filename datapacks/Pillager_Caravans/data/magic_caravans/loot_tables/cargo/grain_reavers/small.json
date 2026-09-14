@@ -66,6 +66,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:beetroot",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 8
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:wheat_seeds",
           "weight": 1,
           "functions": [
@@ -74,6 +88,20 @@
               "count": {
                 "min": 4,
                 "max": 12
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:pumpkin_seeds",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 8
               }
             }
           ]

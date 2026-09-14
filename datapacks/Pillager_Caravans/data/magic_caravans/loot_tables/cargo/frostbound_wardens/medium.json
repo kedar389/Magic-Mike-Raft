@@ -4,7 +4,7 @@
   "pools": [
     {
       "rolls": {
-        "min": 2,
+        "min": 3,
         "max": 4
       },
       "entries": [
@@ -52,6 +52,34 @@
         },
         {
           "type": "minecraft:item",
+          "name": "born_in_chaos_v1:spiritual_dust",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:gunpowder",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 8
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "irons_spellbooks:blank_rune",
           "weight": 1,
           "functions": [
@@ -80,6 +108,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:amethyst_shard",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:packed_ice",
           "weight": 1,
           "functions": [
@@ -88,6 +130,20 @@
               "count": {
                 "min": 2,
                 "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:snowball",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 6,
+                "max": 16
               }
             }
           ]
@@ -141,6 +197,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "born_in_chaos_v1:bottle_of_magical_energy",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "irons_spellbooks:fire_rune",
           "weight": 1
         },
@@ -166,6 +236,11 @@
         },
         {
           "type": "minecraft:item",
+          "name": "irons_spellbooks:protection_rune",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:blue_ice",
           "weight": 1,
           "functions": [
@@ -177,6 +252,11 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aquamirae:frozen_key",
+          "weight": 1
         }
       ]
     }

@@ -52,6 +52,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "born_in_chaos_v1:spiritual_dust",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:cobweb",
           "weight": 1,
           "functions": [
@@ -60,6 +74,20 @@
               "count": {
                 "min": 2,
                 "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:black_dye",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 8
               }
             }
           ]

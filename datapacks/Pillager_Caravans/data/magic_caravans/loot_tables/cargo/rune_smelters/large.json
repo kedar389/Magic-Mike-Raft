@@ -52,6 +52,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "born_in_chaos_v1:dark_metal_nugget",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:raw_copper",
           "weight": 1,
           "functions": [
@@ -94,7 +108,49 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:cobblestone",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 8,
+                "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:flint",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:blackstone",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 4,
+                "max": 10
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:netherrack",
           "weight": 1,
           "functions": [
             {
@@ -144,6 +200,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "born_in_chaos_v1:dark_metal_ingot",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:iron_ingot",
           "weight": 1,
           "functions": [
@@ -186,6 +256,34 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:copper_block",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "create:copper_sheet",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "irons_spellbooks:blank_rune",
           "weight": 1,
           "functions": [
@@ -214,6 +312,11 @@
         },
         {
           "type": "minecraft:item",
+          "name": "irons_spellbooks:arcane_anvil",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:diamond",
           "weight": 1,
           "functions": [
@@ -229,6 +332,11 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:netherite_scrap",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "seadwellers:depth_ingot",
           "weight": 1
         }
       ]

@@ -4,7 +4,7 @@
   "pools": [
     {
       "rolls": {
-        "min": 2,
+        "min": 3,
         "max": 4
       },
       "entries": [
@@ -52,6 +52,34 @@
         },
         {
           "type": "minecraft:item",
+          "name": "supplementaries:jar",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 4,
+                "max": 10
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:bamboo",
           "weight": 1,
           "functions": [
@@ -60,6 +88,20 @@
               "count": {
                 "min": 8,
                 "max": 20
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:scaffolding",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 4,
+                "max": 10
               }
             }
           ]
@@ -113,17 +155,27 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:scaffolding",
+          "name": "farmersrespite:coffee",
           "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 4,
-                "max": 10
+                "min": 1,
+                "max": 2
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "supplementaries:antique_ink",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bamboo_raft",
+          "weight": 1
         }
       ]
     }

@@ -66,6 +66,34 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:beetroot",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 8
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:wheat_seeds",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 4,
+                "max": 10
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:string",
           "weight": 1,
           "functions": [
@@ -122,6 +150,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "supplementaries:flax",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 8
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:pumpkin",
           "weight": 1,
           "functions": [
@@ -130,6 +172,20 @@
               "count": {
                 "min": 2,
                 "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:brown_dye",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 8
               }
             }
           ]
@@ -186,6 +242,25 @@
         },
         {
           "type": "minecraft:item",
+          "name": "fruitsdelight:apple_jello",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cluttered:basket_of_produce",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:red_carpet",
           "weight": 1,
           "functions": [
@@ -205,21 +280,31 @@
         },
         {
           "type": "minecraft:item",
-          "name": "supplementaries:flax",
+          "name": "minecraft:loom",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cluttered:basket_of_flowers",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:pumpkin_pie",
           "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 2,
-                "max": 5
+                "min": 1,
+                "max": 3
               }
             }
           ]
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:pumpkin_pie",
+          "name": "born_in_chaos_v1:caramel_pepper",
           "weight": 1,
           "functions": [
             {
@@ -256,7 +341,17 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:cake",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:leather_horse_armor",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bundle",
           "weight": 1
         }
       ]

@@ -36,13 +36,15 @@ Every caravan has its own tables. 116 of them under `loot_tables/cargo/<caravan>
 | Table | Pools |
 |---|---|
 | `small` | staple rolls 2-3 |
-| `medium` | staple rolls 2-4, mid rolls 1 |
+| `medium` | staple rolls 3-4, mid rolls 1 |
 | `large` | staple rolls 3-5, mid rolls 1-2, class prize rolls 1 against empty at weight 4 |
 | `prize` | the special guaranteed 1, class prize rolls 1-2, mid rolls 2-3 |
 
 Bigger caravans pay twice: more llamas (2 / 4 / 6) and a richer table on each.
 
-Each table is its caravan's cargo classes plus one or two signature items of its own, so Dune Miners drops sand and TNT on top of Ore and Sculk Cultists drops sculk and echo shards on top of Magic dust and Runes.
+Each table is its caravan's cargo classes plus 3 to 5 signature items of its own. Dune Miners adds sand, sandstone, dead bush, TNT and an iron pickaxe on top of Ore. Sculk Cultists adds sculk, sculk veins, echo shards and an Ender Rune on top of Magic dust and Runes.
+
+306 distinct items across the set, 125 modded, from 26 mods. Per caravan that is 11 to 30 items. Entries are deduplicated within each pool, so an item that is both a class staple and a caravan signature is not double-weighted.
 
 ### The special
 

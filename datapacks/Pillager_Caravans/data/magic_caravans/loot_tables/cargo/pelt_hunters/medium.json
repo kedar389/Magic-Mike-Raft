@@ -4,7 +4,7 @@
   "pools": [
     {
       "rolls": {
-        "min": 2,
+        "min": 3,
         "max": 4
       },
       "entries": [
@@ -49,6 +49,34 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:feather",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 9
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:spruce_log",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 4,
+                "max": 10
+              }
+            }
+          ]
         }
       ]
     },
@@ -90,6 +118,11 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:leather_boots",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:arrow",
           "weight": 1,
           "functions": [
@@ -101,6 +134,11 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:leather_leggings",
+          "weight": 1
         }
       ]
     }

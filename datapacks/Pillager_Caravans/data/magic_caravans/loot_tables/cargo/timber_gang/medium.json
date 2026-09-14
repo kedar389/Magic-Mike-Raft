@@ -4,7 +4,7 @@
   "pools": [
     {
       "rolls": {
-        "min": 2,
+        "min": 3,
         "max": 4
       },
       "entries": [
@@ -52,6 +52,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:stick",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 6,
+                "max": 16
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:oak_sapling",
           "weight": 1,
           "functions": [
@@ -60,6 +74,20 @@
               "count": {
                 "min": 3,
                 "max": 8
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:birch_log",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 4,
+                "max": 10
               }
             }
           ]
@@ -104,7 +132,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:iron_axe",
+          "name": "supplementaries:bellows",
           "weight": 1
         }
       ]

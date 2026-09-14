@@ -4,7 +4,7 @@
   "pools": [
     {
       "rolls": {
-        "min": 2,
+        "min": 3,
         "max": 4
       },
       "entries": [
@@ -46,6 +46,20 @@
               "count": {
                 "min": 1,
                 "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:calcite",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 8
               }
             }
           ]
@@ -94,6 +108,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:clay_ball",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 4,
+                "max": 10
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:moss_block",
           "weight": 1,
           "functions": [
@@ -102,6 +130,34 @@
               "count": {
                 "min": 2,
                 "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:jungle_log",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 4,
+                "max": 10
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mowziesmobs:foliaath_seed",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
               }
             }
           ]
@@ -155,14 +211,14 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:emerald",
+          "name": "seadwellers:aquamarine_crystal",
           "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 2,
-                "max": 5
+                "min": 1,
+                "max": 2
               }
             }
           ]
@@ -184,6 +240,25 @@
         },
         {
           "type": "minecraft:item",
+          "name": "seadwellers:gold_relics",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "cluttered:book_open",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:gilded_blackstone",
           "weight": 1,
           "functions": [
@@ -195,6 +270,11 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mowziesmobs:geomancer_beads",
+          "weight": 1
         }
       ]
     }

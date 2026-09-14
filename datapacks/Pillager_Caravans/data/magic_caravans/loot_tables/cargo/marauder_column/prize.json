@@ -22,6 +22,11 @@
           "type": "minecraft:item",
           "name": "magistuarmory:knight_chestplate",
           "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "born_in_chaos_v1:dark_metal_armor_helmet",
+          "weight": 1
         }
       ]
     },
@@ -44,6 +49,11 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:iron_sword",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "magistuarmory:gambeson_chestplate",
           "weight": 1
         },
         {

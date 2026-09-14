@@ -52,6 +52,34 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:glow_ink_sac",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "supplementaries:candle_holder",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:leather",
           "weight": 1,
           "functions": [
@@ -94,7 +122,49 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:hay_block",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:egg",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 8
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:firework_star",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "born_in_chaos_v1:bagof_candy",
           "weight": 1,
           "functions": [
             {
@@ -135,14 +205,19 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:glow_ink_sac",
+          "name": "supplementaries:blackboard",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:firework_star",
           "weight": 1,
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
                 "min": 1,
-                "max": 4
+                "max": 3
               }
             }
           ]
@@ -168,6 +243,16 @@
         },
         {
           "type": "minecraft:item",
+          "name": "supplementaries:cage",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:shears",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:jukebox",
           "weight": 1
         }
@@ -183,6 +268,11 @@
         {
           "type": "minecraft:item",
           "name": "irons_spellbooks:scroll_pouch",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aquamirae:music_disc_horizon",
           "weight": 1
         },
         {

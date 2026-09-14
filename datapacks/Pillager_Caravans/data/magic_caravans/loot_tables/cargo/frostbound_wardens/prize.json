@@ -34,7 +34,17 @@
         },
         {
           "type": "minecraft:item",
+          "name": "minecraft:enchanted_book",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
           "name": "irons_spellbooks:upgrade_orb",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "gtbcs_geomancy_plus:geo_upgrade_orb",
           "weight": 1
         }
       ]
@@ -89,6 +99,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "born_in_chaos_v1:bottle_of_magical_energy",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "irons_spellbooks:fire_rune",
           "weight": 1
         },
@@ -114,6 +138,11 @@
         },
         {
           "type": "minecraft:item",
+          "name": "irons_spellbooks:protection_rune",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:blue_ice",
           "weight": 1,
           "functions": [
@@ -125,6 +154,11 @@
               }
             }
           ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aquamirae:frozen_key",
+          "weight": 1
         }
       ]
     }

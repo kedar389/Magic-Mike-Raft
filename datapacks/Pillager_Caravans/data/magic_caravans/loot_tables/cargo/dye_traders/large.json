@@ -66,6 +66,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "supplementaries:flax",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 8
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:pink_dye",
           "weight": 1,
           "functions": [
@@ -81,6 +95,20 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:lime_dye",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 8
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:cyan_dye",
           "weight": 1,
           "functions": [
             {
@@ -121,21 +149,12 @@
         },
         {
           "type": "minecraft:item",
-          "name": "supplementaries:flax",
-          "weight": 1,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 2,
-                "max": 5
-              }
-            }
-          ]
+          "name": "minecraft:loom",
+          "weight": 1
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:loom",
+          "name": "cluttered:basket_of_flowers",
           "weight": 1
         }
       ]
@@ -150,6 +169,11 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:leather_horse_armor",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:bundle",
           "weight": 1
         }
       ]

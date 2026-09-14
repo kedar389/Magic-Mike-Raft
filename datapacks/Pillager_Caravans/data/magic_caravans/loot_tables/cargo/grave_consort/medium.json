@@ -4,7 +4,7 @@
   "pools": [
     {
       "rolls": {
-        "min": 2,
+        "min": 3,
         "max": 4
       },
       "entries": [
@@ -52,6 +52,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "born_in_chaos_v1:spiritual_dust",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:cobweb",
           "weight": 1,
           "functions": [
@@ -60,6 +74,20 @@
               "count": {
                 "min": 2,
                 "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:black_dye",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 8
               }
             }
           ]
@@ -95,7 +123,31 @@
         },
         {
           "type": "minecraft:item",
+          "name": "born_in_chaos_v1:bone_heart",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "supplementaries:candle_holder",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:wither_skeleton_skull",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "gravestone:gravestone",
           "weight": 1
         }
       ]

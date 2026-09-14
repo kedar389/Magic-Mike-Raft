@@ -80,6 +80,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "aquamirae:elodea",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:ice",
           "weight": 1,
           "functions": [
@@ -88,6 +102,20 @@
               "count": {
                 "min": 4,
                 "max": 10
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:snowball",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 6,
+                "max": 16
               }
             }
           ]

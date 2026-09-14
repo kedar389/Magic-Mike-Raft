@@ -145,13 +145,15 @@ Every caravan has its own tables, so the loot reads as that caravan's and not as
 | Table | Pools | Who gets it |
 |---|---|---|
 | `small` | staple rolls 2-3 | every caravan |
-| `medium` | staple rolls 2-4, mid rolls 1 | every caravan |
+| `medium` | staple rolls 3-4, mid rolls 1 | every caravan |
 | `large` | staple rolls 3-5, mid rolls 1-2, class prize rolls 1 against empty at weight 4 | every caravan |
 | `prize` | the special, guaranteed 1, plus class prize rolls 1-2 and mid rolls 2-3 | 11 caravans |
 
 Bigger is better twice over: more llamas (2 / 4 / 6) and a richer table on each one.
 
-Each table is built from the caravan's cargo classes plus one or two signature items of its own. Dune Miners drops sand and TNT on top of Ore, Sculk Cultists drops sculk and echo shards on top of Magic dust and Runes.
+Each table is the caravan's cargo classes plus 3 to 5 signature items of its own. Dune Miners adds sand, sandstone, dead bush, TNT and an iron pickaxe on top of Ore. Sculk Cultists adds sculk, sculk veins, echo shards and an Ender Rune on top of Magic dust and Runes.
+
+306 distinct items across the set, 125 of them modded, drawn from 26 mods. Per caravan that is 11 to 30 items. Entries are deduplicated within each pool, so an item that is both a class staple and a caravan signature is not double-weighted.
 
 ### The special
 
@@ -181,26 +183,26 @@ The shared backbone each caravan's tables draw from.
 
 | Class | Staple | Mid | Prize |
 |---|---|---|---|
-| Ore | raw copper, raw iron, coal | iron, gold, Create andesite alloy | diamond, netherite scrap |
-| Gems | amethyst, lapis, Sea Dwellers aquamarine | emerald, quartz, Ascendant restorine | diamond block, Aquamirae abyssal amethyst |
-| Magic dust | redstone, glowstone, blaze powder | Common and Uncommon Ink, enchanted scrap | Arcane Essence |
-| Runes | blank runestone, Arcane Salvage | typed runes, Rare Ink, Geomancy geo rune | Upgrade Orb |
-| Arcane metal | Arcane Salvage, gold, iron | Arcane Ingot, Arcane Cloth | Epic Ink |
-| Harvest | wheat, carrots, potatoes, hay | bread, Farmer's Delight ham and rice | golden carrot |
-| Provisions | glass, gunpowder, bottles | teas, Fruits Delight jelly | Vinery wine, apple crate |
-| Textiles | string, wool, dyes | carpet, banner, flax | leather horse armor |
-| Timber | oak and spruce logs, Ribbits mossy planks | iron axe, canvas, charcoal | diamond axe |
-| Furs | leather, rabbit hide | Alex's Delight bison, bow, snowballs | rabbit's foot |
-| Bone | bone, bone meal | archeology shards, musket cartridges | totem of undying |
-| Fish | cod, salmon, kelp, RealmRPG fish | Ocean's and Aquamirae Delight dishes, glow bait | Angler's Fang |
-| Alchemy | nether wart, spider eyes, mushrooms | brewing stand, fermented eye | ghast tear |
-| Relics | archeology shards, bricks, Sea Dwellers copper relics | emerald, pottery sherds, brush | music disc, Growth and Radiance Totem |
-| Trinkets | fireworks, dyes, RealmRPG illager nose | Iron's Spells scroll, emerald | Mystery Scroll Pouch |
-| War spoil | iron, arrows, shield | Epic Knights kettlehat and chainmail, iron sword | Epic Knights knight chestplate |
-| Salvage | maps, nautilus shells | compass, Sea Dwellers broken trident | heart of the sea, Aquamirae dead sea scroll |
-| Machinery | copper, lightning rods, redstone | Companions wrench and voltaic relay, brass, zinc | Tesla Coil |
-| Grave goods | bones, rotten flesh, soul sand | Gravestone obituary, skulls, soul lantern | totem of undying |
-| Livestock | leather, wheat, leads | saddle, Alex's Delight mince | name tag |
+| Ore | raw copper and iron, coal, cobble, flint | iron, gold, Create andesite alloy and copper sheet | diamond, netherite scrap, Sea Dwellers depth ingot |
+| Gems | amethyst, lapis, calcite, Sea Dwellers aquamarine | emerald, quartz, Ascendant restorine, aquamarine crystal | diamond block, Aquamirae abyssal amethyst |
+| Magic dust | redstone, glowstone, blaze powder, gunpowder, Born in Chaos spiritual dust | Common and Uncommon Ink, enchanted scrap, bottle of magical energy | Arcane Essence, enchanted book |
+| Runes | blank runestone, Arcane Salvage, amethyst | five typed runes, Rare Ink, Geomancy geo rune | Upgrade Orb, geo Upgrade Orb |
+| Arcane metal | Arcane Salvage, gold, iron, dark metal nuggets | Arcane Ingot, Arcane Cloth, dark metal ingot | Epic Ink, Arcane Anvil |
+| Harvest | wheat, carrots, potatoes, beetroot, seeds, hay | bread, Farmer's Delight ham and rice, apple jello, produce basket | golden carrot, cake |
+| Provisions | glass, gunpowder, bottles, Supplementaries jars, paper | teas, coffee, Fruits Delight jelly, antique ink | Vinery wine, apple crate |
+| Textiles | string, wool, three dyes, flax | carpet, banner, loom, flower basket | leather horse armor, bundle |
+| Timber | oak and spruce logs, Ribbits mossy planks, sticks | iron axe, canvas, charcoal, bellows | diamond axe |
+| Furs | leather, rabbit hide, wool, feathers | Alex's Delight bison, bow, snowballs, leather boots | rabbit's foot, leather chestplate |
+| Bone | bone, bone meal, Born in Chaos bundle of bones and bone handles | archeology shards, musket cartridges, goat horn, bone heart | totem of undying |
+| Fish | cod, salmon, kelp, RealmRPG fish, Aquamirae elodea | Ocean's and Aquamirae Delight dishes, glow bait, fins, jellyfish jelly | Angler's Fang, Esca |
+| Alchemy | nether wart, spider eyes, mushrooms, sugar, jars | brewing stand, fermented eye, potion shelf, Mowzie's glowing jelly | ghast tear, bottle of magical energy |
+| Relics | archeology shards, bricks, clay, Sea Dwellers copper relics | emerald, pottery sherds, brush, gold relics, open book | music disc, Growth and Radiance Totem |
+| Trinkets | fireworks, dyes, glow ink, candle holder, RealmRPG illager nose | Iron's Spells scroll, emerald, blackboard, firework star | Mystery Scroll Pouch, Aquamirae music disc |
+| War spoil | iron, arrows, shield, nuggets, Supplementaries bombs | Epic Knights kettlehat, chainmail and gambeson, iron sword, crossbow | Epic Knights knight chestplate, dark metal helmet |
+| Salvage | maps, nautilus shells, prismarine, Sea Dwellers depth nuggets | compass, sea pickle dish, broken trident, oxygen tank | heart of the sea, dead sea scroll |
+| Machinery | copper, lightning rods, redstone, Create copper sheet | Companions wrench and voltaic relay, brass, zinc, electron tube | Tesla Coil, precision mechanism |
+| Grave goods | bones, rotten flesh, soul sand, spiritual dust, cobweb | Gravestone obituary and gravestone, skulls, soul lantern, bone heart | totem of undying, soul cutlass |
+| Livestock | leather, wheat, leads, hay, eggs | saddle, Alex's Delight mince, Supplementaries cage, shears | name tag |
 
 Every non-vanilla id was checked against a dump of all 172 jars' lang files. Nothing from Waystones (warp stone is trader-gated), End Remastered or Botania appears in any table.
 

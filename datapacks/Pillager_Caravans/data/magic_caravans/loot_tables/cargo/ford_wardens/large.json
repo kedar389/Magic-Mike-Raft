@@ -80,6 +80,20 @@
         },
         {
           "type": "minecraft:item",
+          "name": "aquamirae:elodea",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:glass",
           "weight": 1,
           "functions": [
@@ -122,7 +136,49 @@
         },
         {
           "type": "minecraft:item",
+          "name": "supplementaries:jar",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 4,
+                "max": 10
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:clay_ball",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 4,
+                "max": 10
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:gravel",
           "weight": 1,
           "functions": [
             {
@@ -200,6 +256,34 @@
         },
         {
           "type": "minecraft:item",
+          "name": "aquamirae:fin",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aquamirae:jellyfish_jelly",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
           "name": "farmersrespite:black_tea",
           "weight": 1,
           "functions": [
@@ -242,7 +326,31 @@
         },
         {
           "type": "minecraft:item",
+          "name": "farmersrespite:coffee",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "supplementaries:antique_ink",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
           "name": "minecraft:bucket",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:fishing_rod",
           "weight": 1
         }
       ]
@@ -257,6 +365,11 @@
         {
           "type": "minecraft:item",
           "name": "aquamirae:anglers_fang",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aquamirae:esca",
           "weight": 1
         },
         {
