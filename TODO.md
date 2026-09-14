@@ -4,25 +4,25 @@
 - [] add lets do bakery, needs checking the farm and charm that is being pulled ind
 - [X] add ascended arcana
 - [x] Add feur extension jungle
-- [ ] Add **[Async Locator](https://modrinth.com/mod/async-locator)** (server-side only). `/locate` and villager explorer map trades share one code path, `ServerLevel.findNearestMapStructure(tag, pos, radius, skipExistingChunks)`; the trade version runs a **100-chunk** radius search with `skipExistingChunks=true` on the main thread whenever a villager levels up or restocks, a real stutter source on 172 mods. Covers the `/locate` command, villager map trade offers, dolphin treasure finding and chest exploration maps. Caveat: it patches **vanilla paths only** ("other mods may need to implement usage of this mod themselves"), so the datapack tag route under Structures benefits but MoreJS-authored trades likely do not, which is an argument for the datapack route
+- [x] Add **[Async Locator](https://modrinth.com/mod/async-locator)** (server-side only). `/locate` and villager explorer map trades share one code path, `ServerLevel.findNearestMapStructure(tag, pos, radius, skipExistingChunks)`; the trade version runs a **100-chunk** radius search with `skipExistingChunks=true` on the main thread whenever a villager levels up or restocks, a real stutter source on 172 mods. Covers the `/locate` command, villager map trade offers, dolphin treasure finding and chest exploration maps. Caveat: it patches **vanilla paths only** ("other mods may need to implement usage of this mod themselves"), so the datapack tag route under Structures benefits but MoreJS-authored trades likely do not, which is an argument for the datapack route
 
 ## Modpack Management
 - [ ] Create a script that copies config and datapacks over to the server
 
 ## Balance
+- [x] Spiral player spawning
 - [x] Deduplicate curio slots
 - [x] Merge duplicate attributes, Iron's Lib set (crit damage, dodge chance, arrow damage, armor pierce, experience gained, healing received, mining speed) folded into Apothic Attributes via [`datapacks/Attribute_Merge/`](datapacks/Attribute_Merge/)
 - [x] Merge Cataclysm + Obscure API/Aquamirae duplicate attributes (crit damage, crit chance, dodge, penetration→armor shred, healing power) into Apothic, written as the [`attribute_merge`](mod_compats/AttributeMerge/) Forge mod (rewrites the modifier on `ItemAttributeModifierEvent`, nothing ticks). They can't use the datapack remap: Cataclysm is percent points (needs ×0.01), Obscure delivers MULTIPLY_BASE but reads it additively (needs forced ADDITION). Replaced the earlier KubeJS polling bridge
 - [ ] **Build `mod_compats/AttributeMerge/`** (`gradle build`, no JDK in this dev env, so it ships uncompiled) and drop `attribute_merge-0.1.0.jar` into each instance's `mods/`
 - [x] Hide the duplicate attribute rows from the Apothic Attributes GUI (`Hidden Attributes` in [`mod_configs_client/attributeslib.cfg`](client_configuration/mod_configs_client/attributeslib.cfg)), merging moves values but leaves the rows registered; needs the CLIENT config redeployed
-- [ ] In-game sanity check after building: log shows `Merging 6 duplicate attribute(s)`, and The Annihilator (`ADDITION 75.0`) reads **+75% Crit Damage** on its tooltip with the Apothic stat at **225%** (1.5 base + 0.75), appearing **once**
+- [x] In-game sanity check after building: log shows `Merging 6 duplicate attribute(s)`, and The Annihilator (`ADDITION 75.0`) reads **+75% Crit Damage** on its tooltip with the Apothic stat at **225%** (1.5 base + 0.75), appearing **once**
 
 ## Biomes
 - [ ] Use the new woods from Cluttered and add them to the biomes in William Wythers
-- [ ] Change where flowers spawn
 
 ## Structures
-- [ ] Make structures spawn on flat terrain
+- [x] Make structures spawn on flat terrain
 - [ ] **Buyable explorer maps that lead to modded structures.** Villager trades are hardcoded in `VillagerTrades.TRADES` (static map, class-init), so there is no datapack registry for them on 1.20.1, and KubeJS `2001.6.5` ships only `VillagerProfessionBuilder`/`VillagerTypeBuilder`, no trade event. Three routes:
   - **Datapack, retarget the existing cartographer trades** (preferred): the two vanilla map trades resolve through structure tags, `data/minecraft/tags/worldgen/structure/on_ocean_explorer_maps.json` (vanilla `["minecraft:monument"]`) and `on_woodland_explorer_maps.json` (vanilla `["minecraft:mansion"]`). Add structure IDs with `"replace": false` and the trade retargets. Limits: only 2 trade slots total, pooled nearest-wins so you can't pick which structure, and the map keeps the vanilla name/icon
   - **Datapack, `minecraft:exploration_map` loot function** for chest loot or a `/loot give @s loot <table>` shop, one table per structure, no slot limit. `destination` is a plain tag id with **no `#`** (vanilla `chests/shipwreck_map` omits it and defaults to `on_treasure_maps`). `#dungeonnowloading:temple_of_duality` already exists in the DNL jar and works as-is
@@ -39,7 +39,7 @@
 - [x] Reduce the spawn chance/count of catfish (weight 4 → 2)
 - [ ] Change mob spawns and which biomes they spawn in
   - 
-- [ ] Update illager caravans with new loot and different variants
+- [x] Make illager caravanvs variants
 
 
 ## Loot Tables
