@@ -15,8 +15,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:orange_carpet",
-      "count": 4,
-      "cargo": "magic_caravans:cargo/ore"
+      "cargo": "magic_caravans:cargo/canyon_prospectors/medium",
+      "count": 4
     }
   ]
 }

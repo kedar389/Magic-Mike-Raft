@@ -19,14 +19,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:orange_carpet",
-      "count": 2,
-      "cargo": "magic_caravans:cargo/ore"
-    },
-    {
-      "type": "minecraft:llama",
-      "armor": "minecraft:orange_carpet",
-      "count": 2,
-      "cargo": "magic_caravans:cargo/machinery"
+      "cargo": "magic_caravans:cargo/ore_train/medium",
+      "count": 4
     }
   ]
 }

@@ -11,7 +11,7 @@ Namespace `magic_caravans`. Design and rationale: [`docs/caravans.md`](../../doc
 | `caravans/placement/` | 19 | One per biome family. Matches a biome set, then picks a caravan pool by weight |
 | `caravans/variation/` | 105 | 35 caravans x small / medium / large |
 | `tags/worldgen/biome/` | 19 | `has_<placement>_caravan`, one per placement |
-| `loot_tables/cargo/` | 20 | One per cargo class, referenced by the llamas |
+| `loot_tables/cargo/` | 116 | Per caravan: small, medium, large, plus prize for 11 of them |
 
 Display names live in `resourcepacks/Caravan_Names/`. Both are needed: without the resource pack the encounter toast shows a raw translation key.
 
@@ -31,21 +31,32 @@ Pack llamas are 2 / 4 / 6, carpet-coloured by cargo class. The two drove caravan
 
 ## Cargo
 
-Each llama points at one of the 20 class tables. Every table has three pools:
+Every caravan has its own tables. 116 of them under `loot_tables/cargo/<caravan>/`.
 
-| Pool | Rolls | Holds |
-|---|---|---|
-| Staple | 2-4 | Bulk goods, stacked |
-| Mid | 1-2 | The worthwhile middle |
-| Prize | 1 | One item against a `minecraft:empty` entry at weight 5 |
+| Table | Pools |
+|---|---|
+| `small` | staple rolls 2-3 |
+| `medium` | staple rolls 2-4, mid rolls 1 |
+| `large` | staple rolls 3-5, mid rolls 1-2, class prize rolls 1 against empty at weight 4 |
+| `prize` | the special guaranteed 1, class prize rolls 1-2, mid rolls 2-3 |
 
-So a llama yields 3 to 6 stacks, and about one in six also drops the class prize. A large caravan with 6 llamas is worth roughly 20 to 36 stacks.
+Bigger caravans pay twice: more llamas (2 / 4 / 6) and a richer table on each.
 
-A caravan with two cargo classes splits its pack between both tables, the first class taking the remainder on an odd count.
+Each table is its caravan's cargo classes plus one or two signature items of its own, so Dune Miners drops sand and TNT on top of Ore and Sculk Cultists drops sculk and echo shards on top of Magic dust and Runes.
 
-Every non-vanilla item id was checked against the deployed jars' lang files before it went in. Note that Epic Knights registers under `magistuarmory`, not `epicknights`.
+### The special
 
-No Relics, More Relics, Artifacts or Unique Accessories items are placed here. Relics and More Relics self-distribute by regex over loot table ids across all namespaces, and `docs/accessories.md` is still deciding where accessories should land. None of the 20 class names match a Relics family keyword (`desert`, `jungle`, `ocean`, `pillag`, `sculk` and so on), so nothing injects into these tables by accident either.
+Eleven caravans carry one Artifacts curio, at large tier only. It rides a single dedicated llama on the `prize` table whose first pool grants exactly one, so a caravan can never drop two.
+
+Marauder Column, Illusionist's Troupe, Grave Consort, Deep Delvers and Geode Cutters take PILLAGE-family items. Tomb Robbers DESERT, Idol Looters and Crystal Coven JUNGLE, Sculk Cultists SCULK, Wreckers AQUATIC, Frostbound Wardens COLD. Families come from `docs/accessories.md`; the other 24 caravans top out at their class prize.
+
+### Item sources
+
+Every non-vanilla id was checked against a dump of all 172 jars' lang files, which caught that Epic Knights registers under `magistuarmory`, not `epicknights`.
+
+Three families are deliberately absent. **Waystones**: warp stone is meant to come only from expensive trader trades and it gates the waystone recipe. **End Remastered**: eyes are boss drops. **Botania**: flower- and ritual-made, not hauled goods.
+
+Relics and More Relics self-distribute by regex over loot table ids across all namespaces. No cargo table name matches one of their family keywords, so nothing injects here by accident.
 
 ## Biome sets
 

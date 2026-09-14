@@ -23,8 +23,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:brown_carpet",
-      "count": 2,
-      "cargo": "magic_caravans:cargo/livestock"
+      "cargo": "magic_caravans:cargo/cattle_drovers/small",
+      "count": 2
     }
   ]
 }

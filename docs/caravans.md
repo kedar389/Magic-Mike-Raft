@@ -21,7 +21,7 @@ Config in `config/Obscuria/pillager_caravans-common.toml`, already set: enabled,
 { "tier": "small", "leader": { "type": "minecraft:vindicator" },
   "members": [
     { "type": "minecraft:pillager", "count": 2 },
-    { "type": "minecraft:llama", "armor": "minecraft:orange_carpet", "cargo": "magic_caravans:cargo/ore", "count": 2 } ] }
+    { "type": "minecraft:llama", "armor": "minecraft:orange_carpet", "cargo": "magic_caravans:cargo/dune_miners/small", "count": 2 } ] }
 ```
 
 Match a placement by biome, roll a pool by weight, take the variation matching the already-rolled tier. Member fields: `type` (required), `count`, `armor`, `cargo`, `loot_table`. Biome sets in `tags/worldgen/biome/`, names in a resource pack's `caravan.<namespace>.<variation_id>` keys.
@@ -138,36 +138,71 @@ absorber at speed 0.15 is half a ravager. It will trail a large caravan; `allowF
 
 Leaders are always 1. Archevoker-led caravans take a mid heavy, not a boss-grade one.
 
-## Cargo classes
+## Cargo
 
-One table per class under `loot_tables/cargo/`, all the same shape: a staple pool rolling 2-4, a mid pool rolling 1-2, and a prize pool rolling 1 against an empty entry at weight 5, so a prize lands on roughly one llama in six.
+Every caravan has its own tables, so the loot reads as that caravan's and not as generic chest loot. 116 tables under `loot_tables/cargo/<caravan>/`.
 
-A caravan carries one or two classes. With two, the pack splits between the tables and the first class takes the remainder on an odd count.
+| Table | Pools | Who gets it |
+|---|---|---|
+| `small` | staple rolls 2-3 | every caravan |
+| `medium` | staple rolls 2-4, mid rolls 1 | every caravan |
+| `large` | staple rolls 3-5, mid rolls 1-2, class prize rolls 1 against empty at weight 4 | every caravan |
+| `prize` | the special, guaranteed 1, plus class prize rolls 1-2 and mid rolls 2-3 | 11 caravans |
+
+Bigger is better twice over: more llamas (2 / 4 / 6) and a richer table on each one.
+
+Each table is built from the caravan's cargo classes plus one or two signature items of its own. Dune Miners drops sand and TNT on top of Ore, Sculk Cultists drops sculk and echo shards on top of Magic dust and Runes.
+
+### The special
+
+Eleven caravans carry one Artifacts curio at large tier, and only there. The prize rides a single dedicated llama whose table grants exactly one, so a caravan can never drop two.
+
+Each item is matched to the caravan by the family it is proposed for in [`accessories.md`](accessories.md).
+
+| Caravan | Special | Family |
+|---|---|---|
+| Marauder Column | Superstitious Hat | PILLAGE |
+| Illusionist's Troupe | Scarf of Invisibility | PILLAGE |
+| Grave Consort | Panic Necklace | PILLAGE |
+| Deep Delvers | Pocket Piston | PILLAGE |
+| Geode Cutters | Power Glove | PILLAGE |
+| Tomb Robbers | Cowboy Hat | DESERT |
+| Idol Looters | Thorn Pendant | JUNGLE |
+| Crystal Coven | Bunny Hoppers | JUNGLE |
+| Sculk Cultists | Shock Pendant | SCULK |
+| Wreckers | Angler's Hat | AQUATIC |
+| Frostbound Wardens | Snowshoes | COLD |
+
+The other 24 caravans top out at their class prize.
+
+### Classes
+
+The shared backbone each caravan's tables draw from.
 
 | Class | Staple | Mid | Prize |
 |---|---|---|---|
-| Ore | raw copper, raw iron, coal | iron ingot, gold ingot, andesite alloy | diamond, netherite scrap |
-| Gems | amethyst shard, lapis | emerald, quartz | diamond block |
-| Magic dust | redstone, glowstone, blaze powder | Common Ink, Uncommon Ink | Arcane Essence |
-| Runes | blank runestone, Arcane Salvage | typed rune, Rare Ink | Upgrade Orb |
+| Ore | raw copper, raw iron, coal | iron, gold, Create andesite alloy | diamond, netherite scrap |
+| Gems | amethyst, lapis, Sea Dwellers aquamarine | emerald, quartz, Ascendant restorine | diamond block, Aquamirae abyssal amethyst |
+| Magic dust | redstone, glowstone, blaze powder | Common and Uncommon Ink, enchanted scrap | Arcane Essence |
+| Runes | blank runestone, Arcane Salvage | typed runes, Rare Ink, Geomancy geo rune | Upgrade Orb |
 | Arcane metal | Arcane Salvage, gold, iron | Arcane Ingot, Arcane Cloth | Epic Ink |
-| Harvest | wheat, carrots, potatoes, hay | Farmer's Delight meals, bread | golden carrot |
-| Provisions | glass, gunpowder, water bottles | preserved food, Farmer's Respite tea | Vinery wine |
-| Textiles | string, wool, dye | carpet, banner | shulker box |
-| Timber | logs, planks, sticks | axes, Farmer's Delight canvas | enchanted axe |
-| Furs | leather, rabbit hide | Alex's Delight meat, bows | enchanted leather armor |
-| Bone | bone, bone meal, horns | Alex's Mobs trophies, Musket ammunition | totem of undying |
-| Fish | raw fish, kelp, ink sacs | Ocean's Delight dishes, rods | Aquamirae trinket |
-| Alchemy | nether wart, spider eyes, mushrooms | potions, brewing stands | lingering potion |
-| Relics | BetterArcheology sherds, suspicious sand | emeralds, pottery | Relics trinket |
-| Trinkets | dyes, fireworks, Cluttered props | Iron's Spells scrolls, emeralds | Artifacts trinket |
-| War spoil | iron, arrows, shields | Epic Knights armor and weapons | ominous banner |
-| Salvage | maps, nautilus shells, rotten sail | Ocean's Delight food, Nifty Ships parts | heart of the sea |
-| Machinery | copper, lightning rods, Wrench | Tesla Coil, Voltaic Relay | Zapper Staff |
-| Grave goods | bones, rotten flesh, soul sand | Gravestone items, soul relics | totem of undying |
-| Livestock | leather, saddles, leads | Alex's Delight jerky | name tag |
+| Harvest | wheat, carrots, potatoes, hay | bread, Farmer's Delight ham and rice | golden carrot |
+| Provisions | glass, gunpowder, bottles | teas, Fruits Delight jelly | Vinery wine, apple crate |
+| Textiles | string, wool, dyes | carpet, banner, flax | leather horse armor |
+| Timber | oak and spruce logs, Ribbits mossy planks | iron axe, canvas, charcoal | diamond axe |
+| Furs | leather, rabbit hide | Alex's Delight bison, bow, snowballs | rabbit's foot |
+| Bone | bone, bone meal | archeology shards, musket cartridges | totem of undying |
+| Fish | cod, salmon, kelp, RealmRPG fish | Ocean's and Aquamirae Delight dishes, glow bait | Angler's Fang |
+| Alchemy | nether wart, spider eyes, mushrooms | brewing stand, fermented eye | ghast tear |
+| Relics | archeology shards, bricks, Sea Dwellers copper relics | emerald, pottery sherds, brush | music disc, Growth and Radiance Totem |
+| Trinkets | fireworks, dyes, RealmRPG illager nose | Iron's Spells scroll, emerald | Mystery Scroll Pouch |
+| War spoil | iron, arrows, shield | Epic Knights kettlehat and chainmail, iron sword | Epic Knights knight chestplate |
+| Salvage | maps, nautilus shells | compass, Sea Dwellers broken trident | heart of the sea, Aquamirae dead sea scroll |
+| Machinery | copper, lightning rods, redstone | Companions wrench and voltaic relay, brass, zinc | Tesla Coil |
+| Grave goods | bones, rotten flesh, soul sand | Gravestone obituary, skulls, soul lantern | totem of undying |
+| Livestock | leather, wheat, leads | saddle, Alex's Delight mince | name tag |
 
-Roll counts per llama: 3-6 small, 3-9 medium, 4-12 large. Drove caravans carry 2 llamas at every tier.
+Every non-vanilla id was checked against a dump of all 172 jars' lang files. Nothing from Waystones (warp stone is trader-gated), End Remastered or Botania appears in any table.
 
 ## The caravans
 
@@ -242,7 +277,7 @@ datapacks/Pillager_Caravans/
   data/magic_caravans/caravans/placement/*.json     19 files
   data/magic_caravans/caravans/variation/*.json    105 files (35 themes x 3 tiers)
   data/magic_caravans/tags/worldgen/biome/*.json    19 files
-  data/magic_caravans/loot_tables/cargo/*.json      20 files, one per cargo class
+  data/magic_caravans/loot_tables/cargo/<caravan>/*.json  116 files, 35 caravans x small/medium/large + 11 prize
 resourcepacks/Caravan_Names/
   pack.mcmeta
   assets/magic_caravans/lang/en_us.json            105 keys
@@ -255,7 +290,7 @@ Measured entity totals across the generated files:
 | Normal | 5 to 9 | 9 to 13 | 15 to 23 |
 | Drove | 9 | 15 | 23 to 25 |
 
-Each llama carries a `cargo` field pointing at its class table. A mixed-cargo caravan splits its pack between the two, the first class taking the remainder on an odd count.
+Each llama carries a `cargo` field pointing at its caravan tier table. On a large tier with a special, one llama is split off onto the `prize` table.
 
 The built-in `classic_caravans` pack overlaps desert, jungle, plains, snow and swamp. Leaving it on roughly halves the chance of a custom caravan there.
 

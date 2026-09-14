@@ -19,8 +19,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:red_carpet",
-      "count": 2,
-      "cargo": "magic_caravans:cargo/war_spoil"
+      "cargo": "magic_caravans:cargo/marauder_column/small",
+      "count": 2
     }
   ]
 }

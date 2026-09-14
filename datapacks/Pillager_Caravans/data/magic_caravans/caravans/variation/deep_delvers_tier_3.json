@@ -27,14 +27,14 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:orange_carpet",
-      "count": 3,
-      "cargo": "magic_caravans:cargo/ore"
+      "cargo": "magic_caravans:cargo/deep_delvers/prize",
+      "count": 1
     },
     {
       "type": "minecraft:llama",
       "armor": "minecraft:orange_carpet",
-      "count": 3,
-      "cargo": "magic_caravans:cargo/gems"
+      "cargo": "magic_caravans:cargo/deep_delvers/large",
+      "count": 5
     }
   ]
 }

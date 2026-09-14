@@ -15,8 +15,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:orange_carpet",
-      "count": 2,
-      "cargo": "magic_caravans:cargo/ore"
+      "cargo": "magic_caravans:cargo/dune_miners/small",
+      "count": 2
     }
   ]
 }

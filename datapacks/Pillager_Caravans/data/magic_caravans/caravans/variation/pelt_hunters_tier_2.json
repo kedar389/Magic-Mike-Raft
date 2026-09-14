@@ -19,8 +19,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:brown_carpet",
-      "count": 4,
-      "cargo": "magic_caravans:cargo/furs"
+      "cargo": "magic_caravans:cargo/pelt_hunters/medium",
+      "count": 4
     }
   ]
 }

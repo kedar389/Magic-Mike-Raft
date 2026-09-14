@@ -15,8 +15,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:brown_carpet",
-      "count": 4,
-      "cargo": "magic_caravans:cargo/timber"
+      "cargo": "magic_caravans:cargo/timber_gang/medium",
+      "count": 4
     }
   ]
 }

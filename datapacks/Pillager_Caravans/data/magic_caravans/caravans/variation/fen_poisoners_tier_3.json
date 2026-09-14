@@ -23,14 +23,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:lime_carpet",
-      "count": 3,
-      "cargo": "magic_caravans:cargo/alchemy"
-    },
-    {
-      "type": "minecraft:llama",
-      "armor": "minecraft:lime_carpet",
-      "count": 3,
-      "cargo": "magic_caravans:cargo/magic_dust"
+      "cargo": "magic_caravans:cargo/fen_poisoners/large",
+      "count": 6
     }
   ]
 }

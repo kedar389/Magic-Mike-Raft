@@ -27,8 +27,14 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:red_carpet",
-      "count": 6,
-      "cargo": "magic_caravans:cargo/war_spoil"
+      "cargo": "magic_caravans:cargo/marauder_column/prize",
+      "count": 1
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:red_carpet",
+      "cargo": "magic_caravans:cargo/marauder_column/large",
+      "count": 5
     }
   ]
 }

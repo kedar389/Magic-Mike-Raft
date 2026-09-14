@@ -27,14 +27,14 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:purple_carpet",
-      "count": 3,
-      "cargo": "magic_caravans:cargo/magic_dust"
+      "cargo": "magic_caravans:cargo/frostbound_wardens/prize",
+      "count": 1
     },
     {
       "type": "minecraft:llama",
       "armor": "minecraft:purple_carpet",
-      "count": 3,
-      "cargo": "magic_caravans:cargo/runes"
+      "cargo": "magic_caravans:cargo/frostbound_wardens/large",
+      "count": 5
     }
   ]
 }

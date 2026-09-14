@@ -19,14 +19,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:purple_carpet",
-      "count": 1,
-      "cargo": "magic_caravans:cargo/arcane_metal"
-    },
-    {
-      "type": "minecraft:llama",
-      "armor": "minecraft:purple_carpet",
-      "count": 1,
-      "cargo": "magic_caravans:cargo/ore"
+      "cargo": "magic_caravans:cargo/rune_smelters/small",
+      "count": 2
     }
   ]
 }

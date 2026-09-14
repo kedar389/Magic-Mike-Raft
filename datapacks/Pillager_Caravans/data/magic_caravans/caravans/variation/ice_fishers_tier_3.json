@@ -27,8 +27,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:blue_carpet",
-      "count": 6,
-      "cargo": "magic_caravans:cargo/fish"
+      "cargo": "magic_caravans:cargo/ice_fishers/large",
+      "count": 6
     }
   ]
 }

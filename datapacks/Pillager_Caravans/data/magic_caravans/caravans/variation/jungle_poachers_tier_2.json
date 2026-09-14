@@ -19,14 +19,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:brown_carpet",
-      "count": 2,
-      "cargo": "magic_caravans:cargo/livestock"
-    },
-    {
-      "type": "minecraft:llama",
-      "armor": "minecraft:brown_carpet",
-      "count": 2,
-      "cargo": "magic_caravans:cargo/furs"
+      "cargo": "magic_caravans:cargo/jungle_poachers/medium",
+      "count": 4
     }
   ]
 }

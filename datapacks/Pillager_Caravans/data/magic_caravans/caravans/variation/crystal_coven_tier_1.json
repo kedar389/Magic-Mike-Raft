@@ -19,14 +19,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:purple_carpet",
-      "count": 1,
-      "cargo": "magic_caravans:cargo/runes"
-    },
-    {
-      "type": "minecraft:llama",
-      "armor": "minecraft:purple_carpet",
-      "count": 1,
-      "cargo": "magic_caravans:cargo/gems"
+      "cargo": "magic_caravans:cargo/crystal_coven/small",
+      "count": 2
     }
   ]
 }

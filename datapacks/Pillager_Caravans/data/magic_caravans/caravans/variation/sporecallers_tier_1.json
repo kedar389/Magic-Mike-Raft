@@ -15,8 +15,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:lime_carpet",
-      "count": 2,
-      "cargo": "magic_caravans:cargo/alchemy"
+      "cargo": "magic_caravans:cargo/sporecallers/small",
+      "count": 2
     }
   ]
 }

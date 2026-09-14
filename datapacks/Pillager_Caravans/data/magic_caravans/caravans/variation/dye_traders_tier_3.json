@@ -23,8 +23,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:magenta_carpet",
-      "count": 6,
-      "cargo": "magic_caravans:cargo/textiles"
+      "cargo": "magic_caravans:cargo/dye_traders/large",
+      "count": 6
     }
   ]
 }

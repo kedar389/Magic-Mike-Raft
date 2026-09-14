@@ -15,8 +15,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:yellow_carpet",
-      "count": 4,
-      "cargo": "magic_caravans:cargo/provisions"
+      "cargo": "magic_caravans:cargo/salt_traders/medium",
+      "count": 4
     }
   ]
 }

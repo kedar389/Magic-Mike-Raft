@@ -27,8 +27,14 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:black_carpet",
-      "count": 6,
-      "cargo": "magic_caravans:cargo/grave_goods"
+      "cargo": "magic_caravans:cargo/grave_consort/prize",
+      "count": 1
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:black_carpet",
+      "cargo": "magic_caravans:cargo/grave_consort/large",
+      "count": 5
     }
   ]
 }

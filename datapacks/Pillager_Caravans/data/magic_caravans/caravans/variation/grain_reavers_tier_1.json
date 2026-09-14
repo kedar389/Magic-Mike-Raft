@@ -15,8 +15,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:brown_carpet",
-      "count": 2,
-      "cargo": "magic_caravans:cargo/harvest"
+      "cargo": "magic_caravans:cargo/grain_reavers/small",
+      "count": 2
     }
   ]
 }

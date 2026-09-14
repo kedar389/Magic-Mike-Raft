@@ -15,8 +15,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:yellow_carpet",
-      "count": 2,
-      "cargo": "magic_caravans:cargo/relics"
+      "cargo": "magic_caravans:cargo/tomb_robbers/small",
+      "count": 2
     }
   ]
 }

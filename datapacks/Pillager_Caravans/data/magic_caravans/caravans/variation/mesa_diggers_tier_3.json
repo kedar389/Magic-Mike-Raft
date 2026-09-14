@@ -27,14 +27,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:orange_carpet",
-      "count": 3,
-      "cargo": "magic_caravans:cargo/ore"
-    },
-    {
-      "type": "minecraft:llama",
-      "armor": "minecraft:orange_carpet",
-      "count": 3,
-      "cargo": "magic_caravans:cargo/gems"
+      "cargo": "magic_caravans:cargo/mesa_diggers/large",
+      "count": 6
     }
   ]
 }

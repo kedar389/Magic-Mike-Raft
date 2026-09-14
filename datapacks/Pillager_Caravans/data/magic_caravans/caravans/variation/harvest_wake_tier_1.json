@@ -15,14 +15,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:brown_carpet",
-      "count": 1,
-      "cargo": "magic_caravans:cargo/harvest"
-    },
-    {
-      "type": "minecraft:llama",
-      "armor": "minecraft:brown_carpet",
-      "count": 1,
-      "cargo": "magic_caravans:cargo/textiles"
+      "cargo": "magic_caravans:cargo/harvest_wake/small",
+      "count": 2
     }
   ]
 }

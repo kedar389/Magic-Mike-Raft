@@ -15,8 +15,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:white_carpet",
-      "count": 2,
-      "cargo": "magic_caravans:cargo/bone"
+      "cargo": "magic_caravans:cargo/ivory_hunters/small",
+      "count": 2
     }
   ]
 }

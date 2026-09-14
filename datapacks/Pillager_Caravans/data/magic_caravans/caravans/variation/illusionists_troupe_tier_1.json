@@ -15,8 +15,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:magenta_carpet",
-      "count": 2,
-      "cargo": "magic_caravans:cargo/trinkets"
+      "cargo": "magic_caravans:cargo/illusionists_troupe/small",
+      "count": 2
     }
   ]
 }

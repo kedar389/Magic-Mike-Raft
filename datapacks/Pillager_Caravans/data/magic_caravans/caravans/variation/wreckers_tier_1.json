@@ -15,8 +15,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:blue_carpet",
-      "count": 2,
-      "cargo": "magic_caravans:cargo/salvage"
+      "cargo": "magic_caravans:cargo/wreckers/small",
+      "count": 2
     }
   ]
 }

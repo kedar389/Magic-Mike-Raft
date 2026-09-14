@@ -27,8 +27,14 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:light_blue_carpet",
-      "count": 6,
-      "cargo": "magic_caravans:cargo/gems"
+      "cargo": "magic_caravans:cargo/geode_cutters/prize",
+      "count": 1
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:light_blue_carpet",
+      "cargo": "magic_caravans:cargo/geode_cutters/large",
+      "count": 5
     }
   ]
 }

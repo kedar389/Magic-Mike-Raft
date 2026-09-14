@@ -23,8 +23,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:lime_carpet",
-      "count": 6,
-      "cargo": "magic_caravans:cargo/alchemy"
+      "cargo": "magic_caravans:cargo/bog_alchemists/large",
+      "count": 6
     }
   ]
 }

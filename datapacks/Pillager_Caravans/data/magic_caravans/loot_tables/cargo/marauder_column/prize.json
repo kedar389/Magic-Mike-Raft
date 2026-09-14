@@ -1,0 +1,57 @@
+{
+  "type": "minecraft:chest",
+  "random_sequence": "magic_caravans:cargo/marauder_column/prize",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "artifacts:superstitious_hat",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 1,
+        "max": 2
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "magistuarmory:knight_chestplate",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 2,
+        "max": 3
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "magistuarmory:kettlehat",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "magistuarmory:chainmail_chestplate",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_sword",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:crossbow",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

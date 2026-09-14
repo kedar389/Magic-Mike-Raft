@@ -23,8 +23,14 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:yellow_carpet",
-      "count": 6,
-      "cargo": "magic_caravans:cargo/relics"
+      "cargo": "magic_caravans:cargo/tomb_robbers/prize",
+      "count": 1
+    },
+    {
+      "type": "minecraft:llama",
+      "armor": "minecraft:yellow_carpet",
+      "cargo": "magic_caravans:cargo/tomb_robbers/large",
+      "count": 5
     }
   ]
 }

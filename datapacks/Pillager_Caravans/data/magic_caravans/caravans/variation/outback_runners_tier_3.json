@@ -23,14 +23,8 @@
     {
       "type": "minecraft:llama",
       "armor": "minecraft:white_carpet",
-      "count": 3,
-      "cargo": "magic_caravans:cargo/bone"
-    },
-    {
-      "type": "minecraft:llama",
-      "armor": "minecraft:white_carpet",
-      "count": 3,
-      "cargo": "magic_caravans:cargo/provisions"
+      "cargo": "magic_caravans:cargo/outback_runners/large",
+      "count": 6
     }
   ]
 }
