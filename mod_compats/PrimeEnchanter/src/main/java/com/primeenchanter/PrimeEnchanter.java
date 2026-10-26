@@ -732,12 +732,20 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
         return BossSound.DEATH.get();
     }
 
+    /** Footsteps come from the walk animation's foot plants (see {@link #registerControllers}), not walked distance. */
     @Override
     protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(BossSound.STEP.get(), 0.8F, 1.0F);
-        this.playSound(BossSound.STEP_FOLEY.get(), 0.6F, 1.0F);
+    }
+
+    private void playFootstep() {
+        Level level = this.level();
+        level.playLocalSound(this.getX(), this.getY(), this.getZ(), BossSound.STEP.get(), this.getSoundSource(),
+                1.6F, 1.0F, false);
+        level.playLocalSound(this.getX(), this.getY(), this.getZ(), BossSound.STEP_FOLEY.get(), this.getSoundSource(),
+                1.2F, 1.0F, false);
         if (this.random.nextInt(3) == 0) {
-            this.playSound(BossSound.CAPE.get(), 0.6F, 1.0F);
+            level.playLocalSound(this.getX(), this.getY(), this.getZ(), BossSound.CAPE.get(), this.getSoundSource(),
+                    1.2F, 1.0F, false);
         }
     }
 
@@ -752,6 +760,11 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         AnimationController<PrimeEnchanter> controller = new AnimationController<>(this, CONTROLLER, 5,
                 state -> state.setAndContinue(state.isMoving() ? WALK : IDLE));
+        controller.setSoundKeyframeHandler(event -> {
+            if ("step".equals(event.getKeyframeData().getSound())) {
+                playFootstep();
+            }
+        });
         for (Move each : Move.values()) {
             controller.triggerableAnim(each.id, each.animation);
         }

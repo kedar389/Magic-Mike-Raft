@@ -5335,6 +5335,14 @@
 					}
 				}
 			},
+			"sound_effects": {
+				"0.01": {
+					"effect": "step"
+				},
+				"0.46": {
+					"effect": "step"
+				}
+			},
 			"loop": true
 		},
 		"animation.prime_enchanter.fury_fist": {
