@@ -127,6 +127,11 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     private int cooldown = MOVE_COOLDOWN;
     private int previewIndex;
     private boolean spawnPending;
+    /** How many of the {@link #STAGGER_AT} health thresholds have already staggered the boss. */
+    private int staggersDone;
+
+    /** Health fractions that stagger the boss once each, interrupting whatever it is doing. */
+    private static final float[] STAGGER_AT = {0.75F, 0.5F, 0.25F};
 
     private static final class Mine {
         final Vec3 pos;
@@ -613,10 +618,27 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
             return false;
         }
         boolean hurt = super.hurt(source, amount);
-        if (hurt && !this.level().isClientSide() && !isBusy() && this.isAlive() && amount >= 20.0F) {
+        if (hurt && !this.level().isClientSide() && this.isAlive() && this.staggersDone < STAGGER_AT.length
+                && this.getHealth() <= this.getMaxHealth() * STAGGER_AT[this.staggersDone]) {
+            while (this.staggersDone < STAGGER_AT.length
+                    && this.getHealth() <= this.getMaxHealth() * STAGGER_AT[this.staggersDone]) {
+                this.staggersDone++;
+            }
             startMove(Move.STAGGERED);
         }
         return hurt;
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+        tag.putInt("StaggersDone", this.staggersDone);
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+        this.staggersDone = tag.getInt("StaggersDone");
     }
 
     @Override
