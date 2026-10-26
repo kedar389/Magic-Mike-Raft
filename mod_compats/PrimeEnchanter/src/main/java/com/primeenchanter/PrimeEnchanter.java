@@ -19,6 +19,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
@@ -75,6 +76,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     private static final float GAME_DAMAGE_UNIT = 25.0F;
     private static final double UE_TO_BLOCKS = 1.4 / 100.0;
     private static final int MINE_FUSE = 23;
+    private static final float MAX_TURN_PER_TICK = 25.0F;
     /** Ticks without a target before the gauntlets go dark. */
     private static final int GAUNTLETS_IDLE_OFF = 100;
     private static final EntityDataAccessor<Boolean> GAUNTLETS_LIT =
@@ -227,6 +229,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
         }
         if (this.move != null && this.move != Move.DEATH) {
             this.getNavigation().stop();
+            faceTarget();
             onMoveTick(this.move, this.moveTick);
             if (++this.moveTick >= this.move.length) {
                 this.move = null;
@@ -516,6 +519,24 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
             burst(ParticleTypes.SNOWFLAKE, handPosition(false), 30, 0.4);
             burst(ParticleTypes.ELECTRIC_SPARK, handPosition(true), 30, 0.4);
         }
+    }
+
+    /**
+     * Rooted moves skip vanilla body turning, so attacks keep aiming at the target the way the game's
+     * AN_FocusOnTarget notifies do. Hit boxes and lunges use this facing.
+     */
+    private void faceTarget() {
+        LivingEntity target = this.getTarget();
+        if (target == null || this.move == Move.STAGGERED) {
+            return;
+        }
+        double dx = target.getX() - this.getX();
+        double dz = target.getZ() - this.getZ();
+        float wanted = (float) (Mth.atan2(dz, dx) * Mth.RAD_TO_DEG) - 90.0F;
+        float yaw = Mth.approachDegrees(this.getYRot(), wanted, MAX_TURN_PER_TICK);
+        this.setYRot(yaw);
+        this.setYBodyRot(yaw);
+        this.setYHeadRot(yaw);
     }
 
     private void tickMines() {
