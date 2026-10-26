@@ -8,6 +8,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.layer.AutoGlowingGeoLayer;
@@ -17,7 +18,7 @@ import software.bernie.geckolib.renderer.layer.AutoGlowingGeoLayer;
 public class PrimeEnchanterRenderer extends GeoEntityRenderer<PrimeEnchanter> {
 
     public PrimeEnchanterRenderer(EntityRendererProvider.Context context) {
-        super(context, new DefaultedEntityGeoModel<>(new ResourceLocation(PrimeEnchanterMod.MOD_ID, "prime_enchanter")));
+        super(context, new Model());
         addRenderLayer(new AutoGlowingGeoLayer<>(this));
         withScale(1.4F);
         this.shadowRadius = 1.0F;
@@ -27,6 +28,24 @@ public class PrimeEnchanterRenderer extends GeoEntityRenderer<PrimeEnchanter> {
     @Override
     protected float getDeathMaxRotation(PrimeEnchanter entity) {
         return 0.0F;
+    }
+
+    /** Lit gauntlets stay visible over whatever scale the playing animation gives them. */
+    private static final class Model extends DefaultedEntityGeoModel<PrimeEnchanter> {
+
+        Model() {
+            super(new ResourceLocation(PrimeEnchanterMod.MOD_ID, "prime_enchanter"));
+        }
+
+        @Override
+        public void setCustomAnimations(PrimeEnchanter animatable, long instanceId, AnimationState<PrimeEnchanter> state) {
+            super.setCustomAnimations(animatable, instanceId, state);
+            if (animatable.gauntletsLit()) {
+                for (String bone : new String[] {"gauntlet_ice", "gauntlet_lightning"}) {
+                    getBone(bone).ifPresent(b -> b.updateScale(1.0F, 1.0F, 1.0F));
+                }
+            }
+        }
     }
 
     @SubscribeEvent

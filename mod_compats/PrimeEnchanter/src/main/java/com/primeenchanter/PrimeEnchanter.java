@@ -11,6 +11,9 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -72,6 +75,10 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     private static final float GAME_DAMAGE_UNIT = 25.0F;
     private static final double UE_TO_BLOCKS = 1.4 / 100.0;
     private static final int MINE_FUSE = 23;
+    /** Ticks without a target before the gauntlets go dark. */
+    private static final int GAUNTLETS_IDLE_OFF = 100;
+    private static final EntityDataAccessor<Boolean> GAUNTLETS_LIT =
+            SynchedEntityData.defineId(PrimeEnchanter.class, EntityDataSerializers.BOOLEAN);
 
     /** One animation-driven action. Lengths match the animation file, in ticks. */
     enum Move {
@@ -129,6 +136,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     private boolean spawnPending;
     /** How many of the {@link #STAGGER_AT} health thresholds have already staggered the boss. */
     private int staggersDone;
+    private int ticksWithoutTarget;
 
     /** Health fractions that stagger the boss once each, interrupting whatever it is doing. */
     private static final float[] STAGGER_AT = {0.75F, 0.5F, 0.25F};
@@ -212,6 +220,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
             return;
         }
         tickMines();
+        tickGauntlets();
         if (this.spawnPending && this.tickCount >= 2) {
             this.spawnPending = false;
             startMove(Move.SPAWN);
@@ -266,10 +275,10 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
                     sound(BossSound.FURY_FIST_HIT_5_VOCAL);
                 }
                 if (t >= 13 && t <= 16) {
-                    hitWindow(armStrike(false), 1.6, 12, 1500, Element.NONE);
+                    hitWindow(armStrike(false), 1.6, 12, 1500, gauntletsLit() ? Element.ICE : Element.NONE);
                 }
                 if (t >= 25 && t <= 28) {
-                    hitWindow(armStrike(true), 1.6, 12, 1500, Element.NONE);
+                    hitWindow(armStrike(true), 1.6, 12, 1500, gauntletsLit() ? Element.LIGHTNING : Element.NONE);
                 }
                 if (t == 26) {
                     this.struck.clear();
@@ -478,6 +487,34 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
                 }
             }
             default -> { }
+        }
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(GAUNTLETS_LIT, false);
+    }
+
+    /** Both gauntlets enchanted: the model shows them regardless of the playing animation. */
+    public boolean gauntletsLit() {
+        return this.entityData.get(GAUNTLETS_LIT);
+    }
+
+    /**
+     * The boss enchants its hands whenever it can: as soon as it has a target and is free to act. A stagger knocks the
+     * enchantment out; losing the target for {@link #GAUNTLETS_IDLE_OFF} ticks lets it fade.
+     */
+    private void tickGauntlets() {
+        boolean lit = gauntletsLit();
+        this.ticksWithoutTarget = this.getTarget() == null ? this.ticksWithoutTarget + 1 : 0;
+        if (lit && (this.move == Move.STAGGERED || this.move == Move.DEATH || this.ticksWithoutTarget > GAUNTLETS_IDLE_OFF)) {
+            this.entityData.set(GAUNTLETS_LIT, false);
+        } else if (!lit && this.getTarget() != null && this.isAlive() && !isBusy()) {
+            this.entityData.set(GAUNTLETS_LIT, true);
+            sound(BossSound.FURY_FIST_POWER_UP);
+            burst(ParticleTypes.SNOWFLAKE, handPosition(false), 30, 0.4);
+            burst(ParticleTypes.ELECTRIC_SPARK, handPosition(true), 30, 0.4);
         }
     }
 
