@@ -1,8 +1,10 @@
 package com.primeenchanter;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import javax.annotation.Nullable;
@@ -72,7 +74,8 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     private static final RawAnimation IDLE = RawAnimation.begin().thenLoop("animation.prime_enchanter.idle");
     private static final RawAnimation WALK = RawAnimation.begin().thenLoop("animation.prime_enchanter.walk");
     private static final int DEATH_TICKS = 113;
-    private static final int MOVE_COOLDOWN = 30;
+    /** Pause between two moves, so one never starts on the tick the last one ended. */
+    private static final int MOVE_GAP = 10;
     private static final float GAME_DAMAGE_UNIT = 25.0F;
     private static final double UE_TO_BLOCKS = 1.4 / 100.0;
     /** IceMine GA_TimedAOE Time = 2 s. */
@@ -89,26 +92,24 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
 
     /** One animation-driven action. Lengths match the animation file, in ticks. */
     enum Move {
-        FURY_FIST("fury_fist", 138, true),
-        FORWARD_STRIKE("forward_strike", 50, true),
-        LIGHTNING_SLAM("lightning_slam", 88, true),
-        LAUNCH("launch", 79, false),
-        OVERCHARGE("overcharge", 72, false),
-        SUMMON("summon", 45, false),
-        ICEMINES("icemines", 45, false),
-        SPAWN("spawn", 47, false),
-        STAGGERED("staggered", 45, false),
-        DEATH("death", DEATH_TICKS, false);
+        FURY_FIST("fury_fist", 138),
+        FORWARD_STRIKE("forward_strike", 50),
+        LIGHTNING_SLAM("lightning_slam", 88),
+        LAUNCH("launch", 79),
+        OVERCHARGE("overcharge", 72),
+        SUMMON("summon", 45),
+        ICEMINES("icemines", 45),
+        SPAWN("spawn", 47),
+        STAGGERED("staggered", 45),
+        DEATH("death", DEATH_TICKS);
 
         final String id;
         final int length;
-        final boolean melee;
         final RawAnimation animation;
 
-        Move(String id, int length, boolean melee) {
+        Move(String id, int length) {
             this.id = id;
             this.length = length;
-            this.melee = melee;
             String name = "animation.prime_enchanter." + id;
             this.animation = id.equals("death")
                     ? RawAnimation.begin().thenPlayAndHold(name)
@@ -118,8 +119,10 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
 
     private enum Element { NONE, ICE, LIGHTNING }
 
-    private static final Move[] MELEE = {Move.FURY_FIST, Move.FORWARD_STRIKE, Move.LIGHTNING_SLAM};
-    private static final Move[] RANGED = {Move.LAUNCH, Move.OVERCHARGE, Move.SUMMON, Move.ICEMINES};
+    /** Ability cooldowns from DT_MobType3Definition, in ticks; they start when the move ends. */
+    private static final Map<Move, Integer> COOLDOWNS = Map.of(
+            Move.FORWARD_STRIKE, 26, Move.FURY_FIST, 70, Move.LIGHTNING_SLAM, 190,
+            Move.OVERCHARGE, 360, Move.SUMMON, 800, Move.LAUNCH, 120);
     private static final Move[] PREVIEW = {
         Move.FURY_FIST, Move.FORWARD_STRIKE, Move.LIGHTNING_SLAM, Move.LAUNCH, Move.OVERCHARGE,
         Move.SUMMON, Move.ICEMINES, Move.SPAWN, Move.STAGGERED,
@@ -138,7 +141,12 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     @Nullable
     private Move move;
     private int moveTick;
-    private int cooldown = MOVE_COOLDOWN;
+    private int gap = MOVE_GAP;
+    /** Tick count at which each move may be chosen again. */
+    private final Map<Move, Integer> readyAt = new EnumMap<>(Move.class);
+    /** Move chained after the current one: Overcharge after Lightning Slam, Launch after Overcharge. */
+    @Nullable
+    private Move chained;
     private int previewIndex;
     private boolean spawnPending;
     /** How many of the {@link #STAGGER_AT} health thresholds have already staggered the boss. */
@@ -198,6 +206,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
         }
         this.move = next;
         this.moveTick = 0;
+        this.chained = null;
         this.struck.clear();
         this.getNavigation().stop();
         this.triggerAnim(CONTROLLER, next.id);
@@ -213,14 +222,63 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
                 || (this.move == Move.OVERCHARGE && this.moveTick >= 2);
     }
 
-    /** MeleeAttackGoal calls this when in reach: open a melee move instead of a plain hit. */
+    /** No plain melee hits: MeleeAttackGoal only chases, every attack is a move picked by {@link #chooseMove}. */
     @Override
     public boolean doHurtTarget(Entity target) {
-        if (isBusy() || this.cooldown > 0) {
-            return false;
+        return false;
+    }
+
+    private boolean ready(Move candidate) {
+        return this.tickCount >= this.readyAt.getOrDefault(candidate, 0);
+    }
+
+    /**
+     * ST_FrostbiteDesertBoss, Aggressive branch, tried in order: Lightning Slam (HP <= 67 %), Overcharge (HP <= 50 %),
+     * Forward Strike, Fury Fist, Summon Illagers (HP <= 98 %), Launch; otherwise keep chasing. Ranges are the abilities'
+     * TargetDistanceMax/Min in UE units at the 1.4 render scale, measured from the boss's edge.
+     */
+    @Nullable
+    private Move chooseMove(LivingEntity target) {
+        float health = this.getHealth() / this.getMaxHealth();
+        double reach = this.distanceTo(target) - this.getBbWidth() / 2;
+        if (health <= 0.67F && ready(Move.LIGHTNING_SLAM) && reach <= 400 * UE_TO_BLOCKS) {
+            return Move.LIGHTNING_SLAM;
         }
-        startMove(MELEE[this.random.nextInt(MELEE.length)]);
-        return true;
+        if (health <= 0.5F && ready(Move.OVERCHARGE)) {
+            return Move.OVERCHARGE;
+        }
+        if (ready(Move.FORWARD_STRIKE) && reach <= 250 * UE_TO_BLOCKS) {
+            return Move.FORWARD_STRIKE;
+        }
+        if (ready(Move.FURY_FIST) && reach <= 150 * UE_TO_BLOCKS) {
+            return Move.FURY_FIST;
+        }
+        if (health <= 0.98F && ready(Move.SUMMON)) {
+            return Move.SUMMON;
+        }
+        if (ready(Move.LAUNCH) && reach >= 500 * UE_TO_BLOCKS && reach <= 3000 * UE_TO_BLOCKS && this.hasLineOfSight(target)) {
+            return Move.LAUNCH;
+        }
+        return null;
+    }
+
+    private void endMove(Move finished) {
+        Integer cooldown = COOLDOWNS.get(finished);
+        if (cooldown != null) {
+            this.readyAt.put(finished, this.tickCount + cooldown);
+        }
+        this.move = null;
+        this.gap = MOVE_GAP;
+        Move next = this.chained;
+        this.chained = null;
+        if (finished == Move.LIGHTNING_SLAM && this.getHealth() <= this.getMaxHealth() * 0.5F && ready(Move.OVERCHARGE)) {
+            next = Move.OVERCHARGE;
+        } else if (finished == Move.OVERCHARGE) {
+            next = Move.LAUNCH; // EmergencyLaunch
+        }
+        if (next != null && this.getTarget() != null && this.isAlive()) {
+            startMove(next);
+        }
     }
 
     @Override
@@ -240,19 +298,20 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
             faceTarget();
             onMoveTick(this.move, this.moveTick);
             if (++this.moveTick >= this.move.length) {
-                this.move = null;
-                this.cooldown = MOVE_COOLDOWN;
+                endMove(this.move);
             }
             return;
         }
-        if (this.cooldown > 0) {
-            this.cooldown--;
+        if (this.gap > 0) {
+            this.gap--;
             return;
         }
         LivingEntity target = this.getTarget();
-        if (target != null && this.distanceTo(target) > 6.0F && this.hasLineOfSight(target)
-                && this.random.nextInt(20) == 0) {
-            startMove(RANGED[this.random.nextInt(RANGED.length)]);
+        if (target != null) {
+            Move next = chooseMove(target);
+            if (next != null) {
+                startMove(next);
+            }
         }
     }
 
