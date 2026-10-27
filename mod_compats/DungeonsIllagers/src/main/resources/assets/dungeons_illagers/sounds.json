@@ -338,150 +338,327 @@
 	"entity.dungeons_illagers.geomancer.ambient": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.ambient",
 		"sounds": [
-			"dungeons_illagers:geomancer/ambient/1",
-			"dungeons_illagers:geomancer/ambient/2",
-			"dungeons_illagers:geomancer/ambient/3",
-			"dungeons_illagers:geomancer/ambient/4",
-			"dungeons_illagers:geomancer/ambient/5",
-			"dungeons_illagers:geomancer/ambient/6"
+			{
+				"name": "dungeons_illagers:geomancer/ambient/1",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/ambient/2",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/ambient/3",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/ambient/4",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/ambient/5",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/ambient/6",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.geomancer.hurt": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.hurt",
 		"sounds": [
-			"dungeons_illagers:geomancer/hurt/1",
-			"dungeons_illagers:geomancer/hurt/2",
-			"dungeons_illagers:geomancer/hurt/3",
-			"dungeons_illagers:geomancer/hurt/4"
+			{
+				"name": "dungeons_illagers:geomancer/hurt/1",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/hurt/2",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/hurt/3",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/hurt/4",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.geomancer.death": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.death",
 		"sounds": [
-			"dungeons_illagers:geomancer/death/1",
-			"dungeons_illagers:geomancer/death/2",
-			"dungeons_illagers:geomancer/death/3",
-			"dungeons_illagers:geomancer/death/4"
+			{
+				"name": "dungeons_illagers:geomancer/death/1",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/death/2",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/death/3",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/death/4",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.geomancer.spawn": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.spawn",
 		"sounds": [
-			"dungeons_illagers:geomancer/spawn/1",
-			"dungeons_illagers:geomancer/spawn/2"
+			{
+				"name": "dungeons_illagers:geomancer/spawn/1",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/spawn/2",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.geomancer.cane": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.cane",
 		"sounds": [
-			"dungeons_illagers:geomancer/cane/1"
+			{
+				"name": "dungeons_illagers:geomancer/cane/1",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.geomancer.pre_attack": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.pre_attack",
 		"sounds": [
-			"dungeons_illagers:geomancer/pre_attack/1",
-			"dungeons_illagers:geomancer/pre_attack/2"
+			{
+				"name": "dungeons_illagers:geomancer/pre_attack/1",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/pre_attack/2",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.geomancer.spell_bomb": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.spell_bomb",
 		"sounds": [
-			"dungeons_illagers:geomancer/spell_bomb/1",
-			"dungeons_illagers:geomancer/spell_bomb/2",
-			"dungeons_illagers:geomancer/spell_bomb/3",
-			"dungeons_illagers:geomancer/spell_bomb/4",
-			"dungeons_illagers:geomancer/spell_bomb/5"
+			{
+				"name": "dungeons_illagers:geomancer/spell_bomb/1",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/spell_bomb/2",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/spell_bomb/3",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/spell_bomb/4",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/spell_bomb/5",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.geomancer.spell_wall": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.spell_wall",
 		"sounds": [
-			"dungeons_illagers:geomancer/spell_wall/1",
-			"dungeons_illagers:geomancer/spell_wall/2",
-			"dungeons_illagers:geomancer/spell_wall/3",
-			"dungeons_illagers:geomancer/spell_wall/4",
-			"dungeons_illagers:geomancer/spell_wall/5"
+			{
+				"name": "dungeons_illagers:geomancer/spell_wall/1",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/spell_wall/2",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/spell_wall/3",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/spell_wall/4",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/spell_wall/5",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.geomancer.bomb_spawn": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.bomb_spawn",
 		"sounds": [
-			"dungeons_illagers:geomancer/bomb_spawn/1",
-			"dungeons_illagers:geomancer/bomb_spawn/2",
-			"dungeons_illagers:geomancer/bomb_spawn/3",
-			"dungeons_illagers:geomancer/bomb_spawn/4",
-			"dungeons_illagers:geomancer/bomb_spawn/5",
-			"dungeons_illagers:geomancer/bomb_spawn/6"
+			{
+				"name": "dungeons_illagers:geomancer/bomb_spawn/1",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/bomb_spawn/2",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/bomb_spawn/3",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/bomb_spawn/4",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/bomb_spawn/5",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/bomb_spawn/6",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.geomancer.bomb_explode": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.bomb_explode",
 		"sounds": [
-			"dungeons_illagers:geomancer/bomb_explode/1",
-			"dungeons_illagers:geomancer/bomb_explode/2",
-			"dungeons_illagers:geomancer/bomb_explode/3",
-			"dungeons_illagers:geomancer/bomb_explode/4"
+			{
+				"name": "dungeons_illagers:geomancer/bomb_explode/1",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/bomb_explode/2",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/bomb_explode/3",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/bomb_explode/4",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.geomancer.pillar_appear": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.pillar_appear",
 		"sounds": [
-			"dungeons_illagers:geomancer/pillar_appear/1",
-			"dungeons_illagers:geomancer/pillar_appear/2",
-			"dungeons_illagers:geomancer/pillar_appear/3"
+			{
+				"name": "dungeons_illagers:geomancer/pillar_appear/1",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/pillar_appear/2",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/pillar_appear/3",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.geomancer.pillar_spawned": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.pillar_spawned",
 		"sounds": [
-			"dungeons_illagers:geomancer/pillar_spawned/1",
-			"dungeons_illagers:geomancer/pillar_spawned/2",
-			"dungeons_illagers:geomancer/pillar_spawned/3"
+			{
+				"name": "dungeons_illagers:geomancer/pillar_spawned/1",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/pillar_spawned/2",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/pillar_spawned/3",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.geomancer.wall_spawn": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.wall_spawn",
 		"sounds": [
-			"dungeons_illagers:geomancer/wall_spawn/1",
-			"dungeons_illagers:geomancer/wall_spawn/2",
-			"dungeons_illagers:geomancer/wall_spawn/3"
+			{
+				"name": "dungeons_illagers:geomancer/wall_spawn/1",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/wall_spawn/2",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/wall_spawn/3",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.geomancer.pillar_hit": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.pillar_hit",
 		"sounds": [
-			"dungeons_illagers:geomancer/pillar_hit/1",
-			"dungeons_illagers:geomancer/pillar_hit/2",
-			"dungeons_illagers:geomancer/pillar_hit/3"
+			{
+				"name": "dungeons_illagers:geomancer/pillar_hit/1",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/pillar_hit/2",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/pillar_hit/3",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.geomancer.pillar_crumble": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.pillar_crumble",
 		"sounds": [
-			"dungeons_illagers:geomancer/pillar_crumble/1",
-			"dungeons_illagers:geomancer/pillar_crumble/2",
-			"dungeons_illagers:geomancer/pillar_crumble/3"
+			{
+				"name": "dungeons_illagers:geomancer/pillar_crumble/1",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/pillar_crumble/2",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/pillar_crumble/3",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.geomancer.pillar_disappear": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.pillar_disappear",
 		"sounds": [
-			"dungeons_illagers:geomancer/pillar_disappear/1"
+			{
+				"name": "dungeons_illagers:geomancer/pillar_disappear/1",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.geomancer.stunned_start": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.stunned_start",
 		"sounds": [
-			"dungeons_illagers:geomancer/stunned_start/1",
-			"dungeons_illagers:geomancer/stunned_start/2"
+			{
+				"name": "dungeons_illagers:geomancer/stunned_start/1",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/stunned_start/2",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.geomancer.stunned_end": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.stunned_end",
 		"sounds": [
-			"dungeons_illagers:geomancer/stunned_end/1",
-			"dungeons_illagers:geomancer/stunned_end/2"
+			{
+				"name": "dungeons_illagers:geomancer/stunned_end/1",
+				"volume": 0.7
+			},
+			{
+				"name": "dungeons_illagers:geomancer/stunned_end/2",
+				"volume": 0.7
+			}
 		]
 	},
 	"entity.dungeons_illagers.excavator.ambient": {
