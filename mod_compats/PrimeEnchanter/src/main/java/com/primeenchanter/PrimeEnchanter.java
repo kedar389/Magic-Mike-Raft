@@ -75,7 +75,12 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     private static final int MOVE_COOLDOWN = 30;
     private static final float GAME_DAMAGE_UNIT = 25.0F;
     private static final double UE_TO_BLOCKS = 1.4 / 100.0;
-    private static final int MINE_FUSE = 23;
+    /** IceMine GA_TimedAOE Time = 2 s. */
+    private static final int MINE_FUSE = 40;
+    /** Forward Strike trail (GA_ActorTrail): 3 s, at most 15 mines, one per 8 UE units moved. */
+    private static final int TRAIL_TICKS = 60;
+    private static final int TRAIL_MAX_MINES = 15;
+    private static final double TRAIL_STEP = 8 * 1.4 / 100.0;
     private static final float MAX_TURN_PER_TICK = 25.0F;
     /** Ticks without a target before the gauntlets go dark. */
     private static final int GAUNTLETS_IDLE_OFF = 100;
@@ -139,6 +144,9 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     /** How many of the {@link #STAGGER_AT} health thresholds have already staggered the boss. */
     private int staggersDone;
     private int ticksWithoutTarget;
+    @Nullable
+    private Vec3 trailFrom;
+    private int trailMines;
 
     /** Health fractions that stagger the boss once each, interrupting whatever it is doing. */
     private static final float[] STAGGER_AT = {0.75F, 0.5F, 0.25F};
@@ -336,6 +344,13 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
                 }
             }
             case FORWARD_STRIKE -> {
+                if (t == 0) {
+                    this.trailFrom = this.position();
+                    this.trailMines = 0;
+                }
+                if (t < TRAIL_TICKS) {
+                    tickIceTrail();
+                }
                 if (t == 3) {
                     sound(BossSound.FORWARD_STRIKE_TELEGRAPH);
                 }
@@ -539,12 +554,13 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
         this.setYHeadRot(yaw);
     }
 
+    /** IceMine (DT_MobPropActorDefinition): 8 damage in range 250, 5 splash in range 350, Freezing. */
     private void tickMines() {
         for (var it = this.mines.iterator(); it.hasNext(); ) {
             Mine mine = it.next();
             if (mine.fuse-- > 0) {
                 if (mine.fuse % 4 == 0) {
-                    ring(mine.pos, 1.2);
+                    ring(mine.pos, 1.0);
                 }
                 continue;
             }
@@ -552,14 +568,33 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
             this.level().playSound(null, mine.pos.x, mine.pos.y, mine.pos.z, BossSound.ICE_MINE_EXPLODE.get(),
                     this.getSoundSource(), 1.5F, 1.0F);
             burst(ParticleTypes.SNOWFLAKE, mine.pos, 50, 1.0);
-            this.struck.clear();
-            hitWindow(mine.pos, 1.8, 18, 1500, Element.ICE);
+            Set<UUID> hit = new HashSet<>();
+            strike(mine.pos, 250 * UE_TO_BLOCKS, 8, 0, Element.ICE, hit);
+            strike(mine.pos, 350 * UE_TO_BLOCKS, 5, 0, Element.ICE, hit);
         }
     }
 
     private void placeMine(Vec3 at) {
         this.mines.add(new Mine(at));
-        this.level().playSound(null, at.x, at.y, at.z, BossSound.ICE_MINE_SPAWN.get(), this.getSoundSource(), 1.2F, 1.0F);
+        this.level().playSound(null, at.x, at.y, at.z, BossSound.ICE_MINE_SPAWN.get(), this.getSoundSource(), 0.8F, 1.0F);
+    }
+
+    /**
+     * Forward Strike's GA_ActorTrail: while the boss moves during the strike it drops an ice mine every tick, scattered
+     * across a 300-unit-wide strip and snapped to the ground, at most {@link #TRAIL_MAX_MINES}.
+     */
+    private void tickIceTrail() {
+        if (this.trailMines >= TRAIL_MAX_MINES || this.trailFrom == null
+                || this.position().distanceToSqr(this.trailFrom) < TRAIL_STEP * TRAIL_STEP) {
+            return;
+        }
+        this.trailFrom = this.position();
+        double offset = (this.random.nextDouble() - 0.5) * 300 * UE_TO_BLOCKS;
+        Vec3 at = this.position().add(side(false).scale(offset));
+        BlockPos column = BlockPos.containing(at);
+        double ground = this.level().getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, column).getY();
+        placeMine(new Vec3(at.x, Math.abs(ground - this.getY()) < 3 ? ground : this.getY(), at.z));
+        this.trailMines++;
     }
 
     /** Boss sounds carry far: volume 2.5 is audible to about 40 blocks. */
@@ -596,20 +631,27 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
      * {@code gameDamage} and {@code knockback} are the montage's DamageValue and Knockback.Strength.
      */
     private void hitWindow(Vec3 center, double radius, float gameDamage, float knockback, Element element) {
+        strike(center, radius, gameDamage, knockback, element, this.struck);
+    }
+
+    /** Hits every target in range not yet in {@code struck}; no push when {@code knockback} is 0. */
+    private void strike(Vec3 center, double radius, float gameDamage, float knockback, Element element, Set<UUID> struck) {
         float damage = (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE) * gameDamage / GAME_DAMAGE_UNIT;
-        double push = 0.4 + knockback / 4000.0 * 0.8;
+        double push = knockback > 0 ? 0.4 + knockback / 4000.0 * 0.8 : 0;
         AABB box = new AABB(center, center).inflate(radius, 2.0, radius);
         for (LivingEntity victim : this.level().getEntitiesOfClass(LivingEntity.class, box,
-                e -> e != this && !this.isAlliedTo(e) && e.isAlive() && !this.struck.contains(e.getUUID()))) {
-            this.struck.add(victim.getUUID());
+                e -> e != this && !this.isAlliedTo(e) && e.isAlive() && !struck.contains(e.getUUID()))) {
+            struck.add(victim.getUUID());
             if (victim.hurt(this.damageSources().mobAttack(this), damage)) {
                 BossSound hitSound = this.move == Move.LIGHTNING_SLAM ? BossSound.LIGHTNING_SLAM_RIPPLE_HIT
                         : this.move == Move.OVERCHARGE ? BossSound.OVERCHARGE_FLOOR_DAMAGE
                         : BossSound.HITMARKER;
                 this.level().playSound(null, victim.getX(), victim.getY(), victim.getZ(), hitSound.get(),
                         this.getSoundSource(), 1.0F, 1.0F);
-                Vec3 dir = victim.position().subtract(this.position()).normalize().scale(push);
-                victim.push(dir.x, 0.35, dir.z);
+                if (push > 0) {
+                    Vec3 dir = victim.position().subtract(this.position()).normalize().scale(push);
+                    victim.push(dir.x, 0.35, dir.z);
+                }
                 if (element == Element.ICE) {
                     victim.setTicksFrozen(Math.max(victim.getTicksFrozen(), victim.getTicksRequiredToFreeze() + 100));
                 }
