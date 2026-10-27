@@ -719,7 +719,8 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     /** Hits every target in range not yet in {@code struck}; no push when {@code knockback} is 0. */
     private void strike(Vec3 center, double radius, float gameDamage, float knockback, Element element, Set<UUID> struck) {
         float damage = (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE) * gameDamage / GAME_DAMAGE_UNIT;
-        double push = knockback > 0 ? 0.4 + knockback / 4000.0 * 0.8 : 0;
+        // Game strength 4000 (Forward Strike) -> 0.6; a vanilla mob hit is about 0.4
+        double push = knockback > 0 ? 0.25 + knockback / 4000.0 * 0.35 : 0;
         AABB box = new AABB(center, center).inflate(radius, 2.0, radius);
         for (LivingEntity victim : this.level().getEntitiesOfClass(LivingEntity.class, box,
                 e -> e != this && !this.isAlliedTo(e) && e.isAlive() && !struck.contains(e.getUUID()))) {
