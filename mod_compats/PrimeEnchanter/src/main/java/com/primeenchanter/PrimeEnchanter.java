@@ -12,6 +12,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.NbtUtils;
+import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -159,6 +162,8 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     private boolean spawnPending;
     /** How many of the {@link #STAGGER_AT} health thresholds have already staggered the boss. */
     private int staggersDone;
+    /** The last summoned wave; Summon waits until every one of them is dead or gone. */
+    private final List<UUID> wave = new ArrayList<>();
     private int ticksWithoutTarget;
     @Nullable
     private Vec3 trailFrom;
@@ -264,13 +269,20 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
         if (ready(Move.FURY_FIST) && reach <= 150 * UE_TO_BLOCKS) {
             return Move.FURY_FIST;
         }
-        if (health <= 0.98F && ready(Move.SUMMON)) {
+        if (health <= 0.98F && ready(Move.SUMMON) && !waveAlive()) {
             return Move.SUMMON;
         }
         if (ready(Move.LAUNCH) && reach >= 500 * UE_TO_BLOCKS && reach <= 3000 * UE_TO_BLOCKS && this.hasLineOfSight(target)) {
             return Move.LAUNCH;
         }
         return null;
+    }
+
+    private boolean waveAlive() {
+        if (this.level() instanceof ServerLevel server) {
+            this.wave.removeIf(id -> !(server.getEntity(id) instanceof LivingEntity minion) || !minion.isAlive());
+        }
+        return !this.wave.isEmpty();
     }
 
     private void endMove(Move finished) {
@@ -819,6 +831,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
         minion.finalizeSpawn(server, server.getCurrentDifficultyAt(pos), MobSpawnType.MOB_SUMMONED, null, null);
         minion.setTarget(this.getTarget());
         server.addFreshEntity(minion);
+        this.wave.add(minion.getUUID());
         burst(ParticleTypes.SOUL_FIRE_FLAME, minion.position(), 30, 0.5);
     }
 
@@ -853,12 +866,17 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("StaggersDone", this.staggersDone);
+        ListTag waveTag = new ListTag();
+        this.wave.forEach(id -> waveTag.add(NbtUtils.createUUID(id)));
+        tag.put("Wave", waveTag);
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.staggersDone = tag.getInt("StaggersDone");
+        this.wave.clear();
+        tag.getList("Wave", Tag.TAG_INT_ARRAY).forEach(id -> this.wave.add(NbtUtils.loadUUID(id)));
     }
 
     @Override
