@@ -74,6 +74,11 @@ public abstract class MoveMob extends Monster implements GeoEntity {
         public static Move of(String mob, String id, int length) {
             return new Move(id, length, RawAnimation.begin().thenPlay("animation." + mob + "." + id));
         }
+
+        /** A move whose last frame is held (death). */
+        public static Move held(String mob, String id, int length) {
+            return new Move(id, length, RawAnimation.begin().thenPlayAndHold("animation." + mob + "." + id));
+        }
     }
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
@@ -127,6 +132,12 @@ public abstract class MoveMob extends Monster implements GeoEntity {
 
     /** Health fractions that stagger the mob once each, interrupting whatever it is doing. */
     protected abstract float[] staggerAt();
+
+    /** Death animation played and held until the body is removed; null for vanilla's topple. */
+    @Nullable
+    protected Move deathMove() {
+        return null;
+    }
 
     /** Movement while free: chase, keep range or retreat. Called on ticks no move is playing. */
     protected void tickMovement(@Nullable LivingEntity target) {
@@ -210,6 +221,9 @@ public abstract class MoveMob extends Monster implements GeoEntity {
             if (spawnMove() != null) {
                 startMove(spawnMove());
             }
+        }
+        if (this.move != null && this.move == deathMove()) {
+            return;
         }
         if (this.move != null) {
             this.getNavigation().stop();
@@ -425,6 +439,32 @@ public abstract class MoveMob extends Monster implements GeoEntity {
     }
 
     @Override
+    public void die(DamageSource source) {
+        super.die(source);
+        Move death = deathMove();
+        if (death != null) {
+            this.move = death;
+            this.moveTick = 0;
+            this.triggerAnim(CONTROLLER, death.id());
+        }
+    }
+
+    /** With a death animation, hold the body for its length instead of vanilla's 20-tick topple. */
+    @Override
+    protected void tickDeath() {
+        Move death = deathMove();
+        if (death == null) {
+            super.tickDeath();
+            return;
+        }
+        this.deathTime++;
+        if (this.deathTime >= death.length() && !this.level().isClientSide() && !this.isRemoved()) {
+            this.level().broadcastEntityEvent(this, (byte) 60);
+            this.remove(RemovalReason.KILLED);
+        }
+    }
+
+    @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("StaggersDone", this.staggersDone);
@@ -445,7 +485,7 @@ public abstract class MoveMob extends Monster implements GeoEntity {
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         if (player.isCreative() && player.isShiftKeyDown() && player.getItemInHand(hand).isEmpty()) {
             if (!this.level().isClientSide()) {
-                List<Move> all = moves();
+                List<Move> all = moves().stream().filter(m -> m != deathMove()).toList();
                 Move next = all.get(this.previewIndex++ % all.size());
                 startMove(next);
                 player.displayClientMessage(Component.literal(this.getName().getString() + ": " + next.id()), true);
@@ -473,6 +513,11 @@ public abstract class MoveMob extends Monster implements GeoEntity {
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         AnimationController<MoveMob> controller = new AnimationController<>(this, CONTROLLER, 5,
                 state -> {
+                    // the server's death trigger can lose to a move animation already playing; the client starts it
+                    Move death = deathMove();
+                    if (death != null && this.isDeadOrDying() && state.getController().getTriggeredAnimation() != death.animation()) {
+                        state.getController().tryTriggerAnimation(death.id());
+                    }
                     state.setAndContinue(baseAnimation(state));
                     return PlayState.CONTINUE;
                 });

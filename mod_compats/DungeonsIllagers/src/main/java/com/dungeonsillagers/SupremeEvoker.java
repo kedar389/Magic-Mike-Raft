@@ -56,8 +56,10 @@ public class SupremeEvoker extends MoveMob {
     static final Move TELEPORT = Move.of(NAME, "teleport", 40);
     static final Move SPAWN = Move.of(NAME, "spawn", 50);
     static final Move STAGGERED = Move.of(NAME, "staggered", 40);
+    /** BP_Illager_SupremeEvoker_Death: FrostbiteDesert_Boss_Death played on his mesh. */
+    static final Move DEATH = Move.held(NAME, "death", 113);
     private static final List<Move> MOVES =
-            List.of(ENCHANTED_PROJECTILES, SUMMON, SUMMON_VEX, SHIELD, FANG_TRAP, TELEPORT, SPAWN, STAGGERED);
+            List.of(ENCHANTED_PROJECTILES, SUMMON, SUMMON_VEX, SHIELD, FANG_TRAP, TELEPORT, SPAWN, STAGGERED, DEATH);
 
     /** Health scale: game 1000 -> 400, as the Prime Enchanter. The bubble (EvokerSoulShield) holds 50 game health. */
     private static final float HEALTH_SCALE = 400.0F / 1000.0F;
@@ -131,6 +133,11 @@ public class SupremeEvoker extends MoveMob {
     @Override
     protected float[] staggerAt() {
         return new float[] {0.75F, 0.5F, 0.25F};
+    }
+
+    @Override
+    protected Move deathMove() {
+        return DEATH;
     }
 
     /** CooldownDuration of each ability, in ticks; they start when the move ends. */

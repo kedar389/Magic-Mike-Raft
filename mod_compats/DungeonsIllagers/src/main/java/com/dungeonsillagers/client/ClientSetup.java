@@ -43,7 +43,13 @@ public final class ClientSetup {
         event.registerEntityRenderer(DungeonsIllagersMod.EXCAVATOR.get(), ExcavatorRenderer::new);
         event.registerEntityRenderer(DungeonsIllagersMod.ROYAL_GUARD.get(), RoyalGuardRenderer::new);
         event.registerEntityRenderer(DungeonsIllagersMod.SUPREME_EVOKER.get(), ctx -> {
-            Renderer<SupremeEvoker> renderer = new Renderer<SupremeEvoker>(ctx, "supreme_evoker", 1.0F, true, 0.8F).trackingHands();
+            Renderer<SupremeEvoker> renderer = new Renderer<SupremeEvoker>(ctx, "supreme_evoker", 1.0F, true, 0.8F) {
+                /** The death animation lays the body down itself. */
+                @Override
+                protected float getDeathMaxRotation(SupremeEvoker entity) {
+                    return 0.0F;
+                }
+            }.trackingHands();
             renderer.addRenderLayer(new ShieldBubbleLayer(renderer));
             return renderer;
         });
