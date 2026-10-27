@@ -22,6 +22,5 @@ mod_compats/**/libs/*.jar
 CLAUDE.md
 .vscode
 
-# Dungeons II tool builds
-tools/**/bin/
-tools/**/obj/
+# Dungeons II tools live outside the repo (D:/Dungeons2_Export/tools)
+tools/
