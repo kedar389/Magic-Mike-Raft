@@ -1,0 +1,32 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+    modId="dungeons_illagers"
+    version="0.1.0"
+    displayName="Dungeons Illagers"
+    description='''
+The Geomancer, the Excavator and the Supreme Evoker from Minecraft Dungeons II, built on GeckoLib.
+'''
+
+[[dependencies.dungeons_illagers]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.dungeons_illagers]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1,1.21)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.dungeons_illagers]]
+    modId="geckolib"
+    mandatory=true
+    versionRange="[4.4,)"
+    ordering="AFTER"
+    side="BOTH"

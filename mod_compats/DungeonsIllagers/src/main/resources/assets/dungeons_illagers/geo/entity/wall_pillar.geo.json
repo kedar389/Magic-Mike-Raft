@@ -1,0 +1,217 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.wall_pillar",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 4,
+				"visible_bounds_offset": [
+					0,
+					2,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "J_Root",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "J_Block2",
+					"pivot": [
+						0,
+						7,
+						0
+					],
+					"parent": "J_Root"
+				},
+				{
+					"name": "Block_2",
+					"pivot": [
+						-1,
+						0,
+						0
+					],
+					"parent": "J_Block2",
+					"cubes": [
+						{
+							"origin": [
+								-8,
+								0,
+								-8
+							],
+							"size": [
+								16,
+								16,
+								16
+							],
+							"uv": {
+								"west": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										32,
+										32
+									]
+								},
+								"north": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										32,
+										32
+									]
+								},
+								"down": {
+									"uv": [
+										0,
+										32
+									],
+									"uv_size": [
+										32,
+										32
+									]
+								},
+								"up": {
+									"uv": [
+										32,
+										0
+									],
+									"uv_size": [
+										32,
+										32
+									]
+								},
+								"east": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										32,
+										32
+									]
+								},
+								"south": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										32,
+										32
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "J_Block1",
+					"pivot": [
+						0,
+						7,
+						0
+					],
+					"parent": "J_Root"
+				},
+				{
+					"name": "Block_1",
+					"pivot": [
+						-1,
+						0,
+						0
+					],
+					"parent": "J_Block1",
+					"cubes": [
+						{
+							"origin": [
+								-8,
+								0,
+								-8
+							],
+							"size": [
+								16,
+								16,
+								16
+							],
+							"uv": {
+								"north": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										32,
+										32
+									]
+								},
+								"down": {
+									"uv": [
+										0,
+										32
+									],
+									"uv_size": [
+										32,
+										32
+									]
+								},
+								"up": {
+									"uv": [
+										32,
+										0
+									],
+									"uv_size": [
+										32,
+										32
+									]
+								},
+								"east": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										32,
+										32
+									]
+								},
+								"south": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										32,
+										32
+									]
+								},
+								"west": {
+									"uv": [
+										0,
+										0
+									],
+									"uv_size": [
+										32,
+										32
+									]
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

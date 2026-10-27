@@ -1,0 +1,479 @@
+{
+	"entity.dungeons_illagers.geomancer.ambient": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.ambient",
+		"sounds": [
+			"dungeons_illagers:geomancer/ambient/1",
+			"dungeons_illagers:geomancer/ambient/2",
+			"dungeons_illagers:geomancer/ambient/3",
+			"dungeons_illagers:geomancer/ambient/4",
+			"dungeons_illagers:geomancer/ambient/5",
+			"dungeons_illagers:geomancer/ambient/6"
+		]
+	},
+	"entity.dungeons_illagers.geomancer.hurt": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.hurt",
+		"sounds": [
+			"dungeons_illagers:geomancer/hurt/1",
+			"dungeons_illagers:geomancer/hurt/2",
+			"dungeons_illagers:geomancer/hurt/3",
+			"dungeons_illagers:geomancer/hurt/4"
+		]
+	},
+	"entity.dungeons_illagers.geomancer.death": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.death",
+		"sounds": [
+			"dungeons_illagers:geomancer/death/1",
+			"dungeons_illagers:geomancer/death/2",
+			"dungeons_illagers:geomancer/death/3",
+			"dungeons_illagers:geomancer/death/4"
+		]
+	},
+	"entity.dungeons_illagers.geomancer.spawn": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.spawn",
+		"sounds": [
+			"dungeons_illagers:geomancer/spawn/1",
+			"dungeons_illagers:geomancer/spawn/2"
+		]
+	},
+	"entity.dungeons_illagers.geomancer.cane": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.cane",
+		"sounds": [
+			"dungeons_illagers:geomancer/cane/1"
+		]
+	},
+	"entity.dungeons_illagers.geomancer.pre_attack": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.pre_attack",
+		"sounds": [
+			"dungeons_illagers:geomancer/pre_attack/1",
+			"dungeons_illagers:geomancer/pre_attack/2"
+		]
+	},
+	"entity.dungeons_illagers.geomancer.spell_bomb": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.spell_bomb",
+		"sounds": [
+			"dungeons_illagers:geomancer/spell_bomb/1",
+			"dungeons_illagers:geomancer/spell_bomb/2",
+			"dungeons_illagers:geomancer/spell_bomb/3",
+			"dungeons_illagers:geomancer/spell_bomb/4",
+			"dungeons_illagers:geomancer/spell_bomb/5"
+		]
+	},
+	"entity.dungeons_illagers.geomancer.spell_wall": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.spell_wall",
+		"sounds": [
+			"dungeons_illagers:geomancer/spell_wall/1",
+			"dungeons_illagers:geomancer/spell_wall/2",
+			"dungeons_illagers:geomancer/spell_wall/3",
+			"dungeons_illagers:geomancer/spell_wall/4",
+			"dungeons_illagers:geomancer/spell_wall/5"
+		]
+	},
+	"entity.dungeons_illagers.geomancer.bomb_spawn": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.bomb_spawn",
+		"sounds": [
+			"dungeons_illagers:geomancer/bomb_spawn/1",
+			"dungeons_illagers:geomancer/bomb_spawn/2",
+			"dungeons_illagers:geomancer/bomb_spawn/3",
+			"dungeons_illagers:geomancer/bomb_spawn/4",
+			"dungeons_illagers:geomancer/bomb_spawn/5",
+			"dungeons_illagers:geomancer/bomb_spawn/6"
+		]
+	},
+	"entity.dungeons_illagers.geomancer.bomb_explode": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.bomb_explode",
+		"sounds": [
+			"dungeons_illagers:geomancer/bomb_explode/1",
+			"dungeons_illagers:geomancer/bomb_explode/2",
+			"dungeons_illagers:geomancer/bomb_explode/3",
+			"dungeons_illagers:geomancer/bomb_explode/4"
+		]
+	},
+	"entity.dungeons_illagers.geomancer.pillar_appear": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.pillar_appear",
+		"sounds": [
+			"dungeons_illagers:geomancer/pillar_appear/1",
+			"dungeons_illagers:geomancer/pillar_appear/2",
+			"dungeons_illagers:geomancer/pillar_appear/3"
+		]
+	},
+	"entity.dungeons_illagers.geomancer.pillar_spawned": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.pillar_spawned",
+		"sounds": [
+			"dungeons_illagers:geomancer/pillar_spawned/1",
+			"dungeons_illagers:geomancer/pillar_spawned/2",
+			"dungeons_illagers:geomancer/pillar_spawned/3"
+		]
+	},
+	"entity.dungeons_illagers.geomancer.wall_spawn": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.wall_spawn",
+		"sounds": [
+			"dungeons_illagers:geomancer/wall_spawn/1",
+			"dungeons_illagers:geomancer/wall_spawn/2",
+			"dungeons_illagers:geomancer/wall_spawn/3"
+		]
+	},
+	"entity.dungeons_illagers.geomancer.pillar_hit": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.pillar_hit",
+		"sounds": [
+			"dungeons_illagers:geomancer/pillar_hit/1",
+			"dungeons_illagers:geomancer/pillar_hit/2",
+			"dungeons_illagers:geomancer/pillar_hit/3"
+		]
+	},
+	"entity.dungeons_illagers.geomancer.pillar_crumble": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.pillar_crumble",
+		"sounds": [
+			"dungeons_illagers:geomancer/pillar_crumble/1",
+			"dungeons_illagers:geomancer/pillar_crumble/2",
+			"dungeons_illagers:geomancer/pillar_crumble/3"
+		]
+	},
+	"entity.dungeons_illagers.geomancer.pillar_disappear": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.pillar_disappear",
+		"sounds": [
+			"dungeons_illagers:geomancer/pillar_disappear/1"
+		]
+	},
+	"entity.dungeons_illagers.geomancer.stunned_start": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.stunned_start",
+		"sounds": [
+			"dungeons_illagers:geomancer/stunned_start/1",
+			"dungeons_illagers:geomancer/stunned_start/2"
+		]
+	},
+	"entity.dungeons_illagers.geomancer.stunned_end": {
+		"subtitle": "subtitles.dungeons_illagers.geomancer.stunned_end",
+		"sounds": [
+			"dungeons_illagers:geomancer/stunned_end/1",
+			"dungeons_illagers:geomancer/stunned_end/2"
+		]
+	},
+	"entity.dungeons_illagers.excavator.ambient": {
+		"subtitle": "subtitles.dungeons_illagers.excavator.ambient",
+		"sounds": [
+			"dungeons_illagers:excavator/ambient/1",
+			"dungeons_illagers:excavator/ambient/2",
+			"dungeons_illagers:excavator/ambient/3",
+			"dungeons_illagers:excavator/ambient/4",
+			"dungeons_illagers:excavator/ambient/5"
+		]
+	},
+	"entity.dungeons_illagers.excavator.hurt": {
+		"subtitle": "subtitles.dungeons_illagers.excavator.hurt",
+		"sounds": [
+			"dungeons_illagers:excavator/hurt/1",
+			"dungeons_illagers:excavator/hurt/2",
+			"dungeons_illagers:excavator/hurt/3"
+		]
+	},
+	"entity.dungeons_illagers.excavator.death": {
+		"subtitle": "subtitles.dungeons_illagers.excavator.death",
+		"sounds": [
+			"dungeons_illagers:excavator/death/1",
+			"dungeons_illagers:excavator/death/2"
+		]
+	},
+	"entity.dungeons_illagers.excavator.spawn": {
+		"subtitle": "subtitles.dungeons_illagers.excavator.spawn",
+		"sounds": [
+			"dungeons_illagers:excavator/spawn/1",
+			"dungeons_illagers:excavator/spawn/2",
+			"dungeons_illagers:excavator/spawn/3"
+		]
+	},
+	"entity.dungeons_illagers.excavator.aggro": {
+		"subtitle": "subtitles.dungeons_illagers.excavator.aggro",
+		"sounds": [
+			"dungeons_illagers:excavator/aggro/1",
+			"dungeons_illagers:excavator/aggro/2",
+			"dungeons_illagers:excavator/aggro/3"
+		]
+	},
+	"entity.dungeons_illagers.excavator.step_foley": {
+		"subtitle": "subtitles.dungeons_illagers.excavator.step_foley",
+		"sounds": [
+			"dungeons_illagers:excavator/step_foley/1",
+			"dungeons_illagers:excavator/step_foley/2",
+			"dungeons_illagers:excavator/step_foley/3",
+			"dungeons_illagers:excavator/step_foley/4",
+			"dungeons_illagers:excavator/step_foley/5",
+			"dungeons_illagers:excavator/step_foley/6",
+			"dungeons_illagers:excavator/step_foley/7",
+			"dungeons_illagers:excavator/step_foley/8",
+			"dungeons_illagers:excavator/step_foley/9",
+			"dungeons_illagers:excavator/step_foley/10"
+		]
+	},
+	"entity.dungeons_illagers.excavator.pick_swing": {
+		"subtitle": "subtitles.dungeons_illagers.excavator.pick_swing",
+		"sounds": [
+			"dungeons_illagers:excavator/pick_swing/1",
+			"dungeons_illagers:excavator/pick_swing/2",
+			"dungeons_illagers:excavator/pick_swing/3",
+			"dungeons_illagers:excavator/pick_swing/4",
+			"dungeons_illagers:excavator/pick_swing/5",
+			"dungeons_illagers:excavator/pick_swing/6"
+		]
+	},
+	"entity.dungeons_illagers.excavator.pickaxe_impact": {
+		"subtitle": "subtitles.dungeons_illagers.excavator.pickaxe_impact",
+		"sounds": [
+			"dungeons_illagers:excavator/pickaxe_impact/1",
+			"dungeons_illagers:excavator/pickaxe_impact/2",
+			"dungeons_illagers:excavator/pickaxe_impact/3",
+			"dungeons_illagers:excavator/pickaxe_impact/4",
+			"dungeons_illagers:excavator/pickaxe_impact/5",
+			"dungeons_illagers:excavator/pickaxe_impact/6"
+		]
+	},
+	"entity.dungeons_illagers.excavator.pick_break_telegraph": {
+		"subtitle": "subtitles.dungeons_illagers.excavator.pick_break_telegraph",
+		"sounds": [
+			"dungeons_illagers:excavator/pick_break_telegraph/1",
+			"dungeons_illagers:excavator/pick_break_telegraph/2",
+			"dungeons_illagers:excavator/pick_break_telegraph/3",
+			"dungeons_illagers:excavator/pick_break_telegraph/4"
+		]
+	},
+	"entity.dungeons_illagers.excavator.pick_break_hit": {
+		"subtitle": "subtitles.dungeons_illagers.excavator.pick_break_hit",
+		"sounds": [
+			"dungeons_illagers:excavator/pick_break_hit/1",
+			"dungeons_illagers:excavator/pick_break_hit/2",
+			"dungeons_illagers:excavator/pick_break_hit/3",
+			"dungeons_illagers:excavator/pick_break_hit/4"
+		]
+	},
+	"entity.dungeons_illagers.excavator.back_scratch": {
+		"subtitle": "subtitles.dungeons_illagers.excavator.back_scratch",
+		"sounds": [
+			"dungeons_illagers:excavator/back_scratch/1",
+			"dungeons_illagers:excavator/back_scratch/2"
+		]
+	},
+	"entity.dungeons_illagers.excavator.head_scratch": {
+		"subtitle": "subtitles.dungeons_illagers.excavator.head_scratch",
+		"sounds": [
+			"dungeons_illagers:excavator/head_scratch/1"
+		]
+	},
+	"entity.dungeons_illagers.excavator.slap": {
+		"subtitle": "subtitles.dungeons_illagers.excavator.slap",
+		"sounds": [
+			"dungeons_illagers:excavator/slap/1",
+			"dungeons_illagers:excavator/slap/2",
+			"dungeons_illagers:excavator/slap/3"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.ambient": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.ambient",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/ambient/1",
+			"dungeons_illagers:supreme_evoker/ambient/2",
+			"dungeons_illagers:supreme_evoker/ambient/3",
+			"dungeons_illagers:supreme_evoker/ambient/4",
+			"dungeons_illagers:supreme_evoker/ambient/5"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.hurt": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.hurt",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/hurt/1",
+			"dungeons_illagers:supreme_evoker/hurt/2",
+			"dungeons_illagers:supreme_evoker/hurt/3",
+			"dungeons_illagers:supreme_evoker/hurt/4"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.death": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.death",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/death/1"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.step": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.step",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/step/1",
+			"dungeons_illagers:supreme_evoker/step/2",
+			"dungeons_illagers:supreme_evoker/step/3",
+			"dungeons_illagers:supreme_evoker/step/4",
+			"dungeons_illagers:supreme_evoker/step/5",
+			"dungeons_illagers:supreme_evoker/step/6",
+			"dungeons_illagers:supreme_evoker/step/7",
+			"dungeons_illagers:supreme_evoker/step/8"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.spawn": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.spawn",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/spawn/1"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.stagger_start": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.stagger_start",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/stagger_start/1"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.stagger_end": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.stagger_end",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/stagger_end/1"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.projectile_cast_1": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.projectile_cast_1",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/projectile_cast_1/1",
+			"dungeons_illagers:supreme_evoker/projectile_cast_1/2"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.projectile_cast_2": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.projectile_cast_2",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/projectile_cast_2/1",
+			"dungeons_illagers:supreme_evoker/projectile_cast_2/2"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.projectile_whoosh": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.projectile_whoosh",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/projectile_whoosh/1",
+			"dungeons_illagers:supreme_evoker/projectile_whoosh/2",
+			"dungeons_illagers:supreme_evoker/projectile_whoosh/3",
+			"dungeons_illagers:supreme_evoker/projectile_whoosh/4",
+			"dungeons_illagers:supreme_evoker/projectile_whoosh/5",
+			"dungeons_illagers:supreme_evoker/projectile_whoosh/6",
+			"dungeons_illagers:supreme_evoker/projectile_whoosh/7",
+			"dungeons_illagers:supreme_evoker/projectile_whoosh/8"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.projectile_loop": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.projectile_loop",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/projectile_loop/1",
+			"dungeons_illagers:supreme_evoker/projectile_loop/2",
+			"dungeons_illagers:supreme_evoker/projectile_loop/3",
+			"dungeons_illagers:supreme_evoker/projectile_loop/4"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.projectile_hit": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.projectile_hit",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/projectile_hit/1",
+			"dungeons_illagers:supreme_evoker/projectile_hit/2",
+			"dungeons_illagers:supreme_evoker/projectile_hit/3",
+			"dungeons_illagers:supreme_evoker/projectile_hit/4"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.summon": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.summon",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/summon/1",
+			"dungeons_illagers:supreme_evoker/summon/2"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.summon_vox": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.summon_vox",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/summon_vox/1",
+			"dungeons_illagers:supreme_evoker/summon_vox/2"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.summon_wave": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.summon_wave",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/summon_wave/1",
+			"dungeons_illagers:supreme_evoker/summon_wave/2"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.shield_activate": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.shield_activate",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/shield_activate/1"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.shield_loop": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.shield_loop",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/shield_loop/1",
+			"dungeons_illagers:supreme_evoker/shield_loop/2",
+			"dungeons_illagers:supreme_evoker/shield_loop/3"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.shield_hit": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.shield_hit",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/shield_hit/1",
+			"dungeons_illagers:supreme_evoker/shield_hit/2",
+			"dungeons_illagers:supreme_evoker/shield_hit/3"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.shield_end": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.shield_end",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/shield_end/1"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.teleport_out": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.teleport_out",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/teleport_out/1",
+			"dungeons_illagers:supreme_evoker/teleport_out/2"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.teleport_out_vox": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.teleport_out_vox",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/teleport_out_vox/1",
+			"dungeons_illagers:supreme_evoker/teleport_out_vox/2"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.teleport_in": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.teleport_in",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/teleport_in/1"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.teleport_in_vox": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.teleport_in_vox",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/teleport_in_vox/1",
+			"dungeons_illagers:supreme_evoker/teleport_in_vox/2"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.fang_telegraph": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.fang_telegraph",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/fang_telegraph/1",
+			"dungeons_illagers:supreme_evoker/fang_telegraph/2"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.fang_cast": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.fang_cast",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/fang_cast/1",
+			"dungeons_illagers:supreme_evoker/fang_cast/2",
+			"dungeons_illagers:supreme_evoker/fang_cast/3"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.fang_rise": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.fang_rise",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/fang_rise/1",
+			"dungeons_illagers:supreme_evoker/fang_rise/2",
+			"dungeons_illagers:supreme_evoker/fang_rise/3",
+			"dungeons_illagers:supreme_evoker/fang_rise/4",
+			"dungeons_illagers:supreme_evoker/fang_rise/5"
+		]
+	},
+	"entity.dungeons_illagers.supreme_evoker.fang_snap": {
+		"subtitle": "subtitles.dungeons_illagers.supreme_evoker.fang_snap",
+		"sounds": [
+			"dungeons_illagers:supreme_evoker/fang_snap/1",
+			"dungeons_illagers:supreme_evoker/fang_snap/2",
+			"dungeons_illagers:supreme_evoker/fang_snap/3",
+			"dungeons_illagers:supreme_evoker/fang_snap/4"
+		]
+	}
+}
