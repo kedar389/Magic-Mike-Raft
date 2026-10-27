@@ -106,7 +106,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
         FURY_FIST("fury_fist", 138),
         FORWARD_STRIKE("forward_strike", 50),
         LIGHTNING_SLAM("lightning_slam", 88),
-        LAUNCH("launch", 79),
+        LAUNCH("launch", 88), // plays the Lightning Slam animation
         OVERCHARGE("overcharge", 72),
         SUMMON("summon", 45),
         ICEMINES("icemines", 45),
@@ -234,7 +234,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
 
     /** Launch (mid-air) and Overcharge carry the game's Invulnerable tag for part of the move. */
     private boolean isInvulnerableNow() {
-        return (this.move == Move.LAUNCH && this.moveTick >= 22 && this.moveTick <= 44)
+        return (this.move == Move.LAUNCH && this.moveTick >= 26 && this.moveTick <= 52)
                 || (this.move == Move.OVERCHARGE && this.moveTick >= 2);
     }
 
@@ -489,7 +489,11 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
                     this.level().playSound(null, at.x, at.y, at.z, BossSound.LAUNCH_LAND_TELEGRAPH.get(),
                             this.getSoundSource(), 2.0F, 1.0F);
                 }
-                if (t == 8) {
+                if (t == 7) {
+                    burst(ParticleTypes.SNOWFLAKE, handPosition(false), 30, 0.4);
+                    burst(ParticleTypes.ELECTRIC_SPARK, handPosition(true), 30, 0.4);
+                }
+                if (t == 26) {
                     burst(ParticleTypes.SNOWFLAKE, this.position(), 40, 1.0);
                     burst(ParticleTypes.ELECTRIC_SPARK, this.position(), 40, 1.0);
                 }
@@ -501,14 +505,12 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
                     sound(BossSound.LAUNCH_TELEPORT_IN);
                     sound(BossSound.LAUNCH_TELEPORT_IN_VOCAL);
                 }
-                if (t == 43) {
+                if (t == 53) {
                     bolt(this.position());
-                }
-                if (t == 45) {
                     burst(ParticleTypes.SNOWFLAKE, this.position(), 120, 3.0);
                     burst(ParticleTypes.ELECTRIC_SPARK, this.position(), 80, 3.0);
                 }
-                if (t >= 43 && t <= 52) {
+                if (t >= 53 && t <= 62) {
                     hitWindow(this.position(), 250 * UE_TO_BLOCKS, 25, 1000, Element.LIGHTNING);
                 }
             }
