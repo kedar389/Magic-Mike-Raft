@@ -31,7 +31,10 @@ public final class Vfx {
         BUBBLE_HIT, BUBBLE_SHATTER, TELEPORT_INITIATE, TELEPORT_OUT, TELEPORT_IN, FANG_INITIATE, FANG_CAST, FANG_RISE,
         EVOKER_DEATH,
         // Royal Guard (AnimNS_Slash FF4200, NS_RoyalGuard_ShieldBreak)
-        ROYAL_SLASH, ROYAL_SLAM, SHIELD_BREAK
+        ROYAL_SLASH, ROYAL_SLAM, SHIELD_BREAK,
+        // Geomancer (Geomancer/VFX, Geomancer_BombPillar), Excavator (AnimNS_Slash FF0019, NS_GroundSlam_Hammer), both
+        MOB_SPAWN, GEO_BEADS, GEO_CAST_BOMB, GEO_CAST_WALL, GEO_SUMMON_DUST, BOMB_APPEAR, BOMB_FUSE, BOMB_EXPLODE,
+        WALL_APPEAR, WALL_CRUMBLE, EXC_SLASH, EXC_SMASH
     }
 
     /** Where an effect sits: a fixed point, or a hand of its caster, followed while the effect lasts. */

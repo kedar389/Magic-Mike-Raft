@@ -58,6 +58,32 @@ public class VfxParticle extends Particle {
         }
     };
 
+    /** Ordinary alpha blending, world-lit: dust and debris (MI_SmokePixel, MI_DebrisGeneric). */
+    static final ParticleRenderType MATTE = new ParticleRenderType() {
+        @Override
+        public void begin(BufferBuilder builder, TextureManager textures) {
+            RenderSystem.depthMask(false);
+            RenderSystem.disableCull();
+            RenderSystem.enableBlend();
+            RenderSystem.defaultBlendFunc();
+            RenderSystem.setShader(GameRenderer::getParticleShader);
+            RenderSystem.setShaderTexture(0, ATLAS);
+            builder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.PARTICLE);
+        }
+
+        @Override
+        public void end(Tesselator tesselator) {
+            tesselator.end();
+            RenderSystem.enableCull();
+            RenderSystem.depthMask(true);
+        }
+
+        @Override
+        public String toString() {
+            return DungeonsIllagersMod.MOD_ID + ":matte";
+        }
+    };
+
     /** How the piece is drawn. */
     public enum Shape {
         /** Sprite facing the camera. */
@@ -92,6 +118,7 @@ public class VfxParticle extends Particle {
     private Vec3 beam = Vec3.ZERO;
     private float scroll;
     private boolean easeSize = true;
+    private boolean glow = true;
 
     public VfxParticle(ClientLevel level, double x, double y, double z) {
         super(level, x, y, z);
@@ -133,6 +160,18 @@ public class VfxParticle extends Particle {
     public VfxParticle height(float from, float to) {
         this.height0 = from;
         this.height1 = to;
+        return this;
+    }
+
+    /** Dust, smoke and debris: alpha-blended and lit by the world instead of glowing. */
+    public VfxParticle matte() {
+        this.glow = false;
+        return this;
+    }
+
+    /** Collides with blocks (debris that lands). */
+    public VfxParticle physics() {
+        this.hasPhysics = true;
         return this;
     }
 
@@ -227,12 +266,12 @@ public class VfxParticle extends Particle {
 
     @Override
     public ParticleRenderType getRenderType() {
-        return GLOW;
+        return this.glow ? GLOW : MATTE;
     }
 
     @Override
     protected int getLightColor(float partialTick) {
-        return FULL_BRIGHT;
+        return this.glow ? FULL_BRIGHT : super.getLightColor(partialTick);
     }
 
     /** Big meshes and beams reach far past their position; never frustum-cull them by it. */
@@ -256,7 +295,8 @@ public class VfxParticle extends Particle {
         if (alpha <= 0.003F || size <= 0) {
             return;
         }
-        Color c = new Color(Mth.lerp(t, this.r0, this.r1), Mth.lerp(t, this.g0, this.g1), Mth.lerp(t, this.b0, this.b1), alpha);
+        Color c = new Color(Mth.lerp(t, this.r0, this.r1), Mth.lerp(t, this.g0, this.g1), Mth.lerp(t, this.b0, this.b1), alpha,
+                getLightColor(partialTick));
         Vec3 cam = camera.getPosition();
         Vector3f p = new Vector3f((float) (Mth.lerp(partialTick, this.xo, this.x) - cam.x),
                 (float) (Mth.lerp(partialTick, this.yo, this.y) - cam.y), (float) (Mth.lerp(partialTick, this.zo, this.z) - cam.z));
@@ -288,7 +328,7 @@ public class VfxParticle extends Particle {
         }
     }
 
-    private record Color(float r, float g, float b, float a) {
+    private record Color(float r, float g, float b, float a, int light) {
     }
 
     private static Vector3f corner(Vector3f center, Quaternionf rot, float dx, float dy) {
@@ -296,7 +336,7 @@ public class VfxParticle extends Particle {
     }
 
     private static void vertex(VertexConsumer out, Vector3f p, float u, float v, Color c) {
-        out.vertex(p.x, p.y, p.z).uv(u, v).color(c.r, c.g, c.b, c.a).uv2(FULL_BRIGHT).endVertex();
+        out.vertex(p.x, p.y, p.z).uv(u, v).color(c.r, c.g, c.b, c.a).uv2(c.light).endVertex();
     }
 
     /** Quad a-b-c-d with the sprite's rect mapped u0v1, u0v0, u1v0, u1v1. */

@@ -1,11 +1,10 @@
 package com.dungeonsillagers;
 
 import java.util.ArrayList;
+import com.dungeonsillagers.client.VfxLibrary;
 import java.util.List;
 import javax.annotation.Nullable;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
@@ -29,9 +28,10 @@ import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 
 /**
  * The Geomancer (DT_MobType1Definition Geomancer, ST_Geomancer): keeps 6 blocks from its target, pokes and backs off when
@@ -197,9 +197,6 @@ public class Geomancer extends MoveMob {
             if (t == 0) {
                 sound(IllagerSound.GEOMANCER_PRE_ATTACK, 1.0F);
             }
-            if (t == 6) {
-                burst(ParticleTypes.SWEEP_ATTACK, inFront(1.2).add(0, 0.9, 0), 1, 0);
-            }
             if (t >= 6 && t <= 8) {
                 hitWindow(inFront(1.25), 1.25, 8, 0, null);
             }
@@ -209,17 +206,19 @@ public class Geomancer extends MoveMob {
                 LivingEntity target = this.getTarget();
                 if (target != null) {
                     this.pending.addAll(layout(BOMB_PATTERNS[this.random.nextInt(BOMB_PATTERNS.length)], target));
-                    ring(ParticleTypes.WITCH, target.position(), 1.5);
                 }
             }
-            if (t >= 1 && t <= 11 && t % 2 == 1) {
-                beads();
+            if (t == 1) {
+                Vfx.play(this, Vfx.Effect.GEO_BEADS, Vfx.Anchor.BODY, 0);
+            }
+            if (t == 4) {
+                vfx(Vfx.Effect.GEO_CAST_BOMB, this.position(), 0);
             }
             if (t == 6) {
                 sound(IllagerSound.GEOMANCER_SPELL_BOMB, 1.5F);
             }
             if (t == 10) {
-                burst(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.STONE.defaultBlockState()), inFront(1.0), 25, 0.5);
+                vfx(Vfx.Effect.GEO_SUMMON_DUST, inFront(0.8), 0);
             }
             if (t >= 10 && t % 2 == 0) {
                 raiseNext(true);
@@ -233,8 +232,11 @@ public class Geomancer extends MoveMob {
                     this.pending.addAll(layout(WALL_PATTERNS[this.random.nextInt(WALL_PATTERNS.length)], target));
                 }
             }
-            if (t >= 3 && t <= 11 && t % 2 == 1) {
-                beads();
+            if (t == 1) {
+                vfx(Vfx.Effect.GEO_CAST_WALL, this.position(), 0);
+            }
+            if (t == 3) {
+                Vfx.play(this, Vfx.Effect.GEO_BEADS, Vfx.Anchor.BODY, 1);
             }
             if (t == 3) {
                 sound(IllagerSound.GEOMANCER_WALL_SPAWN, 1.5F);
@@ -246,7 +248,7 @@ public class Geomancer extends MoveMob {
             if (t == 0) {
                 sound(IllagerSound.GEOMANCER_SPAWN, 1.0F);
                 sound(IllagerSound.GEOMANCER_CANE, 1.0F);
-                burst(ParticleTypes.POOF, this.position().add(0, 0.9, 0), 20, 0.4);
+                vfx(Vfx.Effect.MOB_SPAWN, this.position(), 0);
             }
         } else if (current == STAGGERED) {
             if (t == 1) {
@@ -263,9 +265,8 @@ public class Geomancer extends MoveMob {
         this.pending.clear();
     }
 
-    /** AnimNS_Geomancer_GlowingBeads: the bead necklace flares while casting. */
-    private void beads() {
-        burst(ParticleTypes.WITCH, this.position().add(0, 1.45, 0), 4, 0.3);
+    private void vfx(Vfx.Effect effect, Vec3 at, float param) {
+        Vfx.play(this, effect, at, this.getYRot(), param);
     }
 
     /**
@@ -311,7 +312,6 @@ public class Geomancer extends MoveMob {
         pillar.moveTo(at.x, at.y, at.z, this.random.nextInt(4) * 90.0F, 0);
         pillar.setOwner(this);
         server.addFreshEntity(pillar);
-        server.sendParticles(ParticleTypes.CLOUD, at.x, at.y + 0.1, at.z, 6, 0.3, 0.05, 0.3, 0.02);
         if (!bomb) {
             server.playSound(null, at.x, at.y, at.z, IllagerSound.GEOMANCER_PILLAR_APPEAR.get(), this.getSoundSource(), 0.8F, 1.0F);
         }
@@ -343,6 +343,7 @@ public class Geomancer extends MoveMob {
     protected void onSoundKeyframe(String sound) {
         if ("step".equals(sound)) {
             blockStep();
+            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> VfxLibrary.stepDust(this));
         }
     }
 }

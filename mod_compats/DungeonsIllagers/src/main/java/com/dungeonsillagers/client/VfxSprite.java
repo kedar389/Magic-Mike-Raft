@@ -29,7 +29,13 @@ public enum VfxSprite {
     /** T_WhirlWind. */
     WIND(32, 96, 32, 32, 1, 1),
     /** MI_LinearGradient: opaque at v0, clear at v1. */
-    GRADIENT(64, 96, 8, 32, 1, 1);
+    GRADIENT(64, 96, 8, 32, 1, 1),
+    /** T_FireSide (MI_FireSide): 8-frame flame flipbook. */
+    FIRE(128, 96, 16, 16, 4, 8),
+    /** T_GenericDebris (MI_DebrisGeneric): four shaded rock chips. */
+    DEBRIS(192, 96, 8, 8, 2, 4),
+    /** T_SmokePixel (MI_SmokePixel): a puff swelling and fading over 16 frames. */
+    SMOKE(0, 160, 8, 8, 16, 16);
 
     private final int x, y, w, h, columns;
     final int frames;

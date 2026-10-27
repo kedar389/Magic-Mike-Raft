@@ -34,11 +34,15 @@ public final class VfxLibrary {
     static final int YELLOW = 0xFFE94A, WHITE_HOT = 0xFFFFE6, SPARK_BLUE = 0x3FA8FF, ORANGE = 0xFF5A00;
     static final int EV_PURPLE = 0x9A1AFF, EV_CYAN = 0x33FFFF, EV_DEEP = 0x30005F, EV_MAGENTA = 0xFF4DFF;
     static final int ROYAL_ORANGE = 0xFF4200;
+    // Geomancer runes (SummonPillar: purple, SummonPillar_Bomb: red-orange), bomb fire, Excavator slash
+    static final int GEO_PURPLE = 0x8000FF, GEO_RED = 0xFF2010, FIRE_ORANGE = 0xFF8A00, FIRE_RED = 0xFF3000;
+    static final int EXC_RED = 0xFF0019, DUST = 0xB8AC9C;
     /** Fallback hand offset when the model has not been drawn yet: sideways, up, ahead. */
     private static final double HAND_SIDE = 0.8, HAND_UP = 1.7;
 
     private static final List<Emitter> EMITTERS = new ArrayList<>();
     private static final Map<Integer, Vec3[]> HANDS = new HashMap<>();
+    private static final Map<Integer, Vec3> ANCHORS = new HashMap<>();
     private static final RandomSource RANDOM = RandomSource.create();
 
     private VfxLibrary() {
@@ -47,6 +51,13 @@ public final class VfxLibrary {
     /** Called by renderers every frame with the world positions of the left and right hand bones. */
     public static void trackHands(Entity entity, @Nullable Vec3 left, @Nullable Vec3 right) {
         HANDS.put(entity.getId(), new Vec3[] {left, right});
+    }
+
+    /** A third tracked point (the Excavator's candle). */
+    public static void trackAnchor(Entity entity, @Nullable Vec3 point) {
+        if (point != null) {
+            ANCHORS.put(entity.getId(), point);
+        }
     }
 
     @Nullable
@@ -93,6 +104,7 @@ public final class VfxLibrary {
             if (Minecraft.getInstance().level == null) {
                 EMITTERS.clear();
                 HANDS.clear();
+                ANCHORS.clear();
             }
             return;
         }
@@ -106,6 +118,7 @@ public final class VfxLibrary {
             e.body.accept(e.age[0]++, at);
         }
         HANDS.keySet().removeIf(id -> Minecraft.getInstance().level.getEntity(id) == null);
+        ANCHORS.keySet().removeIf(id -> Minecraft.getInstance().level.getEntity(id) == null);
     }
 
     // ---- building blocks -------------------------------------------------------------------------
@@ -186,6 +199,40 @@ public final class VfxLibrary {
             Vec3 p = at.add(rand() * spread, rand() * spread * 0.5, rand() * spread);
             VfxParticle.at(p).sprite(VfxSprite.ICE, -1).velocity(new Vec3(rand() * 0.02, -0.02 - RANDOM.nextFloat() * 0.03, rand() * 0.02))
                     .size(0.09F, 0.05F).color(ICE_WHITE, ICE).alpha(1, 0).fadeIn(0.2F).life(life + RANDOM.nextInt(10)).spawn();
+        }
+    }
+
+    /** MI_SmokePixel puff swelling and fading, drifting. */
+    private static VfxParticle puff(Vec3 at, Vec3 velocity, float size, int life, int color, float alpha) {
+        return VfxParticle.at(at).sprite(VfxSprite.SMOKE, 0).animated().velocity(velocity).size(size, size * 1.3F).color(color)
+                .alpha(alpha, alpha * 0.6F).life(life).drag(0.9F).matte().spawn();
+    }
+
+    /** MI_DebrisGeneric chip thrown out, falling. */
+    private static VfxParticle chip(Vec3 at, Vec3 velocity, float size, int life, int color) {
+        return VfxParticle.at(at).sprite(VfxSprite.DEBRIS, -1).velocity(velocity).size(size, size).color(color).alpha(1, 0.8F)
+                .life(life).gravity(0.9F).drag(0.98F).spin(20 * rand()).matte().physics().spawn();
+    }
+
+    /** NS_Dust-Impact / SummonDust: a ring of dust puffs and a few chips. */
+    private static void dust(Vec3 at, double radius, int puffs, int chips) {
+        for (int i = 0; i < puffs; i++) {
+            Vec3 d = flat(RANDOM.nextFloat() * Mth.TWO_PI);
+            puff(at.add(d.scale(radius * RANDOM.nextFloat())).add(0, 0.1, 0), d.scale(0.06).add(0, 0.02, 0), 0.35F + RANDOM.nextFloat() * 0.25F,
+                    18 + RANDOM.nextInt(10), DUST, 0.7F);
+        }
+        for (int i = 0; i < chips; i++) {
+            Vec3 d = flat(RANDOM.nextFloat() * Mth.TWO_PI);
+            chip(at.add(0, 0.2, 0), d.scale(0.1 + RANDOM.nextFloat() * 0.15).add(0, 0.25 + RANDOM.nextFloat() * 0.2, 0), 0.12F, 20, 0x9A9488);
+        }
+    }
+
+    /** Runes rising (NS_IllagerGeomancer_SummonPillar / _Bomb, NS_GeomancerWall / BombBlock_Appear). */
+    private static void runes(Vec3 at, double radius, int count, int color, float rise) {
+        for (int i = 0; i < count; i++) {
+            Vec3 p = at.add(flat(RANDOM.nextFloat() * Mth.TWO_PI).scale(RANDOM.nextFloat() * radius)).add(0, RANDOM.nextFloat() * 0.5, 0);
+            VfxParticle.at(p).sprite(VfxSprite.RUNE, -1).velocity(new Vec3(0, rise * (0.5F + RANDOM.nextFloat()), 0)).size(0.16F, 0.08F)
+                    .color(0xFFFFFF, color).alpha(1, 0).life(18 + RANDOM.nextInt(10)).drag(0.95F).spawn();
         }
     }
 
@@ -561,6 +608,106 @@ public final class VfxLibrary {
                     spark(at.add(rand() * 0.4, 0, rand() * 0.4), new Vec3(rand() * 0.05, 0.25 + RANDOM.nextFloat() * 0.15, rand() * 0.05), 0.05F, 0.5F, 14, 0x40B0FF, 0x0060FF);
                 }
             }
+            case MOB_SPAWN -> {
+                // NS_GenericMobSpawn: a white cube flash and pixels bursting out of the body
+                cube(at.add(0, 1.0, 0), Vec3.ZERO, 0.4F, 1.4F, 7, 0xFFFFFF, 0x808080);
+                for (int i = 0; i < 18; i++) {
+                    VfxParticle.at(at.add(0, 0.4 + RANDOM.nextFloat() * 1.4, 0)).velocity(dir().scale(0.12)).size(0.08F, 0.02F)
+                            .color(0xFFFFFF, 0xA0A0A0).alpha(1, 0).fadeIn(0.1F).drag(0.9F).life(16).spawn();
+                }
+            }
+            case GEO_BEADS -> emit(packet, caster, 10, (age, o) -> {
+                // AnimNS_Geomancer_GlowingBeads: the bead necklace flares (orange for bombs, purple for walls)
+                int color = param > 0 ? GEO_PURPLE : FIRE_ORANGE;
+                for (int i = 0; i < 2; i++) {
+                    float a = RANDOM.nextFloat() * Mth.TWO_PI;
+                    VfxParticle.at(o.add(Math.cos(a) * 0.3, 1.45, Math.sin(a) * 0.3)).velocity(new Vec3(0, 0.015, 0)).size(0.07F, 0.02F)
+                            .color(0xFFFFFF, color).alpha(1, 0).life(8).spawn();
+                }
+            });
+            case GEO_CAST_BOMB, GEO_CAST_WALL -> {
+                boolean bomb = packet.effect() == Vfx.Effect.GEO_CAST_BOMB;
+                runes(at, 0.8, 12, bomb ? GEO_RED : GEO_PURPLE, 0.08F);
+                for (int i = 0; i < 10; i++) {
+                    VfxParticle.at(at.add(rand() * 0.6, RANDOM.nextFloat() * 0.4, rand() * 0.6)).velocity(new Vec3(0, 0.08 + RANDOM.nextFloat() * 0.06, 0))
+                            .size(0.06F, 0.02F).color(0xFFFFFF, bomb ? FIRE_ORANGE : GEO_PURPLE).alpha(1, 0).life(16).spawn();
+                }
+            }
+            case GEO_SUMMON_DUST -> dust(at, 0.6, 8, 6);
+            case BOMB_APPEAR, WALL_APPEAR -> {
+                // NS_GeomancerBombBlock_Appear / Wall_Appear: runes (red-hot or purple) and dust where the block rises
+                boolean bomb = packet.effect() == Vfx.Effect.BOMB_APPEAR;
+                runes(at, 0.6, 8, bomb ? GEO_RED : GEO_PURPLE, 0.1F);
+                dust(at, 0.7, 7, bomb ? 0 : 4);
+                ring(VfxSprite.RING, at, 0.2F, 0.9F, 10, 0xFFFFFF, bomb ? GEO_RED : GEO_PURPLE);
+            }
+            case BOMB_FUSE -> emit(packet, caster, Math.max(1, (int) param), (age, o) -> {
+                // AnimNS_GeomancerBombBlock_PreExplosion: the pillar heats up, embers and flames licking up its sides
+                float heat = age / Math.max(1.0F, param);
+                if (age % 2 == 0) {
+                    Vec3 p = o.add(flat(RANDOM.nextFloat() * Mth.TWO_PI).scale(0.55)).add(0, RANDOM.nextFloat() * 2.8, 0);
+                    VfxParticle.at(p).sprite(VfxSprite.FIRE, 0).animated().velocity(new Vec3(0, 0.03, 0)).size(0.12F + heat * 0.15F, 0.08F)
+                            .color(0xFFE080, FIRE_RED).alpha(1, 0.4F).life(8).spawn();
+                }
+                if (RANDOM.nextFloat() < 0.3F + heat) {
+                    spark(o.add(rand() * 0.4, 2.9, rand() * 0.4), new Vec3(rand() * 0.05, 0.12, rand() * 0.05), 0.05F, 0.25F, 8, 0xFFE080, FIRE_ORANGE);
+                }
+                if (age % 10 == 0) {
+                    ring(VfxSprite.RING, o, 3.0F, 2.9F, 8, FIRE_ORANGE, FIRE_RED);
+                }
+            });
+            case BOMB_EXPLODE -> {
+                // NS_ExplosionGeomancerMedium: flash, pixel blast ring, fire sphere, sparks, fire floaters, radial smoke
+                VfxParticle.at(at.add(0, 1.0, 0)).shape(Shape.SPHERE).sprite(VfxSprite.SOLID, 0).size(0.4F, param * 0.8F)
+                        .color(0xFFF0A0, FIRE_RED).alpha(0.8F, 0).life(8).spawn();
+                ring(VfxSprite.RING_THICK, at, 0.5F, param * 1.2F, 12, 0xFFE080, FIRE_RED);
+                cube(at.add(0, 1.0, 0), Vec3.ZERO, 0.8F, 2.4F, 4, 0xFFFFFF, 0xFFE080);
+                for (int i = 0; i < 36; i++) {
+                    Vec3 d = dir();
+                    spark(at.add(0, 1.0, 0), new Vec3(d.x, Math.abs(d.y), d.z).scale(0.3 + RANDOM.nextFloat() * 0.3), 0.08F, 0.6F, 14,
+                            0xFFF0A0, i % 2 == 0 ? FIRE_ORANGE : FIRE_RED).gravity(0.04F);
+                }
+                for (int i = 0; i < 10; i++) {
+                    VfxParticle.at(at.add(flat(RANDOM.nextFloat() * Mth.TWO_PI).scale(RANDOM.nextFloat() * param * 0.7)).add(0, 0.1, 0))
+                            .sprite(VfxSprite.FIRE, 0).animated().velocity(new Vec3(0, 0.02, 0)).size(0.3F, 0.2F).color(0xFFE080, FIRE_RED)
+                            .alpha(1, 0.3F).life(14 + RANDOM.nextInt(8)).spawn();
+                }
+                for (int i = 0; i < 14; i++) {
+                    Vec3 d = flat(RANDOM.nextFloat() * Mth.TWO_PI);
+                    puff(at.add(0, 0.4, 0), d.scale(0.2).add(0, 0.05, 0), 0.6F, 26, 0x403830, 0.8F);
+                }
+                for (int i = 0; i < 12; i++) {
+                    Vec3 d = dir();
+                    chip(at.add(0, 1.0, 0), new Vec3(d.x, Math.abs(d.y) + 0.3, d.z).scale(0.35), 0.15F, 24, 0x9A9488);
+                }
+            }
+            case WALL_CRUMBLE -> {
+                // NS_GeomancerWall_Debris / SmallDebris: dust sliding down the pillar, chips falling off
+                for (int i = 0; i < 8; i++) {
+                    puff(at.add(rand() * 0.5, RANDOM.nextFloat() * 2.4, rand() * 0.5), new Vec3(rand() * 0.04, -0.02, rand() * 0.04), 0.35F, 22, DUST, 0.6F);
+                }
+                for (int i = 0; i < 10; i++) {
+                    chip(at.add(rand() * 0.45, 0.5 + RANDOM.nextFloat() * 2.0, rand() * 0.45), new Vec3(rand() * 0.08, 0.05, rand() * 0.08), 0.12F, 20, 0x8E8A84);
+                }
+            }
+            case EXC_SLASH -> {
+                // AnimNS_Slash in FF0019
+                float side = param >= 0 ? 1 : -1;
+                for (int i = 0; i <= 10; i++) {
+                    float a = (yaw + side * (-55 + i * 110 / 10.0F)) * Mth.DEG_TO_RAD;
+                    Vec3 p = at.add(-Math.sin(a) * 1.1, 0.4 * (i / 10.0 - 0.5) * side, Math.cos(a) * 1.1);
+                    spark(p, new Vec3(-Math.cos(a), 0, -Math.sin(a)).scale(side * 0.18), 0.1F, 0.45F, 4 + i / 4, 0xFF8090, EXC_RED);
+                }
+            }
+            case EXC_SMASH -> {
+                // NS_GroundSlam_Hammer (warm circle, long sparks), NS_Dust-Impact-Small, NS_Debris_Generic_Medium
+                ring(VfxSprite.RING_THICK, at, 0.3F, 2.2F, 9, 0xFFD0B0, 0xFF9966);
+                for (int i = 0; i < 16; i++) {
+                    Vec3 d = flat(RANDOM.nextFloat() * Mth.TWO_PI).scale(0.25 + RANDOM.nextFloat() * 0.3).add(0, 0.25 + RANDOM.nextFloat() * 0.3, 0);
+                    spark(at.add(0, 0.1, 0), d, 0.06F, i % 3 == 0 ? 0.8F : 0.35F, 12, 0xFFF0A0, FIRE_ORANGE).gravity(0.05F);
+                }
+                dust(at, 1.2, 10, 10);
+            }
             case EVOKER_DEATH -> {
                 // ArenaAnnounce: flash, whirlwind pipe and an expanding sphere in deep cyan
                 VfxParticle.at(at).shape(Shape.SPHERE).sprite(VfxSprite.SOLID, 0).size(0.5F, 5.0F).color(0x60E8FF, 0x0040A0).alpha(0.6F, 0)
@@ -606,6 +753,29 @@ public final class VfxLibrary {
         }
         if (lightning != null && tick % 4 == 1) {
             spark(lightning, dir().scale(0.1), 0.04F, 0.25F, 6, WHITE_HOT, YELLOW);
+        }
+    }
+
+    /** NS_DeepDarkIllager_CandleFire: the little flame on the Excavator's cap. Called each client tick. */
+    public static void candle(Entity excavator, int tick) {
+        Vec3 at = ANCHORS.get(excavator.getId());
+        if (at == null || at.distanceToSqr(excavator.position()) > 16) {
+            at = excavator.position().add(0, 2.3, 0);
+        }
+        if (tick % 2 == 0) {
+            VfxParticle.at(at.add(0, 0.05, 0)).sprite(VfxSprite.FIRE, 0).animated().velocity(new Vec3(0, 0.012, 0)).size(0.07F, 0.04F)
+                    .color(0xFFE6A0, FIRE_RED).alpha(1, 0.2F).life(6).spawn();
+        }
+        if (tick % 9 == 0) {
+            VfxParticle.at(at.add(0, 0.12, 0)).velocity(new Vec3(rand() * 0.01, 0.03, rand() * 0.01)).size(0.025F, 0.01F)
+                    .color(0xFFC060, FIRE_RED).alpha(1, 0).life(14).spawn();
+        }
+    }
+
+    /** NS_Step_Dust: a puff at a foot plant. */
+    public static void stepDust(Entity mob) {
+        for (int i = 0; i < 2; i++) {
+            puff(mob.position().add(rand() * 0.25, 0.05, rand() * 0.25), new Vec3(rand() * 0.02, 0.01, rand() * 0.02), 0.18F, 14, DUST, 0.45F);
         }
     }
 

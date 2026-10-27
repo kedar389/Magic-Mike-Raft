@@ -1,14 +1,11 @@
 package com.dungeonsillagers;
 
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 
 /**
  * The Geomancer's stone pillar (BP_Geomancer_WallPillar): unhittable, solid while risen (montage collision 0.61-2.91 s),
@@ -32,7 +29,7 @@ public class WallPillar extends Prop {
     protected void onAge(int t) {
         if (t == 2) {
             sound(IllagerSound.GEOMANCER_PILLAR_SPAWNED, 1.2F);
-            burst(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.STONE.defaultBlockState()), this.position(), 25, 0.4, 0.3);
+            Vfx.play(this, Vfx.Effect.WALL_APPEAR, this.position(), this.getYRot(), 0);
         }
         if (t == SOLID_FROM) {
             this.entityData.set(SOLID, true);
@@ -40,8 +37,8 @@ public class WallPillar extends Prop {
         if (t == 52) {
             sound(IllagerSound.GEOMANCER_PILLAR_CRUMBLE, 1.2F);
         }
-        if (t >= 52 && t % 3 == 0) {
-            burst(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.STONE.defaultBlockState()), this.position().add(0, 1.2, 0), 10, 0.4, 0.8);
+        if (t == 52 || t == 60) {
+            Vfx.play(this, Vfx.Effect.WALL_CRUMBLE, this.position(), this.getYRot(), 0);
         }
         if (t == SOLID_UNTIL) {
             this.entityData.set(SOLID, false);

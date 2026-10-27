@@ -1,10 +1,9 @@
 package com.dungeonsillagers;
 
+import com.dungeonsillagers.client.VfxLibrary;
 import java.util.List;
 import javax.annotation.Nullable;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -32,9 +31,10 @@ import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
@@ -171,9 +171,8 @@ public class Excavator extends MoveMob {
         }
         super.tick();
         // NS_DeepDarkIllager_CandleFire: the candle on his cap
-        if (this.level().isClientSide() && this.tickCount % 4 == 0 && this.isAlive()) {
-            Vec3 at = this.position().add(Vec3.directionFromRotation(0, this.yBodyRot).scale(0.05));
-            this.level().addParticle(ParticleTypes.SMALL_FLAME, at.x, at.y + 2.28, at.z, 0, 0.005, 0);
+        if (this.level().isClientSide() && this.isAlive()) {
+            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> VfxLibrary.candle(this, this.tickCount));
         }
     }
 
@@ -185,7 +184,7 @@ public class Excavator extends MoveMob {
                 sound(IllagerSound.EXCAVATOR_PICK_SWING, 1.0F);
             }
             if (t == 9) {
-                burst(ParticleTypes.SWEEP_ATTACK, inFront(0.9).add(0, 1.0, 0), 1, 0);
+                Vfx.play(this, Vfx.Effect.EXC_SLASH, this.position().add(0, 1.0, 0), this.getYRot(), 1);
             }
             if (t >= 10 && t <= 11) {
                 hitWindow(inFront(0.9), 1.0, 7, 0, victim -> soundAtVictim(victim, IllagerSound.EXCAVATOR_PICKAXE_IMPACT));
@@ -195,16 +194,12 @@ public class Excavator extends MoveMob {
             if (t == 2) {
                 sound(IllagerSound.EXCAVATOR_PICK_BREAK_TELEGRAPH, 1.2F);
             }
-            if (t >= 4 && t < 17 && t % 4 == 0) {
-                ring(ParticleTypes.CRIT, slam, 200 * UE);
-            }
             if (t == 17) {
                 sound(IllagerSound.EXCAVATOR_PICK_BREAK_HIT, 1.5F);
             }
             if (t == 18) {
-                burst(ParticleTypes.SWEEP_ATTACK, slam.add(0, 0.8, 0), 1, 0);
-                burst(new BlockParticleOption(ParticleTypes.BLOCK, groundState(slam)), slam, 40, 0.8);
-                burst(ParticleTypes.CLOUD, slam, 15, 1.2);
+                Vfx.play(this, Vfx.Effect.EXC_SLASH, this.position().add(0, 0.6, 0), this.getYRot(), -1);
+                Vfx.play(this, Vfx.Effect.EXC_SMASH, slam, this.getYRot(), 0);
             }
             if (t == 19) {
                 hitWindow(slam, 200 * UE, 12, 0, victim -> soundAtVictim(victim, IllagerSound.EXCAVATOR_PICKAXE_IMPACT));
@@ -213,18 +208,13 @@ public class Excavator extends MoveMob {
         } else if (current == SPAWN) {
             if (t == 0) {
                 sound(IllagerSound.EXCAVATOR_SPAWN, 1.0F);
-                burst(ParticleTypes.POOF, this.position().add(0, 0.9, 0), 20, 0.4);
+                Vfx.play(this, Vfx.Effect.MOB_SPAWN, this.position(), this.getYRot(), 0);
             }
         } else if (current == STAGGERED) {
             if (t == 0) {
                 sound(IllagerSound.EXCAVATOR_HURT, 1.0F);
             }
         }
-    }
-
-    private BlockState groundState(Vec3 at) {
-        BlockState state = this.level().getBlockState(BlockPos.containing(at).below());
-        return state.isAir() ? Blocks.STONE.defaultBlockState() : state;
     }
 
     private void soundAtVictim(LivingEntity victim, IllagerSound sound) {
@@ -277,6 +267,7 @@ public class Excavator extends MoveMob {
         };
         if ("step".equals(sound)) {
             blockStep();
+            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> VfxLibrary.stepDust(this));
         } else if (local != null) {
             this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), local.get(), this.getSoundSource(), 0.8F, 1.0F, false);
         }

@@ -112,5 +112,12 @@ public final class ClientSetup {
                 }
             }, 1.0F, false, 0.5F);
         }
+
+        /** NS_DeepDarkIllager_CandleFire sits on the candle: 78 UE above the head pivot, 29 UE forward. */
+        @Override
+        public void render(Excavator entity, float yaw, float partialTick, PoseStack poseStack, MultiBufferSource buffers, int light) {
+            super.render(entity, yaw, partialTick, poseStack, buffers, light);
+            VfxLibrary.trackAnchor(entity, HandTracking.point(this.model.getBone("J_Head"), 0, 0.78F, -0.29F));
+        }
     }
 }
