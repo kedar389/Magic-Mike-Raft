@@ -10,7 +10,11 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.NoopRenderer;
+import com.mojang.math.Axis;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.api.distmarker.Dist;
@@ -18,6 +22,8 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.cache.object.GeoBone;
+import software.bernie.geckolib.renderer.layer.BlockAndItemGeoLayer;
 import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
@@ -101,6 +107,11 @@ public final class ClientSetup {
     /** Half of them wear the backpack texture (T_DeepDark_Illager_Backpack). */
     static final class ExcavatorRenderer extends Renderer<Excavator> {
 
+        /** The game's pickaxe is thin diagonal strips GeckoLib cannot box; a vanilla iron pickaxe takes its place. */
+        private static final ItemStack PICKAXE = new ItemStack(Items.IRON_PICKAXE);
+        private static final String WEAPON_BONE = "J_R_Weapon";
+        private static final float PICKAXE_SCALE = 1.25F;
+
         private static final ResourceLocation BACKPACK =
                 new ResourceLocation(DungeonsIllagersMod.MOD_ID, "textures/entity/excavator_backpack.png");
 
@@ -111,6 +122,26 @@ public final class ClientSetup {
                     return animatable.hasBackpack() ? BACKPACK : super.getTextureResource(animatable);
                 }
             }, 1.0F, false, 0.5F);
+            addRenderLayer(new BlockAndItemGeoLayer<>(this) {
+                @Override
+                protected ItemStack getStackForBone(GeoBone bone, Excavator animatable) {
+                    return WEAPON_BONE.equals(bone.getName()) ? PICKAXE : null;
+                }
+
+                @Override
+                protected ItemDisplayContext getTransformTypeForStack(GeoBone bone, ItemStack stack, Excavator animatable) {
+                    return ItemDisplayContext.THIRD_PERSON_RIGHT_HAND;
+                }
+
+                /** Held like a player's main hand from the bone at the fist, sized to the game's 115 UE pickaxe. */
+                @Override
+                protected void renderStackForBone(PoseStack poseStack, GeoBone bone, ItemStack stack, Excavator animatable,
+                        MultiBufferSource buffers, float partialTick, int light, int overlay) {
+                    poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
+                    poseStack.scale(PICKAXE_SCALE, PICKAXE_SCALE, PICKAXE_SCALE);
+                    super.renderStackForBone(poseStack, bone, stack, animatable, buffers, partialTick, light, overlay);
+                }
+            });
         }
 
         /** NS_DeepDarkIllager_CandleFire sits on the candle: 78 UE above the head pivot, 29 UE forward. */
