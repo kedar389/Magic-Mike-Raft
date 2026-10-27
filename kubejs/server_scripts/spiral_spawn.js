@@ -93,6 +93,12 @@ PlayerEvents.loggedIn(event => {
 
   const [x, y, z] = spot
   server.scheduleInTicks(20, () => {
+    // Logged out before the teleport: un-mark them so the next join places them (their node stays used).
+    if (player.removed) {
+      server.persistentData.getCompound('spiralPlaced').remove(key)
+      console.warn(`[spiral_spawn] ${player.username} left before the teleport to node ${index}, will be placed on next join`)
+      return
+    }
     server.runCommandSilent(`execute in minecraft:overworld run tp ${player.username} ${x} ${y} ${z}`)
     server.runCommandSilent(`spawnpoint ${player.username} ${x} ${y} ${z}`)
     console.info(`[spiral_spawn] ${player.username} -> node ${index} at ${x} ${y} ${z}`)
