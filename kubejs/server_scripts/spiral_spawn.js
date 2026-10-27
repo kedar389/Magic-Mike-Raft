@@ -24,13 +24,15 @@ const SPIRAL = {
 }
 
 const PROBE_DIRS = [[1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1], [1, -1]]
+// This Rhino has no Math.PI (it is undefined, so every bearing came out NaN).
+const DEG_TO_RAD = 3.141592653589793 / 180
 
 // Bearing 0 = north (-z), 90 = east (+x). The node sits on the diamond
 // |x| + |z| = ring, so cardinal nodes land at the full ring distance and
 // diagonal nodes at half of it on each axis.
 function node(index) {
   const ring = SPIRAL.step * index
-  const bearing = (180 + (SPIRAL.clockwise ? 1 : -1) * SPIRAL.turn * index) * Math.PI / 180
+  const bearing = (180 + (SPIRAL.clockwise ? 1 : -1) * SPIRAL.turn * index) * DEG_TO_RAD
   const s = Math.sin(bearing)
   const c = Math.cos(bearing)
   const k = ring / (Math.abs(s) + Math.abs(c))
