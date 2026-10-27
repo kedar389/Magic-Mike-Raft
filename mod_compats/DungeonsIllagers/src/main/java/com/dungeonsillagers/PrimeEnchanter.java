@@ -192,7 +192,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 300.0)
+                .add(Attributes.MAX_HEALTH, 400.0)
                 .add(Attributes.ARMOR, 12.0)
                 .add(Attributes.ATTACK_DAMAGE, 14.0)
                 .add(Attributes.ATTACK_KNOCKBACK, 1.5)

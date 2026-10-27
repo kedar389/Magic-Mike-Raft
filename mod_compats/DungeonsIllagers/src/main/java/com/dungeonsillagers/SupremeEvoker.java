@@ -40,8 +40,8 @@ import net.minecraft.world.phys.Vec3;
 import software.bernie.geckolib.core.animation.RawAnimation;
 
 /**
- * The Supreme Evoker (DT_MobType3Definition SupremeEvoker, ST_SupremeEvoker). Health is the game's 1000 / 5, the
- * Prime Enchanter's ratio; staggers at 75/50/25 % like him. Summons illagers at full health and soul vexes below 60 %,
+ * The Supreme Evoker (DT_MobType3Definition SupremeEvoker, ST_SupremeEvoker). Health is 400, the
+ * Prime Enchanter's; staggers at 75/50/25 % like him. Summons illagers at full health and soul vexes below 60 %,
  * rings himself with fang traps when crowded, teleports away, raises a bubble that soaks 50 game damage, and throws
  * volleys of enchanted orbs from both hands.
  */
@@ -60,8 +60,8 @@ public class SupremeEvoker extends MoveMob {
     private static final List<Move> MOVES =
             List.of(ENCHANTED_PROJECTILES, SUMMON, SUMMON_VEX, SHIELD, FANG_TRAP, TELEPORT, SPAWN, STAGGERED);
 
-    /** Health scale: game 1000 -> 200. The bubble (EvokerSoulShield) holds 50 game health. */
-    private static final float HEALTH_SCALE = 200.0F / 1000.0F;
+    /** Health scale: game 1000 -> 400, as the Prime Enchanter. The bubble (EvokerSoulShield) holds 50 game health. */
+    private static final float HEALTH_SCALE = 400.0F / 1000.0F;
     private static final float SHIELD_HEALTH = 50 * HEALTH_SCALE;
     /** GA_EngageTargetMovement AcceptanceRadiusOverride 600. */
     private static final double KEEP_RANGE = 600 * UE;

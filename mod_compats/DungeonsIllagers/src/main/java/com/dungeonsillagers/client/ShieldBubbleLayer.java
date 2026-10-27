@@ -66,7 +66,7 @@ final class ShieldBubbleLayer extends GeoRenderLayer<SupremeEvoker> {
             return;
         }
         float shimmer = 0.04F * (float) Math.sin((animatable.tickCount + partialTick) * 0.25F);
-        float alpha = 0.18F + 0.17F * Math.min(1.0F, left / 10.0F) + shimmer;
+        float alpha = 0.18F + 0.17F * Math.min(1.0F, left / 20.0F) + shimmer;
         VertexConsumer out = bufferSource.getBuffer(RenderType.entityTranslucentEmissive(TEXTURE));
         Matrix4f pose = poseStack.last().pose();
         Matrix3f normal = poseStack.last().normal();
