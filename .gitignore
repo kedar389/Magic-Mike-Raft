@@ -21,3 +21,7 @@ mod_compats/**/libs/*.jar
 .wolf
 CLAUDE.md
 .vscode
+
+# Dungeons II tool builds
+tools/**/bin/
+tools/**/obj/
