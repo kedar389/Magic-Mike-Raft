@@ -38,9 +38,10 @@ function node(index) {
 }
 
 // First solid block from the top with two blocks of headroom, or null.
+// Inside loops use let, never const: this Rhino throws "redeclaration of var" on a loop's second pass.
 function surfaceY(level, x, z) {
   for (let y = SPIRAL.scanTop; y > SPIRAL.scanBottom; y--) {
-    const id = level.getBlock(x, y, z).id
+    let id = level.getBlock(x, y, z).id
     if (id === 'minecraft:air' || id === 'minecraft:cave_air' || id.endsWith('_leaves')) continue
     if (SPIRAL.unsafe.includes(id)) return null
     if (level.getBlock(x, y + 1, z).id !== 'minecraft:air') return null
@@ -66,9 +67,9 @@ function findSpot(server, level, index) {
 
   for (let ring = 1; ring <= SPIRAL.probeRings; ring++) {
     for (const [dx, dz] of PROBE_DIRS) {
-      const x = x0 + dx * ring * SPIRAL.probeStep
-      const z = z0 + dz * ring * SPIRAL.probeStep
-      const y = groundAt(server, level, x, z)
+      let x = x0 + dx * ring * SPIRAL.probeStep
+      let z = z0 + dz * ring * SPIRAL.probeStep
+      let y = groundAt(server, level, x, z)
       if (y !== null) return [x, y, z]
     }
   }
