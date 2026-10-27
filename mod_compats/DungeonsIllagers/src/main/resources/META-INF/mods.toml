@@ -7,7 +7,7 @@ license="MIT"
     version="0.1.0"
     displayName="Dungeons Illagers"
     description='''
-The Geomancer, the Excavator and the Supreme Evoker from Minecraft Dungeons II, built on GeckoLib.
+The Prime Enchanter, the Geomancer, the Excavator and the Supreme Evoker from Minecraft Dungeons II, built on GeckoLib.
 '''
 
 [[dependencies.dungeons_illagers]]

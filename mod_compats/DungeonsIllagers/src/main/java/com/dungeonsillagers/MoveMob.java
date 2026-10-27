@@ -468,7 +468,7 @@ public abstract class MoveMob extends Monster implements GeoEntity {
     @Override
     public boolean isAlliedTo(Entity other) {
         return super.isAlliedTo(other)
-                || ((other instanceof AbstractIllager || other instanceof MoveMob) && other.getTeam() == null);
+                || ((other instanceof AbstractIllager || other instanceof MoveMob || other instanceof PrimeEnchanter) && other.getTeam() == null);
     }
 
 

@@ -1,7 +1,7 @@
-package com.primeenchanter.client;
+package com.dungeonsillagers.client;
 
-import com.primeenchanter.PrimeEnchanter;
-import com.primeenchanter.PrimeEnchanterMod;
+import com.dungeonsillagers.DungeonsIllagersMod;
+import com.dungeonsillagers.PrimeEnchanter;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -13,8 +13,8 @@ import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.layer.AutoGlowingGeoLayer;
 
-/** GeckoLib renderer: geo, animations and texture under {@code prime_enchanter/.../entity/}, plus the glowmask. */
-@Mod.EventBusSubscriber(modid = PrimeEnchanterMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+/** GeckoLib renderer: geo, animations and texture under {@code dungeons_illagers/.../entity/prime_enchanter}, plus the glowmask. */
+@Mod.EventBusSubscriber(modid = DungeonsIllagersMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class PrimeEnchanterRenderer extends GeoEntityRenderer<PrimeEnchanter> {
 
     public PrimeEnchanterRenderer(EntityRendererProvider.Context context) {
@@ -34,7 +34,7 @@ public class PrimeEnchanterRenderer extends GeoEntityRenderer<PrimeEnchanter> {
     private static final class Model extends DefaultedEntityGeoModel<PrimeEnchanter> {
 
         Model() {
-            super(new ResourceLocation(PrimeEnchanterMod.MOD_ID, "prime_enchanter"));
+            super(new ResourceLocation(DungeonsIllagersMod.MOD_ID, "prime_enchanter"));
         }
 
         @Override
@@ -50,6 +50,6 @@ public class PrimeEnchanterRenderer extends GeoEntityRenderer<PrimeEnchanter> {
 
     @SubscribeEvent
     public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(PrimeEnchanterMod.PRIME_ENCHANTER.get(), PrimeEnchanterRenderer::new);
+        event.registerEntityRenderer(DungeonsIllagersMod.PRIME_ENCHANTER.get(), PrimeEnchanterRenderer::new);
     }
 }

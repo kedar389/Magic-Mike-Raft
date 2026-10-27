@@ -16,7 +16,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-/** Registers the Geomancer, the Excavator, the Supreme Evoker, their props, spawn eggs and sound events. */
+/** Registers the Prime Enchanter, the Geomancer, the Excavator, the Supreme Evoker, their props, spawn eggs and sound events. */
 @Mod(DungeonsIllagersMod.MOD_ID)
 public class DungeonsIllagersMod {
 
@@ -28,6 +28,12 @@ public class DungeonsIllagersMod {
     private static final DeferredRegister<SoundEvent> SOUNDS =
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, MOD_ID);
 
+    public static final RegistryObject<EntityType<PrimeEnchanter>> PRIME_ENCHANTER = ENTITIES.register("prime_enchanter",
+            () -> EntityType.Builder.of(PrimeEnchanter::new, MobCategory.MONSTER)
+                    .sized(1.4F, 3.2F)
+                    .clientTrackingRange(10)
+                    .fireImmune()
+                    .build(MOD_ID + ":prime_enchanter"));
     public static final RegistryObject<EntityType<Geomancer>> GEOMANCER = ENTITIES.register("geomancer",
             () -> EntityType.Builder.of(Geomancer::new, MobCategory.MONSTER)
                     .sized(0.6F, 1.95F)
@@ -71,6 +77,8 @@ public class DungeonsIllagersMod {
                     .updateInterval(2)
                     .build(MOD_ID + ":evoker_orb"));
 
+    public static final RegistryObject<Item> PRIME_ENCHANTER_EGG = ITEMS.register("prime_enchanter_spawn_egg",
+            () -> new ForgeSpawnEggItem(PRIME_ENCHANTER, 0x6B2530, 0x3FF2F2, new Item.Properties()));
     public static final RegistryObject<Item> GEOMANCER_EGG = ITEMS.register("geomancer_spawn_egg",
             () -> new ForgeSpawnEggItem(GEOMANCER, 0x8A8F8C, 0xB060D8, new Item.Properties()));
     public static final RegistryObject<Item> EXCAVATOR_EGG = ITEMS.register("excavator_spawn_egg",
@@ -94,6 +102,7 @@ public class DungeonsIllagersMod {
     }
 
     private static void onAttributes(EntityAttributeCreationEvent event) {
+        event.put(PRIME_ENCHANTER.get(), PrimeEnchanter.createAttributes().build());
         event.put(GEOMANCER.get(), Geomancer.createAttributes().build());
         event.put(EXCAVATOR.get(), Excavator.createAttributes().build());
         event.put(SUPREME_EVOKER.get(), SupremeEvoker.createAttributes().build());
@@ -101,6 +110,7 @@ public class DungeonsIllagersMod {
 
     private static void onCreativeTab(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
+            event.accept(PRIME_ENCHANTER_EGG);
             event.accept(GEOMANCER_EGG);
             event.accept(EXCAVATOR_EGG);
             event.accept(SUPREME_EVOKER_EGG);

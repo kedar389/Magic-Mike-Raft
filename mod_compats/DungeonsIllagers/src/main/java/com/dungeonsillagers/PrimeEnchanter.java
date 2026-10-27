@@ -1,4 +1,4 @@
-package com.primeenchanter;
+package com.dungeonsillagers;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -141,7 +141,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private final ServerBossEvent bossBar =
-            new ServerBossEvent(Component.translatable("entity.prime_enchanter.prime_enchanter"),
+            new ServerBossEvent(Component.translatable("entity.dungeons_illagers.prime_enchanter"),
                     BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.NOTCHED_10);
 
     /** Targets already struck by the current hit window; each window hits a target once. */
@@ -208,7 +208,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
         this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 0.7));
         this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 16.0F));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this, AbstractIllager.class));
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this, AbstractIllager.class, MoveMob.class));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
@@ -345,28 +345,28 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
             case FURY_FIST -> {
                 // rate 1.3: two jabs, power-up, ice and lightning hooks, dash, double-fist ground slam
                 if (t == 3) {
-                    sound(BossSound.FURY_FIST_TELEGRAPH);
+                    sound(IllagerSound.PRIME_ENCHANTER_FURY_FIST_TELEGRAPH);
                 }
                 if (t == 14 || t == 25 || t == 73 || t == 88) {
                     lunge(0.6);
                 }
                 if (t == 13) {
-                    sound(BossSound.FURY_FIST_HIT_1);
+                    sound(IllagerSound.PRIME_ENCHANTER_FURY_FIST_HIT_1);
                 }
                 if (t == 25) {
-                    sound(BossSound.FURY_FIST_HIT_2);
+                    sound(IllagerSound.PRIME_ENCHANTER_FURY_FIST_HIT_2);
                 }
                 if (t == 72) {
-                    sound(BossSound.FURY_FIST_HIT_3);
-                    sound(BossSound.FURY_FIST_HIT_3_VOCAL);
+                    sound(IllagerSound.PRIME_ENCHANTER_FURY_FIST_HIT_3);
+                    sound(IllagerSound.PRIME_ENCHANTER_FURY_FIST_HIT_3_VOCAL);
                 }
                 if (t == 80) {
-                    sound(BossSound.FURY_FIST_HIT_4);
-                    sound(BossSound.FURY_FIST_HIT_4_VOCAL);
+                    sound(IllagerSound.PRIME_ENCHANTER_FURY_FIST_HIT_4);
+                    sound(IllagerSound.PRIME_ENCHANTER_FURY_FIST_HIT_4_VOCAL);
                 }
                 if (t == 94) {
-                    sound(BossSound.FURY_FIST_HIT_5);
-                    sound(BossSound.FURY_FIST_HIT_5_VOCAL);
+                    sound(IllagerSound.PRIME_ENCHANTER_FURY_FIST_HIT_5);
+                    sound(IllagerSound.PRIME_ENCHANTER_FURY_FIST_HIT_5_VOCAL);
                 }
                 if (t >= 13 && t <= 16) {
                     hitWindow(armStrike(false), 1.6, 12, 1500, gauntletsLit() ? Element.ICE : Element.NONE);
@@ -384,8 +384,8 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
                     burst(ParticleTypes.ELECTRIC_SPARK, armStrike(true), 12, 0.3);
                 }
                 if (t == 31) {
-                    sound(BossSound.FURY_FIST_POWER_UP);
-                    sound(BossSound.FURY_FIST_POWER_UP_VOCAL);
+                    sound(IllagerSound.PRIME_ENCHANTER_FURY_FIST_POWER_UP);
+                    sound(IllagerSound.PRIME_ENCHANTER_FURY_FIST_POWER_UP_VOCAL);
                 }
                 if (t == 41) {
                     burst(ParticleTypes.SNOWFLAKE, handPosition(false), 30, 0.4);
@@ -435,13 +435,13 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
                     tickIceTrail();
                 }
                 if (t == 3) {
-                    sound(BossSound.FORWARD_STRIKE_TELEGRAPH);
+                    sound(IllagerSound.PRIME_ENCHANTER_FORWARD_STRIKE_TELEGRAPH);
                 }
                 if (t == 9) {
                     burst(ParticleTypes.SNOWFLAKE, handPosition(false), 25, 0.3);
                 }
                 if (t == 27) {
-                    sound(BossSound.FORWARD_STRIKE_HIT);
+                    sound(IllagerSound.PRIME_ENCHANTER_FORWARD_STRIKE_HIT);
                 }
                 if (t == 28) {
                     lunge(1.6);
@@ -455,25 +455,25 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
             }
             case LIGHTNING_SLAM -> {
                 if (t == 0) {
-                    sound(BossSound.LIGHTNING_SLAM_START);
-                    sound(BossSound.LIGHTNING_SLAM_START_VOCAL);
+                    sound(IllagerSound.PRIME_ENCHANTER_LIGHTNING_SLAM_START);
+                    sound(IllagerSound.PRIME_ENCHANTER_LIGHTNING_SLAM_START_VOCAL);
                 }
                 if (t >= 9 && t < 53) {
                     burst(ParticleTypes.ELECTRIC_SPARK, handPosition(true), 3, 0.3);
                 }
                 if (t == 26) {
                     lunge(1.0);
-                    sound(BossSound.LIGHTNING_SLAM_JUMP);
+                    sound(IllagerSound.PRIME_ENCHANTER_LIGHTNING_SLAM_JUMP);
                 }
                 if (t == 47) {
-                    sound(BossSound.LIGHTNING_SLAM_END);
-                    sound(BossSound.LIGHTNING_SLAM_END_VOCAL);
+                    sound(IllagerSound.PRIME_ENCHANTER_LIGHTNING_SLAM_END);
+                    sound(IllagerSound.PRIME_ENCHANTER_LIGHTNING_SLAM_END_VOCAL);
                 }
                 if (t == 53) {
                     Vec3 at = inFront(1.5);
                     bolt(at);
                     burst(ParticleTypes.ELECTRIC_SPARK, at, 120, 3.5);
-                    sound(BossSound.LIGHTNING_SLAM_RIPPLE);
+                    sound(IllagerSound.PRIME_ENCHANTER_LIGHTNING_SLAM_RIPPLE);
                 }
                 if (t >= 53 && t <= 65) {
                     hitWindow(inFront(1.5), 550 * UE_TO_BLOCKS, 35, 3500, Element.LIGHTNING);
@@ -481,12 +481,12 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
             }
             case LAUNCH -> {
                 if (t == 0) {
-                    sound(BossSound.LAUNCH_TELEPORT_OUT);
-                    sound(BossSound.LAUNCH_TELEPORT_OUT_VOCAL);
+                    sound(IllagerSound.PRIME_ENCHANTER_LAUNCH_TELEPORT_OUT);
+                    sound(IllagerSound.PRIME_ENCHANTER_LAUNCH_TELEPORT_OUT_VOCAL);
                 }
                 if (t == 30 && this.getTarget() != null) {
                     Vec3 at = this.getTarget().position();
-                    this.level().playSound(null, at.x, at.y, at.z, BossSound.LAUNCH_LAND_TELEGRAPH.get(),
+                    this.level().playSound(null, at.x, at.y, at.z, IllagerSound.PRIME_ENCHANTER_LAUNCH_LAND_TELEGRAPH.get(),
                             this.getSoundSource(), 2.0F, 1.0F);
                 }
                 if (t == 7) {
@@ -502,8 +502,8 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
                         Vec3 to = this.getTarget().position();
                         this.teleportTo(to.x, to.y, to.z);
                     }
-                    sound(BossSound.LAUNCH_TELEPORT_IN);
-                    sound(BossSound.LAUNCH_TELEPORT_IN_VOCAL);
+                    sound(IllagerSound.PRIME_ENCHANTER_LAUNCH_TELEPORT_IN);
+                    sound(IllagerSound.PRIME_ENCHANTER_LAUNCH_TELEPORT_IN_VOCAL);
                 }
                 if (t == 53) {
                     bolt(this.position());
@@ -516,13 +516,13 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
             }
             case OVERCHARGE -> {
                 if (t == 0) {
-                    sound(BossSound.OVERCHARGE_START);
+                    sound(IllagerSound.PRIME_ENCHANTER_OVERCHARGE_START);
                 }
                 if (t == 44) {
-                    sound(BossSound.OVERCHARGE_LOOP);
+                    sound(IllagerSound.PRIME_ENCHANTER_OVERCHARGE_LOOP);
                 }
                 if (t == 54) {
-                    sound(BossSound.OVERCHARGE_END);
+                    sound(IllagerSound.PRIME_ENCHANTER_OVERCHARGE_END);
                 }
                 if (t > 3 && t < 54) {
                     burst(ParticleTypes.ELECTRIC_SPARK, handPosition(true), 4, 0.6);
@@ -539,7 +539,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
             }
             case SUMMON -> {
                 if (t == 1) {
-                    sound(BossSound.SUMMON);
+                    sound(IllagerSound.PRIME_ENCHANTER_SUMMON);
                 }
                 if (t == 11 && this.level() instanceof ServerLevel server) {
                     // SummonIllagers waves: 1-2 Pillagers, 2-3 Vindicators, 1-3 Royal Guards
@@ -551,7 +551,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
             case ICEMINES -> {
                 // BP_IceMines: telegraph on spawn, explode 1.15 s later
                 if (t == 1) {
-                    sound(BossSound.SUMMON);
+                    sound(IllagerSound.PRIME_ENCHANTER_SUMMON);
                 }
                 if (t == 11 && this.getTarget() != null) {
                     Vec3 center = this.getTarget().position();
@@ -565,13 +565,13 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
             }
             case SPAWN -> {
                 if (t == 0) {
-                    sound(BossSound.LIGHTNING_SLAM_END);
+                    sound(IllagerSound.PRIME_ENCHANTER_LIGHTNING_SLAM_END);
                 }
                 if (t == 5) {
                     burst(ParticleTypes.SNOWFLAKE, this.position(), 80, 2.0);
                 }
                 if (t == 35) {
-                    sound(BossSound.FURY_FIST_HIT_2);
+                    sound(IllagerSound.PRIME_ENCHANTER_FURY_FIST_HIT_2);
                 }
                 if (t == 37) {
                     burst(ParticleTypes.ELECTRIC_SPARK, handPosition(true), 30, 0.4);
@@ -582,10 +582,10 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
             }
             case STAGGERED -> {
                 if (t == 0) {
-                    sound(BossSound.STAGGER_START);
+                    sound(IllagerSound.PRIME_ENCHANTER_STAGGER_START);
                 }
                 if (t == 34) {
-                    sound(BossSound.STAGGER_END);
+                    sound(IllagerSound.PRIME_ENCHANTER_STAGGER_END);
                 }
             }
             default -> { }
@@ -614,7 +614,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
             this.entityData.set(GAUNTLETS_LIT, false);
         } else if (!lit && this.getTarget() != null && this.isAlive() && !isBusy()) {
             this.entityData.set(GAUNTLETS_LIT, true);
-            sound(BossSound.FURY_FIST_POWER_UP);
+            sound(IllagerSound.PRIME_ENCHANTER_FURY_FIST_POWER_UP);
             burst(ParticleTypes.SNOWFLAKE, handPosition(false), 30, 0.4);
             burst(ParticleTypes.ELECTRIC_SPARK, handPosition(true), 30, 0.4);
         }
@@ -649,7 +649,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
                 continue;
             }
             it.remove();
-            this.level().playSound(null, mine.pos.x, mine.pos.y, mine.pos.z, BossSound.ICE_MINE_EXPLODE.get(),
+            this.level().playSound(null, mine.pos.x, mine.pos.y, mine.pos.z, IllagerSound.PRIME_ENCHANTER_ICE_MINE_EXPLODE.get(),
                     this.getSoundSource(), 1.5F, 1.0F);
             burst(ParticleTypes.SNOWFLAKE, mine.pos, 50, 1.0);
             Set<UUID> hit = new HashSet<>();
@@ -660,7 +660,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
 
     private void placeMine(Vec3 at) {
         this.mines.add(new Mine(at));
-        this.level().playSound(null, at.x, at.y, at.z, BossSound.ICE_MINE_SPAWN.get(), this.getSoundSource(), 0.8F, 1.0F);
+        this.level().playSound(null, at.x, at.y, at.z, IllagerSound.PRIME_ENCHANTER_ICE_MINE_SPAWN.get(), this.getSoundSource(), 0.8F, 1.0F);
     }
 
     /**
@@ -682,7 +682,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     }
 
     /** Boss sounds carry far: volume 2.5 is audible to about 40 blocks. */
-    private void sound(BossSound sound) {
+    private void sound(IllagerSound sound) {
         this.playSound(sound.get(), 2.5F, 1.0F);
     }
 
@@ -728,8 +728,8 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
                 e -> e != this && !this.isAlliedTo(e) && e.isAlive() && !struck.contains(e.getUUID()))) {
             struck.add(victim.getUUID());
             if (victim.hurt(this.damageSources().mobAttack(this), damage)) {
-                BossSound hitSound = this.move == Move.LIGHTNING_SLAM ? BossSound.LIGHTNING_SLAM_RIPPLE_HIT
-                        : BossSound.HITMARKER;
+                IllagerSound hitSound = this.move == Move.LIGHTNING_SLAM ? IllagerSound.PRIME_ENCHANTER_LIGHTNING_SLAM_RIPPLE_HIT
+                        : IllagerSound.PRIME_ENCHANTER_HITMARKER;
                 this.level().playSound(null, victim.getX(), victim.getY(), victim.getZ(), hitSound.get(),
                         this.getSoundSource(), 1.0F, 1.0F);
                 if (push > 0) {
@@ -791,7 +791,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
         }
         if (this.floorTicks % 20 == 0) {
             this.level().playSound(null, this.floorCenter.x, this.floorCenter.y, this.floorCenter.z,
-                    BossSound.OVERCHARGE_FLOOR.get(), this.getSoundSource(), 2.5F, 1.0F);
+                    IllagerSound.PRIME_ENCHANTER_OVERCHARGE_FLOOR.get(), this.getSoundSource(), 2.5F, 1.0F);
         }
         if (this.floorTicks % 4 != 0) {
             return;
@@ -804,7 +804,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
                         && e.position().subtract(this.floorCenter).horizontalDistance() <= FLOOR_RADIUS)) {
             if (victim.hurt(this.damageSources().mobAttack(this), damage)) {
                 this.level().playSound(null, victim.getX(), victim.getY(), victim.getZ(),
-                        BossSound.OVERCHARGE_FLOOR_DAMAGE.get(), this.getSoundSource(), 1.0F, 1.0F);
+                        IllagerSound.PRIME_ENCHANTER_OVERCHARGE_FLOOR_DAMAGE.get(), this.getSoundSource(), 1.0F, 1.0F);
             }
         }
     }
@@ -886,7 +886,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     public void die(DamageSource source) {
         super.die(source);
         if (!this.level().isClientSide()) {
-            sound(BossSound.DEATH_LONG);
+            sound(IllagerSound.PRIME_ENCHANTER_DEATH_LONG);
         }
         this.move = Move.DEATH;
         this.mines.clear();
@@ -934,7 +934,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
 
     @Override
     public boolean isAlliedTo(Entity other) {
-        return super.isAlliedTo(other) || (other instanceof AbstractIllager && other.getTeam() == null);
+        return super.isAlliedTo(other) || ((other instanceof AbstractIllager || other instanceof MoveMob) && other.getTeam() == null);
     }
 
     // ---- boss bar ------------------------------------------------------------------------------
@@ -961,17 +961,17 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return BossSound.AMBIENT.get();
+        return IllagerSound.PRIME_ENCHANTER_AMBIENT.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return BossSound.HURT.get();
+        return IllagerSound.PRIME_ENCHANTER_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return BossSound.DEATH.get();
+        return IllagerSound.PRIME_ENCHANTER_DEATH.get();
     }
 
     /** Footsteps come from the walk animation's foot plants (see {@link #registerControllers}), not walked distance. */
@@ -981,12 +981,12 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
 
     private void playFootstep() {
         Level level = this.level();
-        level.playLocalSound(this.getX(), this.getY(), this.getZ(), BossSound.STEP.get(), this.getSoundSource(),
+        level.playLocalSound(this.getX(), this.getY(), this.getZ(), IllagerSound.PRIME_ENCHANTER_STEP.get(), this.getSoundSource(),
                 1.6F, 1.0F, false);
-        level.playLocalSound(this.getX(), this.getY(), this.getZ(), BossSound.STEP_FOLEY.get(), this.getSoundSource(),
+        level.playLocalSound(this.getX(), this.getY(), this.getZ(), IllagerSound.PRIME_ENCHANTER_STEP_FOLEY.get(), this.getSoundSource(),
                 1.2F, 1.0F, false);
         if (this.random.nextInt(3) == 0) {
-            level.playLocalSound(this.getX(), this.getY(), this.getZ(), BossSound.CAPE.get(), this.getSoundSource(),
+            level.playLocalSound(this.getX(), this.getY(), this.getZ(), IllagerSound.PRIME_ENCHANTER_CAPE.get(), this.getSoundSource(),
                     1.2F, 1.0F, false);
         }
     }

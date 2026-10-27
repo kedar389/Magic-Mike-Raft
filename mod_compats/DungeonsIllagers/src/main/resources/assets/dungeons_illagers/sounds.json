@@ -1,4 +1,340 @@
 {
+	"entity.dungeons_illagers.prime_enchanter.ambient": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.ambient",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/ambient/1",
+			"dungeons_illagers:prime_enchanter/ambient/2",
+			"dungeons_illagers:prime_enchanter/ambient/3",
+			"dungeons_illagers:prime_enchanter/ambient/4",
+			"dungeons_illagers:prime_enchanter/ambient/5",
+			"dungeons_illagers:prime_enchanter/ambient/6"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.hurt": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.hurt",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/hurt/1",
+			"dungeons_illagers:prime_enchanter/hurt/2",
+			"dungeons_illagers:prime_enchanter/hurt/3",
+			"dungeons_illagers:prime_enchanter/hurt/4",
+			"dungeons_illagers:prime_enchanter/hurt/5"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.death": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.death",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/death/1",
+			"dungeons_illagers:prime_enchanter/death/2"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.death_long": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.death_long",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/death_long/1"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.step": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.step",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/step/1",
+			"dungeons_illagers:prime_enchanter/step/2",
+			"dungeons_illagers:prime_enchanter/step/3",
+			"dungeons_illagers:prime_enchanter/step/4",
+			"dungeons_illagers:prime_enchanter/step/5",
+			"dungeons_illagers:prime_enchanter/step/6",
+			"dungeons_illagers:prime_enchanter/step/7",
+			"dungeons_illagers:prime_enchanter/step/8"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.step_foley": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.step_foley",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/step_foley/1",
+			"dungeons_illagers:prime_enchanter/step_foley/2",
+			"dungeons_illagers:prime_enchanter/step_foley/3",
+			"dungeons_illagers:prime_enchanter/step_foley/4",
+			"dungeons_illagers:prime_enchanter/step_foley/5",
+			"dungeons_illagers:prime_enchanter/step_foley/6",
+			"dungeons_illagers:prime_enchanter/step_foley/7",
+			"dungeons_illagers:prime_enchanter/step_foley/8"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.cape": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.cape",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/cape/1",
+			"dungeons_illagers:prime_enchanter/cape/2",
+			"dungeons_illagers:prime_enchanter/cape/3",
+			"dungeons_illagers:prime_enchanter/cape/4",
+			"dungeons_illagers:prime_enchanter/cape/5"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.hitmarker": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.hitmarker",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/hitmarker/1",
+			"dungeons_illagers:prime_enchanter/hitmarker/2",
+			"dungeons_illagers:prime_enchanter/hitmarker/3",
+			"dungeons_illagers:prime_enchanter/hitmarker/4"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.forward_strike_telegraph": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.forward_strike_telegraph",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/forward_strike_telegraph/1",
+			"dungeons_illagers:prime_enchanter/forward_strike_telegraph/2"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.forward_strike_hit": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.forward_strike_hit",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/forward_strike_hit/1",
+			"dungeons_illagers:prime_enchanter/forward_strike_hit/2",
+			"dungeons_illagers:prime_enchanter/forward_strike_hit/3"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.fury_fist_telegraph": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.fury_fist_telegraph",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/fury_fist_telegraph/1"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.fury_fist_hit_1": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.fury_fist_hit_1",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/fury_fist_hit_1/1",
+			"dungeons_illagers:prime_enchanter/fury_fist_hit_1/2"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.fury_fist_hit_2": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.fury_fist_hit_2",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/fury_fist_hit_2/1",
+			"dungeons_illagers:prime_enchanter/fury_fist_hit_2/2"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.fury_fist_hit_3": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.fury_fist_hit_3",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/fury_fist_hit_3/1",
+			"dungeons_illagers:prime_enchanter/fury_fist_hit_3/2"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.fury_fist_hit_3_vocal": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.fury_fist_hit_3_vocal",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/fury_fist_hit_3_vocal/1"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.fury_fist_hit_4": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.fury_fist_hit_4",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/fury_fist_hit_4/1",
+			"dungeons_illagers:prime_enchanter/fury_fist_hit_4/2"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.fury_fist_hit_4_vocal": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.fury_fist_hit_4_vocal",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/fury_fist_hit_4_vocal/1"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.fury_fist_hit_5": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.fury_fist_hit_5",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/fury_fist_hit_5/1",
+			"dungeons_illagers:prime_enchanter/fury_fist_hit_5/2"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.fury_fist_hit_5_vocal": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.fury_fist_hit_5_vocal",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/fury_fist_hit_5_vocal/1"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.fury_fist_power_up": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.fury_fist_power_up",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/fury_fist_power_up/1",
+			"dungeons_illagers:prime_enchanter/fury_fist_power_up/2"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.fury_fist_power_up_vocal": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.fury_fist_power_up_vocal",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/fury_fist_power_up_vocal/1"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.launch_teleport_out": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.launch_teleport_out",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/launch_teleport_out/1",
+			"dungeons_illagers:prime_enchanter/launch_teleport_out/2",
+			"dungeons_illagers:prime_enchanter/launch_teleport_out/3"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.launch_teleport_out_vocal": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.launch_teleport_out_vocal",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/launch_teleport_out_vocal/1"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.launch_land_telegraph": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.launch_land_telegraph",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/launch_land_telegraph/1",
+			"dungeons_illagers:prime_enchanter/launch_land_telegraph/2",
+			"dungeons_illagers:prime_enchanter/launch_land_telegraph/3"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.launch_teleport_in": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.launch_teleport_in",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/launch_teleport_in/1",
+			"dungeons_illagers:prime_enchanter/launch_teleport_in/2"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.launch_teleport_in_vocal": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.launch_teleport_in_vocal",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/launch_teleport_in_vocal/1"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.lightning_slam_start": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.lightning_slam_start",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/lightning_slam_start/1",
+			"dungeons_illagers:prime_enchanter/lightning_slam_start/2"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.lightning_slam_start_vocal": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.lightning_slam_start_vocal",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/lightning_slam_start_vocal/1"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.lightning_slam_jump": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.lightning_slam_jump",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/lightning_slam_jump/1",
+			"dungeons_illagers:prime_enchanter/lightning_slam_jump/2"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.lightning_slam_end": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.lightning_slam_end",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/lightning_slam_end/1",
+			"dungeons_illagers:prime_enchanter/lightning_slam_end/2"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.lightning_slam_end_vocal": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.lightning_slam_end_vocal",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/lightning_slam_end_vocal/1"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.lightning_slam_ripple": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.lightning_slam_ripple",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/lightning_slam_ripple/1"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.lightning_slam_ripple_hit": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.lightning_slam_ripple_hit",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/lightning_slam_ripple_hit/1",
+			"dungeons_illagers:prime_enchanter/lightning_slam_ripple_hit/2",
+			"dungeons_illagers:prime_enchanter/lightning_slam_ripple_hit/3",
+			"dungeons_illagers:prime_enchanter/lightning_slam_ripple_hit/4"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.overcharge_start": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.overcharge_start",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/overcharge_start/1"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.overcharge_loop": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.overcharge_loop",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/overcharge_loop/1",
+			"dungeons_illagers:prime_enchanter/overcharge_loop/2",
+			"dungeons_illagers:prime_enchanter/overcharge_loop/3",
+			"dungeons_illagers:prime_enchanter/overcharge_loop/4"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.overcharge_end": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.overcharge_end",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/overcharge_end/1"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.overcharge_floor": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.overcharge_floor",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/overcharge_floor/1",
+			"dungeons_illagers:prime_enchanter/overcharge_floor/2",
+			"dungeons_illagers:prime_enchanter/overcharge_floor/3",
+			"dungeons_illagers:prime_enchanter/overcharge_floor/4",
+			"dungeons_illagers:prime_enchanter/overcharge_floor/5",
+			"dungeons_illagers:prime_enchanter/overcharge_floor/6",
+			"dungeons_illagers:prime_enchanter/overcharge_floor/7"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.overcharge_floor_damage": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.overcharge_floor_damage",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/overcharge_floor_damage/1",
+			"dungeons_illagers:prime_enchanter/overcharge_floor_damage/2",
+			"dungeons_illagers:prime_enchanter/overcharge_floor_damage/3",
+			"dungeons_illagers:prime_enchanter/overcharge_floor_damage/4",
+			"dungeons_illagers:prime_enchanter/overcharge_floor_damage/5",
+			"dungeons_illagers:prime_enchanter/overcharge_floor_damage/6",
+			"dungeons_illagers:prime_enchanter/overcharge_floor_damage/7",
+			"dungeons_illagers:prime_enchanter/overcharge_floor_damage/8"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.summon": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.summon",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/summon/1",
+			"dungeons_illagers:prime_enchanter/summon/2"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.ice_mine_spawn": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.ice_mine_spawn",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/ice_mine_spawn/1",
+			"dungeons_illagers:prime_enchanter/ice_mine_spawn/2",
+			"dungeons_illagers:prime_enchanter/ice_mine_spawn/3"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.ice_mine_explode": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.ice_mine_explode",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/ice_mine_explode/1",
+			"dungeons_illagers:prime_enchanter/ice_mine_explode/2",
+			"dungeons_illagers:prime_enchanter/ice_mine_explode/3"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.stagger_start": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.stagger_start",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/stagger_start/1",
+			"dungeons_illagers:prime_enchanter/stagger_start/2",
+			"dungeons_illagers:prime_enchanter/stagger_start/3",
+			"dungeons_illagers:prime_enchanter/stagger_start/4"
+		]
+	},
+	"entity.dungeons_illagers.prime_enchanter.stagger_end": {
+		"subtitle": "subtitles.dungeons_illagers.prime_enchanter.stagger_end",
+		"sounds": [
+			"dungeons_illagers:prime_enchanter/stagger_end/1",
+			"dungeons_illagers:prime_enchanter/stagger_end/2",
+			"dungeons_illagers:prime_enchanter/stagger_end/3",
+			"dungeons_illagers:prime_enchanter/stagger_end/4"
+		]
+	},
 	"entity.dungeons_illagers.geomancer.ambient": {
 		"subtitle": "subtitles.dungeons_illagers.geomancer.ambient",
 		"sounds": [
