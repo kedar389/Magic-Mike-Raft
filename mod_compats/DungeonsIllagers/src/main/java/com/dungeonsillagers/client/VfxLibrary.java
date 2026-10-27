@@ -653,7 +653,7 @@ public final class VfxLibrary {
                     spark(o.add(rand() * 0.4, 2.9, rand() * 0.4), new Vec3(rand() * 0.05, 0.12, rand() * 0.05), 0.05F, 0.25F, 8, 0xFFE080, FIRE_ORANGE);
                 }
                 if (age % 10 == 0) {
-                    ring(VfxSprite.RING, o, 3.0F, 2.9F, 8, FIRE_ORANGE, FIRE_RED);
+                    ring(VfxSprite.RING, o, 4.5F, 4.4F, 8, FIRE_ORANGE, FIRE_RED);
                 }
             });
             case BOMB_EXPLODE -> {

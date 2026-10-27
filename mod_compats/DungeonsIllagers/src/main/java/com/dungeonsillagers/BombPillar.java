@@ -7,13 +7,13 @@ import net.minecraft.world.level.Level;
 
 /**
  * The Geomancer's bomb pillar (DT_MobPropActorDefinition BombPillar): rises, burns down a 2.6 s fuse (GA_TimedAOE) and
- * explodes for 25 game damage within 300 UE, hurting no illager. It has 17 health: break it first and it crumbles
- * without exploding.
+ * explodes for 25 game damage within 450 UE (the game's 300, raised half again), hurting no illager. It has 17
+ * health: break it first and it crumbles without exploding.
  */
 public class BombPillar extends Prop {
 
     private static final int FUSE = 52;
-    private static final double RADIUS = 300 * MoveMob.UE;
+    private static final double RADIUS = 450 * MoveMob.UE;
     private float health = 17.0F;
 
     public BombPillar(EntityType<? extends BombPillar> type, Level level) {
