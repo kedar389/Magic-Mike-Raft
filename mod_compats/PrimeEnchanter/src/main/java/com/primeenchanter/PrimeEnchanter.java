@@ -12,6 +12,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -31,6 +32,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.SpawnGroupData;
@@ -54,6 +56,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.registries.ForgeRegistries;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -89,6 +92,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     private static final int TRAIL_MAX_MINES = 15;
     private static final double TRAIL_STEP = 8 * 1.4 / 100.0;
     private static final float MAX_TURN_PER_TICK = 25.0F;
+    private static final ResourceLocation ROYAL_GUARD = new ResourceLocation("takesapillage", "legioner");
     /** Ticks without a target before the gauntlets go dark. */
     private static final int GAUNTLETS_IDLE_OFF = 100;
     private static final EntityDataAccessor<Boolean> GAUNTLETS_LIT =
@@ -524,9 +528,10 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
                     sound(BossSound.SUMMON);
                 }
                 if (t == 11 && this.level() instanceof ServerLevel server) {
-                    summon(server, EntityType.VINDICATOR);
-                    summon(server, EntityType.VINDICATOR);
-                    summon(server, EntityType.PILLAGER);
+                    // SummonIllagers waves: 1-2 Pillagers, 2-3 Vindicators, 1-3 Royal Guards
+                    summon(server, EntityType.PILLAGER, 1 + this.random.nextInt(2));
+                    summon(server, EntityType.VINDICATOR, 2 + this.random.nextInt(2));
+                    summon(server, royalGuard(), 1 + this.random.nextInt(3));
                 }
             }
             case ICEMINES -> {
@@ -789,9 +794,20 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
         }
     }
 
-    private void summon(ServerLevel server, EntityType<? extends AbstractIllager> type) {
-        AbstractIllager minion = type.create(server);
-        if (minion == null) {
+    /** Dungeons II's shielded Royal Guard: It Takes a Pillage's legioner when installed, else a vindicator. */
+    private static EntityType<?> royalGuard() {
+        EntityType<?> legioner = ForgeRegistries.ENTITY_TYPES.getValue(ROYAL_GUARD);
+        return legioner != null && ForgeRegistries.ENTITY_TYPES.containsKey(ROYAL_GUARD) ? legioner : EntityType.VINDICATOR;
+    }
+
+    private void summon(ServerLevel server, EntityType<?> type, int count) {
+        for (int i = 0; i < count; i++) {
+            summon(server, type);
+        }
+    }
+
+    private void summon(ServerLevel server, EntityType<?> type) {
+        if (!(type.create(server) instanceof Mob minion)) {
             return;
         }
         double angle = this.random.nextDouble() * Math.PI * 2;
