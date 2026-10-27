@@ -26,7 +26,7 @@ public class FangTrap extends Prop {
     @Override
     protected void onAge(int t) {
         if (t == 0) {
-            burst(ParticleTypes.WITCH, this.position(), 10, 0.3, 0.1);
+            Vfx.play(this, Vfx.Effect.FANG_RISE, this.position(), this.getYRot(), 0);
         }
         if (t == 3) {
             sound(IllagerSound.SUPREME_EVOKER_FANG_RISE, 1.0F);
@@ -34,7 +34,7 @@ public class FangTrap extends Prop {
         }
         if (t == SNAP) {
             sound(IllagerSound.SUPREME_EVOKER_FANG_SNAP, 1.2F);
-            burst(ParticleTypes.CRIT, this.position().add(0, 0.8, 0), 12, 0.4, 0.4);
+            Vfx.play(this, Vfx.Effect.FANG_CAST, this.position().add(0, 0.8, 0), this.getYRot(), 0);
             strike(this.position(), RADIUS, MoveMob.damageOf(15), this.damageSources().indirectMagic(this, owner()), fresh(), victim -> {
                 victim.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1), this);
                 Vec3 away = victim.position().subtract(this.position()).multiply(1, 0, 1);

@@ -2,6 +2,8 @@ package com.dungeonsillagers.client;
 
 import com.dungeonsillagers.DungeonsIllagersMod;
 import com.dungeonsillagers.PrimeEnchanter;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -22,6 +24,13 @@ public class PrimeEnchanterRenderer extends GeoEntityRenderer<PrimeEnchanter> {
         addRenderLayer(new AutoGlowingGeoLayer<>(this));
         withScale(1.4F);
         this.shadowRadius = 1.0F;
+    }
+
+    /** Effects on the fists follow the gauntlets: lightning on the left hand, ice on the right. */
+    @Override
+    public void render(PrimeEnchanter entity, float yaw, float partialTick, PoseStack poseStack, MultiBufferSource buffers, int light) {
+        super.render(entity, yaw, partialTick, poseStack, buffers, light);
+        HandTracking.report(this.model, entity, "gauntlet_lightning", "gauntlet_ice");
     }
 
     /** The death animation lays the body down itself. */

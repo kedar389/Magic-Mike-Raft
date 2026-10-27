@@ -34,7 +34,7 @@ public final class ClientSetup {
                 ctx -> new Renderer<Geomancer>(ctx, "geomancer", 1.0F, true, 0.5F));
         event.registerEntityRenderer(DungeonsIllagersMod.EXCAVATOR.get(), ExcavatorRenderer::new);
         event.registerEntityRenderer(DungeonsIllagersMod.SUPREME_EVOKER.get(), ctx -> {
-            Renderer<SupremeEvoker> renderer = new Renderer<>(ctx, "supreme_evoker", 1.0F, true, 0.8F);
+            Renderer<SupremeEvoker> renderer = new Renderer<SupremeEvoker>(ctx, "supreme_evoker", 1.0F, true, 0.8F).trackingHands();
             renderer.addRenderLayer(new ShieldBubbleLayer(renderer));
             return renderer;
         });
@@ -47,6 +47,8 @@ public final class ClientSetup {
 
     /** Model and texture named after the entity; invisible entities (a teleport in progress) are not drawn. */
     static class Renderer<T extends Entity & GeoEntity> extends GeoEntityRenderer<T> {
+
+        private boolean tracksHands;
 
         Renderer(EntityRendererProvider.Context context, String name, float scale, boolean glows, float shadow) {
             this(context, new DefaultedEntityGeoModel<>(new ResourceLocation(DungeonsIllagersMod.MOD_ID, name)), scale, glows, shadow);
@@ -67,6 +69,15 @@ public final class ClientSetup {
                 return;
             }
             super.render(entity, yaw, partialTick, poseStack, buffers, light);
+            if (this.tracksHands) {
+                HandTracking.report(this.model, entity, "J_L_Hand", "J_R_Hand");
+            }
+        }
+
+        /** Reports the hand bones for effects cast from the hands. */
+        Renderer<T> trackingHands() {
+            this.tracksHands = true;
+            return this;
         }
     }
 

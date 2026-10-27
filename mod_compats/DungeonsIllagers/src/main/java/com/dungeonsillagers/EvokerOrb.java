@@ -1,8 +1,6 @@
 package com.dungeonsillagers;
 
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
+import com.dungeonsillagers.client.VfxLibrary;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,7 +10,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import org.joml.Vector3f;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 
 /**
  * The Supreme Evoker's enchanted orb (DT_ProjectileDefinition SupremeEvokerOrb): flies straight at 450 UE/s, no
@@ -23,7 +22,6 @@ public class EvokerOrb extends Projectile {
     /** 450 UE/s in blocks per tick. */
     public static final double SPEED = 450 * MoveMob.UE / 20.0;
     private static final int LIFETIME = 100;
-    private static final DustParticleOptions TRAIL = new DustParticleOptions(new Vector3f(0.67F, 0.0F, 0.91F), 1.6F);
 
     public EvokerOrb(EntityType<? extends EvokerOrb> type, Level level) {
         super(type, level);
@@ -39,12 +37,8 @@ public class EvokerOrb extends Projectile {
         super.tick();
         Vec3 motion = this.getDeltaMovement();
         if (this.level().isClientSide()) {
-            this.level().addParticle(TRAIL, this.getX(), this.getY() + 0.25, this.getZ(), 0, 0, 0);
-            if (this.tickCount % 2 == 0) {
-                this.level().addParticle(ParticleTypes.WITCH, this.getX(), this.getY() + 0.25, this.getZ(), 0, 0, 0);
-            }
-            this.level().addParticle(ParticleTypes.END_ROD, this.getX() - motion.x, this.getY() + 0.25 - motion.y,
-                    this.getZ() - motion.z, 0, 0, 0);
+            Vec3 at = this.position().add(0, 0.25, 0);
+            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> VfxLibrary.orbTrail(at, motion, this.tickCount));
         } else {
             HitResult hit = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
             if (hit.getType() != HitResult.Type.MISS) {
@@ -83,10 +77,7 @@ public class EvokerOrb extends Projectile {
     protected void onHit(HitResult result) {
         super.onHit(result);
         this.playSound(IllagerSound.SUPREME_EVOKER_PROJECTILE_HIT.get(), 1.0F, 1.0F);
-        if (this.level() instanceof ServerLevel server) {
-            server.sendParticles(TRAIL, this.getX(), this.getY() + 0.25, this.getZ(), 12, 0.25, 0.25, 0.25, 0.05);
-            server.sendParticles(ParticleTypes.WITCH, this.getX(), this.getY() + 0.25, this.getZ(), 10, 0.2, 0.2, 0.2, 0.1);
-        }
+        Vfx.play(this, Vfx.Effect.ORB_HIT, this.position().add(0, 0.25, 0), this.getYRot(), 0);
         this.discard();
     }
 }

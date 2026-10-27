@@ -89,6 +89,7 @@ public class DungeonsIllagersMod {
     public DungeonsIllagersMod() {
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
         IllagerSound.values(); // registers every sound event before the register is bound
+        Vfx.register();
         ENTITIES.register(modBus);
         ITEMS.register(modBus);
         SOUNDS.register(modBus);

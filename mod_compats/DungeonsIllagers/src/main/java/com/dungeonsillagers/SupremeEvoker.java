@@ -3,7 +3,6 @@ package com.dungeonsillagers;
 import java.util.List;
 import javax.annotation.Nullable;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -211,11 +210,11 @@ public class SupremeEvoker extends MoveMob {
         if (current == ENCHANTED_PROJECTILES) {
             if (t == 9) {
                 sound(IllagerSound.SUPREME_EVOKER_PROJECTILE_CAST_1, 2.0F);
-                burst(ParticleTypes.WITCH, hand(true), 15, 0.2);
+                Vfx.play(this, Vfx.Effect.ORB_INITIATE, Vfx.Anchor.LEFT_HAND, 0);
             }
             if (t == 17) {
                 sound(IllagerSound.SUPREME_EVOKER_PROJECTILE_CAST_2, 2.0F);
-                burst(ParticleTypes.WITCH, hand(false), 15, 0.2);
+                Vfx.play(this, Vfx.Effect.ORB_INITIATE, Vfx.Anchor.RIGHT_HAND, 0);
             }
             if (t == 18) {
                 volley(true);
@@ -226,7 +225,7 @@ public class SupremeEvoker extends MoveMob {
         } else if (current == SUMMON || current == SUMMON_VEX) {
             Vec3 above = this.position().add(0, 3.2, 0);
             if (t == 4) {
-                burst(ParticleTypes.SOUL_FIRE_FLAME, above, 30, 0.4);
+                vfx(Vfx.Effect.EVOKER_SUMMON_INITIATE, above, 0);
             }
             if (t == 6) {
                 sound(IllagerSound.SUPREME_EVOKER_SUMMON, 2.0F);
@@ -234,12 +233,9 @@ public class SupremeEvoker extends MoveMob {
             if (t == 9) {
                 sound(IllagerSound.SUPREME_EVOKER_SUMMON_VOX, 2.0F);
             }
-            if (t > 4 && t < 24 && t % 3 == 0) {
-                burst(ParticleTypes.WITCH, above, 6, 0.6);
-            }
             if (t == 24) {
                 sound(IllagerSound.SUPREME_EVOKER_SUMMON_WAVE, 2.0F);
-                ring(ParticleTypes.SOUL_FIRE_FLAME, this.position(), 3.0);
+                vfx(Vfx.Effect.EVOKER_SUMMON, this.position(), 0);
                 if (this.level() instanceof ServerLevel server) {
                     summonWave(server, current == SUMMON_VEX);
                 }
@@ -247,35 +243,32 @@ public class SupremeEvoker extends MoveMob {
         } else if (current == SHIELD) {
             if (t == 8) {
                 sound(IllagerSound.SUPREME_EVOKER_SHIELD_ACTIVATE, 2.0F);
-                burst(ParticleTypes.WITCH, hand(true), 25, 0.3);
-                burst(ParticleTypes.END_ROD, this.position().add(0, 1.6, 0), 30, 1.6);
+                Vfx.play(this, Vfx.Effect.BUBBLE_INITIATE, Vfx.Anchor.LEFT_HAND, 0);
                 this.entityData.set(SHIELD_LEFT, SHIELD_HEALTH);
             }
         } else if (current == FANG_TRAP) {
-            if (t >= 6 && t < 32 && t % 2 == 0) {
-                burst(ParticleTypes.WITCH, hand(true), 2, 0.1);
-                burst(ParticleTypes.WITCH, hand(false), 2, 0.1);
+            if (t == 6) {
+                // NS_Evoker_TrapSummon_Initiate on both weapon sockets, 0.32-1.62 s
+                Vfx.play(this, Vfx.Effect.FANG_INITIATE, Vfx.Anchor.LEFT_HAND, 26);
+                Vfx.play(this, Vfx.Effect.FANG_INITIATE, Vfx.Anchor.RIGHT_HAND, 26);
             }
             if (t == 9) {
                 sound(IllagerSound.SUPREME_EVOKER_FANG_TELEGRAPH, 2.0F);
-            }
-            if (t == 20) {
-                ring(ParticleTypes.WITCH, this.position(), FANG_RING);
             }
             if (t == 37) {
                 sound(IllagerSound.SUPREME_EVOKER_FANG_CAST, 2.0F);
                 fangRing();
             }
             if (t == 38) {
-                burst(ParticleTypes.ENCHANTED_HIT, hand(true), 15, 0.2);
-                burst(ParticleTypes.ENCHANTED_HIT, hand(false), 15, 0.2);
+                Vfx.play(this, Vfx.Effect.FANG_CAST, Vfx.Anchor.LEFT_HAND, 0);
+                Vfx.play(this, Vfx.Effect.FANG_CAST, Vfx.Anchor.RIGHT_HAND, 0);
             }
         } else if (current == TELEPORT) {
             teleportTick(t);
         } else if (current == SPAWN) {
             if (t == 0) {
                 sound(IllagerSound.SUPREME_EVOKER_SPAWN, 2.5F);
-                burst(ParticleTypes.REVERSE_PORTAL, this.position().add(0, 1.4, 0), 80, 0.8);
+                vfx(Vfx.Effect.TELEPORT_IN, this.position(), 0);
             }
         } else if (current == STAGGERED) {
             if (t == 0) {
@@ -294,11 +287,10 @@ public class SupremeEvoker extends MoveMob {
     private void teleportTick(int t) {
         if (t == 0) {
             sound(IllagerSound.SUPREME_EVOKER_TELEPORT_OUT, 2.0F);
-            ring(ParticleTypes.REVERSE_PORTAL, this.position(), 1.2);
+            vfx(Vfx.Effect.TELEPORT_INITIATE, this.position(), 0);
         }
         if (t == 9) {
-            burst(ParticleTypes.PORTAL, this.position().add(0, 1.4, 0), 80, 0.6);
-            burst(ParticleTypes.WITCH, this.position().add(0, 1.4, 0), 30, 0.6);
+            vfx(Vfx.Effect.TELEPORT_OUT, this.position(), 0);
             this.setInvisible(true);
         }
         if (t == 10) {
@@ -313,10 +305,13 @@ public class SupremeEvoker extends MoveMob {
             sound(IllagerSound.SUPREME_EVOKER_TELEPORT_IN, 2.0F);
         }
         if (t == 21) {
-            burst(ParticleTypes.REVERSE_PORTAL, this.position().add(0, 3.0, 0), 60, 0.5);
-            burst(ParticleTypes.CLOUD, this.position(), 15, 0.6);
+            vfx(Vfx.Effect.TELEPORT_IN, this.position(), 0);
             sound(IllagerSound.SUPREME_EVOKER_TELEPORT_IN_VOX, 2.0F);
         }
+    }
+
+    private void vfx(Vfx.Effect effect, Vec3 at, float param) {
+        Vfx.play(this, effect, at, this.getYRot(), param);
     }
 
     @Nullable
@@ -368,7 +363,6 @@ public class SupremeEvoker extends MoveMob {
             orb.setDeltaMovement(Vec3.directionFromRotation(pitch, yaw + offset).scale(EvokerOrb.SPEED));
             this.level().addFreshEntity(orb);
         }
-        burst(ParticleTypes.END_ROD, from, 10, 0.15);
     }
 
     /** Circular_FacingTarget_StartingTargetDirection: seven fangs around the boss, the first towards the target. */
@@ -397,21 +391,22 @@ public class SupremeEvoker extends MoveMob {
      */
     private void summonWave(ServerLevel server, boolean vexes) {
         if (vexes) {
-            summon(server, EntityType.VEX, 4, 5, 8, ParticleTypes.SOUL);
-            summon(server, EntityType.PILLAGER, 1 + this.random.nextInt(2), 5, 8, ParticleTypes.SOUL_FIRE_FLAME);
-            summon(server, royalGuard(), 1 + this.random.nextInt(2), 5, 8, ParticleTypes.SOUL_FIRE_FLAME);
-            summon(server, enchanter(), 1, 5, 8, ParticleTypes.SOUL_FIRE_FLAME);
+            summon(server, EntityType.VEX, 4, 5, 8);
+            summon(server, EntityType.PILLAGER, 1 + this.random.nextInt(2), 5, 8);
+            summon(server, royalGuard(), 1 + this.random.nextInt(2), 5, 8);
+            summon(server, enchanter(), 1, 5, 8);
         } else {
-            summon(server, EntityType.PILLAGER, 1 + this.random.nextInt(2), 2, 9, ParticleTypes.SOUL_FIRE_FLAME);
-            summon(server, EntityType.VINDICATOR, 2 + this.random.nextInt(5), 2, 9, ParticleTypes.SOUL_FIRE_FLAME);
-            summon(server, royalGuard(), this.random.nextInt(3), 2, 9, ParticleTypes.SOUL_FIRE_FLAME);
-            summon(server, enchanter(), this.random.nextInt(2), 2, 9, ParticleTypes.SOUL_FIRE_FLAME);
+            summon(server, EntityType.PILLAGER, 1 + this.random.nextInt(2), 2, 9);
+            summon(server, EntityType.VINDICATOR, 2 + this.random.nextInt(5), 2, 9);
+            summon(server, royalGuard(), this.random.nextInt(3), 2, 9);
+            summon(server, enchanter(), this.random.nextInt(2), 2, 9);
         }
     }
 
-    /** Vexes serve him and fade like an Evoker's (30-120 s). */
+    /** Each minion arrives in a light pillar; vexes serve him and fade like an Evoker's (30-120 s). */
     @Override
     protected void onSummoned(Mob minion) {
+        vfx(Vfx.Effect.EVOKER_SUMMON_MINION, minion.position(), 0);
         if (minion instanceof Vex vex) {
             vex.setOwner(this);
             vex.setBoundOrigin(this.blockPosition());
@@ -436,7 +431,7 @@ public class SupremeEvoker extends MoveMob {
             if (shield > 0) {
                 this.entityData.set(SHIELD_LEFT, shield);
                 sound(IllagerSound.SUPREME_EVOKER_SHIELD_HIT, 1.5F);
-                burst(ParticleTypes.ENCHANTED_HIT, this.position().add(0, 1.6, 0), 15, 1.2);
+                vfx(Vfx.Effect.BUBBLE_HIT, this.position().add(0, 1.6, 0), 0);
             } else {
                 breakShield();
             }
@@ -448,8 +443,7 @@ public class SupremeEvoker extends MoveMob {
     private void breakShield() {
         this.entityData.set(SHIELD_LEFT, 0.0F);
         sound(IllagerSound.SUPREME_EVOKER_SHIELD_END, 2.0F);
-        burst(ParticleTypes.WITCH, this.position().add(0, 1.6, 0), 60, 1.8);
-        burst(ParticleTypes.END_ROD, this.position().add(0, 1.6, 0), 40, 1.8);
+        vfx(Vfx.Effect.BUBBLE_SHATTER, this.position().add(0, 1.6, 0), 0);
     }
 
     @Override
@@ -476,7 +470,7 @@ public class SupremeEvoker extends MoveMob {
         this.setInvisible(false);
         if (!this.level().isClientSide()) {
             this.entityData.set(SHIELD_LEFT, 0.0F);
-            burst(ParticleTypes.SOUL, this.position().add(0, 1.4, 0), 60, 0.8);
+            vfx(Vfx.Effect.EVOKER_DEATH, this.position(), 0);
         }
     }
 

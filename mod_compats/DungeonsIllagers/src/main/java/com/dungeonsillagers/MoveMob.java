@@ -339,8 +339,7 @@ public abstract class MoveMob extends Monster implements GeoEntity {
     }
 
     /** Spawns {@code count} of {@code type} on the ground {@code minRadius}..{@code maxRadius} blocks away. */
-    protected void summon(ServerLevel server, @Nullable EntityType<?> type, int count, double minRadius, double maxRadius,
-            ParticleOptions particle) {
+    protected void summon(ServerLevel server, @Nullable EntityType<?> type, int count, double minRadius, double maxRadius) {
         for (int i = 0; type != null && i < count; i++) {
             if (!(type.create(server) instanceof Mob minion)) {
                 return;
@@ -357,7 +356,6 @@ public abstract class MoveMob extends Monster implements GeoEntity {
             onSummoned(minion);
             server.addFreshEntity(minion);
             this.wave.add(minion.getUUID());
-            burst(particle, minion.position(), 30, 0.5);
         }
     }
 
