@@ -82,6 +82,10 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     private static final int MINE_FUSE = 40;
     /** Forward Strike trail (GA_ActorTrail): 3 s, at most 15 mines, one per 8 UE units moved. */
     private static final int TRAIL_TICKS = 60;
+    /** Overcharge lightning floor: 5 s, radius in blocks, and how far above the floor is safe. */
+    private static final int FLOOR_TICKS = 100;
+    private static final double FLOOR_RADIUS = 10.0;
+    private static final double FLOOR_SAFE_HEIGHT = 2.0;
     private static final int TRAIL_MAX_MINES = 15;
     private static final double TRAIL_STEP = 8 * 1.4 / 100.0;
     private static final float MAX_TURN_PER_TICK = 25.0F;
@@ -155,6 +159,9 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     @Nullable
     private Vec3 trailFrom;
     private int trailMines;
+    @Nullable
+    private Vec3 floorCenter;
+    private int floorTicks;
 
     /** Health fractions that stagger the boss once each, interrupting whatever it is doing. */
     private static final float[] STAGGER_AT = {0.75F, 0.5F, 0.25F};
@@ -288,6 +295,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
             return;
         }
         tickMines();
+        tickFloor();
         tickGauntlets();
         if (this.spawnPending && this.tickCount >= 2) {
             this.spawnPending = false;
@@ -501,16 +509,14 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
                 if (t > 3 && t < 54) {
                     burst(ParticleTypes.ELECTRIC_SPARK, handPosition(true), 4, 0.6);
                 }
-                if ((t == 44 || t == 49 || t == 54) && this.getTarget() != null) {
-                    for (int i = 0; i < 3; i++) {
-                        Vec3 at = this.getTarget().position()
-                                .add(this.random.nextGaussian() * 3.0, 0, this.random.nextGaussian() * 3.0);
-                        bolt(at);
-                        this.level().playSound(null, at.x, at.y, at.z, BossSound.OVERCHARGE_FLOOR.get(),
-                                this.getSoundSource(), 1.5F, 1.0F);
-                        this.struck.clear();
-                        hitWindow(at, 2.0, 14, 1000, Element.LIGHTNING);
-                    }
+                if (t == 3) {
+                    this.floorCenter = this.position();
+                }
+                if (t > 3 && t < 44 && t % 4 == 0) {
+                    ring(ParticleTypes.ELECTRIC_SPARK, this.floorCenter, FLOOR_RADIUS);
+                }
+                if (t == 44) {
+                    this.floorTicks = FLOOR_TICKS;
                 }
             }
             case SUMMON -> {
@@ -619,7 +625,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
             Mine mine = it.next();
             if (mine.fuse-- > 0) {
                 if (mine.fuse % 4 == 0) {
-                    ring(mine.pos, 1.0);
+                    ring(ParticleTypes.SNOWFLAKE, mine.pos, 1.0);
                 }
                 continue;
             }
@@ -703,7 +709,6 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
             struck.add(victim.getUUID());
             if (victim.hurt(this.damageSources().mobAttack(this), damage)) {
                 BossSound hitSound = this.move == Move.LIGHTNING_SLAM ? BossSound.LIGHTNING_SLAM_RIPPLE_HIT
-                        : this.move == Move.OVERCHARGE ? BossSound.OVERCHARGE_FLOOR_DAMAGE
                         : BossSound.HITMARKER;
                 this.level().playSound(null, victim.getX(), victim.getY(), victim.getZ(), hitSound.get(),
                         this.getSoundSource(), 1.0F, 1.0F);
@@ -734,12 +739,52 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
     }
 
     /** Ice-mine telegraph: a ring of snowflakes on the ground. */
-    private void ring(Vec3 at, double radius) {
+    /** Telegraph: a ring of particles on the ground, about one per block of circumference (at least 16). */
+    private void ring(ParticleOptions particle, Vec3 at, double radius) {
         if (this.level() instanceof ServerLevel server) {
-            for (int i = 0; i < 16; i++) {
-                double angle = Math.PI * 2 * i / 16;
-                server.sendParticles(ParticleTypes.SNOWFLAKE, at.x + Math.cos(angle) * radius, at.y + 0.1,
+            int points = Math.max(16, (int) (Math.PI * 2 * radius));
+            for (int i = 0; i < points; i++) {
+                double angle = Math.PI * 2 * i / points;
+                server.sendParticles(particle, at.x + Math.cos(angle) * radius, at.y + 0.1,
                         at.z + Math.sin(angle) * radius, 1, 0, 0, 0, 0);
+            }
+        }
+    }
+
+    /**
+     * Overcharge's lightning floor (GA_ReactToOverlapOnRelatedActors, FrostbiteDesertBossLightningFloor): 5 lightning
+     * damage every 0.2 s for 5 s. The game's arena raises platforms as safe spots; here anyone outside the circle or
+     * {@link #FLOOR_SAFE_HEIGHT} blocks above the boss's floor is safe.
+     */
+    private void tickFloor() {
+        if (this.floorTicks <= 0 || this.floorCenter == null) {
+            return;
+        }
+        this.floorTicks--;
+        if (this.level() instanceof ServerLevel server) {
+            for (int i = 0; i < 24; i++) {
+                double angle = this.random.nextDouble() * Math.PI * 2;
+                double dist = Math.sqrt(this.random.nextDouble()) * FLOOR_RADIUS;
+                server.sendParticles(ParticleTypes.ELECTRIC_SPARK, this.floorCenter.x + Math.cos(angle) * dist,
+                        this.floorCenter.y + 0.1, this.floorCenter.z + Math.sin(angle) * dist, 1, 0, 0.05, 0, 0.02);
+            }
+        }
+        if (this.floorTicks % 20 == 0) {
+            this.level().playSound(null, this.floorCenter.x, this.floorCenter.y, this.floorCenter.z,
+                    BossSound.OVERCHARGE_FLOOR.get(), this.getSoundSource(), 2.5F, 1.0F);
+        }
+        if (this.floorTicks % 4 != 0) {
+            return;
+        }
+        float damage = (float) this.getAttributeValue(Attributes.ATTACK_DAMAGE) * 5 / GAME_DAMAGE_UNIT;
+        AABB box = new AABB(this.floorCenter, this.floorCenter).inflate(FLOOR_RADIUS, FLOOR_SAFE_HEIGHT, FLOOR_RADIUS);
+        for (LivingEntity victim : this.level().getEntitiesOfClass(LivingEntity.class, box,
+                e -> e != this && !this.isAlliedTo(e) && e.isAlive() && e.onGround()
+                        && e.getY() < this.floorCenter.y + FLOOR_SAFE_HEIGHT
+                        && e.position().subtract(this.floorCenter).horizontalDistance() <= FLOOR_RADIUS)) {
+            if (victim.hurt(this.damageSources().mobAttack(this), damage)) {
+                this.level().playSound(null, victim.getX(), victim.getY(), victim.getZ(),
+                        BossSound.OVERCHARGE_FLOOR_DAMAGE.get(), this.getSoundSource(), 1.0F, 1.0F);
             }
         }
     }
@@ -808,6 +853,7 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
         }
         this.move = Move.DEATH;
         this.mines.clear();
+        this.floorTicks = 0;
         this.triggerAnim(CONTROLLER, Move.DEATH.id);
     }
 
