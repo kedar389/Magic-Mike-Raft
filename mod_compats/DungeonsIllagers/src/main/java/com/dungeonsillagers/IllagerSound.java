@@ -3,7 +3,7 @@ package com.dungeonsillagers;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.registries.RegistryObject;
 
-/** Dungeons II Wwise events of the Prime Enchanter, the three illagers and their props, one per entry in sounds.json. */
+/** Dungeons II Wwise events of the Dungeons II illagers and their props, one per entry in sounds.json. */
 public enum IllagerSound {
     PRIME_ENCHANTER_AMBIENT("prime_enchanter", "ambient"),
     PRIME_ENCHANTER_HURT("prime_enchanter", "hurt"),
@@ -105,7 +105,17 @@ public enum IllagerSound {
     SUPREME_EVOKER_FANG_TELEGRAPH("supreme_evoker", "fang_telegraph"),
     SUPREME_EVOKER_FANG_CAST("supreme_evoker", "fang_cast"),
     SUPREME_EVOKER_FANG_RISE("supreme_evoker", "fang_rise"),
-    SUPREME_EVOKER_FANG_SNAP("supreme_evoker", "fang_snap");
+    SUPREME_EVOKER_FANG_SNAP("supreme_evoker", "fang_snap"),
+    ROYAL_GUARD_HURT("royal_guard", "hurt"),
+    ROYAL_GUARD_DEATH("royal_guard", "death"),
+    ROYAL_GUARD_STEP("royal_guard", "step"),
+    ROYAL_GUARD_ATTACK("royal_guard", "attack"),
+    ROYAL_GUARD_MACE_HIT("royal_guard", "mace_hit"),
+    ROYAL_GUARD_COMBO_1("royal_guard", "combo_1"),
+    ROYAL_GUARD_COMBO_1_VOCAL("royal_guard", "combo_1_vocal"),
+    ROYAL_GUARD_COMBO_2("royal_guard", "combo_2"),
+    ROYAL_GUARD_COMBO_2_VOCAL("royal_guard", "combo_2_vocal"),
+    ROYAL_GUARD_SHIELD_BREAK("royal_guard", "shield_break");
 
     private final RegistryObject<SoundEvent> event;
 

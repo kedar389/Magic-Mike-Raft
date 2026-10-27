@@ -66,7 +66,6 @@ public abstract class MoveMob extends Monster implements GeoEntity {
     /** Pause between two moves, so one never starts on the tick the last one ended. */
     private static final int MOVE_GAP = 10;
     private static final float MAX_TURN_PER_TICK = 25.0F;
-    private static final ResourceLocation ROYAL_GUARD = new ResourceLocation("takesapillage", "legioner");
     private static final ResourceLocation ENCHANTER = new ResourceLocation("enchantwithmob", "enchanter");
 
     /** One animation-driven action. Length in ticks matches the animation file. */
@@ -326,10 +325,8 @@ public abstract class MoveMob extends Monster implements GeoEntity {
         return !this.wave.isEmpty();
     }
 
-    /** Dungeons II's shielded Royal Guard: It Takes a Pillage's legioner when installed, else a vindicator. */
     protected static EntityType<?> royalGuard() {
-        return ForgeRegistries.ENTITY_TYPES.containsKey(ROYAL_GUARD)
-                ? ForgeRegistries.ENTITY_TYPES.getValue(ROYAL_GUARD) : EntityType.VINDICATOR;
+        return DungeonsIllagersMod.ROYAL_GUARD.get();
     }
 
     /** Enchant with Mob's Enchanter when installed, else none. */

@@ -811,5 +811,91 @@
 			"dungeons_illagers:supreme_evoker/fang_snap/3",
 			"dungeons_illagers:supreme_evoker/fang_snap/4"
 		]
+	},
+	"entity.dungeons_illagers.royal_guard.hurt": {
+		"subtitle": "subtitles.dungeons_illagers.royal_guard.hurt",
+		"sounds": [
+			"dungeons_illagers:royal_guard/hurt/1",
+			"dungeons_illagers:royal_guard/hurt/2",
+			"dungeons_illagers:royal_guard/hurt/3"
+		]
+	},
+	"entity.dungeons_illagers.royal_guard.death": {
+		"subtitle": "subtitles.dungeons_illagers.royal_guard.death",
+		"sounds": [
+			"dungeons_illagers:royal_guard/death/1",
+			"dungeons_illagers:royal_guard/death/2",
+			"dungeons_illagers:royal_guard/death/3",
+			"dungeons_illagers:royal_guard/death/4"
+		]
+	},
+	"entity.dungeons_illagers.royal_guard.step": {
+		"subtitle": "subtitles.dungeons_illagers.royal_guard.step",
+		"sounds": [
+			"dungeons_illagers:royal_guard/step/1",
+			"dungeons_illagers:royal_guard/step/2",
+			"dungeons_illagers:royal_guard/step/3",
+			"dungeons_illagers:royal_guard/step/4",
+			"dungeons_illagers:royal_guard/step/5",
+			"dungeons_illagers:royal_guard/step/6"
+		]
+	},
+	"entity.dungeons_illagers.royal_guard.attack": {
+		"subtitle": "subtitles.dungeons_illagers.royal_guard.attack",
+		"sounds": [
+			"dungeons_illagers:royal_guard/attack/1",
+			"dungeons_illagers:royal_guard/attack/2",
+			"dungeons_illagers:royal_guard/attack/3",
+			"dungeons_illagers:royal_guard/attack/4",
+			"dungeons_illagers:royal_guard/attack/5",
+			"dungeons_illagers:royal_guard/attack/6"
+		]
+	},
+	"entity.dungeons_illagers.royal_guard.mace_hit": {
+		"subtitle": "subtitles.dungeons_illagers.royal_guard.mace_hit",
+		"sounds": [
+			"dungeons_illagers:royal_guard/mace_hit/1",
+			"dungeons_illagers:royal_guard/mace_hit/2",
+			"dungeons_illagers:royal_guard/mace_hit/3"
+		]
+	},
+	"entity.dungeons_illagers.royal_guard.combo_1": {
+		"subtitle": "subtitles.dungeons_illagers.royal_guard.combo_1",
+		"sounds": [
+			"dungeons_illagers:royal_guard/combo_1/1",
+			"dungeons_illagers:royal_guard/combo_1/2",
+			"dungeons_illagers:royal_guard/combo_1/3"
+		]
+	},
+	"entity.dungeons_illagers.royal_guard.combo_1_vocal": {
+		"subtitle": "subtitles.dungeons_illagers.royal_guard.combo_1_vocal",
+		"sounds": [
+			"dungeons_illagers:royal_guard/combo_1_vocal/1",
+			"dungeons_illagers:royal_guard/combo_1_vocal/2",
+			"dungeons_illagers:royal_guard/combo_1_vocal/3"
+		]
+	},
+	"entity.dungeons_illagers.royal_guard.combo_2": {
+		"subtitle": "subtitles.dungeons_illagers.royal_guard.combo_2",
+		"sounds": [
+			"dungeons_illagers:royal_guard/combo_2/1",
+			"dungeons_illagers:royal_guard/combo_2/2",
+			"dungeons_illagers:royal_guard/combo_2/3"
+		]
+	},
+	"entity.dungeons_illagers.royal_guard.combo_2_vocal": {
+		"subtitle": "subtitles.dungeons_illagers.royal_guard.combo_2_vocal",
+		"sounds": [
+			"dungeons_illagers:royal_guard/combo_2_vocal/1",
+			"dungeons_illagers:royal_guard/combo_2_vocal/2",
+			"dungeons_illagers:royal_guard/combo_2_vocal/3"
+		]
+	},
+	"entity.dungeons_illagers.royal_guard.shield_break": {
+		"subtitle": "subtitles.dungeons_illagers.royal_guard.shield_break",
+		"sounds": [
+			"dungeons_illagers:royal_guard/shield_break/1",
+			"dungeons_illagers:royal_guard/shield_break/2"
+		]
 	}
 }

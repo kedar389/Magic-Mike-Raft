@@ -33,6 +33,7 @@ public final class VfxLibrary {
     static final int ICE = 0x5AD8FF, ICE_DEEP = 0x0073FF, ICE_WHITE = 0xD8F6FF;
     static final int YELLOW = 0xFFE94A, WHITE_HOT = 0xFFFFE6, SPARK_BLUE = 0x3FA8FF, ORANGE = 0xFF5A00;
     static final int EV_PURPLE = 0x9A1AFF, EV_CYAN = 0x33FFFF, EV_DEEP = 0x30005F, EV_MAGENTA = 0xFF4DFF;
+    static final int ROYAL_ORANGE = 0xFF4200;
     /** Fallback hand offset when the model has not been drawn yet: sideways, up, ahead. */
     private static final double HAND_SIDE = 0.8, HAND_UP = 1.7;
 
@@ -529,6 +530,35 @@ public final class VfxLibrary {
                 ring(VfxSprite.RING, at, 0.2F, 0.9F, 10, EV_CYAN, EV_PURPLE);
                 for (int i = 0; i < 6; i++) {
                     glint(VfxSprite.SPIRAL, at.add(rand() * 0.4, 0.1, rand() * 0.4), new Vec3(0, 0.06, 0), 0.12F, 14, EV_CYAN, EV_PURPLE);
+                }
+            }
+            case ROYAL_SLASH -> {
+                // AnimNS_Slash in FF4200: a crescent of hot streaks
+                float side = param >= 0 ? 1 : -1;
+                for (int i = 0; i <= 12; i++) {
+                    float a = (yaw + side * (-60 + i * 120 / 12.0F)) * Mth.DEG_TO_RAD;
+                    Vec3 p = at.add(-Math.sin(a) * 1.4, 0.25 * Math.sin(i / 12.0 * Math.PI), Math.cos(a) * 1.4);
+                    spark(p, new Vec3(-Math.cos(a), 0, -Math.sin(a)).scale(side * 0.2), 0.12F, 0.55F, 4 + i / 4, 0xFFC080, ROYAL_ORANGE);
+                }
+            }
+            case ROYAL_SLAM -> {
+                ring(VfxSprite.RING_THICK, at, 0.3F, 1.8F, 8, 0xFFC080, ROYAL_ORANGE);
+                for (int i = 0; i < 14; i++) {
+                    Vec3 d = flat(RANDOM.nextFloat() * Mth.TWO_PI).scale(0.2 + RANDOM.nextFloat() * 0.2).add(0, 0.2 + RANDOM.nextFloat() * 0.2, 0);
+                    spark(at.add(0, 0.1, 0), d, 0.06F, 0.4F, 10, 0xFFC080, ROYAL_ORANGE).gravity(0.03F);
+                }
+            }
+            case SHIELD_BREAK -> {
+                // Shield debris (magenta-hot, cooling), orange sparks turning blue, blue sparks upward
+                for (int i = 0; i < 16; i++) {
+                    Vec3 d = dir();
+                    cube(at, d.scale(0.15 + RANDOM.nextFloat() * 0.2).add(0, 0.15, 0), 0.22F, 0.1F, 22, 0xFF60C0, 0x303030).gravity(0.06F);
+                }
+                for (int i = 0; i < 20; i++) {
+                    spark(at, dir().scale(0.3), 0.06F, 0.45F, 12, 0xFFA040, SPARK_BLUE);
+                }
+                for (int i = 0; i < 10; i++) {
+                    spark(at.add(rand() * 0.4, 0, rand() * 0.4), new Vec3(rand() * 0.05, 0.25 + RANDOM.nextFloat() * 0.15, rand() * 0.05), 0.05F, 0.5F, 14, 0x40B0FF, 0x0060FF);
                 }
             }
             case EVOKER_DEATH -> {

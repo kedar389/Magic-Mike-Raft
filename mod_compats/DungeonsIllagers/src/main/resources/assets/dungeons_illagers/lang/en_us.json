@@ -2,6 +2,7 @@
 	"entity.dungeons_illagers.prime_enchanter": "Prime Enchanter",
 	"entity.dungeons_illagers.geomancer": "Geomancer",
 	"entity.dungeons_illagers.excavator": "Excavator",
+	"entity.dungeons_illagers.royal_guard": "Royal Guard",
 	"entity.dungeons_illagers.supreme_evoker": "Supreme Evoker",
 	"entity.dungeons_illagers.bomb_pillar": "Bomb Pillar",
 	"entity.dungeons_illagers.wall_pillar": "Stone Pillar",
@@ -9,7 +10,9 @@
 	"entity.dungeons_illagers.evoker_orb": "Enchanted Orb",
 	"item.dungeons_illagers.geomancer_spawn_egg": "Geomancer Spawn Egg",
 	"item.dungeons_illagers.excavator_spawn_egg": "Excavator Spawn Egg",
+	"item.dungeons_illagers.royal_guard_spawn_egg": "Royal Guard Spawn Egg",
 	"item.dungeons_illagers.supreme_evoker_spawn_egg": "Supreme Evoker Spawn Egg",
+	"item.dungeons_illagers.prime_enchanter_spawn_egg": "Prime Enchanter Spawn Egg",
 	"subtitles.dungeons_illagers.prime_enchanter.ambient": "Prime Enchanter murmurs",
 	"subtitles.dungeons_illagers.prime_enchanter.hurt": "Prime Enchanter hurts",
 	"subtitles.dungeons_illagers.prime_enchanter.death": "Prime Enchanter dies",
@@ -111,5 +114,14 @@
 	"subtitles.dungeons_illagers.supreme_evoker.fang_cast": "Supreme Evoker casts",
 	"subtitles.dungeons_illagers.supreme_evoker.fang_rise": "Fangs rise",
 	"subtitles.dungeons_illagers.supreme_evoker.fang_snap": "Fangs snap",
-	"item.dungeons_illagers.prime_enchanter_spawn_egg": "Prime Enchanter Spawn Egg"
+	"subtitles.dungeons_illagers.royal_guard.hurt": "Royal Guard hurts",
+	"subtitles.dungeons_illagers.royal_guard.death": "Royal Guard dies",
+	"subtitles.dungeons_illagers.royal_guard.step": "Armour clanks",
+	"subtitles.dungeons_illagers.royal_guard.attack": "Royal Guard swings his mace",
+	"subtitles.dungeons_illagers.royal_guard.mace_hit": "Mace hits",
+	"subtitles.dungeons_illagers.royal_guard.combo_1": "Royal Guard swings his mace",
+	"subtitles.dungeons_illagers.royal_guard.combo_1_vocal": "Royal Guard grunts",
+	"subtitles.dungeons_illagers.royal_guard.combo_2": "Royal Guard smashes",
+	"subtitles.dungeons_illagers.royal_guard.combo_2_vocal": "Royal Guard roars",
+	"subtitles.dungeons_illagers.royal_guard.shield_break": "Shield breaks"
 }

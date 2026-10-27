@@ -29,7 +29,9 @@ public final class Vfx {
         // Supreme Evoker (Illager_SupremeEvoker/VFX, Evoker/VFX)
         ORB_INITIATE, ORB_HIT, EVOKER_SUMMON_INITIATE, EVOKER_SUMMON, EVOKER_SUMMON_MINION, BUBBLE_INITIATE,
         BUBBLE_HIT, BUBBLE_SHATTER, TELEPORT_INITIATE, TELEPORT_OUT, TELEPORT_IN, FANG_INITIATE, FANG_CAST, FANG_RISE,
-        EVOKER_DEATH
+        EVOKER_DEATH,
+        // Royal Guard (AnimNS_Slash FF4200, NS_RoyalGuard_ShieldBreak)
+        ROYAL_SLASH, ROYAL_SLAM, SHIELD_BREAK
     }
 
     /** Where an effect sits: a fixed point, or a hand of its caster, followed while the effect lasts. */

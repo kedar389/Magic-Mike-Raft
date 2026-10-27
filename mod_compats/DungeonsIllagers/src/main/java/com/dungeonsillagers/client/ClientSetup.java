@@ -4,6 +4,7 @@ import com.dungeonsillagers.DungeonsIllagersMod;
 import com.dungeonsillagers.Excavator;
 import com.dungeonsillagers.Geomancer;
 import com.dungeonsillagers.Prop;
+import com.dungeonsillagers.RoyalGuard;
 import com.dungeonsillagers.SupremeEvoker;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -17,6 +18,7 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.layer.AutoGlowingGeoLayer;
@@ -33,6 +35,7 @@ public final class ClientSetup {
         event.registerEntityRenderer(DungeonsIllagersMod.GEOMANCER.get(),
                 ctx -> new Renderer<Geomancer>(ctx, "geomancer", 1.0F, true, 0.5F));
         event.registerEntityRenderer(DungeonsIllagersMod.EXCAVATOR.get(), ExcavatorRenderer::new);
+        event.registerEntityRenderer(DungeonsIllagersMod.ROYAL_GUARD.get(), RoyalGuardRenderer::new);
         event.registerEntityRenderer(DungeonsIllagersMod.SUPREME_EVOKER.get(), ctx -> {
             Renderer<SupremeEvoker> renderer = new Renderer<SupremeEvoker>(ctx, "supreme_evoker", 1.0F, true, 0.8F).trackingHands();
             renderer.addRenderLayer(new ShieldBubbleLayer(renderer));
@@ -78,6 +81,20 @@ public final class ClientSetup {
         Renderer<T> trackingHands() {
             this.tracksHands = true;
             return this;
+        }
+    }
+
+    /** The shield bone shows only while he still holds it. */
+    static final class RoyalGuardRenderer extends Renderer<RoyalGuard> {
+
+        RoyalGuardRenderer(EntityRendererProvider.Context context) {
+            super(context, new DefaultedEntityGeoModel<>(new ResourceLocation(DungeonsIllagersMod.MOD_ID, "royal_guard")) {
+                @Override
+                public void setCustomAnimations(RoyalGuard animatable, long instanceId, AnimationState<RoyalGuard> state) {
+                    super.setCustomAnimations(animatable, instanceId, state);
+                    getBone("shield").ifPresent(bone -> bone.setHidden(!animatable.hasShield()));
+                }
+            }, 1.0F, true, 0.5F);
         }
     }
 

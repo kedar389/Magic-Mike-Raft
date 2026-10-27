@@ -16,7 +16,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-/** Registers the Prime Enchanter, the Geomancer, the Excavator, the Supreme Evoker, their props, spawn eggs and sound events. */
+/** Registers the Prime Enchanter, the Royal Guard, the Geomancer, the Excavator, the Supreme Evoker, their props, spawn eggs and sound events. */
 @Mod(DungeonsIllagersMod.MOD_ID)
 public class DungeonsIllagersMod {
 
@@ -44,6 +44,11 @@ public class DungeonsIllagersMod {
                     .sized(0.6F, 1.95F)
                     .clientTrackingRange(8)
                     .build(MOD_ID + ":excavator"));
+    public static final RegistryObject<EntityType<RoyalGuard>> ROYAL_GUARD = ENTITIES.register("royal_guard",
+            () -> EntityType.Builder.of(RoyalGuard::new, MobCategory.MONSTER)
+                    .sized(0.7F, 2.1F)
+                    .clientTrackingRange(8)
+                    .build(MOD_ID + ":royal_guard"));
     public static final RegistryObject<EntityType<SupremeEvoker>> SUPREME_EVOKER = ENTITIES.register("supreme_evoker",
             () -> EntityType.Builder.of(SupremeEvoker::new, MobCategory.MONSTER)
                     .sized(1.0F, 2.8F)
@@ -83,6 +88,8 @@ public class DungeonsIllagersMod {
             () -> new ForgeSpawnEggItem(GEOMANCER, 0x8A8F8C, 0xB060D8, new Item.Properties()));
     public static final RegistryObject<Item> EXCAVATOR_EGG = ITEMS.register("excavator_spawn_egg",
             () -> new ForgeSpawnEggItem(EXCAVATOR, 0x6A5478, 0xD8322E, new Item.Properties()));
+    public static final RegistryObject<Item> ROYAL_GUARD_EGG = ITEMS.register("royal_guard_spawn_egg",
+            () -> new ForgeSpawnEggItem(ROYAL_GUARD, 0x6E6E6E, 0xF2B230, new Item.Properties()));
     public static final RegistryObject<Item> SUPREME_EVOKER_EGG = ITEMS.register("supreme_evoker_spawn_egg",
             () -> new ForgeSpawnEggItem(SUPREME_EVOKER, 0x3A2030, 0x30E8F0, new Item.Properties()));
 
@@ -106,6 +113,7 @@ public class DungeonsIllagersMod {
         event.put(PRIME_ENCHANTER.get(), PrimeEnchanter.createAttributes().build());
         event.put(GEOMANCER.get(), Geomancer.createAttributes().build());
         event.put(EXCAVATOR.get(), Excavator.createAttributes().build());
+        event.put(ROYAL_GUARD.get(), RoyalGuard.createAttributes().build());
         event.put(SUPREME_EVOKER.get(), SupremeEvoker.createAttributes().build());
     }
 
@@ -114,6 +122,7 @@ public class DungeonsIllagersMod {
             event.accept(PRIME_ENCHANTER_EGG);
             event.accept(GEOMANCER_EGG);
             event.accept(EXCAVATOR_EGG);
+            event.accept(ROYAL_GUARD_EGG);
             event.accept(SUPREME_EVOKER_EGG);
         }
     }
