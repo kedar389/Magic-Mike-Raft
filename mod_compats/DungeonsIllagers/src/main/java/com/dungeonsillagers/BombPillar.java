@@ -12,8 +12,10 @@ import net.minecraft.world.level.Level;
  */
 public class BombPillar extends Prop {
 
-    private static final int FUSE = 52;
+    public static final int FUSE = 52;
     private static final double RADIUS = 450 * MoveMob.UE;
+    /** Fuse tick at which the pillar starts heating (AnimNS_GeomancerBombBlock_PreExplosion, 1.38 s). */
+    public static final int HEAT_FROM = 28;
     private float health = 17.0F;
 
     public BombPillar(EntityType<? extends BombPillar> type, Level level) {
@@ -27,8 +29,8 @@ public class BombPillar extends Prop {
             sound(IllagerSound.GEOMANCER_BOMB_SPAWN, 1.5F);
             Vfx.play(this, Vfx.Effect.BOMB_APPEAR, this.position(), this.getYRot(), 0);
         }
-        if (t == 28) {
-            Vfx.play(this, Vfx.Effect.BOMB_FUSE, this.position(), this.getYRot(), FUSE - 28);
+        if (t == HEAT_FROM) {
+            Vfx.play(this, Vfx.Effect.BOMB_FUSE, this.position(), this.getYRot(), FUSE - HEAT_FROM);
         }
         if (t == FUSE) {
             explode();

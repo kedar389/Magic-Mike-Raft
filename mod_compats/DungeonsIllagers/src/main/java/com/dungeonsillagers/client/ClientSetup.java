@@ -1,5 +1,6 @@
 package com.dungeonsillagers.client;
 
+import com.dungeonsillagers.BombPillar;
 import com.dungeonsillagers.DungeonsIllagersMod;
 import com.dungeonsillagers.Excavator;
 import com.dungeonsillagers.Geomancer;
@@ -63,7 +64,24 @@ public final class ClientSetup {
             return renderer;
         });
         // BP scales: wall pillar mesh 0.9, fang trap 1.5
-        event.registerEntityRenderer(DungeonsIllagersMod.BOMB_PILLAR.get(), ctx -> new Renderer<Prop>(ctx, "bomb_pillar", 1.0F, true, 0.6F));
+        event.registerEntityRenderer(DungeonsIllagersMod.BOMB_PILLAR.get(), ctx -> {
+            // block outlines and centres glow yellow as the fuse burns down: a flicker at ignition, then heating up
+            Renderer<BombPillar> renderer = new Renderer<>(ctx, "bomb_pillar", 1.0F, false, 0.6F);
+            renderer.addRenderLayer(new TintedGlowLayer<>(renderer, texture("bomb_pillar_heat"), (bomb, partialTick) -> {
+                float t = bomb.tickCount + partialTick;
+                float heat;
+                if (t >= 2 && t < 10) {
+                    heat = 0.35F * (1 - Math.abs(t - 6) / 4);
+                } else if (t >= BombPillar.HEAT_FROM) {
+                    heat = Math.min(1.0F, (t - BombPillar.HEAT_FROM) / (BombPillar.FUSE - BombPillar.HEAT_FROM));
+                    heat *= 0.85F + 0.15F * (float) Math.sin(t * 1.3F);
+                } else {
+                    return null;
+                }
+                return heat <= 0.01F ? null : TintedGlowLayer.color(0xFFE040, heat);
+            }));
+            return renderer;
+        });
         event.registerEntityRenderer(DungeonsIllagersMod.WALL_PILLAR.get(), ctx -> new Renderer<Prop>(ctx, "wall_pillar", 0.9F, false, 0.5F));
         event.registerEntityRenderer(DungeonsIllagersMod.FANG_TRAP.get(), ctx -> new Renderer<Prop>(ctx, "fang_trap", 1.5F, false, 0.3F));
         event.registerEntityRenderer(DungeonsIllagersMod.EVOKER_ORB.get(), NoopRenderer::new);
