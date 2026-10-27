@@ -38,8 +38,17 @@ public final class ClientSetup {
 
     @SubscribeEvent
     public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(DungeonsIllagersMod.GEOMANCER.get(),
-                ctx -> new Renderer<Geomancer>(ctx, "geomancer", 1.0F, true, 0.5F));
+        event.registerEntityRenderer(DungeonsIllagersMod.GEOMANCER.get(), ctx -> {
+            // beads matte purple, shining yellow (bomb pillars) or pink (wall pillars) only while he casts
+            Renderer<Geomancer> renderer = new Renderer<>(ctx, "geomancer", 1.0F, false, 0.5F);
+            renderer.addRenderLayer(new TintedGlowLayer<>(renderer, texture("geomancer_beads"), (geomancer, partialTick) ->
+                    switch (geomancer.beads()) {
+                        case BOMB -> TintedGlowLayer.color(VfxLibrary.BEAD_YELLOW, 1.0F);
+                        case WALL -> TintedGlowLayer.color(VfxLibrary.BEAD_PINK, 1.0F);
+                        default -> null;
+                    }));
+            return renderer;
+        });
         event.registerEntityRenderer(DungeonsIllagersMod.EXCAVATOR.get(), ExcavatorRenderer::new);
         event.registerEntityRenderer(DungeonsIllagersMod.ROYAL_GUARD.get(), RoyalGuardRenderer::new);
         event.registerEntityRenderer(DungeonsIllagersMod.SUPREME_EVOKER.get(), ctx -> {
@@ -58,6 +67,10 @@ public final class ClientSetup {
         event.registerEntityRenderer(DungeonsIllagersMod.WALL_PILLAR.get(), ctx -> new Renderer<Prop>(ctx, "wall_pillar", 0.9F, false, 0.5F));
         event.registerEntityRenderer(DungeonsIllagersMod.FANG_TRAP.get(), ctx -> new Renderer<Prop>(ctx, "fang_trap", 1.5F, false, 0.3F));
         event.registerEntityRenderer(DungeonsIllagersMod.EVOKER_ORB.get(), NoopRenderer::new);
+    }
+
+    private static ResourceLocation texture(String name) {
+        return new ResourceLocation(DungeonsIllagersMod.MOD_ID, "textures/entity/" + name + ".png");
     }
 
     /** Model and texture named after the entity; invisible entities (a teleport in progress) are not drawn. */

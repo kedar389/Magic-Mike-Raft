@@ -37,6 +37,7 @@ public final class VfxLibrary {
     // Geomancer runes (SummonPillar: purple, SummonPillar_Bomb: red-orange), bomb fire, Excavator slash
     static final int GEO_PURPLE = 0x8000FF, GEO_RED = 0xFF2010, FIRE_ORANGE = 0xFF8A00, FIRE_RED = 0xFF3000;
     static final int EXC_RED = 0xFF0019, DUST = 0xB8AC9C;
+    static final int BEAD_YELLOW = 0xFFE24A, BEAD_PINK = 0xFF5CD6;
     /** Fallback hand offset when the model has not been drawn yet: sideways, up, ahead. */
     private static final double HAND_SIDE = 0.8, HAND_UP = 1.7;
 
@@ -617,8 +618,8 @@ public final class VfxLibrary {
                 }
             }
             case GEO_BEADS -> emit(packet, caster, 10, (age, o) -> {
-                // AnimNS_Geomancer_GlowingBeads: the bead necklace flares (orange for bombs, purple for walls)
-                int color = param > 0 ? GEO_PURPLE : FIRE_ORANGE;
+                // AnimNS_Geomancer_GlowingBeads: the bead necklace flares (yellow for bombs, pink for walls)
+                int color = param > 0 ? BEAD_PINK : BEAD_YELLOW;
                 for (int i = 0; i < 2; i++) {
                     float a = RANDOM.nextFloat() * Mth.TWO_PI;
                     VfxParticle.at(o.add(Math.cos(a) * 0.3, 1.45, Math.sin(a) * 0.3)).velocity(new Vec3(0, 0.015, 0)).size(0.07F, 0.02F)

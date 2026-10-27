@@ -5,6 +5,9 @@ import com.dungeonsillagers.client.VfxLibrary;
 import java.util.List;
 import javax.annotation.Nullable;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
@@ -74,6 +77,10 @@ public class Geomancer extends MoveMob {
         {"#####", ".....", ".....", ".....", "#####"}, // LINES
     };
 
+    /** AnimNS_Geomancer_GlowingBeads: what the beads shine with right now. */
+    public enum Beads { MATTE, BOMB, WALL }
+    private static final EntityDataAccessor<Byte> BEADS = SynchedEntityData.defineId(Geomancer.class, EntityDataSerializers.BYTE);
+
     private int retreatReadyAt;
     private int retreatUntil;
     private int castReadyAt;
@@ -83,6 +90,20 @@ public class Geomancer extends MoveMob {
     public Geomancer(EntityType<? extends Monster> type, Level level) {
         super(type, level, NAME, true);
         this.xpReward = 15;
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(BEADS, (byte) Beads.MATTE.ordinal());
+    }
+
+    public Beads beads() {
+        return Beads.values()[this.entityData.get(BEADS)];
+    }
+
+    private void setBeads(Beads value) {
+        this.entityData.set(BEADS, (byte) value.ordinal());
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -209,7 +230,11 @@ public class Geomancer extends MoveMob {
                 }
             }
             if (t == 1) {
+                setBeads(Beads.BOMB);
                 Vfx.play(this, Vfx.Effect.GEO_BEADS, Vfx.Anchor.BODY, 0);
+            }
+            if (t == 11) {
+                setBeads(Beads.MATTE);
             }
             if (t == 4) {
                 vfx(Vfx.Effect.GEO_CAST_BOMB, this.position(), 0);
@@ -236,7 +261,11 @@ public class Geomancer extends MoveMob {
                 vfx(Vfx.Effect.GEO_CAST_WALL, this.position(), 0);
             }
             if (t == 3) {
+                setBeads(Beads.WALL);
                 Vfx.play(this, Vfx.Effect.GEO_BEADS, Vfx.Anchor.BODY, 1);
+            }
+            if (t == 11) {
+                setBeads(Beads.MATTE);
             }
             if (t == 3) {
                 sound(IllagerSound.GEOMANCER_WALL_SPAWN, 1.5F);
@@ -263,6 +292,7 @@ public class Geomancer extends MoveMob {
     @Override
     protected void onStaggered() {
         this.pending.clear();
+        setBeads(Beads.MATTE);
     }
 
     private void vfx(Vfx.Effect effect, Vec3 at, float param) {
