@@ -997,8 +997,13 @@ public class PrimeEnchanter extends Monster implements GeoEntity {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        AnimationController<PrimeEnchanter> controller = new AnimationController<>(this, CONTROLLER, 5,
-                state -> state.setAndContinue(state.isMoving() ? WALK : IDLE));
+        AnimationController<PrimeEnchanter> controller = new AnimationController<>(this, CONTROLLER, 5, state -> {
+            // The server's death trigger can lose to a move animation already playing; the client starts it itself
+            if (this.isDeadOrDying() && state.getController().getTriggeredAnimation() != Move.DEATH.animation) {
+                state.getController().tryTriggerAnimation(Move.DEATH.id);
+            }
+            return state.setAndContinue(state.isMoving() ? WALK : IDLE);
+        });
         controller.setSoundKeyframeHandler(event -> {
             if ("step".equals(event.getKeyframeData().getSound())) {
                 playFootstep();
