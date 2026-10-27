@@ -39,7 +39,8 @@ function node(index) {
   return [SPIRAL.origin[0] + Math.round(k * s), SPIRAL.origin[1] + Math.round(-k * c)]
 }
 
-// First solid block from the top with two blocks of headroom, or null.
+// First solid block from the top with two blocks of headroom, or null. getBlock loads the chunk itself (a disk read with
+// the area pregenerated); no forceload, whose removal would also drop one someone else had set on that chunk.
 // Inside loops use let, never const: this Rhino throws "redeclaration of var" on a loop's second pass.
 function surfaceY(level, x, z) {
   for (let y = SPIRAL.scanTop; y > SPIRAL.scanBottom; y--) {
@@ -53,25 +54,16 @@ function surfaceY(level, x, z) {
   return null
 }
 
-// Force-loading keeps getBlock off an unloaded chunk; with the area pregenerated
-// this is a disk read rather than worldgen.
-function groundAt(server, level, x, z) {
-  server.runCommandSilent(`forceload add ${x} ${z}`)
-  const y = surfaceY(level, x, z)
-  server.runCommandSilent(`forceload remove ${x} ${z}`)
-  return y
-}
-
-function findSpot(server, level, index) {
+function findSpot(level, index) {
   const [x0, z0] = node(index)
-  const y0 = groundAt(server, level, x0, z0)
+  const y0 = surfaceY(level, x0, z0)
   if (y0 !== null) return [x0, y0, z0]
 
   for (let ring = 1; ring <= SPIRAL.probeRings; ring++) {
     for (const [dx, dz] of PROBE_DIRS) {
       let x = x0 + dx * ring * SPIRAL.probeStep
       let z = z0 + dz * ring * SPIRAL.probeStep
-      let y = groundAt(server, level, x, z)
+      let y = surfaceY(level, x, z)
       if (y !== null) return [x, y, z]
     }
   }
@@ -86,7 +78,7 @@ PlayerEvents.loggedIn(event => {
   if (placed.contains(key)) return
 
   const index = data.getInt('spiralIndex')
-  const spot = findSpot(server, server.overworld, index)
+  const spot = findSpot(server.overworld, index)
 
   // Claim the index before teleporting, so a failed placement cannot hand the
   // same node to the next joiner.
