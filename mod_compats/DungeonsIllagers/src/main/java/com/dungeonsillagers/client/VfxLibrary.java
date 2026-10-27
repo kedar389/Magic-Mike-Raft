@@ -756,19 +756,32 @@ public final class VfxLibrary {
         }
     }
 
-    /** NS_DeepDarkIllager_CandleFire: the little flame on the Excavator's cap. Called each client tick. */
+    /**
+     * NS_DeepDarkIllager_CandleFire on the Excavator's cap: a centre flame and regular flames licking upward
+     * (MI_FireSide, VelocityAligned), side flames, and embers floating off. Called each client tick.
+     */
     public static void candle(Entity excavator, int tick) {
         Vec3 at = ANCHORS.get(excavator.getId());
         if (at == null || at.distanceToSqr(excavator.position()) > 16) {
             at = excavator.position().add(0, 2.3, 0);
         }
+        // Fire_Center
+        VfxParticle.at(at.add(0, 0.06, 0)).sprite(VfxSprite.FIRE, 0).animated().velocity(new Vec3(0, 0.015, 0)).size(0.13F, 0.07F)
+                .color(0xFFF2B0, FIRE_ORANGE).alpha(1, 0.3F).life(5).spawn();
+        // Fire_Regular
         if (tick % 2 == 0) {
-            VfxParticle.at(at.add(0, 0.05, 0)).sprite(VfxSprite.FIRE, 0).animated().velocity(new Vec3(0, 0.012, 0)).size(0.07F, 0.04F)
-                    .color(0xFFE6A0, FIRE_RED).alpha(1, 0.2F).life(6).spawn();
+            VfxParticle.at(at.add(rand() * 0.03, 0.1, rand() * 0.03)).sprite(VfxSprite.FIRE, 0).animated().velocity(new Vec3(0, 0.03, 0))
+                    .size(0.1F, 0.04F).color(0xFFD060, FIRE_RED).alpha(1, 0).life(7).spawn();
         }
-        if (tick % 9 == 0) {
-            VfxParticle.at(at.add(0, 0.12, 0)).velocity(new Vec3(rand() * 0.01, 0.03, rand() * 0.01)).size(0.025F, 0.01F)
-                    .color(0xFFC060, FIRE_RED).alpha(1, 0).life(14).spawn();
+        // Fire_Side
+        if (tick % 3 == 0) {
+            VfxParticle.at(at.add(rand() * 0.06, 0.05, rand() * 0.06)).sprite(VfxSprite.FIRE, 0).animated()
+                    .velocity(new Vec3(rand() * 0.01, 0.02, rand() * 0.01)).size(0.07F, 0.03F).color(0xFFB040, FIRE_RED).alpha(1, 0).life(6).spawn();
+        }
+        // Fire_Floater: embers (colour curve 25,3.5,0 fading out)
+        if (tick % 6 == 0) {
+            VfxParticle.at(at.add(0, 0.18, 0)).velocity(new Vec3(rand() * 0.01, 0.025, rand() * 0.01)).size(0.03F, 0.01F)
+                    .color(0xFFA020, FIRE_RED).alpha(1, 0).life(18).spawn();
         }
     }
 
