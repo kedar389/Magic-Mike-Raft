@@ -176,8 +176,8 @@
           "weight": 4
         },
         {
-          "type": "minecraft:item",
-          "name": "irons_spellbooks:scroll_pouch",
+          "type": "minecraft:loot_table",
+          "name": "irons_spellbooks:magic_items/scroll_pouch",
           "weight": 1
         },
         {
