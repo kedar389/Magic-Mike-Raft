@@ -39,6 +39,8 @@ Effects:
 
 UI upgrades:
   - JEI                         # Just Enough Items, recipe lookup
+  - KubeJS                      # recipe and item changes, hides removed items in JEI
+  - Rhino                       # JavaScript engine for KubeJS
   - Jade                        # block and entity tooltips (HWYLA-style)
   - Jade Addons                 # Jade support for modded blocks
   - BetterF3                    # configurable debug overlay
