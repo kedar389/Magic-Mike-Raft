@@ -44,7 +44,7 @@
 
 ## Loot Tables
 - [ ] Update loot tables for structures; add loot integrations for new buildings
-- [ ] Update loot tables for traders, ribbits, goblin traders, and wandering traders, include **warp stone** as an expensive trade (this is the only intended source of warp stone; its crafting recipe is disabled, and warp stone gates the waystone recipe)
+- [ ] Update trades for villagers, ribbits and wandering traders (`datapacks/Trades`), include **warp stone** as an expensive trade (this is the only intended source of warp stone; its crafting recipe is disabled, and warp stone gates the waystone recipe)
 - [x] Add loot to caravans
 
 
