@@ -135,6 +135,17 @@ Entity Model Features stops handling a model after 64 creation attempts, which m
 
 `/structurify config sync fromServer` throws `EncoderException: String too big (was 40849 characters, max 32767)`. Structurify serialises its whole structure config into one string field, and this pack exceeds Forge's `FriendlyByteBuf` string cap by ~25%. Worldgen is server-side so structures still generate, only the client-side config view is lost. No config knob avoids it.
 
+## Subtle Effects foam along Streams Reflowing waterfalls, open
+
+Subtle Effects marks a water block as a waterfall foot when it is a source, has water above, and the block above has an open side (`WaterfallTicker.evaluateWaterfall`). Streams Reflowing columns pass that check along their whole height, so foam spawns up the column.
+
+| Setting | Result |
+|---|---|
+| Streams `partnerParticles=false` | foam along the whole column |
+| Streams `partnerParticles=true` | Subtle Effects detection off on stream water; Streams places no foam, `waterfallFoam=3` not yet tested |
+
+Fix if config can't: a mixin requiring the foot block to have no open side. Streams Reflowing is in `modlist-server.yaml` but not installed yet.
+
 ## Stale JVM crash log, wontfix
 
 `hs_err_pid20432.log` and `replay_pid20432.log` in the server folder are an `EXCEPTION_ACCESS_VIOLATION` from 23 Jul 2026, unrelated to anything above. Safe to delete.
@@ -143,7 +154,7 @@ Entity Model Features stops handling a model after 64 creation attempts, which m
 
 # Performance & Profiling
 
-The two performance settings that belong to no datapack or compat mod.
+Performance settings that belong to no datapack or compat mod.
 
 ## spark, background profiler off
 
@@ -163,6 +174,25 @@ The server runs DH with `enableDistantGeneration = true`, generating LOD chunks 
 | `common.multiThreading.threadRunTimeRatio` | `0.5` | Was `1.0`. Each thread idles half the time, so gen bursts stop causing tick stutter |
 
 Set `enableDistantGeneration = false` to stop the server pre-generating LODs. Clients then build their own as they explore.
+
+## Client FPS
+
+Measured with `/sparkc profiler start --timeout 60`. Share of render-thread time.
+
+| Cost | Share | Change | Config |
+|---|---|---|---|
+| Wither Reincarnated fire glows after a Wither fight (`ParticleSpawnersEvent.renderGlows`) | 70% | Max Distant Fire `0`, Max Smoke Columns `0`, falling ash off, music `0` | [`witherreincarnated/client.toml`](../configuration_client/mod_configs_client/witherreincarnated/client.toml) |
+| Subtle Effects waterfalls, force-spawned at any distance | 21% | force-spawn off, `waterfallUpdateFrequency` `20`, density `0.5` | [`subtle_effects/environment.toml`](../configuration_client/mod_configs_client/subtle_effects/environment.toml) |
+| Chloride FPS overlay, `ADVANCED` | 2-3% | `OFF` | [`chloride-client.toml`](../configuration_client/mod_configs_client/chloride-client.toml) |
+
+Open, no config option:
+
+| Cost | Share |
+|---|---|
+| Chloride entity sort (`redirect$entitiesForRendering`), runs with its culling off | 3% |
+| Particle Effects debug pass (`DebugParticleInfoRenderer.renderAll`, `markDebugData`, `swapParticle`) | 2-9%, scales with particle count |
+| Rain: Subtle Effects biome tint 3.2%, `wrapGetBiome`/`beforeGetBiome` mixin from a mod not yet identified 4.6% | 8% while raining |
+| KnightLib `BoneHitboxPicker.pick`, Create `BigOutlines.pick`, run every frame | ~2% |
 
 ---
 
@@ -281,11 +311,11 @@ Each of these is documented once, in its own README.
 | Iron's Lib attribute remap, 7 stats, datapack | [`datapacks/Attribute_Merge/README.md`](../datapacks/Attribute_Merge/README.md) |
 | Cataclysm and Obscure API merge, and why a code hook was needed | [`mod_compats/AttributeMerge/README.md`](../mod_compats/AttributeMerge/README.md) |
 | Source-mod labels on attribute names | [`resourcepacks/Attribute_Mod_Labels/README.md`](../resourcepacks/Attribute_Mod_Labels/README.md) |
-| RealmRPG jigsaw pools resolving without their namespace | [`datapacks/RealmRPG_Pool_Namespace_Fix/README.md`](../datapacks/RealmRPG_Pool_Namespace_Fix/README.md) |
-| Eyes of Ender redistributed to bosses and chests | [`datapacks/Eyes_Of_Ender_Drops/README.md`](../datapacks/Eyes_Of_Ender_Drops/README.md) |
+| Villager and Wandering Trader trades | [`datapacks/Trades/README.md`](../datapacks/Trades/README.md) |
+| Structure chest and mob drop loot | [`datapacks/Loot_Tables/README.md`](../datapacks/Loot_Tables/README.md) |
 | Per-mod game rules | [`datapacks/Server_Game_Rules/README.md`](../datapacks/Server_Game_Rules/README.md) |
 | Curios slot changes | [`datapacks/Curios_Slot_Tweaks/README.md`](../datapacks/Curios_Slot_Tweaks/README.md) |
-| KubeJS scripts and deploy | [`kubejs/README.md`](../kubejs/README.md) |
+| Recipe changes, item removals, KubeJS deploy | [`kubejs/README.md`](../kubejs/README.md) |
 | Iron's Companions content/compat mod | [`mod_compats/IronsCompanions/README.md`](../mod_compats/IronsCompanions/README.md) |
 | Adding and updating mods, packwiz workflow | [`COMMANDS.md`](COMMANDS.md) |
 
