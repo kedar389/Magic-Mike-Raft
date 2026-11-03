@@ -1,6 +1,6 @@
 # KubeJS scripts (repo source of truth)
 
-Canonical source for this pack's KubeJS scripts. KubeJS (`kubejs-forge-2001.6.5`) is already installed.
+Canonical source for this pack's KubeJS scripts. KubeJS (`kubejs-forge-2001.6.5`) runs on the servers and the client; the client also needs Rhino.
 Radek deploys these to the live instances himself (do not edit the live instances directly).
 
 ## Layout
@@ -11,23 +11,27 @@ Radek deploys these to the live instances himself (do not edit the live instance
 | `client_scripts/` | client only | F3+T | JEI events, tooltips |
 | `startup_scripts/` | both, at load | restart | registries |
 
-Only `server_scripts/` currently holds anything.
-
 ## Deploy
 
 Copy the folder into each instance's `kubejs/`:
 
 - **Servers:** `servers_folder/magic server/kubejs/` and `servers_folder/testing_server/kubejs/`.
-- **Client:** nothing to deploy while there are no `client_scripts/`.
+- **Client:** `startup_scripts/` and `client_scripts/` into the client instance's `kubejs/`.
 
 ## Current scripts
 
-### `server_scripts/waystones_balance.js`
+### Item and recipe changes
 
-Disables the `waystones:warp_stone` recipe (Warp Stone is a future expensive trader trade). The
-`waystones:waystone` recipe is left as the mod default, which already requires a Warp Stone, so with
-Warp Stone gone, waystones are only obtainable from world gen. World-gen/XP tuning lives in
-`mod_configs_server/waystones-common.toml`. See `docs/modpack-wiki.md` → Waystones.
+| File | Holds |
+|---|---|
+| `server_scripts/recipes.js` | every recipe addition, edit and removal |
+| `startup_scripts/removed_items.js` | `global.removedItems`, the list of items removed from the pack |
+| `server_scripts/items.js` | removes every recipe that outputs a removed item and every tag that lists one |
+| `client_scripts/hide_items.js` | hides removed items in JEI |
+
+| Recipe change | Why |
+|---|---|
+| `waystones:warp_stone` removed | Warp Stone is a future expensive trader trade. The `waystones:waystone` recipe needs a Warp Stone, so waystones only come from world gen. World-gen/XP tuning lives in `mod_configs_server/waystones-common.toml`. See `docs/modpack-wiki.md` → Waystones. |
 
 ### `server_scripts/spiral_spawn.js`
 
