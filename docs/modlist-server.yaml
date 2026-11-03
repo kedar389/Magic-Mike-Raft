@@ -30,7 +30,8 @@ Worldgen:
   - WWOO
   - Nullscape
   - Amplified Nether
-  - Streams reflow
+  - Water overhauls:
+    - Streams reflow
 
 Structures:
   - Plains and forests:
@@ -47,6 +48,7 @@ Structures:
     - Dungeon Now Loading
     - BetterArcheology
     - Yung's Better Jungle Temples
+
   - Savanna:
       - Mowzie's Mobs*
 
@@ -55,10 +57,10 @@ Structures:
 
   - Swamp:
       - Yung's Better Witch Huts
+      - Ribbits*
 
   - Badlands:
        - BetterArcheology
-  -
 
   - Underground Dungeons:
       - Yung's Better Dungeons
@@ -70,7 +72,6 @@ Structures:
 
   - Pillager structures:
       - DnT Pillager Outpost Overhaul
-      - It Takes a Pillage
       - Conjurer
       - Companions
   - Mountains and snow:
@@ -108,6 +109,7 @@ Mobs:
   - Enderman Overhaul
   - Sea Dwellers
   - Spider overhaul
+  - Alshanex Familiars
 
 Bosses:
   - Mowzie's Mobs
@@ -124,12 +126,9 @@ Nether overhaul:
 End overhaul:
   - Nullscape*
   - True Ending                 # Ender Dragon boss overhaul
-  # - Endergetic Expansion      # undecided
 
 Pillager overhaul:
   - Raids Enhanced              # new raid minibosses
-  - Illage and Spillage         # new pillagers and pillager bosses
-  - It Takes a Pillage          # new structures and mobs
   - Enchant With Mob            # disable enchants on random mobs
   - Friends & Foes              # Iceologer and Illusioner
   - Conjurer                    # pillager boss with its own structure
@@ -137,6 +136,8 @@ Pillager overhaul:
   - Hunter's Return            # hunter-type illagers
   - Illagers Wear Armor         # armored illager variants
   - Pillager Caravans           # roaming pillager convoys
+  - #Illage and Spillage         # new pillagers and pillager bosses
+  - #It Takes a Pillage          # new structures and mobs
   - Structures:
       - DnT Pillager Outpost Overhaul*
 
@@ -146,7 +147,7 @@ Piglin overhaul:
 Tech mods:
   - Create                      # kinetic machinery
   - "Create: Slice and Dice"    # automated Farmer's Delight processing
-  - Botania                     # flower-based magic tech
+
 
 Trinkets and items:
   - Ewewukek's Musket Mod       # black-powder firearms
@@ -154,17 +155,15 @@ Trinkets and items:
   - Relics
   - More Relics
   - Artifacts
-  - Relics x Artifacts Compat
+  - Reliquified artifacts
   - Unique Accessories
 
 Enchantment overhauls:
   - Ascendant Arcana            # new enchantments and effects
   - Ascendant Compatibility     # cross-mod enchant support
-  - #Majrusz's Enchantments      # extra enchantments, has some bug
+
 
 Alchemy overhauls: []           # TBD
-
-Water overhauls: []
 
 
 
@@ -174,42 +173,44 @@ Compat mods (built from mod_compats/, not downloaded):
 
 Gameplay:
   - Simple Voice Chat           # proximity voice
-  - Carry On                    # pick up and carry blocks and mobs
+  - #Carry On                    # pick up and carry blocks and mobs
 
 Overhauls and addons:
   - Gravestone Mod              # + Curios compat
+  - BetterArcheology            # archaeology expansion
   - Easy Anvils                 # removes anvil level cap
   - Origins                     # Fabric mod via Connector
   - Medieval Origins            # extra origins
-  - BetterArcheology            # archaeology expansion
   - End Remastered              # multi-eye End portal progression
   - Supplementaries             # decorative and functional blocks
   - Realm RPG:
       - Fallen Adventurers      # humanoid adventurer mobs
-      - Quests and Rewards      # quest board progression
-  - Aleki's Nifty Ships         # research first, may conflict with Create
+  - #Aleki's Nifty Ships         # research first, may conflict with Create
   - Waystones                   # fast travel network
   - Iron's Spells 'n Spellbooks # spellcasting system
   - Iron's Spells x Mowzie's Mobs compat
-  - Iron's Spells x Illage and Spillage compat
+  - #Iron's Spells x Illage and Spillage compat
 
 Food:
-  - "Spice of Life: Apple Edition"  # diet variety incentive
-  - Farmer's Delight             # base cooking system
-  - Alex's Delight               # Alex's Mobs compat
-  - Aquamirae Delight
-  - Ender's Delight
-  - Fruits Delight
-  - Chef's Delight
-  - Cataclysm Delight
-  - Nether's Delight
-  - Storage Delight
-  - Ocean's Delight
-  - Farmer's Respite             # tea and coffee brewing
-  - Jaden's Nether Expansion Delight
-  - Nether Depths Upgrade compat
-  - Bosses Delight               # BoMD compat
-  - "Let's Do: Vinery"           # wine making
+  - "Spice of Life: Apple Edition"
+  - Farmer's Delight
+  - Farmer's Delight addons:
+      - Ocean's Delight
+      - Nether's Delight
+      - Ender's Delight
+      - Brewin and Chewin
+      - Storage Delight
+      - Chef's Delight
+      - Farmer's Respite
+      - Fruits Delight
+
+  - Farmer's Delight compats:
+      - Create Slice and Dice
+      - Alex's Delight               # Alex's Mobs compat
+      - Nether Depths Upgrade compat
+      - Jaden's Nether Expansion Delight
+      - Aquamirae Delight
+
 
 Furniture:
   - Cluttered                    # small decorative clutter items
@@ -220,7 +221,15 @@ Also required on the server becuase of client:
   - Jade
   - JEI
   - Explosive Enhancement
-  - Wither Spawn Animation
   - Just Enough Archeology       # may be client-only, verify
   - Just Enough Resources        # may be client-only, verify
   - Xaero's Waystones Compat
+
+
+
+Migrate to 1.21.1:
+  # Mods still pending a 1.21.1 update before the pack can move version.
+  - Dungeon Now Loading         # DNL, loading-screen dungeon tips
+  - Aquamirae                   # ocean biome, boss and gear
+  - Conjurer                   # pillager boss with its own structure
+  #- Illage and Spillage         # new illagers and illager bosses
