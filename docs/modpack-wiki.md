@@ -164,7 +164,7 @@ The Moon Elf dodge is not an attribute. It does not show in the Attributes GUI a
 
 XP levels get progressively more expensive, so a flat few-level cost is a larger share of early-game XP than late.
 
-Settings in [`mod_configs_server/waystones-common.toml`](../server_configuration/mod_configs_server/waystones-common.toml), recipe changes in [`kubejs/server_scripts/waystones_balance.js`](../kubejs/server_scripts/waystones_balance.js).
+Settings in [`mod_configs_server/waystones-common.toml`](../server_configuration/mod_configs_server/waystones-common.toml), recipe changes in [`kubejs/server_scripts/items/recipes.js`](../kubejs/server_scripts/items/recipes.js).
 
 ---
 

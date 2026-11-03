@@ -24,16 +24,16 @@ Copy the folder into each instance's `kubejs/`:
 
 | File | Holds |
 |---|---|
-| `server_scripts/recipes.js` | every recipe addition, edit and removal |
+| `server_scripts/items/recipes.js` | every recipe addition, edit and removal |
 | `startup_scripts/removed_items.js` | `global.removedItems`, the list of items removed from the pack |
-| `server_scripts/items.js` | removes every recipe that outputs a removed item and every tag that lists one |
+| `server_scripts/items/removed_items.js` | removes every recipe that outputs a removed item and every tag that lists one |
 | `client_scripts/hide_items.js` | hides removed items in JEI |
 
 | Recipe change | Why |
 |---|---|
 | `waystones:warp_stone` removed | Warp Stone is a future expensive trader trade. The `waystones:waystone` recipe needs a Warp Stone, so waystones only come from world gen. World-gen/XP tuning lives in `mod_configs_server/waystones-common.toml`. See `docs/modpack-wiki.md` → Waystones. |
 
-### `server_scripts/spiral_spawn.js`
+### `server_scripts/spawn/spiral_spawn.js`
 
 Places every first-time joiner one node further out along a diamond spiral around `0, 0`, and sets
 their spawn point there. Ring size is `|x| + |z|`, growing `step` per player already placed; the
