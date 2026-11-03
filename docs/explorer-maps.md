@@ -9,9 +9,9 @@ Not implemented.
 | Piece | Why |
 |---|---|
 | `datapacks/Explorer_Maps` | Structure tags. A map's destination is a **structure tag**, not a structure id, so every target needs one. |
-| `mod_compats/ExplorerMaps` | Villager trades are code in 1.20.1. No datapack can add them. |
+| `mod_compats/ExplorerMaps` | Map trades search for a structure when offered. Moonlight's datapack trades ([`datapacks/Trades`](../datapacks/Trades/README.md)) sell fixed items; whether one can sell a structure map is not checked. |
 
-Villager trades cannot be reached any other way on this server:
+Other routes to villager trades:
 
 - KubeJS `2001.6.5` dropped the villager-trade event, there is no such class in the jar.
 - CraftTweaker is listed in `modlist-server.yaml` but **is not installed**, no jar in `magic server/mods`.
