@@ -10,32 +10,32 @@ Performance:
   - Embeddium                   # rendering engine (Sodium port)
   - Chloride                    # Embeddium++ successor, extra render options
   - ImmediatelyFast             # batches rendering calls
+  - Entity model features
+  - entity text features
   - Oculus                      # shader support (Iris port)
+  - GeckolibBetterFPS
+  - EntityCUlling
 
 Compat mods (built from mod_compats/, not downloaded):
   - Attribute Merge             # required on both sides: tooltips + mod-list handshake
 
 Graphics:
-  - Distant Horizons            # LOD terrain beyond render distance
+  #- Distant Horizons            # LOD terrain beyond render distance
 
 Music and sound overhauls:
   - Sound Physics Remastered    # reverb and occlusion
-  - Pop                         # UI and interaction sounds
   - Subtle Effects              # extra ambient particles and sounds
-  - Projectile Sounds           # whoosh and impact sounds for projectiles
-  - AmbientSounds               # biome and time-of-day ambience
-  # - Presence Footsteps        # per-block footstep sounds
-  # - Dynamic Surroundings      # larger ambience overhaul, overlaps the above
 
 Effects:
-  - Cave Dust                   # dust particles in caves
-  - Falling Leaves              # leaf particles from trees
+  - Subtle Effects*             # also listed under sound overhauls
   - Visuality                   # small visual particle additions
   - Particle Effects            # extra particles for common actions
   - Cool Rain                   # improved rain visuals
-  - Immersive Thunder           # thunder flashes and effects
   - Explosive Enhancement       # better explosion visuals
-  - Subtle Effects*             # also listed under sound overhauls
+  - Cave Dust                   # dust particles in caves
+  # - Immersive Thunder           # thunder flashes and effects
+  #- Immersive weathers
+
 
 UI upgrades:
   - JEI                         # Just Enough Items, recipe lookup
@@ -43,29 +43,18 @@ UI upgrades:
   - Rhino                       # JavaScript engine for KubeJS
   - Jade                        # block and entity tooltips (HWYLA-style)
   - Jade Addons                 # Jade support for modded blocks
-  - BetterF3                    # configurable debug overlay
   - Enchantment Descriptions    # explains enchantments in tooltips
   - Obscure Tooltips            # cleaner, richer item tooltips
   - Client Sort                 # client-side inventory sorting
-  - Xaero's World Map           # full world map
-  - Xaero's Minimap             # minimap with waypoints
   - AppleSkin                   # hunger and saturation info
   - Better Advancements         # improved advancements screen
   - Immersive UI                # animated, polished vanilla screens
-  - Colorful Hearts             # compact, colored health bar
-  # - AutoHUD                   # fades HUD elements when idle
+  - Xaero's World Map           # full world map
 
 Animations:
-  - Wither Spawn Animation      # needed on both client and server
   - Visual Workbench            # shows items placed in the crafting table
   - Fresh Animations            # resource-pack-driven mob animations
 
 Shaders:
   - Any                         # player's choice, Oculus-compatible
 
-Migrate to 1.21.1:
-  # Mods still pending a 1.21.1 update before the pack can move version.
-  - Dungeon Now Loading         # DNL, loading-screen dungeon tips
-  - Aquamirae                   # ocean biome, boss and gear
-  - Illage and Spillage         # new illagers and illager bosses
-  - Conjurer                   # pillager boss with its own structure
