@@ -1,6 +1,6 @@
 # Magic Minecraft Server, Modpack Wiki
 
-Gameplay changes on this server compared to the mods' defaults. For the biomes that generate here, see [`biomes.md`](biomes.md). Bugs, profiling and implementation detail are in [`technical-notes.md`](technical-notes.md).
+Gameplay changes on this server compared to the mods' defaults. Reference companions: [`biomes.md`](biomes.md) for the biomes that generate here, [`structures.md`](structures.md) for where structures appear, [`mob-spawns.md`](mob-spawns.md) for which mob spawns in which biome. Bugs, profiling and implementation detail are in [`technical-notes.md`](technical-notes.md).
 
 ## Contents
 
