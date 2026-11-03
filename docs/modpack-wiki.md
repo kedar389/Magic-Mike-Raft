@@ -7,10 +7,9 @@ Gameplay changes on this server compared to the mods' defaults. Reference compan
 1. [Banned Mobs](#banned-mobs)
 2. [Game Rules](#game-rules)
 3. [Mob Spawn Rates](#mob-spawn-rates)
-4. [Eyes of Ender](#eyes-of-ender)
-5. [Attributes](#attributes)
-6. [Waystones](#waystones)
-7. [Enchanting & XP](#enchanting--xp)
+4. [Attributes](#attributes)
+5. [Waystones](#waystones)
+6. [Enchanting & XP](#enchanting--xp)
 
 ---
 
@@ -81,45 +80,6 @@ Datapack [`datapacks/Server_Game_Rules/`](../datapacks/Server_Game_Rules/), one 
 | Mob | Change |
 |---|---|
 | Catfish | Spawn weight 4 to 2 |
-
----
-
-## Eyes of Ender
-
-End Remastered's default chest sources (mineshaft, desert pyramid, igloo, jungle temple, nether bridge, simple dungeon) are off. Eyes come from bosses and a smaller set of chests instead. Datapack [`datapacks/eyes_of_ender_drops/`](../datapacks/eyes_of_ender_drops/).
-
-Bosses, guaranteed drop:
-
-| Eye | Boss | Mod |
-|---|---|---|
-| `old_eye` | Ancient Remnant | Cataclysm |
-| `lost_eye` | The Harbinger | Cataclysm |
-| `nether_eye` | Netherite Monstrosity | Cataclysm |
-| `exotic_eye` | Coralssus | Cataclysm (only source, recipe removed) |
-| `cold_eye` | Lich | Bosses of Mass Destruction (player kill) |
-| `rogue_eye` | Sculptor | Mowzie's Mobs (player kill) |
-| `undead_soul`, craft into `undead_eye` | Maledictus | Cataclysm |
-
-Regular mobs:
-
-| Eye / item | Mob | Chance |
-|---|---|---|
-| `guardian_eye` | Elder Guardian | 30% |
-| `magical_eye` | Evoker | 5% |
-| `wither_eye` | Wither | 90% ×2 rolls |
-| `witch_pupil`, craft into `witch_eye` | Witch | 10% |
-
-Chests:
-
-| Eye | Chest | Chance |
-|---|---|---|
-| `cursed_eye` | Bastion treasure | 50% |
-| `black_eye` | Buried treasure | 30% |
-| `black_eye` | Shipwreck treasure | 5% |
-| `corrupted_eye` | Pillager outpost | 30% |
-| `magical_eye` | Woodland mansion | 10% |
-
-Two eyes are crafted: `undead_eye` (shaped) and `witch_eye` (`ender_eye` + `witch_pupil`, shapeless).
 
 ---
 
