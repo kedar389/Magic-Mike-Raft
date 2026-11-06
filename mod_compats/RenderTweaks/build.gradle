@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+version = project.mod_version
+group = 'com.rendertweaks'
+archivesBaseName = project.mod_id
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.0'
+
+    // Embeddium's vertex writer API, for the Lionfish fast path. Copy the jar from the client
+    // instance's mods/ into ./libs/ before building (libs/*.jar is gitignored).
+    // Not deobfuscated: only the vertex API is used, which names no Minecraft members.
+    compileOnly files('libs/embeddium-0.3.31+mc1.20.1.jar')
+    // Lionfish API, Chloride and KnightLib are not compile deps: their classes are targeted by name
+    // and Lionfish's package-private model data is read by reflection.
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title'    : 'render_tweaks',
+            'Specification-Vendor'   : 'render_tweaks',
+            'Specification-Version'  : '1',
+            'Implementation-Title'   : project.name,
+            'Implementation-Version' : project.jar.archiveVersion,
+            'Implementation-Vendor'  : 'render_tweaks',
+            // Forge 1.20.1 registers mixin configs from this attribute, not from mods.toml.
+            'MixinConfigs'           : 'render_tweaks.mixins.json',
+        ])
+    }
+}

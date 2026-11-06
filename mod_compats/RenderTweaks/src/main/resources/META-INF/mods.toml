@@ -1,0 +1,37 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+    modId="render_tweaks"
+    version="0.1.0"
+    displayName="Render Tweaks"
+    # Client only. Servers and other clients do not need it.
+    displayTest="IGNORE_ALL_VERSION"
+    description='''
+Client-side render-thread fixes found by spark profiling: cached block-entity render bounds,
+batched Lionfish API (Cataclysm) model vertices, cheaper Chloride entity-limit sorting,
+and a spatial query for KnightLib's bone hitbox picker.
+'''
+
+[[dependencies.render_tweaks]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47,)"
+    ordering="NONE"
+    side="CLIENT"
+
+[[dependencies.render_tweaks]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1,1.21)"
+    ordering="NONE"
+    side="CLIENT"
+
+# Optional: each tweak is skipped when its target mod is missing.
+[[dependencies.render_tweaks]]
+    modId="embeddium"
+    mandatory=false
+    versionRange="*"
+    ordering="AFTER"
+    side="CLIENT"
