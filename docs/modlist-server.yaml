@@ -7,13 +7,14 @@ Performance:
   - Krypton
   - FerriteCore
   - AllTheLeaks
-  - Noisium
+  - Fast Noise                  # faster world-gen noise sampling (replaces Noisium)
   - ModernFix
   - Radium Reforged
   - C2ME
   - Get It Together, Drops!
   - Clumps
   - Structure Layout Optimizer
+  - Async Locator               # /locate and vanilla explorer-map searches off the main thread
 
 Utilities:
   - spark                       # profiler for TPS and memory
@@ -115,6 +116,7 @@ Bosses:
   - Mowzie's Mobs
   - Bosses of Mass Destruction  # BoMD
   - L_Ender's Cataclysm
+  - Dark Doppelganger           # End altar boss, Summon Scroll
 
 Nether overhaul:
   - Amplified Nether*
@@ -189,10 +191,11 @@ Overhauls and addons:
   - Waystones                   # fast travel network
   - Iron's Spells 'n Spellbooks # spellcasting system
   - Iron's Spells x Mowzie's Mobs compat
+  - Alshanex's Familiars        # Iron's Spells add-on, needs FamiliarsLib
   - #Iron's Spells x Illage and Spillage compat
 
 Food:
-  - "Spice of Life: Apple Edition"
+  - "Spice of Life: Apple Pie Edition"  # food diversity, solapplepie
   - Farmer's Delight
   - Farmer's Delight addons:
       - Ocean's Delight
