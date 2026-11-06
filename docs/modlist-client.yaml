@@ -13,6 +13,8 @@ Performance:
   - Entity model features
   - entity text features
   - Oculus                      # shader support (Iris port)
+  - Colorwheel                  # keeps Flywheel GPU rendering for Create under shaders
+  - Create Better FPS           # client-side rendering optimizations for Create
   - GeckolibBetterFPS
   - EntityCUlling
 
@@ -39,6 +41,7 @@ Effects:
 
 UI upgrades:
   - JEI                         # Just Enough Items, recipe lookup
+  - EMI                         # recipe viewer, loads in background; keep JEI for JEI-only plugins
   - KubeJS                      # recipe and item changes, hides removed items in JEI
   - Rhino                       # JavaScript engine for KubeJS
   - Jade                        # block and entity tooltips (HWYLA-style)
