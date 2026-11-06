@@ -5,7 +5,9 @@
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8.5",
   "client": [
-    "BlockEntityRenderBoundsMixin"
+    "BlockEntityRenderBoundsMixin",
+    "lionfish.AdvancedModelBoxMixin",
+    "lionfish.ModelBoxMixin"
   ],
   "injectors": {
     "defaultRequire": 1
