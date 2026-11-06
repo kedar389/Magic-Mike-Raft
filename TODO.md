@@ -23,11 +23,9 @@
 
 ## Structures
 - [x] Make structures spawn on flat terrain
-- [ ] **Buyable explorer maps that lead to modded structures.** Vanilla has no datapack registry for villager trades on 1.20.1, and KubeJS `2001.6.5` has no trade event. Moonlight adds datapack trades (`datapacks/Trades`); whether it can sell structure maps is not checked. Routes:
-  - **Datapack, retarget the existing cartographer trades** (preferred): the two vanilla map trades resolve through structure tags, `data/minecraft/tags/worldgen/structure/on_ocean_explorer_maps.json` (vanilla `["minecraft:monument"]`) and `on_woodland_explorer_maps.json` (vanilla `["minecraft:mansion"]`). Add structure IDs with `"replace": false` and the trade retargets. Limits: only 2 trade slots total, pooled nearest-wins so you can't pick which structure, and the map keeps the vanilla name/icon
-  - **Datapack, `minecraft:exploration_map` loot function** for chest loot or a `/loot give @s loot <table>` shop, one table per structure, no slot limit. `destination` is a plain tag id with **no `#`** (vanilla `chests/shipwreck_map` omits it and defaults to `on_treasure_maps`). `#dungeonnowloading:temple_of_duality` already exists in the DNL jar and works as-is
-  - **[MoreJS](https://modrinth.com/mod/morejs)** (1.20.1 Forge, needs KubeJS, already present) for genuine new cartographer trades, `MoreJS.villagerTrades(e => ...)` + `VillagerUtils.createStructureMapTrade(input, structure)` chained with `.displayName()/.marker()/.scale()/.noPreview()`
-  - Decide route before building, see the Async Locator caveat under Mods to add
+- [x] **Buyable explorer maps that lead to modded structures**, one map per cartographer level, 69 targets in 5 tiers, [`mod_compats/ExplorerMaps`](mod_compats/ExplorerMaps/README.md). Tested on `testing_server`
+- [ ] Deploy `explorer_maps-0.1.0.jar` into the server's `mods/` (server only) and `explorer_maps.json` into its `config/`
+- [ ] Explorer maps in chest loot (GLM in `ExplorerMaps`), see [`docs/explorer-maps.md`](docs/explorer-maps.md) open decisions
 - [x] Sanity-check map search cost against the new rarities set in [`mod_configs_server/structurify.json`](configuration_server/mod_configs_server/structurify.json): `temple_of_duality` at spacing 32 resolves fast and close, `air_villages` at spacing 188 will be the slow one and lands thousands of blocks out
 - [x] Add waystones, remove the option to mine them, make them hard to craft, make them sparse like 500 blocks, give travel a reasonable XP-based scaling cost (usable by endgame, harder early game, not crazy). Waystone recipe uses warp stone; disable warp stone crafting (later added to expensive trader trades). For now warp stone should be unobtainable.
 

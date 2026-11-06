@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+    modId="explorer_maps"
+    version="0.1.0"
+    displayName="Explorer Maps"
+    description='''
+Server-side. Every cartographer level adds one explorer map to a modded or vanilla structure,
+picked at random from that level's tier. Targets, prices and icons live in config/explorer_maps.json.
+'''
+
+[[dependencies.explorer_maps]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47,)"
+    ordering="NONE"
+    side="SERVER"
+
+[[dependencies.explorer_maps]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1,1.21)"
+    ordering="NONE"
+    side="SERVER"

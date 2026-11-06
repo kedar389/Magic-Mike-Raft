@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+version = project.mod_version
+group = 'com.explorermaps'
+archivesBaseName = project.mod_id
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+
+    runs {
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.console.level', 'debug'
+            mods { explorer_maps { source sourceSets.main } }
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Forge only. Structures are resolved by id at runtime, so no mod is a compile dependency.
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.0'
+}
+
+processResources {
+    // The repo copy of the config is the single source; the jar ships it as the first-run default.
+    from(file('../../configuration_server/mod_configs_server/explorer_maps.json')) {
+        into 'defaults'
+    }
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title'    : 'explorer_maps',
+            'Specification-Vendor'   : 'explorer_maps',
+            'Specification-Version'  : '1',
+            'Implementation-Title'   : project.name,
+            'Implementation-Version' : project.jar.archiveVersion,
+            'Implementation-Vendor'  : 'explorer_maps',
+            // Forge 1.20.1 registers mixin configs from this attribute, not from mods.toml.
+            'MixinConfigs'           : 'explorer_maps.mixins.json',
+        ])
+    }
+}

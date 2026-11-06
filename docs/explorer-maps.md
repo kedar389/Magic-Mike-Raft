@@ -2,60 +2,42 @@
 
 Maps that point at modded structures, sold by cartographers and found in chests.
 
-Not implemented.
+Cartographer trades: [`mod_compats/ExplorerMaps`](../mod_compats/ExplorerMaps/README.md), server-only, config [`explorer_maps.json`](../configuration_server/mod_configs_server/explorer_maps.json). Chest loot: not implemented.
 
-## What it takes
+## Why a mod
 
-| Piece | Why |
+| Route | Why not |
 |---|---|
-| `datapacks/Explorer_Maps` | Structure tags. A map's destination is a **structure tag**, not a structure id, so every target needs one. |
-| `mod_compats/ExplorerMaps` | Map trades search for a structure when offered. Moonlight's datapack trades ([`datapacks/Trades`](../datapacks/Trades/README.md)) sell fixed items; whether one can sell a structure map is not checked. |
-
-Other routes to villager trades:
-
-- KubeJS `2001.6.5` dropped the villager-trade event, there is no such class in the jar.
-- CraftTweaker is listed in `modlist-server.yaml` but **is not installed**, no jar in `magic server/mods`.
-- Loot Integrations injects loot, not trades. Its `skipMapItems: true` only blocks its own random map injection; maps placed directly in a loot table are untouched.
+| Moonlight datapack trades ([`datapacks/Trades`](../datapacks/Trades/README.md)) | `simple` codec has 7 fields (`price`, `price_secondary`, `offer`, `max_trades`, `xp`, `price_multiplier`, `level`). Its loot-function slot is not read from JSON, so no structure search |
+| KubeJS `2001.6.5` | No villager-trade event in the jar |
+| CraftTweaker | Listed in `modlist-server.yaml`, not installed |
+| Loot Integrations | Injects loot, not trades |
+| Retarget vanilla `on_*_explorer_maps` tags | 2 slots, nearest-wins across the tag, vanilla name and icon |
 
 ## Constraints
 
 | Constraint | Effect on design |
 |---|---|
-| **Overworld only** | A cartographer is an Overworld villager and cannot know what is in the Nether or the End. No Nether or End target, in trades or in loot. |
-| **Maps are dimension-locked** | `ExplorationMapFunction` and `TreasureMapForEmeralds` search the level the map is *created* in, so the rule above is also the engine's. |
-| **Every map runs a structure search** | Synchronous, on the server thread, at trade-offer generation or chest-loot roll. Rare targets (spacing 100-200) are the expensive ones. Search radius is capped per target. |
-| **Failed search is silent** | Trade: the offer does not appear. Loot: the player gets a blank map. |
-| **Icons are vanilla only** | `MapDecoration.Type`: `red_x`, `target_x`, `target_point`, `mansion`, `monument`, `red_marker`, `blue_marker`, 16x `banner_<colour>`. Enough to separate tiers, no custom art. |
-| **`skip_existing_chunks: false`** | Every target, every tier. Maps point at the nearest structure even if it sits in already-generated land. |
-
-Search radius by spacing: `<=32` to 32 chunks, `33-64` to 50, `65-100` to 75, `>100` to 100.
-
-## Delivery order
-
-| Phase | Deliverable |
-|---|---|
-| 1 | Structure tags datapack, 69 targets |
-| 2 | `ExplorerMaps` mod, cartographer trades |
-| 3 | Chest loot, Forge GLM in the same mod |
-| 4 | `modpack-wiki.md` entry |
-
-Phase 3 uses a global loot modifier rather than overriding loot tables, so DnT's rewritten `pillager_outpost` and every modded chest keep their own contents.
-
-Loot slots: village and outpost chests, modded dungeon and structure chests, buried treasure and shipwreck. All Overworld.
+| **Overworld only** | A cartographer cannot know what is in the Nether or the End. No Nether or End target. Non-Overworld cartographers get no map |
+| **Every map runs a structure search** | Synchronous, on the server thread, at each cartographer level-up. A failed search measured 0.3-0.5 s on `testing_server` |
+| **Search radius is in placement cells** | One cell is `spacing` chunks. The mod derives the radius from live spacing so every map lands within `max_distance_blocks` (6400) |
+| **Failed search is silent** | Two targets are tried, then the level gets no map |
+| **Icons are vanilla only** | `MapDecoration.Type`. One banner colour per tier |
+| **`skip_existing_chunks: false`** | Maps point at the nearest structure even in already-generated land |
 
 ## Trade tiers
 
-Cartographer, on top of the vanilla Ocean and Woodland maps. Each villager rolls one target per level, so no two cartographers sell the same set.
+Cartographer, on top of the vanilla Ocean and Woodland maps and the level's normal two trades. Each villager rolls one target per level, so no two cartographers sell the same set.
 
-| Level | Tier | Price | Max uses | Targets |
-|---|---|---|---|---|
-| Novice | Villages | 8 emeralds + compass | 5 | 21 |
-| Apprentice | Ruins and hideouts | 12 emeralds + compass | 3 | 16 |
-| Journeyman | Dungeons and lairs | 18 emeralds + compass | 2 | 15 |
-| Expert | Keeps and towers | 24 emeralds + compass | 2 | 11 |
-| Master | Boss lairs and great dungeons | 32 emeralds + compass | 1 | 6 |
+| Level | Tier | Price | Max uses | XP | Icon | Targets |
+|---|---|---|---|---|---|---|
+| Novice | Villages | 8 emeralds + compass | 5 | 2 | `banner_lime` | 21 |
+| Apprentice | Ruins and hideouts | 12 emeralds + compass | 3 | 5 | `banner_yellow` | 16 |
+| Journeyman | Dungeons and lairs | 18 emeralds + compass | 2 | 10 | `banner_orange` | 15 |
+| Expert | Keeps and towers | 24 emeralds + compass | 2 | 15 | `banner_red` | 11 |
+| Master | Boss lairs and great dungeons | 32 emeralds + compass | 1 | 30 | `banner_purple` | 6 |
 
-Target list lives in `config/explorer_maps.json` so prices and picks retune without a rebuild.
+Price multiplier `0.2`, as vanilla explorer maps. Map name is `<Target> Map`.
 
 ## Map targets
 
@@ -160,4 +142,5 @@ Ancient City and Temple of Duality generate underground; the map marks the surfa
 ## Open decisions
 
 1. **Airship Village is `115/90`**, seven times rarer than every other village, but priced at the Novice 8 emeralds. Leave it, or move it to Apprentice.
-2. **`nova_structures:conduit_ruin` at `140/90`** is the most expensive search in the list, and `nova_structures:illager_hideout` at `200/12` is next. Cap them at loot-only if trade-offer generation stutters.
+2. **Master tier misses near spawn.** 6 targets, 2 tries. On `testing_server` Monkey Temple and Temple of Duality were both out of range, so that Master Cartographer sold no map. Options: raise `attempts`, add Master targets, or raise `max_distance_blocks`.
+3. **Chest loot**, phase 3 of the original plan (Forge GLM in the same mod). Not built.

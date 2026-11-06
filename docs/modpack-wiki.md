@@ -10,6 +10,7 @@ Gameplay changes on this server compared to the mods' defaults. Reference compan
 4. [Attributes](#attributes)
 5. [Waystones](#waystones)
 6. [Enchanting & XP](#enchanting--xp)
+7. [Explorer Maps](#explorer-maps)
 
 ---
 
@@ -139,6 +140,24 @@ Ascendant Arcana replaces vanilla enchanting with a capacity/relic system and di
 | `xp_per_level` | `30` | Linear curve, 30 XP per level |
 
 [`mod_configs_server/ascendant_arcana/server.json5`](../configuration_server/mod_configs_server/ascendant_arcana/server.json5).
+
+---
+
+## Explorer Maps
+
+Every cartographer level sells one extra map, on top of the normal trades. Each cartographer rolls its own target, so different cartographers sell different maps. Price is emeralds + 1 compass.
+
+| Level | Leads to | Price | Uses | Marker |
+|---|---|---|---|---|
+| Novice | A village (21 kinds) | 8 | 5 | Lime banner |
+| Apprentice | Ruins and hideouts | 12 | 3 | Yellow banner |
+| Journeyman | Dungeons and lairs | 18 | 2 | Orange banner |
+| Expert | Keeps and towers | 24 | 2 | Red banner |
+| Master | Boss lairs and great dungeons | 32 | 1 | Purple banner |
+
+- Maps point at the nearest structure of that kind, at most ~6400 blocks away. None in range: that level has no map.
+- Overworld structures only.
+- Full target list: [`explorer-maps.md`](explorer-maps.md).
 
 ---
 

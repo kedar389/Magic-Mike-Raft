@@ -1,0 +1,492 @@
+{
+  "max_distance_blocks": 6400,
+  "attempts": 2,
+  "tiers": [
+    {
+      "level": 1,
+      "name": "Villages",
+      "emeralds": 8,
+      "max_uses": 5,
+      "xp": 2,
+      "decoration": "banner_lime",
+      "price_multiplier": 0.2,
+      "targets": [
+        {
+          "name": "Marketstead Village",
+          "structures": [
+            "integrated_villages:marketstead_village"
+          ]
+        },
+        {
+          "name": "Mossy Mounds",
+          "structures": [
+            "integrated_villages:mossy_mounds"
+          ]
+        },
+        {
+          "name": "Minka Village",
+          "structures": [
+            "integrated_villages:quark/minka_village"
+          ]
+        },
+        {
+          "name": "Tavern Village",
+          "structures": [
+            "integrated_villages:tavern_village"
+          ]
+        },
+        {
+          "name": "Cabin Village",
+          "structures": [
+            "integrated_villages:cabin_village"
+          ]
+        },
+        {
+          "name": "Mediterranean Village",
+          "structures": [
+            "integrated_villages:mediterranean_village"
+          ]
+        },
+        {
+          "name": "Oasis Village",
+          "structures": [
+            "integrated_villages:oasis_village"
+          ]
+        },
+        {
+          "name": "Clockwork Village",
+          "structures": [
+            "integrated_villages:clockwork_village"
+          ]
+        },
+        {
+          "name": "Kutcha Village",
+          "structures": [
+            "integrated_villages:kutcha_village"
+          ]
+        },
+        {
+          "name": "Sunken Village",
+          "structures": [
+            "integrated_villages:sunken_village"
+          ]
+        },
+        {
+          "name": "Pirate Village",
+          "structures": [
+            "integrated_villages:pirate_village"
+          ]
+        },
+        {
+          "name": "Airship Village",
+          "structures": [
+            "integrated_villages:airship_village"
+          ]
+        },
+        {
+          "name": "Jungle Village",
+          "structures": [
+            "nova_structures:village_jungle"
+          ]
+        },
+        {
+          "name": "Swamp Village",
+          "structures": [
+            "nova_structures:village_swamp"
+          ]
+        },
+        {
+          "name": "Feur Jungle Village",
+          "structures": [
+            "feur_extension_jungle:village"
+          ]
+        },
+        {
+          "name": "Ribbit Village",
+          "structures": [
+            "ribbits:ribbit_village"
+          ]
+        },
+        {
+          "name": "Plains Village",
+          "structures": [
+            "minecraft:village_plains"
+          ]
+        },
+        {
+          "name": "Taiga Village",
+          "structures": [
+            "minecraft:village_taiga"
+          ]
+        },
+        {
+          "name": "Snowy Village",
+          "structures": [
+            "minecraft:village_snowy"
+          ]
+        },
+        {
+          "name": "Savanna Village",
+          "structures": [
+            "minecraft:village_savanna"
+          ]
+        },
+        {
+          "name": "Desert Village",
+          "structures": [
+            "minecraft:village_desert"
+          ]
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "name": "Ruins and hideouts",
+      "emeralds": 12,
+      "max_uses": 3,
+      "xp": 5,
+      "decoration": "banner_yellow",
+      "price_multiplier": 0.2,
+      "targets": [
+        {
+          "name": "Ruin Town",
+          "structures": [
+            "nova_structures:ruin_town"
+          ]
+        },
+        {
+          "name": "Desert Ruins",
+          "structures": [
+            "nova_structures:desert_ruins"
+          ]
+        },
+        {
+          "name": "Badlands Miner Outpost",
+          "structures": [
+            "nova_structures:badlands_miner_outpost"
+          ]
+        },
+        {
+          "name": "Wild Ruin",
+          "structures": [
+            "nova_structures:wild_ruin"
+          ]
+        },
+        {
+          "name": "Bunker",
+          "structures": [
+            "nova_structures:bunker"
+          ]
+        },
+        {
+          "name": "Mangrove Witch Hut",
+          "structures": [
+            "nova_structures:mangrove_witch_hut"
+          ]
+        },
+        {
+          "name": "Badlands Pyramid",
+          "structures": [
+            "explorify:badlands_pyramid"
+          ]
+        },
+        {
+          "name": "Dark Forest Settlement",
+          "structures": [
+            "explorify:dark_forest_settlement"
+          ]
+        },
+        {
+          "name": "Overgrown Ruins",
+          "structures": [
+            "explorify:ruins"
+          ]
+        },
+        {
+          "name": "Desert Shrine",
+          "structures": [
+            "explorify:desert_shrine"
+          ]
+        },
+        {
+          "name": "Feur Pyramid",
+          "structures": [
+            "feur_extension_jungle:pyramid"
+          ]
+        },
+        {
+          "name": "Ancient Statue",
+          "structures": [
+            "feur_extension_jungle:ancient_statue"
+          ]
+        },
+        {
+          "name": "Light Temple",
+          "structures": [
+            "betterarcheology:light_temple"
+          ]
+        },
+        {
+          "name": "Jungle Dig Temple",
+          "structures": [
+            "betterarcheology:temple_jungle"
+          ]
+        },
+        {
+          "name": "Illusioner Shack",
+          "structures": [
+            "friendsandfoes:illusioner_shack"
+          ]
+        },
+        {
+          "name": "Iceologer Cabin",
+          "structures": [
+            "friendsandfoes:iceologer_cabin"
+          ]
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "name": "Dungeons and lairs",
+      "emeralds": 18,
+      "max_uses": 2,
+      "xp": 10,
+      "decoration": "banner_orange",
+      "price_multiplier": 0.2,
+      "targets": [
+        {
+          "name": "Better Desert Temple",
+          "structures": [
+            "betterdeserttemples:desert_temple"
+          ]
+        },
+        {
+          "name": "Better Jungle Temple",
+          "structures": [
+            "betterjungletemples:jungle_temple"
+          ]
+        },
+        {
+          "name": "Better Witch Hut",
+          "structures": [
+            "betterwitchhuts:witch_hut"
+          ]
+        },
+        {
+          "name": "Witch Circle",
+          "structures": [
+            "betterwitchhuts:witch_circle"
+          ]
+        },
+        {
+          "name": "Jungle Ruins",
+          "structures": [
+            "nova_structures:jungle_ruins"
+          ]
+        },
+        {
+          "name": "Illager Hideout",
+          "structures": [
+            "nova_structures:illager_hideout"
+          ]
+        },
+        {
+          "name": "Undead Crypt",
+          "structures": [
+            "nova_structures:undead_crypt"
+          ]
+        },
+        {
+          "name": "Creeping Crypt",
+          "structures": [
+            "nova_structures:creeping_crypt"
+          ]
+        },
+        {
+          "name": "Witch Villa",
+          "structures": [
+            "nova_structures:witch_villa"
+          ]
+        },
+        {
+          "name": "Conduit Ruin",
+          "structures": [
+            "nova_structures:conduit_ruin"
+          ]
+        },
+        {
+          "name": "Catacombs",
+          "structures": [
+            "betterarcheology:catacombs"
+          ]
+        },
+        {
+          "name": "Geomancer Tower",
+          "structures": [
+            "gtbcs_geomancy_plus:geomancer_tower"
+          ]
+        },
+        {
+          "name": "Mound of Hounds",
+          "structures": [
+            "born_in_chaos_v1:mound_of_hounds"
+          ]
+        },
+        {
+          "name": "Pillager Camp",
+          "structures": [
+            "takesapillage:pillager_camp"
+          ]
+        },
+        {
+          "name": "Illusioner Training Grounds",
+          "structures": [
+            "friendsandfoes:illusioner_training_grounds"
+          ]
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "name": "Keeps and towers",
+      "emeralds": 24,
+      "max_uses": 2,
+      "xp": 15,
+      "decoration": "banner_red",
+      "price_multiplier": 0.2,
+      "targets": [
+        {
+          "name": "Grim Kingdoms castle",
+          "structures": [
+            "grim_kingdoms:blackridge_watch",
+            "grim_kingdoms:chill_hallmanor",
+            "grim_kingdoms:decrown_monolith",
+            "grim_kingdoms:frostbloom_bastion",
+            "grim_kingdoms:frozen_onion_fort",
+            "grim_kingdoms:glacierfall_keep",
+            "grim_kingdoms:glimmervault_fortress",
+            "grim_kingdoms:shardspire_castle",
+            "grim_kingdoms:silentgale_citadel",
+            "grim_kingdoms:snowgrave_citadel",
+            "grim_kingdoms:stonyfell_outpost",
+            "grim_kingdoms:travelers_lodge",
+            "grim_kingdoms:whitewarden_keep",
+            "grim_kingdoms:winterhold_citadel",
+            "grim_kingdoms:zweiberg"
+          ]
+        },
+        {
+          "name": "Illager Manor",
+          "structures": [
+            "nova_structures:illager_manor"
+          ]
+        },
+        {
+          "name": "Illager Camp",
+          "structures": [
+            "nova_structures:illager_camp"
+          ]
+        },
+        {
+          "name": "Stray Fort",
+          "structures": [
+            "nova_structures:stray_fort"
+          ]
+        },
+        {
+          "name": "Bastille",
+          "structures": [
+            "takesapillage:bastille"
+          ]
+        },
+        {
+          "name": "Pillager Outpost",
+          "structures": [
+            "minecraft:pillager_outpost"
+          ]
+        },
+        {
+          "name": "Dark Tower",
+          "structures": [
+            "born_in_chaos_v1:dark_tower_forest",
+            "born_in_chaos_v1:dark_tower_plain",
+            "born_in_chaos_v1:dark_tower_taiga"
+          ]
+        },
+        {
+          "name": "Observation Tower",
+          "structures": [
+            "born_in_chaos_v1:observation_tower_forest",
+            "born_in_chaos_v1:observation_tower_plains"
+          ]
+        },
+        {
+          "name": "Companions Factory",
+          "structures": [
+            "companions:companions_factory"
+          ]
+        },
+        {
+          "name": "Teddy Tower",
+          "structures": [
+            "companions:companions_teddytower"
+          ]
+        },
+        {
+          "name": "Baba Yaga's Hut",
+          "structures": [
+            "companions:companions_babayaga"
+          ]
+        }
+      ]
+    },
+    {
+      "level": 5,
+      "name": "Boss lairs and great dungeons",
+      "emeralds": 32,
+      "max_uses": 1,
+      "xp": 30,
+      "decoration": "banner_purple",
+      "price_multiplier": 0.2,
+      "targets": [
+        {
+          "name": "Ancient City",
+          "structures": [
+            "minecraft:ancient_city"
+          ]
+        },
+        {
+          "name": "Labyrinth",
+          "structures": [
+            "dungeonnowloading:labyrinth"
+          ]
+        },
+        {
+          "name": "Temple of Duality",
+          "structures": [
+            "dungeonnowloading:temple_of_duality"
+          ]
+        },
+        {
+          "name": "Monkey Temple",
+          "structures": [
+            "companions:companions_monkey_temple"
+          ]
+        },
+        {
+          "name": "Monastery",
+          "structures": [
+            "mowziesmobs:monastery"
+          ]
+        },
+        {
+          "name": "Conjurer's Theatre",
+          "structures": [
+            "conjurer_illager:theatre"
+          ]
+        }
+      ]
+    }
+  ]
+}

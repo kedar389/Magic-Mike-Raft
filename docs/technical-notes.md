@@ -312,6 +312,7 @@ Each of these is documented once, in its own README.
 | Cataclysm and Obscure API merge, and why a code hook was needed | [`mod_compats/AttributeMerge/README.md`](../mod_compats/AttributeMerge/README.md) |
 | Source-mod labels on attribute names | [`resourcepacks/Attribute_Mod_Labels/README.md`](../resourcepacks/Attribute_Mod_Labels/README.md) |
 | Villager and Wandering Trader trades | [`datapacks/Trades/README.md`](../datapacks/Trades/README.md) |
+| Cartographer explorer maps to modded structures | [`mod_compats/ExplorerMaps/README.md`](../mod_compats/ExplorerMaps/README.md) |
 | Structure chest and mob drop loot | [`datapacks/Loot_Tables/README.md`](../datapacks/Loot_Tables/README.md) |
 | Per-mod game rules | [`datapacks/Server_Game_Rules/README.md`](../datapacks/Server_Game_Rules/README.md) |
 | Curios slot changes | [`datapacks/Curios_Slot_Tweaks/README.md`](../datapacks/Curios_Slot_Tweaks/README.md) |
