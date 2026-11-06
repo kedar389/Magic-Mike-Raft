@@ -318,6 +318,7 @@ Each of these is documented once, in its own README.
 | Curios slot changes | [`datapacks/Curios_Slot_Tweaks/README.md`](../datapacks/Curios_Slot_Tweaks/README.md) |
 | Recipe changes, item removals, KubeJS deploy | [`kubejs/README.md`](../kubejs/README.md) |
 | Iron's Companions content/compat mod | [`mod_compats/IronsCompanions/README.md`](../mod_compats/IronsCompanions/README.md) |
+| Client render-thread fixes from spark profiles | [`mod_compats/RenderTweaks/README.md`](../mod_compats/RenderTweaks/README.md) |
 | Adding and updating mods, packwiz workflow | [`COMMANDS.md`](COMMANDS.md) |
 
 JDK 17 is available at `C:\Program Files\Eclipse Adoptium\jdk-17.0.20.8-hotspot`, and JDK 21 at `C:\Program Files\Java\jdk-21.0.10`. `attribute_merge-0.1.0.jar` is built and deployed to the client instance. `irons_companions` and `originspellschools` are unbuilt.
