@@ -42,7 +42,9 @@
 
 ## Loot Tables
 - [ ] Update loot tables for structures; add loot integrations for new buildings
-- [ ] Update trades for villagers, ribbits and wandering traders (`datapacks/Trades`), include **warp stone** as an expensive trade (this is the only intended source of warp stone; its crafting recipe is disabled, and warp stone gates the waystone recipe)
+- [x] **Warp stone** as an expensive trade, Wandering Trader rare pool only, 200 emeralds, see [`datapacks/Trades`](datapacks/Trades/README.md)
+- [ ] Update the rest of the villager and wandering trader trades (`datapacks/Trades`)
+- [ ] Ribbit trades, Moonlight cannot reach them (hard-coded in the Ribbits jar), needs a mixin or another route
 - [x] Add loot to caravans
 
 

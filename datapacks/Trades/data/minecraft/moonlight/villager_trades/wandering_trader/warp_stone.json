@@ -1,0 +1,10 @@
+{
+  "type": "simple",
+  "level": 2,
+  "price": { "id": "minecraft:emerald_block", "Count": 22 },
+  "price_secondary": { "id": "minecraft:emerald", "Count": 2 },
+  "offer": { "id": "waystones:warp_stone", "Count": 1 },
+  "max_trades": 1,
+  "xp": 1,
+  "price_multiplier": 0.05
+}

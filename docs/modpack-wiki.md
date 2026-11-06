@@ -120,7 +120,7 @@ The Moon Elf dodge is not an attribute. It does not show in the Attributes GUI a
 | World-gen waystones | Cannot be mined |
 | Warp cost | 1 level minimum, 5 levels maximum, scaling 1 level per 1000 blocks |
 | Free warps | None. Warp stones, sharestones, portstones, warp plates and the inventory button all pay the same cost |
-| Warp Stone | Not craftable. Planned as a trader trade |
+| Warp Stone | Not craftable. Sold only by Wandering Traders, rare offer, 200 emeralds (22 emerald blocks + 2 emeralds), see [`datapacks/Trades`](../datapacks/Trades/README.md) |
 | Waystone | Recipe requires a Warp Stone, so also uncraftable. World-gen only |
 
 XP levels get progressively more expensive, so a flat few-level cost is a larger share of early-game XP than late.

@@ -35,6 +35,22 @@ Moonlight's own example (`data/minecraft/moonlight/villager_trades/farmer/exampl
 | `max_trades` | uses before restock |
 | `xp`, `price_multiplier` | villager XP per trade, demand price scaling |
 
+## Wandering Trader levels
+
+`level` 1 adds to the generic pool, `level` 2 to the rare pool. Each trader rolls 5 generic offers and 1 rare offer, so a rare-pool trade appears on a fraction of traders.
+
 ## Current trades
 
-None.
+| File | Seller | Level | Price | Offer | Uses |
+|---|---|---|---|---|---|
+| `data/minecraft/moonlight/villager_trades/wandering_trader/warp_stone.json` | Wandering Trader | 2, rare pool | 22 emerald blocks + 2 emeralds (200 emeralds) | `waystones:warp_stone` | 1 |
+
+- Warp Stone has no crafting recipe (`kubejs/server_scripts/items/recipes.js`), so this trade is its only source. It gates the Waystone recipe.
+- Priced in blocks because a trade slot caps at 64 items.
+- Cartographer explorer maps are not here: a Moonlight trade cannot run a structure search. See [`mod_compats/ExplorerMaps`](../../mod_compats/ExplorerMaps/README.md).
+
+## Not reachable
+
+| Trader | Why |
+|---|---|
+| Ribbits | Trades are hard-coded in `com.yungnickyoung.minecraft.ribbits.entity.trade`, not `VillagerTrades`, so Moonlight cannot add to them |

@@ -31,7 +31,7 @@ Copy the folder into each instance's `kubejs/`:
 
 | Recipe change | Why |
 |---|---|
-| `waystones:warp_stone` removed | Warp Stone is a future expensive trader trade. The `waystones:waystone` recipe needs a Warp Stone, so waystones only come from world gen. World-gen/XP tuning lives in `mod_configs_server/waystones-common.toml`. See `docs/modpack-wiki.md` → Waystones. |
+| `waystones:warp_stone` removed | Warp Stone is sold only by traders, see `datapacks/Trades/README.md`. The `waystones:waystone` recipe needs a Warp Stone, so waystones only come from world gen. World-gen/XP tuning lives in `mod_configs_server/waystones-common.toml`. See `docs/modpack-wiki.md` → Waystones. |
 
 ### `server_scripts/spawn/spiral_spawn.js`
 
