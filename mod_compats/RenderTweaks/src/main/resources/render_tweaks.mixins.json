@@ -9,6 +9,7 @@
     "chloride.EntitySortKeyMixin",
     "chloride.LevelRendererFrameMixin",
     "chloride.EntityCullingMixin",
+    "knightlib.BoneHitboxPickerMixin",
     "lionfish.AdvancedModelBoxMixin",
     "lionfish.ModelBoxMixin"
   ],
