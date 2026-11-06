@@ -3,6 +3,7 @@ package com.rendertweaks.lionfish;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.logging.LogUtils;
+import com.rendertweaks.Tweak;
 import net.caffeinemc.mods.sodium.api.math.MatrixHelper;
 import net.caffeinemc.mods.sodium.api.util.ColorABGR;
 import net.caffeinemc.mods.sodium.api.vertex.buffer.VertexBufferWriter;
@@ -41,7 +42,7 @@ public final class LionfishFastRender {
             float green,
             float blue,
             float alpha) {
-        if (!enabled) {
+        if (!enabled || !Tweak.CATACLYSM.isEnabled()) {
             return false;
         }
         VertexBufferWriter writer = VertexBufferWriter.tryOf(consumer);

@@ -1,5 +1,6 @@
 package com.rendertweaks.chloride;
 
+import com.rendertweaks.Tweak;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -23,6 +24,11 @@ public final class EntitySortKeys {
     }
 
     public static int compare(Entity a, Entity b) {
+        if (!Tweak.CHLORIDE.isEnabled()) {
+            // Chloride's original comparator.
+            Player player = Minecraft.getInstance().player;
+            return Double.compare(a.distanceTo(player), b.distanceTo(player));
+        }
         return Double.compare(key(a), key(b));
     }
 

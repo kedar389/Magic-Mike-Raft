@@ -15,10 +15,23 @@ Each tweak is skipped by `RenderTweaksMixinPlugin` when its target mod is not in
 
 Costs are from profiles `JXp9IJFor9` (Create village, 8 Cataclysm mobs) and `zEL7XkVDgF` (village with 459 entities, 165 item frames).
 
+## Switching fixes in game
+
+Every fix starts on and can be switched live, for A/B testing in one spot without restarting. Not saved, a restart turns all back on.
+
+| Command | Effect |
+|---|---|
+| `/rendertweaks` | Lists each fix and whether it is on |
+| `/rendertweaks <bounds|cataclysm|chloride|knightlib> <true|false>` | Switches one fix |
+| `/rendertweaks all <true|false>` | Switches all |
+
+Off runs the original code path: Forge's uncached default, Lionfish's own vertex loop, Chloride's original comparator, KnightLib's full entity walk.
+
 ## Files
 
 | Path | Purpose |
 |---|---|
+| `Tweak` + `RenderTweaksCommand` | The on/off switches and the `/rendertweaks` client command |
 | `RenderTweaksMixinPlugin` | Applies `mixin/chloride/*`, `mixin/knightlib/*`, `mixin/lionfish/*` only when their mods are present. Lionfish also needs Embeddium |
 | `RenderBounds` + `mixin/BlockEntityRenderBoundsMixin` | Forge's default render box, copied as-is, plus the cache |
 | `lionfish/LionfishBoxData` | Flattens a Lionfish `ModelBox` into a float array once per box. Its quad and vertex classes are package-private, so they are read by reflection, once |

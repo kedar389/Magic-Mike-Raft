@@ -1,5 +1,6 @@
 package com.rendertweaks.mixin.knightlib;
 
+import com.rendertweaks.Tweak;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.world.entity.Entity;
@@ -38,7 +39,7 @@ public abstract class BoneHitboxPickerMixin {
                     target = "Lnet/minecraft/client/multiplayer/ClientLevel;m_104735_()Ljava/lang/Iterable;"))
     private static Iterable<Entity> renderTweaks$entitiesNearRay(ClientLevel level, Minecraft minecraft, float partialTick) {
         Entity camera = minecraft.getCameraEntity();
-        if (camera == null) {
+        if (camera == null || !Tweak.KNIGHTLIB.isEnabled()) {
             return level.entitiesForRendering();
         }
         Vec3 eye = camera.getEyePosition(partialTick);

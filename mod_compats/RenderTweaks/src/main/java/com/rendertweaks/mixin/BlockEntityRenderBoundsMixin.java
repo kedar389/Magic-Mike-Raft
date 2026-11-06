@@ -1,6 +1,7 @@
 package com.rendertweaks.mixin;
 
 import com.rendertweaks.RenderBounds;
+import com.rendertweaks.Tweak;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -31,6 +32,10 @@ public abstract class BlockEntityRenderBoundsMixin implements IForgeBlockEntity 
         BlockEntity self = (BlockEntity) (Object) this;
         BlockState state = self.getBlockState();
         Level level = self.getLevel();
+        if (!Tweak.BOUNDS.isEnabled()) {
+            AABB bounds = RenderBounds.compute(self, state);
+            return bounds != null ? bounds : RenderBounds.fallback(self);
+        }
         if (renderTweaks$bounds != null && state == renderTweaks$boundsState && level == renderTweaks$boundsLevel) {
             return renderTweaks$bounds;
         }
