@@ -6,6 +6,9 @@
   "minVersion": "0.8.5",
   "client": [
     "BlockEntityRenderBoundsMixin",
+    "chloride.EntitySortKeyMixin",
+    "chloride.LevelRendererFrameMixin",
+    "chloride.EntityCullingMixin",
     "lionfish.AdvancedModelBoxMixin",
     "lionfish.ModelBoxMixin"
   ],
