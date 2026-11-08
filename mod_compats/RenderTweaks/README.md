@@ -27,7 +27,7 @@ Every fix starts on and can be switched live, for A/B testing in one spot withou
 | Command | Effect |
 |---|---|
 | `/rendertweaks` | Lists each fix and whether it is on |
-| `/rendertweaks <bounds|light|cataclysm|chloride|knightlib|apoli|bagus|pehkui> <true|false>` | Switches one fix |
+| `/rendertweaks <bounds|light|entitylight|cataclysm|chloride|knightlib|apoli|bagus|pehkui> <true|false>` | Switches one fix |
 | `/rendertweaks all <true|false>` | Switches all |
 
 Off runs the original code path: Forge's uncached default, a light read every frame (block entities and entities), Lionfish's own vertex loop, Chloride's original sort, KnightLib's full entity walk, Apoli's per-layer check, Bagus Lib's stream over all parts, Pehkui recomputing every scale.
