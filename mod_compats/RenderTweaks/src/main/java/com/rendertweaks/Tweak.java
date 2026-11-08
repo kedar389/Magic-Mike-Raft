@@ -12,6 +12,7 @@ public enum Tweak {
     CHLORIDE("chloride", "Chloride entity limit: nearest pick on a flat array"),
     KNIGHTLIB("knightlib", "KnightLib hitbox picker spatial query"),
     APOLI("apoli", "Apoli layer and render checks once per frame"),
+    APOLI_INDEX("apoliindex", "Apoli hasPower and getPowers from a per-entity power-type index"),
     BAGUS("bagus", "Bagus Lib pose reset from a cached part list"),
     PEHKUI("pehkui", "Pehkui scales cached per frame on the client"),
     RAIN("rain", "Subtle Effects rain tint per column, kept 20 frames"),

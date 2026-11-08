@@ -17,6 +17,7 @@ public final class RenderTweaksMixinPlugin implements IMixinConfigPlugin {
     /** Mixin sub-package to the mod ids it needs. */
     private static final Map<String, List<String>> REQUIRED_MODS = Map.of(
             "apoli.", List.of("apoli", "mixinsquared"),
+            "apoliindex.", List.of("apoli"),
             "bagus.", List.of("bagus_lib"),
             "chloride.", List.of("chloride", "mixinsquared"),
             "gtbc.", List.of("gtbcs_spell_lib"),

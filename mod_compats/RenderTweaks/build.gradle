@@ -50,7 +50,9 @@ jar {
             'Implementation-Version' : project.jar.archiveVersion,
             'Implementation-Vendor'  : 'render_tweaks',
             // Forge 1.20.1 registers mixin configs from this attribute, not from mods.toml.
-            'MixinConfigs'           : 'render_tweaks.mixins.json',
+            // Second config is optional (required: false): the Apoli power index patches an interface,
+            // and if it cannot apply, Apoli runs unpatched instead of the game failing to start.
+            'MixinConfigs'           : 'render_tweaks.mixins.json,render_tweaks.apoli.mixins.json',
         ])
     }
 }
