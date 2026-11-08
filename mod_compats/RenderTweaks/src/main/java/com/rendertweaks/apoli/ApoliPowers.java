@@ -27,6 +27,9 @@ import org.slf4j.Logger;
  * per entity, whether the player has an {@code EntityGlowPower} and whether the entity has a
  * {@code SelfGlowPower}: the first once per frame, the second once per entity per frame.
  *
+ * <p>Per entity, all three questions come from one lookup of its active powers per frame, sorted by
+ * type here. Apoli's {@code getPowers(entity, type)} is the same filter over the same list.
+ *
  * <p>Apoli is called by reflection, once per entity per frame, so there is no compile dependency on
  * its Fabric-named jar.
  */
@@ -37,6 +40,7 @@ public final class ApoliPowers {
     private static boolean resolved;
     private static boolean available;
     private static MethodHandle getPowers;
+    private static Class<?> anyPower;
     private static Class<?> invisibilityPower;
     private static Class<?> preventFeatureRenderPower;
     private static Class<?> preventEntityRenderPower;
@@ -49,20 +53,9 @@ public final class ApoliPowers {
 
     private ApoliPowers() {}
 
-    /** True if the entity has no Invisibility or Prevent Feature Render power right now. */
+    /** True if the entity has no Invisibility or Prevent Feature Render power this frame. */
     public static boolean isPlain(Entity entity) {
-        if (!resolved) {
-            resolve();
-        }
-        if (!available) {
-            return false;
-        }
-        ApoliCacheHolder holder = (ApoliCacheHolder) entity;
-        int frame = FrameCounter.current();
-        if (holder.renderTweaks$apoliFrame() != frame) {
-            holder.renderTweaks$setApoli(frame, lookup(entity));
-        }
-        return holder.renderTweaks$apoliPlain();
+        return refresh(entity) && ((ApoliCacheHolder) entity).renderTweaks$apoliPlain();
     }
 
     /**
@@ -95,18 +88,41 @@ public final class ApoliPowers {
 
     /** True unless the entity is known to have no Self Glow power this frame. */
     public static boolean mayGlowItself(Entity entity) {
+        return !refresh(entity) || ((ApoliCacheHolder) entity).renderTweaks$selfGlow();
+    }
+
+    /** Fills this frame's answers for the entity with one lookup. False if Apoli cannot be asked. */
+    private static boolean refresh(Entity entity) {
         if (!resolved) {
             resolve();
         }
         if (!available) {
-            return true;
+            return false;
         }
         ApoliCacheHolder holder = (ApoliCacheHolder) entity;
         int frame = FrameCounter.current();
-        if (holder.renderTweaks$glowFrame() != frame) {
-            holder.renderTweaks$setGlow(frame, hasAny(entity, selfGlowPower));
+        if (holder.renderTweaks$apoliFrame() == frame) {
+            return true;
         }
-        return holder.renderTweaks$selfGlow();
+        List<?> powers;
+        try {
+            powers = (List<?>) getPowers.invokeExact(entity, anyPower);
+        } catch (Throwable t) {
+            disable(t);
+            return false;
+        }
+        boolean plain = true;
+        boolean selfGlow = false;
+        for (Object power : powers) {
+            if (invisibilityPower.isInstance(power) || preventFeatureRenderPower.isInstance(power)) {
+                plain = false;
+            }
+            if (selfGlowPower.isInstance(power)) {
+                selfGlow = true;
+            }
+        }
+        holder.renderTweaks$setApoli(frame, plain, selfGlow);
+        return true;
     }
 
     private static boolean hasAny(Entity entity, Class<?> power) {
@@ -118,24 +134,11 @@ public final class ApoliPowers {
         }
     }
 
-    private static boolean lookup(Entity entity) {
-        try {
-            List<?> invisibility = (List<?>) getPowers.invokeExact(entity, invisibilityPower);
-            if (!invisibility.isEmpty()) {
-                return false;
-            }
-            List<?> prevent = (List<?>) getPowers.invokeExact(entity, preventFeatureRenderPower);
-            return prevent.isEmpty();
-        } catch (Throwable t) {
-            disable(t);
-            return false;
-        }
-    }
-
     private static void resolve() {
         resolved = true;
         try {
             Class<?> component = Class.forName("io.github.apace100.apoli.component.PowerHolderComponent");
+            anyPower = Class.forName("io.github.apace100.apoli.power.Power");
             invisibilityPower = Class.forName("io.github.apace100.apoli.power.InvisibilityPower");
             preventFeatureRenderPower = Class.forName("io.github.apace100.apoli.power.PreventFeatureRenderPower");
             preventEntityRenderPower = Class.forName("io.github.apace100.apoli.power.PreventEntityRenderPower");
