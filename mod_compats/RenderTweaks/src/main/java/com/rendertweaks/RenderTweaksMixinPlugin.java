@@ -21,7 +21,8 @@ public final class RenderTweaksMixinPlugin implements IMixinConfigPlugin {
             "chloride.", List.of("chloride", "mixinsquared"),
             "knightlib.", List.of("knightlib"),
             "lionfish.", List.of("lionfishapi", "embeddium"),
-            "pehkui.", List.of("pehkui"));
+            "pehkui.", List.of("pehkui"),
+            "subtle.", List.of("subtle_effects", "mixinsquared"));
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {

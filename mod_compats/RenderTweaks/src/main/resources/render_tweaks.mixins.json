@@ -21,7 +21,8 @@
     "knightlib.BoneHitboxPickerMixin",
     "lionfish.AdvancedModelBoxMixin",
     "lionfish.ModelBoxMixin",
-    "pehkui.ScaleDataCacheMixin"
+    "pehkui.ScaleDataCacheMixin",
+    "subtle.SubtleRainTintMixin"
   ],
   "injectors": {
     "defaultRequire": 1

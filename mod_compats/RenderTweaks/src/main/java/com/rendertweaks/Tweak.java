@@ -13,7 +13,8 @@ public enum Tweak {
     KNIGHTLIB("knightlib", "KnightLib hitbox picker spatial query"),
     APOLI("apoli", "Apoli layer and render checks once per frame"),
     BAGUS("bagus", "Bagus Lib pose reset from a cached part list"),
-    PEHKUI("pehkui", "Pehkui scales cached per frame on the client");
+    PEHKUI("pehkui", "Pehkui scales cached per frame on the client"),
+    RAIN("rain", "Subtle Effects rain tint per column, kept 20 frames");
 
     private final String id;
     private final String description;
