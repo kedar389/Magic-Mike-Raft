@@ -6,8 +6,8 @@
   "minVersion": "0.8.5",
   "client": [
     "BlockEntityRenderBoundsMixin",
+    "LevelRendererFrameMixin",
     "chloride.EntitySortKeyMixin",
-    "chloride.LevelRendererFrameMixin",
     "chloride.EntityCullingMixin",
     "knightlib.BoneHitboxPickerMixin",
     "lionfish.AdvancedModelBoxMixin",

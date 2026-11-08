@@ -1,5 +1,6 @@
 package com.rendertweaks.chloride;
 
+import com.rendertweaks.FrameCounter;
 import com.rendertweaks.Tweak;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
@@ -14,14 +15,9 @@ import net.minecraft.world.entity.player.Player;
  */
 public final class EntitySortKeys {
 
-    /** Bumped at the start of every world render. Starts at 1 so a fresh entity's 0 never matches. */
-    private static int frame = 1;
 
     private EntitySortKeys() {}
 
-    public static void nextFrame() {
-        frame++;
-    }
 
     public static int compare(Entity a, Entity b) {
         if (!Tweak.CHLORIDE.isEnabled()) {
@@ -34,6 +30,7 @@ public final class EntitySortKeys {
 
     private static double key(Entity entity) {
         SortKeyHolder holder = (SortKeyHolder) entity;
+        int frame = FrameCounter.current();
         if (holder.renderTweaks$sortFrame() != frame) {
             Player player = Minecraft.getInstance().player;
             holder.renderTweaks$setSortKey(frame, player == null ? 0.0 : entity.distanceToSqr(player));
