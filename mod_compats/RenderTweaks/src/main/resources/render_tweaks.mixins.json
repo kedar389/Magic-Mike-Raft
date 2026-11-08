@@ -18,6 +18,7 @@
     "bagus.BagusPoseResetMixin",
     "bagus.ModelPartListMixin",
     "chloride.ChlorideEntityLimitMixin",
+    "gtbc.GtbcEntityQueryMixin",
     "knightlib.BoneHitboxPickerMixin",
     "lionfish.AdvancedModelBoxMixin",
     "lionfish.ModelBoxMixin",

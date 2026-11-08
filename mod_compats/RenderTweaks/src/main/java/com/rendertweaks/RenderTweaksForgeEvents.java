@@ -1,5 +1,6 @@
 package com.rendertweaks;
 
+import com.rendertweaks.gtbc.TickEntityQueries;
 import com.rendertweaks.rain.RainTint;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.level.LevelEvent;
@@ -17,6 +18,7 @@ public final class RenderTweaksForgeEvents {
     public static void onLevelUnload(LevelEvent.Unload event) {
         if (event.getLevel().isClientSide()) {
             RainTint.clear();
+            TickEntityQueries.clear();
         }
     }
 }

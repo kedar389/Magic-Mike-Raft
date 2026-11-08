@@ -17,6 +17,7 @@ Each tweak is skipped by `RenderTweaksMixinPlugin` when its target mod is not in
 | Bagus Lib pose reset | Bagus Lib 5.6.1 `ClientEventHandler.animationEvent(BagusModelEvent.Init)` | ~1.2% in a village | For every supported mob model, every frame, it reset every part's pose through a Java stream over the whole part tree. Now the tree is flattened once per model and looped over. Models from Entity Model Features (Fresh Animations) keep Bagus Lib's own code, since EMF can change parts at runtime; caches reset on every resource reload |
 | Pehkui scale cache | Pehkui 3.8.2 `ScaleData.getScale(float)` | ~4.6% with 300 entities | On the client every scale lookup recomputed: base-scale lerp, then every modifier in a sorted set, each possibly looking up another scale. Pehkui caches only on the server. Mob rendering, entity-search bounding boxes and the shadow pass ask for the same values many times a frame. Now the last result per scale and delta is kept on the render thread and dropped wherever Pehkui drops its own cache (every tick, every update). A dependent scale (width on base) can trail one frame when only the base changes mid-tick, the same window Pehkui's server cache accepts |
 | Subtle Effects rain tint | Subtle Effects 1.15.1 `LevelRendererMixin.renderSnowAndRain` → `BiomeColors#getAverageWaterColor` | ~0.8% while raining | With `biomeColorRain` on, it averaged the biome water colour on every rain vertex: 4 per column, up to 441 columns, each through vanilla's locked tint cache. Now each column's colour is kept 20 frames in a 64 x 64 grid. Reached through MixinSquared |
+| GTBC effect-entity searches | GTBC Spell Lib 2.2.0 `ForgeClientEvents` (`onCameraSetup`, `processScreenFlashEffects`, `processPowerInversionEffects`) → `Level#getEntitiesOfClass` | ~1.1% | Searched all entities in a 100-block box around the player four times a frame for its screen-flash, power-inversion and screen-shake entities. These only change on game ticks, so each search now runs once per tick and is reused for that tick's frames. In this pack only Geomancy Plus uses the library, for screen shake |
 | KnightLib hitbox picker | KnightLib 2.0.5 `BoneHitboxPicker#pick` | ~2% with 460 entities loaded | Walked every entity in the level twice a frame. Now gets only entities near the look ray from the level's spatial index. Its own filters still run, so the picked target is the same |
 
 Costs are from profiles `JXp9IJFor9` (Create village, 8 Cataclysm mobs) and `zEL7XkVDgF` (village with 459 entities, 165 item frames).
@@ -28,10 +29,10 @@ Every fix starts on and can be switched live, for A/B testing in one spot withou
 | Command | Effect |
 |---|---|
 | `/rendertweaks` | Lists each fix and whether it is on |
-| `/rendertweaks <bounds|light|entitylight|cataclysm|chloride|knightlib|apoli|bagus|pehkui|rain> <true|false>` | Switches one fix |
+| `/rendertweaks <bounds|light|entitylight|cataclysm|chloride|knightlib|apoli|bagus|pehkui|rain|gtbc> <true|false>` | Switches one fix |
 | `/rendertweaks all <true|false>` | Switches all |
 
-Off runs the original code path: Forge's uncached default, a light read every frame (block entities and entities), Lionfish's own vertex loop, Chloride's original sort, KnightLib's full entity walk, Apoli's per-layer check, Bagus Lib's stream over all parts, Pehkui recomputing every scale, Subtle Effects averaging rain tint per vertex.
+Off runs the original code path: Forge's uncached default, a light read every frame (block entities and entities), Lionfish's own vertex loop, Chloride's original sort, KnightLib's full entity walk, Apoli's per-layer check, Bagus Lib's stream over all parts, Pehkui recomputing every scale, Subtle Effects averaging rain tint per vertex, GTBC searching every frame.
 
 ## Files
 
@@ -43,7 +44,8 @@ Off runs the original code path: Forge's uncached default, a light read every fr
 | `bagus/PoseReset` + `mixin/bagus/*`, `RenderTweaksClientEvents` | Flat part array on `ModelPart`, invalidated by a client reload listener |
 | `mixin/pehkui/ScaleDataCacheMixin` | Last scale per `ScaleData`, render thread and client-side entities only, cleared in `invalidateCachedScales` |
 | `rain/RainTint` + `mixin/subtle/*`, `RenderTweaksForgeEvents` | Per-column tint grid, cleared on client level unload |
-| `RenderTweaksMixinPlugin` | Applies `mixin/apoli/*` (needs `apoli` + `mixinsquared`), `mixin/bagus/*` (needs `bagus_lib`), `mixin/pehkui/*` (needs `pehkui`), `mixin/subtle/*` (needs `subtle_effects` + `mixinsquared`), `mixin/chloride/*` (needs `chloride` + `mixinsquared`), `mixin/knightlib/*`, `mixin/lionfish/*` only when their mods are present. Lionfish also needs Embeddium |
+| `gtbc/TickEntityQueries` + `mixin/gtbc/*` | Last search per entity class, reused while the level's game time is unchanged, cleared on client level unload |
+| `RenderTweaksMixinPlugin` | Applies `mixin/apoli/*` (needs `apoli` + `mixinsquared`), `mixin/bagus/*` (needs `bagus_lib`), `mixin/pehkui/*` (needs `pehkui`), `mixin/subtle/*` (needs `subtle_effects` + `mixinsquared`), `mixin/chloride/*` (needs `chloride` + `mixinsquared`), `mixin/gtbc/*` (needs `gtbcs_spell_lib`), `mixin/knightlib/*`, `mixin/lionfish/*` only when their mods are present. Lionfish also needs Embeddium |
 | `light/BlockEntityLight` + `mixin/BlockEntityRenderLightMixin`, `mixin/BlockEntityLightCacheMixin` | `@Redirect` of the `getLightColor` call in `setupAndRender` only, so mods patching inside `getLightColor` still apply on refresh |
 | `light/EntityLight` + `mixin/EntityRendererLightMixin`, `mixin/EntityLightCacheMixin` | `@Redirect` of the two `getBrightness` calls inside `EntityRenderer`, keyed by block position per entity |
 | `RenderBounds` + `mixin/BlockEntityRenderBoundsMixin` | Forge's default render box, copied as-is, plus the cache |
@@ -56,7 +58,7 @@ Off runs the original code path: Forge's uncached default, a light read every fr
 
 Copy `embeddium-0.3.31+mc1.20.1.jar` from the client instance's `mods/` into `libs/`, `bagus_lib-1.20.1-5.6.1.jar` from the same folder, and `MixinSquared-0.3.7-beta.3.jar` (nested at `META-INF/jarjar/mixinsquared-forge-0.3.7-beta.3.jar` → `META-INF/jars/` inside the Medieval Origins jar), then `./gradlew build`. Output: `build/libs/render_tweaks-0.1.0.jar`, client `mods/` only.
 
-The Chloride, KnightLib, Lionfish, Apoli, Bagus Lib, Pehkui and Subtle Effects targets are pinned to the versions above by method name. After updating one of those mods, check the log for a mixin apply error.
+The Chloride, KnightLib, Lionfish, Apoli, Bagus Lib, Pehkui, Subtle Effects and GTBC Spell Lib targets are pinned to the versions above by method name. After updating one of those mods, check the log for a mixin apply error.
 
 ## Related, not fixed here
 

@@ -19,6 +19,7 @@ public final class RenderTweaksMixinPlugin implements IMixinConfigPlugin {
             "apoli.", List.of("apoli", "mixinsquared"),
             "bagus.", List.of("bagus_lib"),
             "chloride.", List.of("chloride", "mixinsquared"),
+            "gtbc.", List.of("gtbcs_spell_lib"),
             "knightlib.", List.of("knightlib"),
             "lionfish.", List.of("lionfishapi", "embeddium"),
             "pehkui.", List.of("pehkui"),
