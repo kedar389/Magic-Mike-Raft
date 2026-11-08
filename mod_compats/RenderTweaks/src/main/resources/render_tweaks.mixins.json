@@ -9,8 +9,7 @@
     "LevelRendererFrameMixin",
     "apoli.ApoliFeatureRenderMixin",
     "apoli.EntityApoliCacheMixin",
-    "chloride.EntitySortKeyMixin",
-    "chloride.EntityCullingMixin",
+    "chloride.ChlorideEntityLimitMixin",
     "knightlib.BoneHitboxPickerMixin",
     "lionfish.AdvancedModelBoxMixin",
     "lionfish.ModelBoxMixin"
