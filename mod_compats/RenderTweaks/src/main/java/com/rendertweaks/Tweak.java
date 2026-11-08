@@ -10,7 +10,8 @@ public enum Tweak {
     CATACLYSM("cataclysm", "Batched Lionfish (Cataclysm) models"),
     CHLORIDE("chloride", "Chloride entity limit: nearest pick on a flat array"),
     KNIGHTLIB("knightlib", "KnightLib hitbox picker spatial query"),
-    APOLI("apoli", "Apoli layer check once per mob per frame");
+    APOLI("apoli", "Apoli layer check once per mob per frame"),
+    BAGUS("bagus", "Bagus Lib pose reset from a cached part list");
 
     private final String id;
     private final String description;

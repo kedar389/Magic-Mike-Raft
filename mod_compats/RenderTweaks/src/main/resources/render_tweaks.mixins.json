@@ -11,6 +11,8 @@
     "LevelRendererFrameMixin",
     "apoli.ApoliFeatureRenderMixin",
     "apoli.EntityApoliCacheMixin",
+    "bagus.BagusPoseResetMixin",
+    "bagus.ModelPartListMixin",
     "chloride.ChlorideEntityLimitMixin",
     "knightlib.BoneHitboxPickerMixin",
     "lionfish.AdvancedModelBoxMixin",

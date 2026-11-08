@@ -17,6 +17,7 @@ public final class RenderTweaksMixinPlugin implements IMixinConfigPlugin {
     /** Mixin sub-package to the mod ids it needs. */
     private static final Map<String, List<String>> REQUIRED_MODS = Map.of(
             "apoli.", List.of("apoli", "mixinsquared"),
+            "bagus.", List.of("bagus_lib"),
             "chloride.", List.of("chloride", "mixinsquared"),
             "knightlib.", List.of("knightlib"),
             "lionfish.", List.of("lionfishapi", "embeddium"));
