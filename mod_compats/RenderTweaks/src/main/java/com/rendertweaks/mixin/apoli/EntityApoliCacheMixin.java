@@ -14,6 +14,28 @@ public abstract class EntityApoliCacheMixin implements ApoliCacheHolder {
     @Unique
     private boolean renderTweaks$apoliPlain;
 
+    @Unique
+    private int renderTweaks$glowFrame;
+
+    @Unique
+    private boolean renderTweaks$selfGlow;
+
+    @Override
+    public int renderTweaks$glowFrame() {
+        return renderTweaks$glowFrame;
+    }
+
+    @Override
+    public boolean renderTweaks$selfGlow() {
+        return renderTweaks$selfGlow;
+    }
+
+    @Override
+    public void renderTweaks$setGlow(int frame, boolean selfGlow) {
+        renderTweaks$glowFrame = frame;
+        renderTweaks$selfGlow = selfGlow;
+    }
+
     @Override
     public int renderTweaks$apoliFrame() {
         return renderTweaks$apoliFrame;

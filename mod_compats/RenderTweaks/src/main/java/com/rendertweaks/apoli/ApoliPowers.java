@@ -23,7 +23,9 @@ import org.slf4j.Logger;
  *
  * <p>Apoli also checks, for every entity about to render, whether the local player has a
  * {@code PreventEntityRenderPower} (same stream pattern). That answer is per player, so it is
- * looked up once per frame.
+ * looked up once per frame. The glow check ({@code Minecraft.shouldEntityAppearGlowing}) asks,
+ * per entity, whether the player has an {@code EntityGlowPower} and whether the entity has a
+ * {@code SelfGlowPower}: the first once per frame, the second once per entity per frame.
  *
  * <p>Apoli is called by reflection, once per entity per frame, so there is no compile dependency on
  * its Fabric-named jar.
@@ -38,9 +40,12 @@ public final class ApoliPowers {
     private static Class<?> invisibilityPower;
     private static Class<?> preventFeatureRenderPower;
     private static Class<?> preventEntityRenderPower;
+    private static Class<?> entityGlowPower;
+    private static Class<?> selfGlowPower;
 
     private static int playerFrame;
     private static boolean playerMayHide;
+    private static boolean playerMayGlow;
 
     private ApoliPowers() {}
 
@@ -75,9 +80,33 @@ public final class ApoliPowers {
         if (playerFrame != frame) {
             Player player = Minecraft.getInstance().player;
             playerMayHide = player == null || hasAny(player, preventEntityRenderPower);
+            playerMayGlow = player == null || hasAny(player, entityGlowPower);
             playerFrame = frame;
         }
         return playerMayHide;
+    }
+
+    /** True unless the local player is known to have no Entity Glow power this frame. */
+    public static boolean playerMayMakeEntitiesGlow() {
+        // Shares the per-frame player lookup above.
+        playerMayHideEntities();
+        return !available || playerMayGlow;
+    }
+
+    /** True unless the entity is known to have no Self Glow power this frame. */
+    public static boolean mayGlowItself(Entity entity) {
+        if (!resolved) {
+            resolve();
+        }
+        if (!available) {
+            return true;
+        }
+        ApoliCacheHolder holder = (ApoliCacheHolder) entity;
+        int frame = FrameCounter.current();
+        if (holder.renderTweaks$glowFrame() != frame) {
+            holder.renderTweaks$setGlow(frame, hasAny(entity, selfGlowPower));
+        }
+        return holder.renderTweaks$selfGlow();
     }
 
     private static boolean hasAny(Entity entity, Class<?> power) {
@@ -110,6 +139,8 @@ public final class ApoliPowers {
             invisibilityPower = Class.forName("io.github.apace100.apoli.power.InvisibilityPower");
             preventFeatureRenderPower = Class.forName("io.github.apace100.apoli.power.PreventFeatureRenderPower");
             preventEntityRenderPower = Class.forName("io.github.apace100.apoli.power.PreventEntityRenderPower");
+            entityGlowPower = Class.forName("io.github.apace100.apoli.power.EntityGlowPower");
+            selfGlowPower = Class.forName("io.github.apace100.apoli.power.SelfGlowPower");
             getPowers = MethodHandles.publicLookup()
                     .findStatic(component, "getPowers", MethodType.methodType(List.class, Entity.class, Class.class));
             available = true;
