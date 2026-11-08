@@ -184,6 +184,7 @@ Measured with `/sparkc profiler start --timeout 60`. Share of render-thread time
 | Wither Reincarnated fire glows after a Wither fight (`ParticleSpawnersEvent.renderGlows`) | 70% | Max Distant Fire `0`, Max Smoke Columns `0`, falling ash off, music `0` | [`witherreincarnated/client.toml`](../configuration_client/mod_configs_client/witherreincarnated/client.toml) |
 | Subtle Effects waterfalls, force-spawned at any distance | 21% | force-spawn off, `waterfallUpdateFrequency` `20`, density `0.5` | [`subtle_effects/environment.toml`](../configuration_client/mod_configs_client/subtle_effects/environment.toml) |
 | Chloride FPS overlay, `ADVANCED` | 2-3% | `OFF` | [`chloride-client.toml`](../configuration_client/mod_configs_client/chloride-client.toml) |
+| Gnetum HUD, 3 passes at up to 45 FPS | 3.4% | `maxFps` `30`. HUD elements redraw at 30 FPS, the world is unaffected | [`gnetum.json`](../configuration_client/mod_configs_client/gnetum.json) |
 
 Open, no config option:
 
