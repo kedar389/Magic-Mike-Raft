@@ -6,7 +6,9 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 import java.util.List;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import org.slf4j.Logger;
 
 /**
@@ -18,6 +20,10 @@ import org.slf4j.Logger;
  * <p>This answers "does this entity have either power?" once per entity per frame. When it has
  * neither, the layer is rendered directly, which is what Apoli would do. When it has one, Apoli's
  * own check runs unchanged.
+ *
+ * <p>Apoli also checks, for every entity about to render, whether the local player has a
+ * {@code PreventEntityRenderPower} (same stream pattern). That answer is per player, so it is
+ * looked up once per frame.
  *
  * <p>Apoli is called by reflection, once per entity per frame, so there is no compile dependency on
  * its Fabric-named jar.
@@ -31,6 +37,10 @@ public final class ApoliPowers {
     private static MethodHandle getPowers;
     private static Class<?> invisibilityPower;
     private static Class<?> preventFeatureRenderPower;
+    private static Class<?> preventEntityRenderPower;
+
+    private static int playerFrame;
+    private static boolean playerMayHide;
 
     private ApoliPowers() {}
 
@@ -48,6 +58,35 @@ public final class ApoliPowers {
             holder.renderTweaks$setApoli(frame, lookup(entity));
         }
         return holder.renderTweaks$apoliPlain();
+    }
+
+    /**
+     * True unless the local player is known to have no Prevent Entity Render power this frame. True
+     * also when it cannot be told, so Apoli's own check runs.
+     */
+    public static boolean playerMayHideEntities() {
+        if (!resolved) {
+            resolve();
+        }
+        if (!available) {
+            return true;
+        }
+        int frame = FrameCounter.current();
+        if (playerFrame != frame) {
+            Player player = Minecraft.getInstance().player;
+            playerMayHide = player == null || hasAny(player, preventEntityRenderPower);
+            playerFrame = frame;
+        }
+        return playerMayHide;
+    }
+
+    private static boolean hasAny(Entity entity, Class<?> power) {
+        try {
+            return !((List<?>) getPowers.invokeExact(entity, power)).isEmpty();
+        } catch (Throwable t) {
+            disable(t);
+            return true;
+        }
     }
 
     private static boolean lookup(Entity entity) {
@@ -70,6 +109,7 @@ public final class ApoliPowers {
             Class<?> component = Class.forName("io.github.apace100.apoli.component.PowerHolderComponent");
             invisibilityPower = Class.forName("io.github.apace100.apoli.power.InvisibilityPower");
             preventFeatureRenderPower = Class.forName("io.github.apace100.apoli.power.PreventFeatureRenderPower");
+            preventEntityRenderPower = Class.forName("io.github.apace100.apoli.power.PreventEntityRenderPower");
             getPowers = MethodHandles.publicLookup()
                     .findStatic(component, "getPowers", MethodType.methodType(List.class, Entity.class, Class.class));
             available = true;

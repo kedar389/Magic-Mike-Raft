@@ -10,6 +10,7 @@
     "BlockEntityRenderLightMixin",
     "LevelRendererFrameMixin",
     "apoli.ApoliFeatureRenderMixin",
+    "apoli.ApoliEntityRenderCheckMixin",
     "apoli.EntityApoliCacheMixin",
     "bagus.BagusPoseResetMixin",
     "bagus.ModelPartListMixin",
