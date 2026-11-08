@@ -5,7 +5,9 @@
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8.5",
   "client": [
+    "BlockEntityLightCacheMixin",
     "BlockEntityRenderBoundsMixin",
+    "BlockEntityRenderLightMixin",
     "LevelRendererFrameMixin",
     "apoli.ApoliFeatureRenderMixin",
     "apoli.EntityApoliCacheMixin",

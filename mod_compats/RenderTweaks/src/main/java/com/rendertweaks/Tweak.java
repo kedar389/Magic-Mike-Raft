@@ -6,6 +6,7 @@ package com.rendertweaks;
  */
 public enum Tweak {
     BOUNDS("bounds", "Block-entity render bounds cache"),
+    LIGHT("light", "Block-entity light, re-read every 8 frames"),
     CATACLYSM("cataclysm", "Batched Lionfish (Cataclysm) models"),
     CHLORIDE("chloride", "Chloride entity limit: nearest pick on a flat array"),
     KNIGHTLIB("knightlib", "KnightLib hitbox picker spatial query"),

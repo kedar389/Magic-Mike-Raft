@@ -9,6 +9,7 @@ Each tweak is skipped by `RenderTweaksMixinPlugin` when its target mod is not in
 | Tweak | Target | Cost before | What changes |
 |---|---|---|---|
 | Block-entity render bounds cache | `BlockEntity` (Forge `IForgeBlockEntity#getRenderBoundingBox` default) | ~2.5% of frame in a village | Embeddium asks every visible block entity for its render box every frame, and Forge's default recomputes the collision shape bounds each time. The box is now cached per block entity until its block state or level changes. Blocks with dynamic shapes (shulker boxes, moving pistons) are never cached. Block entities that override the method are unaffected |
+| Block-entity light cache | `BlockEntityRenderDispatcher#setupAndRender` → `LevelRenderer#getLightColor` | ~4.2% in a busy base | Every block entity drawn re-read its block, block light and sky light from chunk storage every frame. Now each block entity keeps its packed light and re-reads it every 8 frames, staggered by position so refreshes never pile into one frame. A light change reaches it within 8 frames (~40 ms at 200 FPS). Time of day is unaffected: that brightness comes from the lightmap, not this value |
 | Batched Lionfish models | Lionfish API 3.0 `AdvancedModelBox#doRender` (Cataclysm mobs) | ~6.5% with 8 Cataclysm mobs in view | Every vertex went through `VertexConsumer.vertex`, one call at a time through Oculus' extended format. Each box is now written in one batch through Embeddium's `VertexBufferWriter`, the path Embeddium already uses for vanilla models. Falls back to Lionfish's own code when the buffer is not one Embeddium can write to |
 | Chloride entity limit | Chloride 1.8.1 `EntityDistanceCullingMixin$LevelRendererEntityMixin.redirect$entitiesForRendering` | ~2.2% with 160 entities loaded | `entityLimit` copies every loaded entity into a list and sorts it with a comparator that reads both entities' positions per comparison, which jumps around memory. Now each squared distance is read once into a primitive array and that array is sorted. Same entities, nearest first. Reached through MixinSquared. (The first version only cached the distance per entity; the profile showed the sort itself was the cost, so it was replaced.) |
 | Apoli layer check | Apoli 2.9.2 (Fabric, via Connector) `LivingEntityRendererMixin.preventFeatureRendering` | ~2% in a village | Apoli wraps every render layer of every mob and, per layer, fetches two power lists into fresh `LinkedList`s and streams over them, almost always empty. Now looked up once per mob per frame. A mob with no Invisibility or Prevent Feature Render power gets its layer drawn directly; one with either goes through Apoli unchanged. Needs MixinSquared (shipped inside Medieval Origins, AsyncParticles and others) to reach Apoli's handler |
@@ -23,10 +24,10 @@ Every fix starts on and can be switched live, for A/B testing in one spot withou
 | Command | Effect |
 |---|---|
 | `/rendertweaks` | Lists each fix and whether it is on |
-| `/rendertweaks <bounds|cataclysm|chloride|knightlib|apoli> <true|false>` | Switches one fix |
+| `/rendertweaks <bounds|light|cataclysm|chloride|knightlib|apoli> <true|false>` | Switches one fix |
 | `/rendertweaks all <true|false>` | Switches all |
 
-Off runs the original code path: Forge's uncached default, Lionfish's own vertex loop, Chloride's original sort, KnightLib's full entity walk, Apoli's per-layer check.
+Off runs the original code path: Forge's uncached default, a light read every frame, Lionfish's own vertex loop, Chloride's original sort, KnightLib's full entity walk, Apoli's per-layer check.
 
 ## Files
 
@@ -36,6 +37,7 @@ Off runs the original code path: Forge's uncached default, Lionfish's own vertex
 | `FrameCounter` + `mixin/LevelRendererFrameMixin` | Frame number, bumped at the start of each world render, for once-per-frame caches |
 | `apoli/ApoliPowers` + `mixin/apoli/*` | MixinSquared `@TargetHandler` in front of Apoli's handler, per-frame power check on `Entity`, Apoli called by reflection (its jar is Fabric-named). `require = 0`, so an Apoli rename skips the tweak instead of failing startup |
 | `RenderTweaksMixinPlugin` | Applies `mixin/apoli/*` (needs `apoli` + `mixinsquared`), `mixin/chloride/*` (needs `chloride` + `mixinsquared`), `mixin/knightlib/*`, `mixin/lionfish/*` only when their mods are present. Lionfish also needs Embeddium |
+| `light/BlockEntityLight` + `mixin/BlockEntityRenderLightMixin`, `mixin/BlockEntityLightCacheMixin` | `@Redirect` of the `getLightColor` call in `setupAndRender` only, so mods patching inside `getLightColor` still apply on refresh |
 | `RenderBounds` + `mixin/BlockEntityRenderBoundsMixin` | Forge's default render box, copied as-is, plus the cache |
 | `lionfish/LionfishBoxData` | Flattens a Lionfish `ModelBox` into a float array once per box. Its quad and vertex classes are package-private, so they are read by reflection, once |
 | `lionfish/LionfishFastRender` + `mixin/lionfish/*` | The batched writer. If reflection fails it logs one warning and turns itself off for the session |
