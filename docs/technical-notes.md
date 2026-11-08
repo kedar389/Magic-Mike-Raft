@@ -185,6 +185,7 @@ Measured with `/sparkc profiler start --timeout 60`. Share of render-thread time
 | Subtle Effects waterfalls, force-spawned at any distance | 21% | force-spawn off, `waterfallUpdateFrequency` `20`, density `0.5` | [`subtle_effects/environment.toml`](../configuration_client/mod_configs_client/subtle_effects/environment.toml) |
 | Chloride FPS overlay, `ADVANCED` | 2-3% | `OFF` | [`chloride-client.toml`](../configuration_client/mod_configs_client/chloride-client.toml) |
 | Gnetum HUD, 3 passes at up to 45 FPS | 3.4% | `maxFps` `30`. HUD elements redraw at 30 FPS, the world is unaffected | [`gnetum.json`](../configuration_client/mod_configs_client/gnetum.json) |
+| Sign text laid out and drawn every frame (`SignRenderer`) | ~0.75% of 1.4% for signs | ImmediatelyFast `experimental_sign_text_buffering` `true`: text drawn once and reused. Marked experimental by ImmediatelyFast; turn off if sign text renders wrong | [`immediatelyfast.json`](../configuration_client/mod_configs_client/immediatelyfast.json) |
 
 Open, no config option:
 
