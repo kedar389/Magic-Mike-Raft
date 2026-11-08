@@ -25,11 +25,14 @@ public abstract class BoneHitboxPickerMixin {
     private static final double REACH = 6.0;
 
     /**
-     * pick keeps an entity only if its box grown by 4 touches the ray. The extra 12 covers entities
-     * wider than the 2-block slack the section lookup allows, such as large bosses.
+     * pick keeps an entity only if its box grown by 4 touches the ray, so its box overlaps the ray
+     * box grown by 4. The level finds entities by the section their position is in, with 2 blocks
+     * of slack, so the extra 4 here covers entities up to 12 blocks wide. Every entity in the query
+     * box has its bounding box checked (and scaled by Pehkui), so a wider box is not free: at 16 it
+     * reached a whole animal farm and cost as much as the full walk it replaced.
      */
     @Unique
-    private static final double MARGIN = 4.0 + 12.0;
+    private static final double MARGIN = 4.0 + 4.0;
 
     /** {@code m_104735_} is {@code ClientLevel#entitiesForRendering}. */
     @Redirect(
