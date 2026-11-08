@@ -26,7 +26,13 @@ dependencies {
     // instance's mods/ into ./libs/ before building (libs/*.jar is gitignored).
     // Not deobfuscated: only the vertex API is used, which names no Minecraft members.
     compileOnly files('libs/embeddium-0.3.31+mc1.20.1.jar')
-    // Lionfish API, Chloride and KnightLib are not compile deps: their classes are targeted by name
+
+    // MixinSquared's @TargetHandler, for patching Apoli's own render mixin. Not bundled: several mods
+    // in the pack already ship it (Medieval Origins, AsyncParticles). Copy
+    // META-INF/jars/MixinSquared-0.3.7-beta.3.jar out of the jar-in-jar
+    // META-INF/jarjar/mixinsquared-forge-0.3.7-beta.3.jar inside medievalorigins into ./libs/.
+    compileOnly files('libs/MixinSquared-0.3.7-beta.3.jar')
+    // Lionfish API, Chloride, KnightLib and Apoli are not compile deps: their classes are targeted by name
     // and Lionfish's package-private model data is read by reflection.
 }
 

@@ -10,6 +10,7 @@ license="MIT"
     displayTest="IGNORE_ALL_VERSION"
     description='''
 Client-side render-thread fixes found by spark profiling: cached block-entity render bounds,
+per-frame Apoli layer checks,
 batched Lionfish API (Cataclysm) model vertices, cheaper Chloride entity-limit sorting,
 and a spatial query for KnightLib's bone hitbox picker.
 '''

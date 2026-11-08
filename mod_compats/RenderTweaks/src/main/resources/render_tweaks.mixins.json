@@ -7,6 +7,8 @@
   "client": [
     "BlockEntityRenderBoundsMixin",
     "LevelRendererFrameMixin",
+    "apoli.ApoliFeatureRenderMixin",
+    "apoli.EntityApoliCacheMixin",
     "chloride.EntitySortKeyMixin",
     "chloride.EntityCullingMixin",
     "knightlib.BoneHitboxPickerMixin",

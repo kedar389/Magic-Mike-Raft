@@ -8,7 +8,8 @@ public enum Tweak {
     BOUNDS("bounds", "Block-entity render bounds cache"),
     CATACLYSM("cataclysm", "Batched Lionfish (Cataclysm) models"),
     CHLORIDE("chloride", "Chloride entity-limit sort keys"),
-    KNIGHTLIB("knightlib", "KnightLib hitbox picker spatial query");
+    KNIGHTLIB("knightlib", "KnightLib hitbox picker spatial query"),
+    APOLI("apoli", "Apoli layer check once per mob per frame");
 
     private final String id;
     private final String description;
