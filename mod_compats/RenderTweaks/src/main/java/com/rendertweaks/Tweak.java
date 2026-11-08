@@ -11,7 +11,8 @@ public enum Tweak {
     CHLORIDE("chloride", "Chloride entity limit: nearest pick on a flat array"),
     KNIGHTLIB("knightlib", "KnightLib hitbox picker spatial query"),
     APOLI("apoli", "Apoli layer and render checks once per frame"),
-    BAGUS("bagus", "Bagus Lib pose reset from a cached part list");
+    BAGUS("bagus", "Bagus Lib pose reset from a cached part list"),
+    PEHKUI("pehkui", "Pehkui scales cached per frame on the client");
 
     private final String id;
     private final String description;

@@ -18,7 +18,8 @@
     "chloride.ChlorideEntityLimitMixin",
     "knightlib.BoneHitboxPickerMixin",
     "lionfish.AdvancedModelBoxMixin",
-    "lionfish.ModelBoxMixin"
+    "lionfish.ModelBoxMixin",
+    "pehkui.ScaleDataCacheMixin"
   ],
   "injectors": {
     "defaultRequire": 1

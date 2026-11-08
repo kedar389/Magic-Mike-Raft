@@ -20,7 +20,8 @@ public final class RenderTweaksMixinPlugin implements IMixinConfigPlugin {
             "bagus.", List.of("bagus_lib"),
             "chloride.", List.of("chloride", "mixinsquared"),
             "knightlib.", List.of("knightlib"),
-            "lionfish.", List.of("lionfishapi", "embeddium"));
+            "lionfish.", List.of("lionfishapi", "embeddium"),
+            "pehkui.", List.of("pehkui"));
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
