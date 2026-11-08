@@ -191,10 +191,10 @@ Open, no config option:
 
 | Cost | Share |
 |---|---|
-| Chloride entity sort (`redirect$entitiesForRendering`), runs with its culling off | 3% |
+| Chloride entity sort (`redirect$entitiesForRendering`), runs with its culling off | 3%, replaced by a flat-array pick in [RenderTweaks](../mod_compats/RenderTweaks/README.md) |
 | Particle Effects debug pass (`DebugParticleInfoRenderer.renderAll`, `markDebugData`, `swapParticle`) | 2-9%, scales with particle count |
 | Rain: Subtle Effects biome tint 3.2%, `wrapGetBiome`/`beforeGetBiome` mixin from a mod not yet identified 4.6% | 8% while raining |
-| KnightLib `BoneHitboxPicker.pick`, Create `BigOutlines.pick`, run every frame | ~2% |
+| Create `BigOutlines.pick`, runs every frame | 0.8%. KnightLib `BoneHitboxPicker.pick` (was ~1%) is fixed in [RenderTweaks](../mod_compats/RenderTweaks/README.md) |
 
 ---
 
