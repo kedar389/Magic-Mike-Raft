@@ -19,6 +19,10 @@ import org.slf4j.Logger;
  *
  * <p>This reads each entity's squared distance to the player once into a primitive array and sorts
  * that array instead. Same entities, same nearest-first order, as Chloride returns.
+ *
+ * <p>When no more entities are loaded than the limit, nothing would be dropped, so the level's own
+ * list is returned without measuring or sorting. The only difference to Chloride is then the order,
+ * which nothing downstream depends on: Oculus batches entities by render type anyway.
  */
 public final class NearestEntities {
 
@@ -40,14 +44,24 @@ public final class NearestEntities {
      * The entities Chloride would render, or null to let Chloride's own code answer: no limit,
      * a zero limit, no player yet, or its config could not be read.
      */
-    public static List<Entity> select(ClientLevel level) {
+    public static Iterable<Entity> select(ClientLevel level) {
         int limit = limit();
         Player player = Minecraft.getInstance().player;
         if (limit <= 0 || limit >= NO_LIMIT || player == null) {
             return null;
         }
+        Iterable<Entity> all = level.entitiesForRendering();
+        int loaded = 0;
+        for (Entity ignored : all) {
+            if (++loaded > limit) {
+                break;
+            }
+        }
+        if (loaded <= limit) {
+            return all;
+        }
         int count = 0;
-        for (Entity entity : level.entitiesForRendering()) {
+        for (Entity entity : all) {
             if (count == entities.length) {
                 entities = java.util.Arrays.copyOf(entities, count * 2);
                 keys = java.util.Arrays.copyOf(keys, count * 2);

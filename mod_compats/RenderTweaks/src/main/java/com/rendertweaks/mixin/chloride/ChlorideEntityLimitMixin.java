@@ -3,7 +3,6 @@ package com.rendertweaks.mixin.chloride;
 import com.bawnorton.mixinsquared.TargetHandler;
 import com.rendertweaks.Tweak;
 import com.rendertweaks.chloride.NearestEntities;
-import java.util.List;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.world.entity.Entity;
@@ -29,7 +28,7 @@ public abstract class ChlorideEntityLimitMixin {
         if (!Tweak.CHLORIDE.isEnabled()) {
             return;
         }
-        List<Entity> nearest = NearestEntities.select(level);
+        Iterable<Entity> nearest = NearestEntities.select(level);
         if (nearest != null) {
             cir.setReturnValue(nearest);
         }
