@@ -8,6 +8,8 @@
     "BlockEntityLightCacheMixin",
     "BlockEntityRenderBoundsMixin",
     "BlockEntityRenderLightMixin",
+    "EntityLightCacheMixin",
+    "EntityRendererLightMixin",
     "LevelRendererFrameMixin",
     "apoli.ApoliFeatureRenderMixin",
     "apoli.ApoliGlowCheckMixin",
