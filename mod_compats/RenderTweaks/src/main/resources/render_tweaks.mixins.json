@@ -24,6 +24,7 @@
     "lionfish.ModelBoxMixin",
     "oculus.CachedUniformVersionMixin",
     "oculus.CustomUniformsPushMixin",
+    "oculus.RenderOrderReuseMixin",
     "pehkui.EntityPehkuiStateMixin",
     "pehkui.ScaleDataInvalidateMixin",
     "pehkui.ScaleUtilsShortcutMixin",

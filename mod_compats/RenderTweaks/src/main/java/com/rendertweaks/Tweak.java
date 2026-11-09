@@ -17,6 +17,7 @@ public enum Tweak {
     PEHKUI("pehkui", "Pehkui: entities with default scales skip scale computation and ticking"),
     RAIN("rain", "Subtle Effects rain tint per column, kept 20 frames"),
     UNIFORMS("uniforms", "Oculus custom uniforms uploaded once per change per program"),
+    ORDER("order", "Oculus translucent draw order reused when the frame's calls repeat"),
     GTBC("gtbc", "GTBC Spell Lib effect-entity searches once per tick");
 
     private final String id;
