@@ -23,6 +23,7 @@ public final class RenderTweaksMixinPlugin implements IMixinConfigPlugin {
             "gtbc.", List.of("gtbcs_spell_lib"),
             "knightlib.", List.of("knightlib"),
             "lionfish.", List.of("lionfishapi", "embeddium"),
+            "pehkui.", List.of("pehkui"),
             "subtle.", List.of("subtle_effects", "mixinsquared"));
 
     @Override

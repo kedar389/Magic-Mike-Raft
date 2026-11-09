@@ -22,6 +22,9 @@
     "knightlib.BoneHitboxPickerMixin",
     "lionfish.AdvancedModelBoxMixin",
     "lionfish.ModelBoxMixin",
+    "pehkui.EntityPehkuiStateMixin",
+    "pehkui.ScaleDataInvalidateMixin",
+    "pehkui.ScaleUtilsShortcutMixin",
     "subtle.SubtleRainTintMixin"
   ],
   "injectors": {
