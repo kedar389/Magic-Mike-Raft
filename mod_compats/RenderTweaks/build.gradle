@@ -40,6 +40,10 @@ dependencies {
     // Pehkui's API types, for the default-scale shortcut. Copy Pehkui-3.8.2+1.20.1-forge.jar from the
     // client instance's mods/ into ./libs/. Only Pehkui's own method names are called.
     compileOnly files('libs/Pehkui-3.8.2+1.20.1-forge.jar')
+
+    // Oculus's uniform classes, for the custom-uniform upload fix. Copy oculus-mc1.20.1-1.8.0.jar from
+    // the client instance's mods/ into ./libs/. Only Oculus's own classes and methods are used.
+    compileOnly files('libs/oculus-mc1.20.1-1.8.0.jar')
     // Lionfish API, Chloride, KnightLib and Apoli are not compile deps: their classes are targeted by name
     // and Lionfish's package-private model data is read by reflection.
 }

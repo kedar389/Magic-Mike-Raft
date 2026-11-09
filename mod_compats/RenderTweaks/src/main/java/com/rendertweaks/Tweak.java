@@ -16,6 +16,7 @@ public enum Tweak {
     BAGUS("bagus", "Bagus Lib pose reset from a cached part list"),
     PEHKUI("pehkui", "Pehkui: entities with default scales skip scale computation"),
     RAIN("rain", "Subtle Effects rain tint per column, kept 20 frames"),
+    UNIFORMS("uniforms", "Oculus custom uniforms uploaded once per change per program"),
     GTBC("gtbc", "GTBC Spell Lib effect-entity searches once per tick");
 
     private final String id;

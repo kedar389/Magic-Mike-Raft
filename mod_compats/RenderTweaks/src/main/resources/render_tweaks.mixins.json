@@ -22,6 +22,8 @@
     "knightlib.BoneHitboxPickerMixin",
     "lionfish.AdvancedModelBoxMixin",
     "lionfish.ModelBoxMixin",
+    "oculus.CachedUniformVersionMixin",
+    "oculus.CustomUniformsPushMixin",
     "pehkui.EntityPehkuiStateMixin",
     "pehkui.ScaleDataInvalidateMixin",
     "pehkui.ScaleUtilsShortcutMixin",
