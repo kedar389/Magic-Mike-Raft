@@ -47,7 +47,7 @@ public final class IndexedPowers {
             return null;
         }
         try {
-            Object component = (Object) componentOf.invokeExact((Object) entity);
+            Object component = component(entity);
             if (!(component instanceof PowerTypeIndexHolder holder)) {
                 return null;
             }
@@ -72,7 +72,7 @@ public final class IndexedPowers {
             return null;
         }
         try {
-            Object component = (Object) componentOf.invokeExact((Object) entity);
+            Object component = component(entity);
             return component instanceof PowerTypeIndexHolder holder ? holder : null;
         } catch (Throwable t) {
             disable(t);
@@ -107,6 +107,19 @@ public final class IndexedPowers {
             disable(t);
             return null;
         }
+    }
+
+    /** The entity's power holder, looked up once per entity and kept on it. */
+    private static Object component(Entity entity) throws Throwable {
+        if (entity instanceof PowerHolderCache cache) {
+            Object holder = cache.renderTweaks$powerHolder();
+            if (holder == null) {
+                holder = (Object) componentOf.invokeExact((Object) entity);
+                cache.renderTweaks$setPowerHolder(holder);
+            }
+            return holder;
+        }
+        return (Object) componentOf.invokeExact((Object) entity);
     }
 
     private static boolean resolve() {
