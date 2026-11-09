@@ -27,8 +27,11 @@ import org.slf4j.Logger;
  * per entity, whether the player has an {@code EntityGlowPower} and whether the entity has a
  * {@code SelfGlowPower}: the first once per frame, the second once per entity per frame.
  *
- * <p>Per entity, all three questions come from one lookup of its active powers per frame, sorted by
- * type here. Apoli's {@code getPowers(entity, type)} is the same filter over the same list.
+ * <p>Per entity, the answers are computed once per frame. With the power-type index installed
+ * ({@link IndexedPowers}) they come straight from it, checking {@code isActive()} only on powers of
+ * the three types, like Apoli. Without it, one {@code getPowers(entity, type)} per type, also like
+ * Apoli. (An earlier version fetched all active powers in one call, which evaluated every power's
+ * conditions each frame: slower for a player with many powers.)
  *
  * <p>Apoli is called by reflection, once per entity per frame, so there is no compile dependency on
  * its Fabric-named jar.
@@ -40,7 +43,6 @@ public final class ApoliPowers {
     private static boolean resolved;
     private static boolean available;
     private static MethodHandle getPowers;
-    private static Class<?> anyPower;
     private static Class<?> invisibilityPower;
     private static Class<?> preventFeatureRenderPower;
     private static Class<?> preventEntityRenderPower;
@@ -104,22 +106,24 @@ public final class ApoliPowers {
         if (holder.renderTweaks$apoliFrame() == frame) {
             return true;
         }
-        List<?> powers;
-        try {
-            powers = (List<?>) getPowers.invokeExact(entity, anyPower);
-        } catch (Throwable t) {
-            disable(t);
-            return false;
+        boolean plain;
+        boolean selfGlow;
+        PowerTypeIndexHolder index = IndexedPowers.holderOf(entity);
+        if (index != null) {
+            try {
+                plain = !IndexedPowers.anyActive(index, invisibilityPower)
+                        && !IndexedPowers.anyActive(index, preventFeatureRenderPower);
+                selfGlow = IndexedPowers.anyActive(index, selfGlowPower);
+            } catch (Throwable t) {
+                disable(t);
+                return false;
+            }
+        } else {
+            plain = !hasAny(entity, invisibilityPower) && !hasAny(entity, preventFeatureRenderPower);
+            selfGlow = hasAny(entity, selfGlowPower);
         }
-        boolean plain = true;
-        boolean selfGlow = false;
-        for (Object power : powers) {
-            if (invisibilityPower.isInstance(power) || preventFeatureRenderPower.isInstance(power)) {
-                plain = false;
-            }
-            if (selfGlowPower.isInstance(power)) {
-                selfGlow = true;
-            }
+        if (!available) {
+            return false;
         }
         holder.renderTweaks$setApoli(frame, plain, selfGlow);
         return true;
@@ -138,7 +142,6 @@ public final class ApoliPowers {
         resolved = true;
         try {
             Class<?> component = Class.forName("io.github.apace100.apoli.component.PowerHolderComponent");
-            anyPower = Class.forName("io.github.apace100.apoli.power.Power");
             invisibilityPower = Class.forName("io.github.apace100.apoli.power.InvisibilityPower");
             preventFeatureRenderPower = Class.forName("io.github.apace100.apoli.power.PreventFeatureRenderPower");
             preventEntityRenderPower = Class.forName("io.github.apace100.apoli.power.PreventEntityRenderPower");

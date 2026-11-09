@@ -63,6 +63,33 @@ public final class IndexedPowers {
         }
     }
 
+    /**
+     * The entity's power index, or null when the index is off, unavailable, or the entity has no
+     * power holder.
+     */
+    public static PowerTypeIndexHolder holderOf(Entity entity) {
+        if (!Tweak.APOLI_INDEX.isEnabled() || !(entity instanceof LivingEntity) || !resolve()) {
+            return null;
+        }
+        try {
+            Object component = (Object) componentOf.invokeExact((Object) entity);
+            return component instanceof PowerTypeIndexHolder holder ? holder : null;
+        } catch (Throwable t) {
+            disable(t);
+            return null;
+        }
+    }
+
+    /** True if any power of this type is active, checking activity only on powers of that type. */
+    public static boolean anyActive(PowerTypeIndexHolder holder, Class<?> type) throws Throwable {
+        for (Object power : holder.renderTweaks$powersOf(type)) {
+            if ((boolean) isActive.invokeExact(power)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /** Apoli's getPowers(type, includeInactive), as a fresh list like Apoli's, or null to let Apoli answer. */
     public static List<Object> getPowers(PowerTypeIndexHolder holder, Class<?> type, boolean includeInactive) {
         if (!Tweak.APOLI_INDEX.isEnabled() || !resolve()) {
