@@ -14,7 +14,7 @@ public enum Tweak {
     APOLI("apoli", "Apoli layer and render checks once per frame"),
     APOLI_INDEX("apoliindex", "Apoli hasPower and getPowers from a per-entity power-type index"),
     BAGUS("bagus", "Bagus Lib pose reset from a cached part list"),
-    PEHKUI("pehkui", "Pehkui: entities with default scales skip scale computation"),
+    PEHKUI("pehkui", "Pehkui: entities with default scales skip scale computation and ticking"),
     RAIN("rain", "Subtle Effects rain tint per column, kept 20 frames"),
     UNIFORMS("uniforms", "Oculus custom uniforms uploaded once per change per program"),
     GTBC("gtbc", "GTBC Spell Lib effect-entity searches once per tick");

@@ -15,17 +15,18 @@ public final class RenderTweaksMixinPlugin implements IMixinConfigPlugin {
     private static final String MIXIN_PACKAGE = "com.rendertweaks.mixin.";
 
     /** Mixin sub-package to the mod ids it needs. */
-    private static final Map<String, List<String>> REQUIRED_MODS = Map.of(
-            "apoli.", List.of("apoli", "mixinsquared"),
-            "apoliindex.", List.of("apoli"),
-            "bagus.", List.of("bagus_lib"),
-            "chloride.", List.of("chloride", "mixinsquared"),
-            "gtbc.", List.of("gtbcs_spell_lib"),
-            "knightlib.", List.of("knightlib"),
-            "lionfish.", List.of("lionfishapi", "embeddium"),
-            "oculus.", List.of("oculus"),
-            "pehkui.", List.of("pehkui"),
-            "subtle.", List.of("subtle_effects", "mixinsquared"));
+    private static final Map<String, List<String>> REQUIRED_MODS = Map.ofEntries(
+            Map.entry("apoli.", List.of("apoli", "mixinsquared")),
+            Map.entry("apoliindex.", List.of("apoli")),
+            Map.entry("bagus.", List.of("bagus_lib")),
+            Map.entry("chloride.", List.of("chloride", "mixinsquared")),
+            Map.entry("gtbc.", List.of("gtbcs_spell_lib")),
+            Map.entry("knightlib.", List.of("knightlib")),
+            Map.entry("lionfish.", List.of("lionfishapi", "embeddium")),
+            Map.entry("oculus.", List.of("oculus")),
+            Map.entry("pehkui.", List.of("pehkui")),
+            Map.entry("pehkuitick.", List.of("pehkui", "mixinsquared")),
+            Map.entry("subtle.", List.of("subtle_effects", "mixinsquared")));
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {

@@ -31,11 +31,17 @@ import virtuoel.pehkui.util.PehkuiEntityExtensions;
  * (every tick, every change, every load from save or packet). Every 1024th shortcut call runs
  * Pehkui instead and compares; a mismatch turns the shortcut off for the session and logs it.
  * Dwarf, Elf and other resized entities always take Pehkui's normal path.
+ *
+ * <p>The same state lets Pehkui's per-tick loop be skipped for all-default entities on the client
+ * ({@link #canSkipTick}): ticking a default scale changes nothing. Skipping also skips Pehkui's
+ * per-tick cache drop, so the state is rechecked every {@link #RECHECK_TICKS} ticks regardless, to
+ * catch a scale changed by code that bypassed Pehkui's update call.
  */
 public final class PehkuiDefaults {
 
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final int VERIFY_EVERY = 1024;
+    private static final int RECHECK_TICKS = 20;
 
     private static final Map<ScaleType, Float> DEFAULT_SCALES = new IdentityHashMap<>();
     private static boolean disabled;
@@ -75,6 +81,20 @@ public final class PehkuiDefaults {
                     "Pehkui default scale for {} changed from {} to {}; default-scale shortcut disabled for this session",
                     type, known, scale);
         }
+    }
+
+    /**
+     * True if Pehkui's per-tick scale loop can be skipped for this entity: client render thread,
+     * all scales at their defaults (rechecked every {@link #RECHECK_TICKS} ticks).
+     */
+    public static boolean canSkipTick(Entity entity) {
+        if (disabled || entity == null || !Tweak.PEHKUI.isEnabled() || !RenderSystem.isOnRenderThread()) {
+            return false;
+        }
+        if (entity.tickCount % RECHECK_TICKS == 0) {
+            invalidate(entity);
+        }
+        return allDefault(entity);
     }
 
     /** Pehkui dropped its cache for one of this entity's scales: its answer must be recomputed. */

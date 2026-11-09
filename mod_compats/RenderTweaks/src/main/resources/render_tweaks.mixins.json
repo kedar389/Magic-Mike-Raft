@@ -27,6 +27,7 @@
     "pehkui.EntityPehkuiStateMixin",
     "pehkui.ScaleDataInvalidateMixin",
     "pehkui.ScaleUtilsShortcutMixin",
+    "pehkuitick.PehkuiTickSkipMixin",
     "subtle.SubtleRainTintMixin"
   ],
   "injectors": {
