@@ -11,6 +11,7 @@
     "EntityLightCacheMixin",
     "EntityRendererLightMixin",
     "LevelRendererFrameMixin",
+    "ResourceLocationStringMixin",
     "apoli.ApoliFeatureRenderMixin",
     "apoli.ApoliGlowCheckMixin",
     "apoli.ApoliEntityRenderCheckMixin",
