@@ -98,7 +98,7 @@ public final class LionfishFastRender {
      * Builds any box data not built yet, before anything is written, so a failure falls back
      * cleanly instead of leaving a half-drawn part. False if a box could not be read.
      */
-    private static boolean prepare(Iterable<?> boxes) {
+    static boolean prepare(Iterable<?> boxes) {
         for (Object box : boxes) {
             LionfishBoxCache cache = (LionfishBoxCache) box;
             if (cache.renderTweaks$data() != null) {

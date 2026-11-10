@@ -44,6 +44,10 @@ dependencies {
     // Oculus's uniform classes, for the custom-uniform upload fix. Copy oculus-mc1.20.1-1.8.0.jar from
     // the client instance's mods/ into ./libs/. Only Oculus's own classes and methods are used.
     compileOnly files('libs/oculus-mc1.20.1-1.8.0.jar')
+
+    // Accelerated Rendering's API, for drawing Lionfish (Cataclysm) models through it when it is
+    // installed. Copy acceleratedrendering-1.0.14-1.20.1-alpha.jar into ./libs/. Optional at runtime.
+    compileOnly files('libs/acceleratedrendering-1.0.14-1.20.1-alpha.jar')
     // Lionfish API, Chloride, KnightLib and Apoli are not compile deps: their classes are targeted by name
     // and Lionfish's package-private model data is read by reflection.
 }
